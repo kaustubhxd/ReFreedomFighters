@@ -1,0 +1,1793 @@
+address	name	folder	seed1	seed2
+0x4022f0	unknown::checked_counter_advance (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x403ab0	unknown::min_copy_56 (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x40ce50	GUESS FUN_0040ce50 (empty)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x410470	GUESS: cdecl zeroing of seven dwords (0x410470)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x41dd70	unknown::counter_gated_call (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x41f0b0	ZSysMemGC::GetNrAllocs	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x41fa30	ZSysMemGC::GetReadOutBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x420570	ZSysInterfaceGC::CloseAllWindows	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x421060	GUESS wrapper around 0x421080 (unknown) stdcall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4234b0	ZSysInterfaceGC::RemoveDll	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x423950	store slot 0x1fc result into +0x1b49	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x423ee0	0x423ee0 (dword +0x1b37 = arg)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x423fb0	list walk: slot 0x108 node, slot 0 of its object	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x424450	0x424450 (byte +0x25e8 = 1)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x424460	list walk: slot 0x108 node, slot 4 of its object	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4245d0	GUESS FUN_4245d0 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x424d50	debug log forwarder (fmt 0x677368)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x424d70	0x424d70 (sys slot 0x154 with arg)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4253c0	cdecl forward with out-pointer (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x425af0	ZSysComGC::SetFileAndLine	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4265b0	unknown::dtor_base_4264b0_free_118 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x4265e0	slot 0xc, then slot 0x38 and slot 0x1c	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x427f40	ZSysFileGC::WriteTo (logs, ignores its four arguments)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x428420	GUESS wrapper with out-pointer (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x428710	destructor wrapper with sized free (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x428740	destructor wrapper with sized free (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x428800	flag after slot 0x1c of this+0x71	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x428830	HRESULT retry loop (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x428870	HRESULT retry loop with a count (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4288c0	HRESULT retry loop (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x428960	member slot 0x1c with this, byte +0xb1 = (result == 0)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x428ab0	0x428ab0 (dword 0x7003a0 = 0)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x428fb0	0x428fb0 (returns this+0x11)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x428fc0	0x428fc0 (returns this+0x35)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x429450	0x429450 (returns byte +0xc)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4298a0	0x4298a0 (byte +0xc = arg)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x429a50	two field slot calls (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x429a80	two field slot calls (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x429ab0	release: slot 0x2c, then slot 8 of this+0xd and clear	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x429ae0	flag after slot 0x20 of this+0x71	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x429b10	member slot 0x20 (member as receiver and argument), byte +0x1b1 = 0, return 1	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x429b30	member slot 0x20 (member as receiver and argument), byte +0x45 = 0, return 1	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42aac0	ZSysInterfaceGC::SetEngineData	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42aae8	GUESS wrapper over claimed helper and IAT (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ab0d	GUESS wrapper with out-pointer (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ab26	GUESS wrapper over real helper and IAT (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ab81	GUESS wrapper over claimed helper and IAT (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42aba4	GUESS wrapper with out-pointer (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ac08	GUESS signed clamp over IAT call (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ac38	wrapper around 0x42ac08 (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42acaf	getStr (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x42acc0	0x42acc0 (constructor)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42ace0	vtable setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42acf0	unknown::dtor_vtable_679754 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x42ad20	FUN_42ad20 (releaseAtC)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x42adb0	zero stub (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42adc0	span length compare, then ext 0x4309b0 (stdcall)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42b9c0	release span via ext 0x54f870 (stdcall)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42c0d0	slot 0x1b0 member, then tail slot 0x28	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42cb70	TimeStampCounter: slot 0x1bc, float result	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42cc20	ZSysInterface::FollowRealtime	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42cc30	unknown::release_1907_free_134c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x42cfd0	wrapper around 0x4d2ed0 (unknown) stdcall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42d270	unknown::flag_gate_advance_c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x42d950	flag setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42ee20	ZSysInterface::ProjectPath	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42ee50	ZSysInterface::Rand (LCG)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42fa90	ZSysInterface::ScenesPath(dest)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42fb40	ZSysInterface::SetOption (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x42fb60	store four floats at +0x9a7..+0x9b3	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42fc30	ZSysInterface::StreamFile	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42fc60	ZSysInterface::StreamIdxFile	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x42fdf0	flag setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x42fe00	wrapper around 0x42abee (unknown) cdecl	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4312f0	sliceCall (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x431f80	CConfiguration::ApplyKeys	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x431fb0	CConfiguration::ApplySound: four slot 0x104 calls on the sound object	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x432250	CConfiguration::ExtractKeyNameFromNode	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x432430	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432440	slot call then IAT test (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4324a0	slot call then IAT result (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4324d0	embedded-object call then global call (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432520	FUN_432520 (addrAC)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x432530	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432550	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4325e0	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4325f0	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432600	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432610	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432620	float getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432630	unknown::byte_fc (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x432640	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x432cd0	and of slot 0 and slot 0x4c	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4331f0	set byte +0x101 with notify (value = arg == 0)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433370	CConfiguration::SetIntroMusicVolume	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4333c0	CConfiguration::set byte +0xfd	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4333f0	CConfiguration::set byte +0xfe	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433490	CConfiguration::SetMusicVolume	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4334e0	CConfiguration::SetSfxVolume	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433530	CConfiguration::SetSpeechVolume	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433580	slot 0xac of this with the float	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4335a0	CConfiguration::set byte +0xfc	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4335d0	byte +0x100 = arg (no map name)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433cf0	c_str of [0x70039c]+0x1a17 then slot 0x48 of this	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433e40	and of ext 0x432cd0 and sys slot 0x1e8	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433e60	set dword +0x102	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x433e90	set byte +0x106	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4346c0	stdcall: slot 4 of this with (a, 0, b, c)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x434a90	GUESS FUN_00434a90 (two vtable calls)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x434ab0	ZSysFile::ConvertFilename (stdcall, returns this)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x434ce0	ZSysFile::ExistsInZip	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x434e00	ZSysFileGC::LoadWholeSceneZip	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4351a0	tail call through vtable +0x90 (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4359d0	ZSysFile::UseBig	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4359f0	constructor (vtable 0x67a630, +4 = arg)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435ae0	FUN_435ae0 (ctorBlock)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x435b30	reset vtable, free +8 via 0x634273	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435ba0	set vtable 0x67a5d8, clear 0x7003a0	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435c60	constructor with optional sized free (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x435d30	GUESS: bounded append (count at +0x60, 16 slots at +0x20)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x435d50	GUESS FUN_00435d50 (push into two slots)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x435d70	push into 3-slot list at +0x10 (count +0x1c)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435d90	ZSysInput::IsConnected	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435e30	float table at +0xd with count +0x5d	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435e50	float table at +0x15 with count +0x5d	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x435e70	ZInputDeviceGameControlBase::IsConnected	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x435e90	GUESS FUN_00435e90 (bounded index read)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x435eb0	GUESS FUN_435eb0 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4360f0	GUESS: indexed slot-0x34 call (0x4360f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x436120	FUN_436120 (tailSlot1c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x436130	slot 8 of member at +0x65 with (arg, 0, 1.0)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x436170	RumbleStartEffect: store v, store c/(c-v)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x436200	device i present: slot 0x3c with y, returns bool	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x436230	ZSysInput::StopAllGCEffects	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4364c0	global getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4364d0	GUESS FUN_004364d0 (reset returns this)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x437070	unnamed 0x437070	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x437670	string copy into a new buffer (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4376c0	tokenize (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x437900	ZInputAction::AddNode	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x4379f0	ZInputAction::AddNodes (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x437b00	searchAlloc437 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x437f70	ZInputActions::CheckAction (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x438000	ZInputActions::CheckActionAnalog (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x438200	walk over self+0x19 (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x438260	ZInputActions::GetActionMapStatus (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x438330	unnamed 0x438330	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x438360	ZInputActions::DisableActions (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4386a0	ZInputAction::DependOnActionsNodes (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x438780	ZInputActions::EnableActions (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x438790	unknown::dec_dword_120c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x438880	ZInputActions::ForceSetAction (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x438bc0	ZInputActions::GetActionBase (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x438c20	ZInputActions::GetActionID (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x438c30	headAddr (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x438cc0	ZInputActions::GetActionMap(const char*)	inline-unclaimed-25	exact-1000-faults0	exact-1000-faults0
+0x438e10	GUESS FUN_00438e10 (vtable +0x10 then +0x24)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x438f30	ZInputActions::GetActionValue (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4392b0	ZInputActions::GetInputNode (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x439570	FUN_439570 (lookupTable39570)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x439f60	ZInputActions::PrintActionDebugInfo	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x43a7c0	ZInputActions::RemoveActionMap def (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x43a7e0	ZInputActions::RemoveActionMap name (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x43abb0	clearFlags (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x43abe0	ZInputActions::DeActivateMap (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x43ac30	two flag walks through the table (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43aca0	walk clearing item flags (unknown) stdcall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43af70	ZInputActions::SetActionIgnoreLockOnSave (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x43afd0	ZInputAction::SetActive (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43cfb0	vtable setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43cfc0	max/min scan over the 0x18-stride float table	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43d360	ZHapticsBase::HapticsEnabled	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43d950	byte +0x90 = arg (map name ZHapticsBase::GetEffectID)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43da90	ZHapticsBase::StopEffects	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43df80	ZSTDOBJ::CheckBoxInside (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43dfb0	ZSTDOBJ::CheckPointInside (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43e0f0	ZSTDOBJ::ClassInit	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x43e140	no-op stub (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43e170	callThenClearBit0 (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x43e570	ZHELPER::DispBox	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x43e5a0	FUN_43e5a0 (setFlagBit2)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x43e5d0	set/clear bit 0 of dword +0x18	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43e5f0	ZHELPER::DispSphere: set/clear bit 1 of dword +0x18 unless bits 2/3 set	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x43eb00	ZGROUP::AddLine (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x43ee10	vtGetFill (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x43fa70	ZGROUP::CorrectCenSizeRecur (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x440220	ZGROUP::DuplicateToResource (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4408b0	ZGROUP::FindMasterGeom (unknown) thiscall const	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x440900	ZGROUP::GetAmbientSettings (unknown) thiscall const	doc-only	exact-1000-faults0	exact-1000-faults0
+0x440930	unnamed 0x440930	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x440aa0	walkList (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x440b10	GUESS FUN_00440b10 (leaf float getter)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x440cb0	unnamed 0x440cb0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x440cc0	unnamed 0x440cc0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x440d40	flagWalk (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x440e90	vtCheckNoop (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4414a0	walkCursor (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4415f0	callAndMaybeRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x441820	ZGROUP::SendCommandRecursive (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x441870	setMaskedFlags (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x441b90	GUESS: ZGROUP-derived constructor (0x441b90)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x441bf0	vtable setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x441d50	GUESS: destructor (0x441d50)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4429c0	ZTreeGroup::CheckDynamicLineColi (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x442c00	ZTreeGroup::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x442f60	ZTreeGroup::FreeDynamicTrees (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x442f90	ZTreeGroup::FreeGlobalBounds	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x443020	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x443030	ZTreeGroup::GetDynamicChildTreeGroupList	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x443060	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x443070	ZTreeGroup::GetGlobalTreePtr	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x443300	ZTreeGroup::GetStaticChildTreeGroupList	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x443540	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x443550	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x443560	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x443aa0	ZTreeGroup::MoveGlobalBound (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x443c30	ZTreeGroup::RemoveDynamicGeom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4440e0	ZROOM::~ZROOM	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4442b0	forward3 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4442d0	ZROOM::CalcBestRoom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x444af0	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x444fa0	ZROOM::NotInRoomTree	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x444fb0	ZROOM::RemoveDynamicGeomFromRoom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4450a0	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4450b0	predicate then vtable calls (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x445140	ZROOM::SetAttachedDrawBaseGeom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x445170	ZROOM::SetEnvironment	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x445180	GUESS: byte rearrangement store at +0xa0 (0x445180)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4451b0	ZROOM::SetRoomControl	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x447920	GUESS: destructor body (0x447920; SEH frame not reproduced)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x447980	ZGateLightMaster::~ZGateLightMaster	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4479c0	ZGateLightSpotMaster::~ZGateLightSpotMaster	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x447a90	ZGateLightSquareSpotMaster::~ZGateLightSquareSpotMaster	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x448830	ZSPOTLIGHT::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x448880	ZSPOTLIGHTSQUARE::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4489c0	ZGateLightOmni::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x448a00	ZGateLightMaster::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x448f40	ZLIGHT::Disable	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x448f60	ZLIGHT::DisableParentBoundAdjust	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449300	ZLIGHT::EffectLight	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4493a0	ZLIGHT::Enable	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4493c0	ZSPOTLIGHT::GetFallOffAngle	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449400	ZOMNILIGHT::GetFarRange	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449440	ZSPOTLIGHT::GetFarRange	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449480	ZSPOTLIGHT::GetHotSpotAngle	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4494c0	ZOMNILIGHT::GetNearRange	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449500	ZSPOTLIGHT::GetNearRange	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449540	ZLIGHT::LightAttributeChanged (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x449550	ZLIGHT::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449580	ZSPOTLIGHT::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4495b0	ZLIGHT::MakeLightUnique	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449600	ZLIGHT::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449630	ZSPOTLIGHT::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449790	ZLIGHT::SetEffectLight	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449820	ZLIGHT::SetLightAttributeChanged	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449d40	GUESS: ZGEOM-derived constructor (0x449d40)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449e90	ZLIST::~ZLIST	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x449f70	ZLIST::AddGeom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44a5b0	tail to child with precall	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44a5e0	ZLIST::RemoveGeom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44a610	ZLIST::RemoveNotifyGeom	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44a6f0	tail call via inner object (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x44a700	ZLIST::Script_GetRefNr	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44aaf0	ZSHAPE::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44b5c0	GUESS: ZSNDOBJ destructor body (SEH frame not reproduced)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44b610	unnamed 0x44b610	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x44b820	ZSNDOBJ::Activate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44b850	GUESS: sys slot 0x12c caller, +0x30 (0x44b850)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44b880	GUESS: sys slot 0x12c caller, +0x34 (0x44b880)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44b8b0	GUESS: slot 0x12c caller on the sys table object (0x44b8b0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c0f0	unnamed 0x44c0f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x44c100	ZSNDOBJ::GetPitch (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x44c160	ZSNDOBJ::ModifyGeomCon	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c1e0	ZSNDOBJ::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c290	ZSNDOBJ::StartPitchShift	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c3d0	GUESS: ZSTDOBJ-derived constructor (0x44c3d0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c410	Z2DOBJ::~Z2DOBJ	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c500	Z2DOBJ::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44c530	unknown::flag_from_4e12e0 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x44c8c0	GUESS: ZSTDOBJ-derived constructor (0x44c8c0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44cad0	ZBoneParticle::~ZBoneParticle	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44cb60	ZMotionBlur::~ZMotionBlur	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44d000	ZMotionBlur::ClassInit	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44d040	ZMotionBlur::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44d320	ZBoneParticle::OwnerDraw	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44e6d0	GUESS: ZSTDOBJ-derived constructor (0x44e6d0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44e710	ZBOUND::~ZBOUND (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x44e900	GUESS: ZGROUP-derived constructor (0x44e900)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44e970	unknown::set_vtable_680ce4_tail_43ea20 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x44e980	ZBOXGATEGROUP::~ZBOXGATEGROUP	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44edf0	GUESS: ZSTDOBJ-derived constructor (0x44edf0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44ee20	GUESS: destructor body (0x44ee20)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44f0f0	ZCloth::ApplyWind	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x44f540	calls 0x450980 with one argument (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x450ed0	ZCloth::Load2	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x451340	predicate then vtable calls (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4519a0	GUESS: ZSTDOBJ-derived constructor (0x4519a0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x451a30	unknown::dtor_base_43de70_helpers (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x452790	GUESS: ZGEOM-derived constructor (0x452790)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4528c0	ZDebugGeom::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x452990	GUESS: ZGEOM-derived constructor (0x452990)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x452bb0	ZENVIRONMENT::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x452e10	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x452e20	ZENVIRONMENT::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x452e40	ZENVIRONMENT::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x452f80	GUESS: vtable set and tail jump 0x43de70 (0x452f80)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4531b0	ZGATE::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x453a30	constant (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x453a40	ZGATE::GetGates (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x453b10	address of field (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x453b30	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x453b40	getter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x454490	ZGATE::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454550	ZGATE::PFEnableGate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454560	ZGATE::RemoveGate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4545a0	ZGATE::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4545e0	ZItemTemplate::SetItemHands (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4545f0	GUESS: ZGROUP-derived constructor (0x4545f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454630	ZInstance::~ZInstance	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454670	ZTemplate::~ZTemplate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454820	ZTemplate::ClassInit2	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454850	ZTemplate::ClassInit	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454870	ZInstance::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4548b0	ZTemplate::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4548e0	ZInstance::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454910	ZTemplate::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454920	ZInstance::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454980	GUESS: ZSTDOBJ-derived constructor (0x454980)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454ac0	ZMaterialDesc::~ZMaterialDesc	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x454b50	ZMaterialDescGroup::AddMaterialDescriptor	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x455580	ZParticleTemplate::~ZParticleTemplate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x455790	ZParticleTemplate::ClassInit2	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4559a0	ZParticleController::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x455af0	ZParticleController::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4561c0	ZParticleController::CreateParticle	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x456e30	ZParticleTemplate::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x456f50	ZParticleTemplate::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x459b60	ZParticleBox::DrawUpdate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x459c00	tail call via vtable (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x459c10	ZBoneParticle::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45a530	GUESS: ZSTDOBJ-derived constructor (0x45a530)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45a640	ZPICOBJ::~ZPICOBJ	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45ae10	GUESS: ZSTDOBJ-derived constructor (0x45ae10)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45ae40	ZBoxPrimitive::~ZBoxPrimitive	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b060	ZStdObjBox::CalcCenSize (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x45b170	unknown::copy_from_8_to_18 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x45b180	ZBoxPrimitive::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b210	ZStdObjBox::CopyDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b460	GUESS: ZSTDOBJ-derived constructor (0x45b460)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b4e0	ZBloodSplatters::~ZBloodSplatters	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b530	unknown::dtor_base_43de70_helper_45c510 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x45b5d0	GUESS: destructor (0x45b5d0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45b620	ringPop (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x45ba30	unknown::tail_via_vt214 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x45bab0	GUESS FUN_45bab0 (wrapper) (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x45be20	ZProjectMarks::FadeMark	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45bfa0	ZProjectMarks::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45c080	ZBloodSplatters::NotifyMarkUV	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45c0b0	ZBloodStains::NotifyMarkUV	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45c140	ZBloodSplatters::RunMark	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45c4f0	GUESS: cdecl forwarder to sys child slot 0x10 (0x45c4f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45d1a0	setFlag (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x45d320	ZGEOM::ChkFaceLineColi (unknown) stdcall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x45d960	ZGEOM::CreateExData (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x45dc30	ZGEOM::DispBound (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x45dcb0	wrap (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x45e490	ZGEOM::FindEvent	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x45e540	ZGEOM::FreeEvent	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45ed70	ZGEOM::GetChunkData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45ed90	GUESS FUN_0045ed90 (null-checked sub-object read)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x45eda0	FUN_45eda0 (tailSlot100)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x45ee90	forwardFloat (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x45f080	ZGEOM::HideRecursive	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45f370	findNodeKey (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x45f890	callSlot68Gated (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x45f9d0	callSlot60Gated (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x45fab0	twoStep (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x45fb00	lookupCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x45fd30	ZGEOM::SetRootPos	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x45fd40	ZGEOM::SetRootTM	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x460650	ParametricCurve::RecSub (unknown) thiscall	inline-unclaimed-42	exact-1000-faults0	exact-1000-faults0
+0x4609b0	GUESS: constructor (0x4609b0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4609e0	setVtbl (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x460bb0	GUESS FUN_460bb0 (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x460c30	vtable setter (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x460c80	ZLnkActionDtor (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x460e20	FUN_460e20 (copy12)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x461980	ZLNKOBJ::CheckActiveAnim (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x461a40	scratchCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4625b0	GUESS: vtable forwarder (slot 0x20 of +0x6c)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x462bd0	leaf 0x462bd0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x462f40	ZItemTemplate::GetPointerContextPicture (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4632f0	unnamed 0x4632f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x464e70	releaseSlots (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x465470	unnamed 0x465470	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x465760	ZIKLNKOBJ::ActivateRagdoll	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x4666e0	ZIKLNKOBJ::GetBoneCollision	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x466c10	ZIKLNKOBJ::HitRagdoll	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x4681f0	getDword1d6 (unnamed)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x468200	getDword1d2 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x468210	floatAt1da (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4682f0	unnamed 0x4682f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x469100	maskOr (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x469670	ZWeaponTest::~ZWeaponTest (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x46a770	ctorRelease46a (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x46b800	FUN_46b800 (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x46ba60	unnamed (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x46c170	fillHandles (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x46c820	ZItemTemplateWeapon::ClassInit (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x46c9b0	ZItemAmmo::CopyData (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x46caf0	ZItemTemplateAmmo::CopyData (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x46cc20	ZItemTemplateWeapon::CopyData (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x46cf60	ZItemTemplateAmmo::CopyDataBlock(DBLK*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x46d8e0	ZItemWeapon::FireRound	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x46e760	ZItem::GetItemRootTM (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x46e8e0	ZItem::GetMainItemRootTM (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x46e9c0	GUESS 0x46e9c0	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x46ecd0	ZItemTemplateWeapon::GetMuzzleVelocity	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46ed10	ZItemTemplateWeapon::GetPitchChange	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46eed0	getField5c (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46efd0	ZItemTemplateWeapon::GetWeaponType	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46f510	callThenTail (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46f930	ZItemTemplateWeapon::ModifyState (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x46ff20	ZItem::Place (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x4706d0	ZItemTemplateAmmo::Save (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x470c90	ZItem::SetItemOwner	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x472440	GUESS FUN_472440 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4733d0	ZLNKWHANDS::CreateLnkAction	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x474250	ZLNKWHANDS::GetDamageMultForBone	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x4743f0	GUESS: table lookup on sys object (0x4743f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x475820	ZLNKWHANDS::SetDamageMultForBone	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x475930	ZLNKWHANDS::SetHitAnimation	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x476540	GUESS FUN_476540 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x476f50	ZActor::ZActor	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x477740	ZActor::ActivateBaseMove	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x477940	ZActor::CheckSight	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4783f0	ZActor::DieByForce	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x478630	ZActor::EndDir (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x4789e0	ZActor::GetActiveMoveSet (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x4789f0	ZActor::GetActorList (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478a00	copyTriple (GUESS name ZActor::CanPlayAnimSegment)	inline-unclaimed-25	exact-1000-faults0	exact-1000-faults0
+0x478a60	ZActor::GetActorState (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478a80	ZActor::SMoveType::GetAnimHeader	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x478aa0	ZActor::GetAnimHeader stdcall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x478b00	ZActor::GetAnimOffset (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x478b30	ZActor::GetAudibleRoomList (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478b40	ZActor::GetCage (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478b50	ZActor::GetCurrentMoveType (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478b60	ZActor::GetCurrentRoom (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478c90	ZActor::GetMoveFlags (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x478db0	ZActor::GetMoveSetId (medium) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x478e20	ZActor::GetMoveTypeId	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x478ea0	keyedCurve (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x478ff0	ZActor::Hide (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x479050	ZActor::IsDead (unknown) thiscall const	doc-only	exact-1000-faults0	exact-1000-faults0
+0x479060	FUN_479060 (isMoveKind)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x479610	ZActor::LookAt (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x479620	ZActor::MoveToMatPos(const float*, const float*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x479740	ZActor::NoCageCheck (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x479810	ZActor::OnPathCanceled (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x479850	ZActor::OnPathCanceledLockedDoor (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x479890	ZActor::OnPathError (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x47a620	ZActor::OnSound	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x47aa80	ZActor::OnViewEnter (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x47aab0	ZActor::OnViewLeave (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47abb0	ZActor::RemovePath (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x47adc0	ZActor::Resurrect	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x47bc70	ZActor::SetRootMatrixAndPos (GUESS; map says GetActorRootTM) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x47bcc0	ZActor::SetActorState (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bd50	ZActor::SetCage (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bd60	ZActor::SetCheckSight	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x47bd80	ZActor::SetDisableIdleAnimation (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bdf0	ZActor::SetHero (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47be90	ZActor::SetMaxPathLen (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47beb0	ZActor::SetMovePoolWeight (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bed0	ZActor::SetMoveSet (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bef0	ZActor::SetMoveSpeedMultiplier (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bfc0	ZActor::SetPathNotify (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47bfe0	ZActor::SetPathNotifySyncToCycle (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47c0e0	ZActor::SetRootTM (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x47c130	ZActor::SetStayInsidePath (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47c140	ZActor::SetStopDistance (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47c530	ZActor::TrackObjPos (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x47cde0	ZActor::UpdateFacing (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x47cdf0	ZActor::UpdateFootDust	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x481140	ZAnimDefsListRandom::~ZAnimDefsListRandom() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x481260	(GUESS) 0x481260 thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x481800	(GUESS) 0x481800 two-branch sub-object update	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x481920	(GUESS) 0x481920 address getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x482480	ZPlayer::ClassInit2 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4825c0	(GUESS) 0x4825c0 ContactMove, helpers stubbed	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4827b0	ZPlayer::ControlsEnabled() const getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4827c0	ZPlayer::CopyData(const ZGEOM*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x482870	wrapper over 0x482800 and 0x4e1b30 (unknown) stdcall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x482890	ZPlayer::CreateMovementAction	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x482900	ZPlayer::CreateMovementAnimation() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x482970	ZPlayer::CreateMovementBaseMove() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4830e0	ZPlayer::Die	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x4831b0	ZPlayer::DisableT1 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4831c0	(GUESS) 0x4831c0 byte setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x483300	(GUESS) 0x483300 helper then vcall chain on a1, a2, this	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4834c0	ZPlayer::EnableT1 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4835c0	ZPlayer::ForceFacing(const float*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4836f0	ZPlayer::ForceRHandItem(ZItem*, bool) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x483780	copyIfReady (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4837d0	GUESS FUN_004837d0 (chain getter)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x483980	ZPlayer::GetAnimNameFromCollision	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x483a10	floatAt451 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x483b00	ZPlayer::GetGroundContact (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x483b10	ZPlayer::GetMoveSpeeds	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x483b40	getIndexed (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x483df0	ZPlayer::GetSettingsFromAnim(ZAnimDefs*) const thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x483ea0	ZPlayer::GetSoundSet() const getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x483eb0	unitVec (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x483ed0	ZPlayer::GetStatus() const getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x483ef0	getBit1 (unnamed)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x483f10	getBit417 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x483f20	ZPlayer::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4840e0	(GUESS) 0x4840e0 medium body, callees stubbed	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x484ce0	ZPlayer::RegisterMovement (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x484d10	GUESS FUN_00484d10 (vtable +0x594 forward)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x484d20	ZPlayer::Save (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x484eb0	ZPlayer::SetActiveMovement(unsigned int) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x484f30	ZPlayer::SetContactGeom(unsigned int) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x484fe0	(GUESS) 0x484fe0 byte setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x485060	(GUESS) 0x485060 float store then vcall 0x5ec	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x485080	copy3 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4850b0	ZPlayer::SetSoundSet	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4856d0	clearSigns3 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x485890	(GUESS) 0x485890 child call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x485bb0	baseRelease485 (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x485d00	ZLnkAction ctor C (4 args)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x485d70	ZLnkAction ctor D (4 args)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x485db0	ZLnkAction ctor F (4 args)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x485df0	ZLnkAction ctor B (5 args)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x485e90	ZLnkAction ctor E (5 args)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x485f60	ZActionReloadItem::~ZActionReloadItem	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x486700	ZActionPushButton::Execute	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x486e10	ZActionChamberItem::Name (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x486e30	(GUESS) 0x486e30 returns the constant 0x68cc08	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x486e40	(GUESS) 0x486e40 returns the constant 0x68cc78	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x486e50	ZActionPushButton::Name (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x486e60	(GUESS) 0x486e60 returns the constant 0x68cc40	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x486e70	ZActionReloadItem::Name (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4870b0	(GUESS) 0x4870b0 dword setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4875d0	CPathUserProfile::GetUser() const getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x487600	ctorFields (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x487650	unnamed 0x487650	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4876e0	(GUESS) 0x4876e0 ctor, three 0x480980 calls, SEH frame not reproduced	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4879b0	resetThreeRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x487a00	ZMovementStand::~ZMovementStand (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x487c70	ZMovementBaseMove::CalcNewSpeed (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x488430	ZMovementGuide::ClassInit2 (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x488b60	ZMovementBaseMove::GetActiveWalkDefsList	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x488ba0	FUN_488ba0 (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x489160	ZMovementGuide::GetAnims	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x489340	ZMovementGuide::GotControl (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x489370	ZMovementGuide::Load	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x489d20	ZMovementGuide::Save (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x489d60	ZMovementGuide::TerminateControl (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x489df0	ZMovementGuide::WantControl (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x48a340	(GUESS) 0x48a340 wrapper, flag bit 0 calls free	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48a370	(GUESS) 0x48a370 global vcall slot 0x104	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48a440	(GUESS) 0x48a440 allocate, construct, vtable	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48b330	(GUESS) 0x48b330 global tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48cee0	(GUESS) 0x48cee0 global slot 0x40 then tail	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48cf00	(GUESS) 0x48cf00 global slot 0x44 then tail	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48cf40	(GUESS) 0x48cf40 tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48d000	ZEngineGeomControl::Clear() zero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48d0c0	(GUESS) 0x48d0c0 cmp of +4 dwords	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48db50	(GUESS) 0x48db50 stdcall second arg	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48db60	ZTimeUpdateList::Count() getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48edc0	ZEngineDataBase::CreateGlobalStripColiTree (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x48f4d0	(GUESS) 0x48f4d0 free +0xaec, zero fields	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f540	(GUESS) 0x48f540 slots 14c, 0, 48	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f6d0	(GUESS) 0x48f6d0 stdcall free wrapper	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f6f0	(GUESS) 0x48f6f0 increment	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f730	(GUESS) 0x48f730 decrement if nonzero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f750	GUESS FUN_48f750 zero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f780	(GUESS) 0x48f780 string equal two-byte compare	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f7d0	GUESS FUN_48f7d0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48f970	ZTimeUpdateList::Find	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x48ff80	(GUESS) 0x48ff80 tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48ff90	(GUESS) 0x48ff90 tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48ffa0	(GUESS) 0x48ffa0 tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x48ffb0	GUESS: forwarder to GeomRefToPtr (0x48ffb0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x48ffc0	GUESS FUN_48ffc0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x490930	GUESS FUN_490930 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x490cf0	(GUESS) 0x490cf0 address getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x490d00	GUESS FUN_490d00 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x490fe0	ZEngineDataBase::GetStaticBuffer() getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491a60	(GUESS) 0x491a60 word index table	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491b60	GUESS FUN_491b60 zero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491e80	(GUESS) 0x491e80 list scan via slot 0x158	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491eb0	GUESS FUN_491eb0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491ec0	GUESS FUN_491ec0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x491ed0	GUESS FUN_491ed0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x492b20	(GUESS) 0x492b20 increment	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4930f0	GUESS: flag clear and +0x24 reset (0x4930f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x493130	(GUESS) 0x493130 setg	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x493190	(GUESS) 0x493190 byte setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4931a0	(GUESS) 0x4931a0 count loop	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x493b60	(GUESS) 0x493b60 stdcall, calls 0x4e18e0	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x493ff0	GUESS FUN_493ff0 getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x494690	(GUESS) 0x494690 dword setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4946a0	(GUESS) 0x4946a0 dword setter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4947c0	(GUESS) 0x4947c0 sub-object chain vcall 0x134 then 0x5c	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4951d0	GUESS FUN_4951d0 zero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4951e0	(GUESS) 0x4951e0 decrements the dword at this+0xbc9	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x495920	(GUESS) 0x495920 free +4, slot 0 of two children	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x495af0	unknown::pass_through_4daf20_495950 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x496330	(GUESS) 0x496330 returns (arg - field) < field	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4964b0	(GUESS) 0x4964b0 cached global vcall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4972c0	(GUESS) 0x4972c0 word store and global vcall 0x30	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x497310	ZGeomBuffer::GeomCreationLocked() getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x497670	unknown::magic_div7_index_table (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x497700	(GUESS) 0x497700 shift from field	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4986e0	FUN_4986e0 (setByte50)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x499800	(GUESS) 0x499800 stdcall global store	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499870	ZGeomBuffer::UnlockGeomCreation() zero	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499970	unknown::set_vtable_68e9cc_clear_c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x4999c0	(GUESS) 0x4999c0 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4999e0	(GUESS) 0x4999e0 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499a00	(GUESS) 0x499a00 vtable forwarder slot 0x24	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499a40	(GUESS) 0x499a40 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499a60	(GUESS) 0x499a60 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499a80	(GUESS) 0x499a80 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499aa0	(GUESS) 0x499aa0 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499b50	(GUESS) 0x499b50 vtable forwarder slot 0x1c	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499b70	(GUESS) 0x499b70 vtable forwarder slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499b90	(GUESS) 0x499b90 vtable forwarder slot 0x14	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499bb0	(GUESS) 0x499bb0 vtable forwarder slot 0x20	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499bd0	(GUESS) 0x499bd0 vtable forwarder slot 0x10	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499bf0	GUESS: slot 0x10 caller returning this (0x499bf0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x499c10	GUESS FUN_00499c10 (vtable +0x10 with arg address)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x499c30	(GUESS) 0x499c30 pointer to arg, const 8	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499ce0	(GUESS) 0x499ce0 pointer to arg, const 4	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499d00	(GUESS) 0x499d00 pointer to arg, const 1	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499d20	(GUESS) 0x499d20 ctor, free if bit 0	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499db0	(GUESS) 0x499db0 pointer to arg, const 4, void	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x499dd0	(GUESS) 0x499dd0 tail call	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49a480	(GUESS) 0x49a480 vcall slot 0x18	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49a4d0	GUESS FUN_0049a4d0 (leaf chained getter)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x49a4e0	FUN_49a4e0 (readNested)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x49a4f0	(GUESS) 0x49a4f0 sub-object sum store	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49b360	(GUESS) 0x49b360 stores two args	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49b380	(GUESS) 0x49b380 child store +0xc	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49b390	(GUESS) 0x49b390 child store +0x8	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49b3a0	ZSaveGame::bool_pack (GC name) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x49b720	(GUESS) 0x49b720 argument getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49c620	(GUESS) 0x49c620 stores this+0x31 to the dword at its argument	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49c640	(GUESS) 0x49c640 stdcall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49c660	CListUser::GetFullBuffer() getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49c670	CListUser::GetTotalBufferSize	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x49d2c0	(GUESS) 0x49d2c0 ctor, two frees	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49d6a0	(GUESS) 0x49d6a0 stdcall field read	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49d6b0	ZEventList::NrEvents() getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49da60	GUESS counter and call (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x49def0	(GUESS) 0x49def0 stores vtable 0x68f008 at this	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49df20	(GUESS) 0x49df20 address getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49df60	ResourceCollection::GetResource (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x49e0d0	GUESS FUN_0049e0d0 (low-bit pointer step)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x49e490	ZRunParamAnim::~ZRunParamAnim	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x49eec0	(GUESS) 0x49eec0 address getter	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49ef80	CMsgForward::Load (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x49efb0	CMsgForward::Command (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x49f0a0	CMsgForwardToActors::Command(unsigned short, void*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x49f260	CMsgForwardToActors::Load (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x49f2d0	CAction::CAction	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x49f670	unknown init thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x49f720	CAction::~CAction (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x49f8a0	CActionController::Add (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x49fa80	CActionController::AddEvaluator	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x49fd70	CAction::ChangeNames	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a0780	CActionController::End (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4a07c0	CAction::FindAction	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x4a0940	CAction::Update (GUESS; map says Initialize) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x4a0d40	CActionController::GetCurrentController	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4a0e90	CAction::FrameUpdate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a1130	CAction::Init2 (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a1390	CAction::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4a15b0	ZDistCheck::Promote (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a1630	CActionController::Remove (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4a18b0	CAction::Run (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4a1b90	CAction::Save (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x4a1c70	CAction::SetMessage (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4a1c80	CAction::SetStrings (GUESS; map says InRange) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4a1d80	CAction::SetPriority	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a1db0	CAction::SetType	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a20e0	CAction::UpdateObjectsInRange (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x4a28e0	ZParamAnim::Command(unsigned short, void*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4a2ba0	ZParamAnim::Save thiscall (GUESS name)	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4a3160	ZPlaySound::FrameUpdate (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a35b0	CGeomSound::FrameUpdate	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a35d0	GUESS FUN_004a35d0 (DBREAD dword into +0x50)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4a3640	CGeomSound::OnSetDelay (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a3d60	ZSoundAmbient::CanPlayInRoom (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a3e70	ZSoundAmbient::CopyEventDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a4220	ZSoundAmbient::GetListenerRoom (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a4260	ZSoundAmbient::GetValues	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4a47b0	ZVertAnim::~ZVertAnim() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a50b0	dtorA (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4a5930	ZMatPosAnim::Init	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4a5ae0	ZMatPosAnim::Load(ZLoadGame*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4a5c20	ZMatPosAnim::RegisterMessages() cdecl	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x4a5da0	ZMatPosAnim::RunOffscreen (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x4a5fc0	ZMatPosAnim::SetRotMat (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4a6060	ZRequireMatPosSpeed::Init thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4a61b0	ZRequireMatPosSpeed::~ZRequireMatPosSpeed (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x4a6310	ZGeomParticle::~ZGeomParticle() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a7af0	ZGeomSpawn::CheckDeactivate (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a7c30	ZGeomSpawn::FrameUpdate (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a8210	GUESS FUN_004a8210 (word match store)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4a8d20	ZSIGTE::GetpCUI (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a8d90	ZSIGTE::HideAll (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a9200	ZSIGTE::PushPopScene (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a9cb0	CCheckVisible::CanSee	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4a9e20	CFFCoverList::Command (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4a9e70	CCheckVisible::DelObject	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aaa30	CCheckVisible::GetObjectData	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aaa50	CCheckVisible::GetObjectPosSneak (inferred)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aab90	CCheckVisible::GetSeerData	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aabb0	CCheckVisible::GetSeerIndex	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aabe0	CCheckVisible::GetSeerPosDir (inferred)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aad50	CCheckVisible::OnCheckVisibleTo	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4aae40	CCheckVisible::OnForceVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab020	CCheckVisible::OnGetAllVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab160	CCheckVisible::OnObjectDel	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab180	CCheckVisible::OnResetTimers	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab1c0	CCheckVisible::OnSeerAdd	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab280	CCheckVisible::OnSeerDel	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab320	CCheckVisible::OnSendVisiblePing	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab410	CCheckVisible::OnSetVisDistMultiplier	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab430	CCheckVisible::OnSetVisFov	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab560	CCheckVisible::OnSetVisLightMultiplier	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab650	CCheckVisible::OnSetVisOffset	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab760	CCheckVisible::OnSetVisRange	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4ab920	CCheckVisible::UpdateVisible (inferred)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x4abdd0	CInventory::GiveItem	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4ac820	CInventory::GetItemOfType	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4ade70	GUESS: introsort of 53-byte records (0x4ade70)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4ae220	GUESS FUN_4ae220 fastcall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4afc30	CCheckInside::TimeUpdate (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4aff10	GUESS FUN_004aff10 (flag clear and vtable +0x84)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4b0b90	GUESS FUN_004b0b90 (global dword)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4b1bb0	ZCutSeqBlood::Init	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4b85c0	ZRelayMessage::Command (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4b8a10	ZRelayMessageList::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4b8b20	ZRelayMessageList::Save (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4b8bb0	ZAttachGeomToBone::Detach (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4b91f0	dtorC (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4ba390	ZProjectile::Save	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4ba7f0	ZProjectile::ShotImpact	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x4bb230	ZCharisma::CopyEventDataBlock (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bb380	ZSoundToggle::~ZSoundToggle() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bb530	ZSoundToggle::CopyEventDataBlock (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bb5e0	ZSoundToggle::Init (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bb6b0	unnamed 0x4bb6b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4bbc20	ZDefaultAcusticEnv::Init2 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bbc40	CActorCollision::~CActorCollision() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bbe10	ZSoundRandomVolume::Init (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bc060	ZSoundRandomVolume::ActivateFrameUpdate (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bc250	ZSoundRandomVolume::~ZSoundRandomVolume() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bc310	ZSoundVolumetricSource::Init (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bcbe0	ZSoundVolumetricSource::SetSourceVolume (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bcc20	ZSoundVolumetricSource::ActivateVolume (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4bcc30	ZSoundVolumetricSource::ActivateFrameUpdate (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bcd30	ZSoundVolumetricSource::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4bcd70	ZSoundVolumetricSource::~ZSoundVolumetricSource() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bd000	ZSoundVolume2D::Load (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bd020	ZSoundVolume2D::Save (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bd330	ZSoundVolumeList::~ZSoundVolumeList() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bd8f0	ZSoundPitchList::~ZSoundPitchList() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4be200	CCheckInsideByType::~CCheckInsideByType (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4be2c0	ZSoundAnimation::~ZSoundAnimation (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4be460	ZSoundSegment::~ZSoundSegment() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4be5e0	ZSoundSpline::~ZSoundSpline() (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4be6a0	ZSoundSpline::ActivateFrameUpdate (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bf0d0	ZSoundAnimation::Command (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bf0f0	ZSoundExtend::Command (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4bf500	ZSoundSpline::End (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4c0a20	ZDllSound::GetPitchChange (unknown) stdcall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4c36d0	ZWindControl::Save thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4c4e90	ZAnimSequence::ReadInput (residue name) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4c7b30	ZBoundDeactivator::Init (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x4ca570	ZDiscoMove::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4cc130	GUESS FUN_4cc130 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4cc1e0	string concat helper (first, out, second)	inline-gap-band-42-44	exact-1000-faults0	exact-1000-faults0
+0x4cc2c0	appendStr (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4cc4b0	GUESS: case-folded byte equality (0x4cc4b0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4cc5f0	MYSTR::Length	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4cc630	unnamed A+D+E 0x4cc630 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cc6e0	utf8Put (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x4ccfe0	REFTAB::~REFTAB (GC name) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cd1e0	unnamed C-set 0x4cd1e0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cd300	unnamed C-set 0x4cd300 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cd430	unnamed C-set 0x4cd430 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cd470	unnamed C-set 0x4cd470 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cd880	linkNodeInsert (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4cd9b0	pickAndSubtract (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4cdaf0	unnamed 0x4cdaf0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4cdb20	LINKREFTAB::Clear (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cdc60	LINKREFTAB::ClearThis (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cdc90	GUESS FUN_004cdc90 (leaf zero store)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4cdca0	FUN_4cdca0 (releaseAt1c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4cdd40	STATICREFTAB::Count (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4cde20	unnamed C-set 0x4cde20 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cdf30	REFTAB32::DeleteBlock (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4cdf70	unnamed C-set 0x4cdf70 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4ce030	STATICREFTAB::AddUnique	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4ce0c0	unnamed C-set 0x4ce0c0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4ce4e0	lastEntry (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x4ce520	LINKREFTAB::GetPrevRefPtr (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4ce5b0	unnamed 0x4ce5b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4ce5f0	walkCount (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4ce6a0	unnamed 0x4ce6a0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4ce9b0	logWalk (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4cea50	unnamed C-set 0x4cea50 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4ceb60	unnamed C-set 0x4ceb60 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cee30	ZOffsetAlloc::Reset (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4cee80	unnamed C-set 0x4cee80 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cf100	unnamed 0x4cf100	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4cf130	initRec (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4cf170	resetPair (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4cf190	fillFromNode (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4cf1f0	GUESS FUN_4cf1f0 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x4cf230	unnamed C-set 0x4cf230 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cf370	unnamed C-set 0x4cf370 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cf3f0	vtSlot70Deref (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4cf4b0	unnamed C-set 0x4cf4b0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4cf570	LINKREFTAB::RunToRefPtr	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4cf5a0	FUN_4cf5a0 (nestedSize)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4cf620	unnamed C-set 0x4cf620 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d1b70	unnamed 0x4d1b70	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d1b90	unnamed 0x4d1b90	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d1c30	GUESS: list lookup at +0x24 (0x4d1c30)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4d1df0	unnamed 0x4d1df0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d2300	unnamed 0x4d2300	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d23d0	unnamed C-set 0x4d23d0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2480	CGlobalCom::~CGlobalCom (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d24b0	setVtableRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4d25f0	unnamed C-set 0x4d25f0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2bc0	unnamed C-set 0x4d2bc0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2be0	unnamed C-set 0x4d2be0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2d30	copyRec (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4d2df0	unnamed C-set 0x4d2df0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2ed0	vtCall9c_4d2ed0 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4d2f20	unnamed C-set 0x4d2f20 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d2fc0	CGlobalCom::GetpVal (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d2fe0	unnamed C-set 0x4d2fe0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3840	unnamed C-set 0x4d3840 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d39c0	unnamed C-set 0x4d39c0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3a00	wrapCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4d3ab0	unnamed C-set 0x4d3ab0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3b30	unnamed C-set 0x4d3b30 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3d30	unnamed wrapper 0x4d3d30 stdcall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3db0	unnamed C-set 0x4d3db0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d3dd0	flagCall (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4d4960	GUESS FUN_4d4960 (cursorSearch)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4d4a00	IOFSPhysicalAccess_t::nativeClose (unknown) stdcall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d4d20	FUN_4d4d20 (setVtableWord)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4d4dc0	ZBigFile::Exists (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d5130	IOFSMemoryAccess_t::nativeFdValid	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4d5540	GUESS FUN_4d5540 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d7700	FsZip_t::useSecondaryArchive (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4d8580	unnamed C-set 0x4d8580 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d85c0	unnamed C-set 0x4d85c0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d8730	unnamed x87 0x4d8730 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d8db0	sumDwordsPlusCount (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4d9090	unnamed 0x4d9090	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d9190	unnamed 0x4d9190	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4d9430	unnamed A+D+E 0x4d9430 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d95f0	unnamed A+D+E 0x4d95f0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4d9ce0	ZBaseGeom::AttachToDynamicContainer (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4da2f0	vtSlot1d8OrBase (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4da3c0	unnamed A+D 0x4da3c0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4da6d0	guardedChain (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4daa00	unnamed A+D 0x4daa00 thiscall bool	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4db460	gateCopy (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x4db7e0	unnamed C-set 0x4db7e0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4db9e0	ZBaseGeom::IsMovingObject (unknown) thiscall const	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4dc130	ZBaseGeom::ParentGroup	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4dc1a0	unnamed A+D+E 0x4dc1a0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dc1e0	unnamed A+D+E 0x4dc1e0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dc970	divSeven (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4dc9c0	pairStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x4dca60	unnamed A+D 0x4dca60 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dcac0	unnamed A+D+E 0x4dcac0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dcbb0	unnamed C-set 0x4dcbb0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dcd70	copyVec3Flag (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4dcda0	ZBaseGeom::SetPrev (GC name; unknown body) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4dd8d0	unnamed 0x4dd8d0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4dd910	GUESS FUN_004dd910 (forward to 0x441a60)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4de000	RandomRange (unknown) stdcall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4dfd50	unnamed 0x4dfd50	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4dfd80	unnamed 0x4dfd80	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4dffb0	v2scalar	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4dffe0	FUN_4dffe0 (subVec2)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4e0010	unnamed 0x4e0010	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4e0e30	unnamed 0x4e0e30	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4e1110	DBLK::Get	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4e1440	GUESS FUN_4e1440 (DBLK cursor step) (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4e1590	DBLK item size (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4e1b20	GUESS FUN_4e1b20 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e2120	DistanceBoxAndPoint	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x4e2c60	absTransform (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x4e2d60	VerifyMat	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x4e3190	binInsert9 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4e3340	ZOctree::GetOrigin (unknown) thiscall const	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4e3360	ZOctree::SetOrigin (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4e3ae0	cellTraverse (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4e42a0	GUESS FUN_4e42a0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e4fc0	GUESS FUN_4e4fc0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6400	unnamed 0x4e6400	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x4e6420	GUESS FUN_4e6420 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e64a0	unitFloats (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x4e65e0	recipPair (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x4e66c0	GUESS FUN_4e66c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6810	GUESS FUN_4e6810 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6830	GUESS FUN_4e6830 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6870	GUESS FUN_4e6870 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e68e0	FUN_4e68e0 (hashMix)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4e6b30	CMemPool::CMemPool	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4e6bc0	GUESS FUN_4e6bc0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6bf0	GUESS FUN_4e6bf0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e6d70	createAnim (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4e6dc0	pushRec (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4e7d70	storeUnlessSelf (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x4e7d90	GUESS FUN_4e7d90 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e8090	GUESS FUN_4e8090 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e80c0	GUESS FUN_4e80c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e8140	GUESS FUN_4e8140 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e83b0	GUESS FUN_4e83b0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e8770	GUESS FUN_4e8770 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e8b70	readBitField (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4e8bd0	GUESS FUN_4e8bd0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4eaea0	GUESS FUN_4eaea0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x4eb020	ZCollisionBox setter (mat + two vectors)	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x4eb340	ZCollisionBox::Unlock (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4eb3d0	GUESS FUN_004eb3d0 (vtable store)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4eb3e0	ZCollisionBase::~ (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4ecb30	ZCollisionBase::GetCollisionPack (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x4edc10	GUESS FUN_4edc10 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4edca0	ZCollisionBase::IsCollisionBoxLocked (unknown) thiscall const	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x4edcb0	readPlusBaseCall (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x4edce0	ZCollisionBase::LoadUniqueSubStripInfo (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x4edd10	ZCollisionBase::LockCollisionBox (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x4ede70	ZCollisionBase::UnlockCollisionBox (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x4ee530	GUESS FUN_4ee530 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4ee570	GUESS FUN_4ee570 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4ef050	GUESS FUN_4ef050 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f0020	FUN_4f0020 (getByte20)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4f00d0	GUESS FUN_4f00d0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f03a0	GUESS FUN_4f03a0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f0420	GUESS FUN_4f0420 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f0460	GUESS FUN_4f0460 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f04a0	GUESS FUN_4f04a0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f0eb0	GUESS FUN_4f0eb0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f10f0	GUESS FUN_4f10f0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f1510	GUESS FUN_4f1510 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f1880	ZActionMapZWINDOWSKEYS_ALL::GetActionDefinitions (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4f1ae0	GUESS FUN_4f1ae0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f2190	GUESS FUN_4f2190 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f21c0	GUESS FUN_4f21c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f22c0	GUESS FUN_4f22c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f22e0	GUESS FUN_4f22e0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f2a00	GUESS FUN_4f2a00 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3240	GUESS FUN_4f3240 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3260	GUESS FUN_4f3260 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3360	FUN_4f3360 (replaceAt1db)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4f3930	GUESS FUN_4f3930 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3c00	GUESS FUN_4f3c00 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3e50	GUESS FUN_4f3e50 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3e60	GUESS FUN_4f3e60 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f3fe0	FUN_4f3fe0 (callSlotBc)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4f3ff0	GUESS FUN_4f3ff0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4080	GUESS FUN_4f4080 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4390	GUESS FUN_4f4390 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4520	GUESS FUN_4f4520 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4580	GUESS FUN_4f4580 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f45f0	ZLINEOBJ::GetWidth	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4f4760	ZLINEOBJ::SetWidth (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x4f4a30	GUESS FUN_4f4a30 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4cd0	GUESS FUN_4f4cd0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4d30	GUESS FUN_4f4d30 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4d60	GUESS FUN_4f4d60 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4de0	GUESS FUN_4f4de0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4e00	GUESS FUN_4f4e00 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4e10	GUESS FUN_4f4e10 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f4ec0	GUESS FUN_4f4ec0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f50a0	GUESS FUN_4f50a0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f50c0	GUESS FUN_4f50c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f52e0	GUESS FUN_4f52e0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f5920	GUESS FUN_4f5920 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f5960	GUESS FUN_4f5960 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6250	GUESS FUN_4f6250 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6370	GUESS FUN_4f6370 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6430	GUESS FUN_4f6430 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6560	FUN_4f6560 (byteFromSlot280)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x4f65d0	GUESS FUN_4f65d0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f65f0	GUESS FUN_4f65f0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6680	GUESS FUN_4f6680 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6b80	GUESS FUN_4f6b80 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6dd0	GUESS FUN_4f6dd0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6e50	GUESS FUN_4f6e50 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f6e70	GUESS FUN_4f6e70 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f7070	ZScrollArea::DestroyCamera	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x4f71d0	GUESS FUN_4f71d0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f75e0	GUESS FUN_4f75e0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f76f0	GUESS FUN_4f76f0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f7950	GUESS FUN_004f7950 (vtable +0x36c forward)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x4f7a00	GUESS FUN_4f7a00 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f7ea0	GUESS FUN_4f7ea0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f83e0	GUESS FUN_4f83e0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f8480	GUESS FUN_4f8480 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f9340	GUESS FUN_4f9340 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f9510	GUESS FUN_4f9510 (unknown) cdecl	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f9dc0	GUESS FUN_4f9dc0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4f9f10	GUESS FUN_4f9f10 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa100	GUESS FUN_4fa100 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa2f0	GUESS FUN_4fa2f0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa330	GUESS FUN_4fa330 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa370	GUESS FUN_4fa370 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa5e0	GUESS FUN_4fa5e0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa610	GUESS FUN_4fa610 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fa710	GUESS FUN_4fa710 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fac70	GUESS FUN_4fac70 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4face0	GUESS FUN_4face0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4fb8b0	CCheckObjInObj::Init (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x4fb8d0	stateSlot128 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4fc140	CMainCameraControl::End (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x4fc4e0	CMAINCAMERACONTROL::GetBaseViewport (unknown) thiscall const	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4fc680	CMAINCAMERACONTROL::GetOldCam (low) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x4fc690	setupFlag (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x4fda20	CMAINCAMERACONTROL::SetBaseViewport (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x4fda40	CMAINCAMERACONTROL::SetCrossHairMode (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x4fdd10	CMAINCAMERACONTROL::ToggleFreeCam (low, GUESS) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x4fe0c0	GUESS FUN_4fe0c0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4ffba0	GUESS FUN_4ffba0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4ffbd0	GUESS FUN_4ffbd0 (unknown) stdcall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x5002d0	GUESS FUN_005002d0 (allocate 0x34 and construct)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x500a20	GUESS FUN_500a20 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x501050	ZGeomIf::GetAngleToObject	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x501550	vecStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x501830	GUESS FUN_00501830 (sys child vtable +0x4c, 0x5003d0, 0x5002f0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x501860	unnamed 0x501860	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x502030	dispatch (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5021d0	unnamed 0x5021d0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x502590	unnamed 0x502590	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5027b0	unnamed 0x5027b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x502cc0	unnamed 0x502cc0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x503200	dispatch503200 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5035a0	triple (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x504720	bump (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x5048a0	GUESS FUN_005048a0 (dtor over base 0x500a10)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5058a0	unnamed 0x5058a0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5059e0	forward (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x5060a0	FUN_5060a0 (constTableAddr)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5063a0	GUESS FUN_005063a0 (bool to sub +0x157)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5063d0	ZActorIf::BeamActorToRef	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5064a0	GUESS FUN_005064a0 (vtable +0x57c, +0x5f0, +0x370 of [this+0x18])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x506500	ZActorIf::BeamToNearestPathfinderPoint (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x506a80	ZActorIf::DieByForce	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x506b80	vslotStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x506bb0	GUESS FUN_00506bb0 (vtable +0x684, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5072c0	GUESS FUN_005072c0 (helper value to vtable +0x68c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x507810	ZActorIf::MoveToSceneLocationWithForceToGroundLevel	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x507e50	unnamed 0x507e50	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x508070	forwardTable (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5080d0	slot67cFlag (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x508180	GUESS FUN_00508180 (0x5003d0, float scale by 0x67cd40, vtable +0x600 of this+0x18)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5081c0	GUESS FUN_005081c0 (helper float to vtable +0x658)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5081f0	floatSlot624 (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x508220	GUESS unnamed 0x508220 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x508260	GUESS FUN_00508260 (bool to vtable +0x608)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5083a0	GUESS FUN_005083a0 (bool to vtable +0x61c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5084a0	ZActorIf::SetVisRangeSpeed (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x508530	GUESS FUN_00508530 (bool to sub +0x704)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5085e0	GUESS FUN_5085e0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x509780	GUESS FUN_00509780 (scalar deleting dtor, vtable 0x69c968)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x509840	GUESS FUN_00509840 (child vtable +0x14 when set; 0x5003d0 then 0x5002f0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x509870	GUESS FUN_00509870 (0x5003d0, vtable +0x30 of child, 0x5003d0, 0x5002f0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50a640	dtor50a640 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x50aee0	GUESS FUN_0050aee0 (0x5003d0 for A and B, child vtable +0x134, then vtable +0x40 of r)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50b4b0	GUESS FUN_0050b4b0 (release global 0x7011fc)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50b4d0	GUESS FUN_0050b4d0 (memset 0x701200, release global 0x7011fc)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50b510	GUESS FUN_0050b510 (two helper calls, stdcall)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50b540	GUESS FUN_0050b540 (helper then global vtable +0x7c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50b620	GUESS FUN_0050b620 (singleton getter: vtable +0x24 when set, else 0x41e290 alloc and 0x50b420)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x50d880	GUESS FUN_0050d880 (singleton getter; alloc 0x41e290, init 0x50d6c0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x510b70	GUESS FUN_00510b70 (release global 0x70139c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x510b90	GUESS FUN_00510b90 (memset 0x7013a0, release global 0x70139c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x510f30	GUESS FUN_00510f30 (singleton getter; alloc 0x41e290, init 0x510ae0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5112e0	GUESS FUN_005112e0 (0x5003d0, child vtable +0x60, then set or clear bit 8 of [v+0x40])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511380	GUESS FUN_00511380 (0x5003d0 index 0, child vtable +0x60, then store at [v+0xc])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5113c0	GUESS FUN_005113c0 (0x5003d0 index 0, child vtable +0x60, then float store at [v+0x88])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511410	GUESS FUN_00511410 (0x5003d0, child vtable +0x60, then 0x44b610 and 0x44b740 when set)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511700	GUESS FUN_00511700 (release global 0x7014b4)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511720	GUESS FUN_00511720 (memset 0x7014b8, release global 0x7014b4)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5117d0	GUESS FUN_005117d0 (singleton getter; alloc 0x41e290, init 0x511670)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511bc0	fillFromCalls (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x511c60	GUESS FUN_00511c60 (field clear; returns this)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x511cd0	ZMoveOnSpline::ZMoveOnSpline	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x512070	GUESS FUN_00512070 (base dtor step: free, three slot-0 calls, tail to 0x43ea20)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5120c0	ZMoveOnSpline::~ZMoveOnSpline (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x512450	ZMoveOnSpline::ClassFrameUpdate	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5124c0	ZMoveOnSpline::ClassInit2 (residue name) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x512850	ZMoveOnSpline::CopyDataBlock	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x512bc0	GUESS FUN_00512bc0 (wrapper: 0x5231c0 with ECX = [this+0x5c])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x512e70	callViaRmThenSelf (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x513130	ZMoveOnSpline::GetRefToPath	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x513160	FUN_513160 (tailSlot0c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x513170	ZMoveOnSpline::GetVerticalVisionOffset (unknown) thiscall const	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x5135c0	ZMoveOnSpline::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5139b0	vtSlot4Float (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5139d0	vtTail10 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x513ee0	ZMoveOnSpline::Resurrect (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x513ff0	ZMoveOnSpline::Save	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x514270	GUESS FUN_00514270 (child vtable +0x4c with this, then vtable +0x12c of this with (a, word, &tmp))	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x514350	ZMoveOnSpline::SendTargetForVehicle	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5143f0	ZMoveOnSpline::SetMoveSoundParams	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x514470	ZMoveOnSpline::SetStationary (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5144a0	GUESS FUN_005144a0 (lazy getter)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x514500	slot2ecRelease (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x514530	ZMoveOnSpline::StopRollingSound	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x514600	ZMoveOnSpline::TargetValid	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x514cf0	ZVehicle::CheckActorInFront (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x515790	ZVehicle::CopyDataBlock thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x516730	GUESS FUN_516730 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x516d10	unnamed 0x516d10	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x517630	ZCar::CopyDataBlock thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x519470	GUESS FUN_00519470 (0x5003d0, 0x5122c0 low byte, 0x5003d0, 0x5002f0)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5194c0	ZMoveOnSplineIf::FindSplineVal (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5195b0	GUESS FUN_005195b0 (vtable +0x350, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5195e0	GUESS FUN_005195e0 (vtable +0x35c, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519640	resultStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x519670	GUESS FUN_00519670 (vtable +0x2d8, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519730	GUESS FUN_00519730 (bool to vtable +0xbc)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519760	floatForward (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x519790	floatArgRet (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x519860	GUESS FUN_00519860 (0x5003d0 index 1 and 0, vtable +0x2f8 of this+0x14)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519b40	floatSlot (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x519bb0	GUESS FUN_00519bb0 (0x5003d0 index 1 and 0, then vtable +0x2dc of this+0x14)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519c70	GUESS FUN_00519c70 (0x5003d0 index 1 and 0, vtable +0x344 of this+0x14)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519cf0	GUESS FUN_00519cf0 (0x5003d0 index 1 and 0, vtable +0x2c8 of this+0x14)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519d30	GUESS FUN_00519d30 (0x5003d0 index 1 and 0, vtable +0x348 of this+0x14)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x519d70	flagTable (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x519dd0	slot334Ret (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x51a790	ZMoveOnSplineIf::collectOpaqueInfo	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x51a7d0	ZMoveOnSplineIf::opaqueCall	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x51aa60	GUESS FUN_51aa60 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x51aa70	ZVehicleIf::~ZVehicleIf (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x51ab70	storeThroughPtr (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x51aba0	ZVehicleIf::addMethodDefinitions (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x51b060	pairForward (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x51b0b0	GUESS FUN_0051b0b0 (bool to vtable +0x36c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51b180	GUESS FUN_0051b180 (vtable +0x37c, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51b1b0	slot370Wrap (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x51b1e0	GUESS FUN_51b1e0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x51b240	GUESS FUN_0051b240 (vtable +0x378, helpers stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51b5c0	ZCarIf::collectOpaqueInfo	inline-unclaimed-25	exact-1000-faults0	exact-1000-faults0
+0x51be20	GUESS FUN_51be20 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x51cad0	vtTail360 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x51e810	ZHeliIf::~ZHeliIf	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x51f240	ZHeliIf::getTypeName (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x51f4a0	GUESS FUN_0051f4a0 (0x511950 then base step 0x512070)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51f4c0	GUESS FUN_0051f4c0 (vtable store, 0x511950, then 0x512070)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51f4e0	GUESS FUN_0051f4e0 (flagged variant of 0x51f4c0; 0x45c510 or 0x4690b0 when flags are set)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51f5d0	GUESS FUN_0051f5d0 (0x517540, then vtable +0x328 when [this+0x165c] is set)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51fd40	GUESS FUN_0051fd40 (helper value to vtable +0x394)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x51ff00	GUESS FUN_0051ff00 (0x51b5c0, vtable +0x38 of this, then vtable slot 0 of x)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5200d0	GUESS FUN_005200d0 (0x55edc0, child vtable +0x4c of this+0x20, then vtable +0x3c of [a+0x15])	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x522740	ZTankIf::~ZTankIf	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x522ce0	ZTankIf::getTypeName (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x522f20	CMoveAlongPath::CalcAcceleration (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x5231b0	CMoveAlongPath::DirFactor (low) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5231c0	GUESS FUN_005231c0 (query via sys+0x9b, r+0x84, helper 0x44ac00)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x523280	CMoveAlongPath::FrameUpdate (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x523460	CMoveAlongPath::GetPath (low) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x523650	CMoveAlongPath::InitSplineVal (unconfirmed name)	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x523940	CMoveAlongPath::OffsetSplineVal (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x523980	CMoveAlongPath::PathLength (low) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x523b10	CMoveAlongPath::SetMoveParams	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x523b90	CMoveAlongPath::SetNextPath	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x523e10	CMoveAlongPath::SetSplineVal (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x523e80	CMoveAlongPath::SetTargetSpeed (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x524410	slot50Five (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5266e0	trackUpdate (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x5274a0	readBlock (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x529960	CSteeringWheel::Init (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x529a30	CWheel::Init (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x529f40	pushPair (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x52a1a0	bounds (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x52a1c0	setConstFloats (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5332f0	unknown::wait_is_zero (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x533bb0	unknown::reset_global_event (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5390b0	GUESS: two-call setter returning AL = 1 (0x5390b0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x53ccb0	GUESS: init of globals 0x711b7c, 0x711b90, 0x711d20	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x53d160	normFrame (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x53e940	CRigidBody::End	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x53f630	CRigidBody::InitCentroid (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x53fc40	CRigidBody::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5403f0	CRigidBody::ProjectSphereOutFromPlane (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5422b0	baseRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x545e20	unnamed 0x545e20	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x547730	unnamed 0x547730	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5477a0	setRow (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x547830	ConstrainedParticleSystem::SetParticleVel (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x549370	unknown::set_vtable_6a3338_tail_54cd00 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x549800	ZSynthGC::CmdFrameReady (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x54a200	GUESS FUN_54a200 (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x54a220	unnamed 0x54a220	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54a240	unnamed 0x54a240	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54ab30	unknown::set_global_event (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x54ba30	GUESS: byte setter at +0xa27c (0x54ba30)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x54bb90	GUESS FUN_0054bb90 (leaf getter at +0xa274)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x54bba0	FUN_54bba0 (addr2c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x54ccf0	unknown::set_vtable_6a3dd0 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x54cd10	GUESS FUN_0054cd10 (scalar deleting dtor, flag bit 0 clear)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x54dbb0	unnamed 0x54dbb0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54dbd0	unnamed 0x54dbd0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54dbf0	GUESS: init of object +0x8021 and globals 0x711d28/0x711d2c	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x54e430	unnamed 0x54e430	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54e600	unnamed 0x54e600	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54e9a0	unnamed 0x54e9a0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x54f0b0	unnamed 0x54f0b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x555550	GUESS FUN_00555550 (three zero stores)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x557860	FUN_557860 (readFreeGlobal713f04)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x557d00	lookupCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x558350	slot2d8Chain (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x558390	ZFFActorIf::CheckPosDir	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x558810	ZFFActorIf::CheckPosition	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x558ae0	GUESS FUN_558ae0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x558b10	GUESS FUN_558b10 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x558b40	GUESS FUN_558b40 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x558c00	vecLookup (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5594d0	unnamed 0x5594d0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5595f0	ZFFActorIf::GetCoverStandPos	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x559eb0	slot674Wrap (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x559ee0	GUESS FUN_559ee0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x55afe0	unnamed 0x55afe0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x55b2d0	byte3e9Ret (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x55b330	ZFFActorIf::IsVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x55b3f0	ZFFActorIf::MakeInactiveOnMap (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x55bb90	slot6f0Byte (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x55c800	pairCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x55c840	ZFFActorIf::SetHPMultiplierForHeadShot	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x55c940	wordCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x55ca80	flagStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x55cae0	ZFFActorIf::StartAndHitRagdoll	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x55cf70	slot6b4Wrap (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x55eae0	blend (GUESS)	inline-unclaimed-39	exact-1000-faults0	exact-1000-faults0
+0x55f640	lookupStore (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x55f900	ZFFHeroIf::calcPositionInBox (unknown) stdcall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x560310	GUESS FUN_00560310 (global zero)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x561020	base ctor 0x561020 (unknown class)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x561cb0	branchy (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x561e30	twoPairs (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x561ef0	unnamed 0x561ef0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5625c0	path5625 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5630f0	callSlot84Reset (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x563620	unnamed 0x563620	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x563750	modeCall (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5646b0	unnamed 0x5646b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5650f0	CFileWindow::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x565840	unnamed 0x565840	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x565a40	unnamed 0x565a40	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x565b60	unnamed 0x565b60	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x569380	unnamed 0x569380	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5696a0	FUN_5696a0 (readGlobal6ec680)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x56b430	unnamed 0x56b430	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x56c800	ZActionMapMenuAddOn::GetActionDefinitions (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x56caf0	unnamed 0x56caf0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x56db70	unnamed 0x56db70	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5706f0	CSewerMenu::EnableButtons	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x571960	unnamed 0x571960	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x572580	unnamed 0x572580	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x572e40	unnamed 0x572e40	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x573490	unnamed 0x573490	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x573ba0	FUN_573ba0 (switchConst)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x574680	blockUpdate574 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x576250	GUESS FUN_00576250 (0x573da0, then tail to 0x576330; eax returned)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5773f0	unnamed 0x5773f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x577d60	ZObjectives::LoadInit2() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x577e20	ZObjectives::OnKeyPress thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x57a3b0	unnamed 0x57a3b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x57abc0	unnamed 0x57abc0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x57bd70	unnamed 0x57bd70	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x57bd90	GUESS FUN_0057bd90 (class ctor; base 0x561020 stubbed)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x57c100	unnamed 0x57c100	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x57c4f0	unknown::get_global_6ecdc0 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x57f1b0	unnamed 0x57f1b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x581410	CFireController::CFireController	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x581630	CExplodeMolotov::~CExplodeMolotov	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5816f0	dtorB (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5817b0	CHitpointControl::~CHitpointControl (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x581870	CFireController::AddActorOnFire (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x581960	unnamed 0x581960	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x582470	CHitpointControl::Command	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x582690	CExplode::CopyData (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x582790	forwardCopy582790 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5827b0	unknown::read_to_48 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5827d0	CHitpointControl::CopyEventDataBlock (unknown)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x582880	CExplodeMolotov::CreateParticles (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5843d0	CHitpointControl::FrameUpdate	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x584580	hitpointInit (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5848a0	CFireController::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x584970	CHitpointControl::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5849d0	CHitpointControl::Notify	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x584aa0	CExplode::PlaySound_Explode thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x584bc0	CExplodeMolotov::ReadInput (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x584d00	CExplode::Save (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x584d20	CExplodeMolotov::Save	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5852f0	CFFCoverList spot copy backward (unnamed)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5853a0	CFFCoverList spot copy forward (unnamed)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5857f0	CFFCoverList::CheckCover	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x585910	CFFCoverList::CoverSpotQuality	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x585a40	CFFCoverList::CreateSpot	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x585ed0	CFFCoverList::CreateSpotForArrow	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x586760	CFFCoverList::CreateSpotsAlongSpline	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5873a0	CFFCoverList::FindCoverNearLeader	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5875c0	CFFCoverList::FindCoverNoThreat	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x587640	CFFCoverList::FindCoverThreat	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x587850	CFFCoverList::FrameUpdate	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x587a30	CFFCoverList::Init	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x588530	CFFCoverList::TakeCover	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5885c0	CFFCoverList spot insert (middle)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x588750	CFFCoverList spot insert (fast path)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5887e0	CFFCoverList spot reserve	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x589c40	ZFFGameData::GetHitpointMultiplier	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x58b740	initRelease (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x58b9c0	ZFFHERO::AdjustHitPoints	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x58c2b0	ZFFHERO::CallBackAimInPosition	inline-camera	exact-1000-faults0	exact-1000-faults0
+0x590db0	ZFFHERO::CreateMovementStand (medium) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5910d0	ZFFHERO::Die	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x591710	ZFFHERO::FireWeaponAtPos	inline-weapons	exact-1000-faults0	exact-1000-faults0
+0x5922c0	callIfOk (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x592d20	ZFFHERO::Load3 (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x593220	ZFFHERO::OnDamageInfo	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5936b0	ZFFHERO::OnProjectileHit	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x593cc0	ZFFHERO::PerformDie	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x594600	ZFFHERO::Resurrect	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x594ed0	unnamed 0x594ed0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x594f40	unnamed 0x594f40	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5966e0	unnamed 0x5966e0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x597fb0	ZGameOSD::HideHintMessage (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x59a570	ZGameOSD::InvalidateView	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x59aa20	FUN_59aa20 (readGlobal6ed024)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x59cbb0	GUESS: setter at +0x12104 (0x59cbb0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x59d3f0	sendRec (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x59d430	setModeAndRun (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x59d450	setModeFlags (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x59da60	ZFFActor::ActivateItem(unsigned int) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x59dce0	ZFFActor::AddToSquad	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59dfd0	ZFFActor::CanBreakHitAnim	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x59e050	ZFFActor::CanSee	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59e080	ZFFActor::ClassCommand	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59e350	ZFFActor::ClassInit2	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59e610	unnamed 0x59e610	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x59e9e0	ZFFActor::ConcealItem (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x59ead0	ZFFActor::ControlBreathing	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x59ee60	ZFFActor::CopyDataBlock(DBLK*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x59f070	ZFFActor::CreateLnkAction	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59f370	ZFFActor::DestroyWeapons (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x59f3e0	ZFFActor::DieByForce	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x59fc60	ZFFActor::GetAimAnim (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x59fce0	ZFFActor::GetAmmoFor (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59fcf0	ZFFActor::GetCloseCombatStrength (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59fd30	ZFFActor::GetHitAimHeaderFromCollision	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x59fe00	ZFFActor::GetHitpoints	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x59fe10	ZFFActor::GetHitsOnObstacle (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59fe20	ZFFActor::GetItemTemplate (unknown) thiscall	inline-unclaimed-16	exact-1000-faults0	exact-1000-faults0
+0x59fe70	ZFFActor::GetKnockedOut (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59fe80	ZFFActor::GetLastHitPos (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59feb0	ZFFActor::GetLastHitRef (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x59fec0	ZFFActor::GetMaxHitpoints	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x59fed0	ZFFActor::GetNextVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x59ff70	ZFFActor::GetProjectilesInMagazine	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x59ffd0	ZFFActor::GetStateAddrFromName	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a0010	ZFFActor::GetStateNameFromAddr	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a0ad0	SDamageInfo close-combat test	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a0e10	ZTargetManager::ObjectNotVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a0e60	ZTargetManager::ObjectVisible	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a1030	ZFFActor::OnDamageInfo	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a16a0	ZFFActor::OnProjectileHit	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a1830	ZFFActor::OnSound	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2370	ZFFActor::PullWeapon (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5a2460	PStateQueue insert (map: ZFFActor::AddGoal)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2570	ZFFActor::ReducedSight	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2600	ZFFActor::RegisterVision	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2860	ZFFActor::RemoveFromSquad	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2970	ZFFActor::ResetHitsOnObstacle (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5a2980	ZFFActor::ResetLastHitPos (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5a29a0	ZFFActor::Resurrect (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5a2bd0	copyAfterCall (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5a2c30	ZFFActor::SetCloseCombatAttack (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5a2c50	ZFFActor::SetCloseCombatEnable (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5a2c70	ZFFActor::SetCloseCombatEvade (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5a2c90	ZFFActor::SetCloseCombatStrength (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5a2cb0	ZFFActor::SetGoalData	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a2d20	ZFFActor::SetHPMultiplierForHeadShot	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a2d60	ZFFActor::SetHero	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5a2d90	ZFFActor::SetHitpoints	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a2dc0	ZFFActor::SetMaxHitpoints	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a2df0	ZFFActor::SetMinProjectilesWhenDead (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5a2e10	ZFFActor::SetPlayingHitAnimId	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5a2e20	ZFFActor::SetRecruitMode	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a30e0	ZFFActor::UseTargetManager	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a31d0	ZFFActor::_FireWeapon	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5a4590	unnamed 0x5a4590	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5a46f0	unnamed 0x5a46f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5a4720	slotRead (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x5a5690	initRelease5 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5a5dd0	frameFromTan (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5a6230	ZOnScreenDisplay::ClassInit2	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5a7530	gatedSet (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5a76a0	forward2 (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x5a8350	getField300 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5a8360	ZOnScreenDisplay::GetSpriteInfo thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5aa140	ZFFPRIVATESTDOBJ::Load (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5aa660	ZOnScreenDisplay::MapIconAdd (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x5aaae0	ZFFPRIVATESTDOBJ::OverrideViewMatrix (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5aabb0	ZFFPRIVATESTDOBJ::Save (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5aaf60	flagArrays (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ab040	ZOnScreenDisplay::Show (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5ab050	bumpIfNot (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5ab0b0	kill counter +0x8af	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x5ab0f0	ZOnScreenDisplay::StatsIncShotsFiredHero	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5ab110	kill counter +0x8b7	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x5ab950	GUESS FUN_005ab950 (engine db +0x58 forward)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5abcb0	flagAndNotify (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5abcd0	byte8 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5ac600	unnamed 0x5ac600	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5acfe0	FUN_5acfe0 (addr8)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5aef10	unnamed 0x5aef10	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5af0f0	ZFFInventoryInfoList::GetInventoryInfo	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5af300	ZFFInventoryBridge::GetAmmo	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5af430	ZFFInventoryBridge::GetNoOfItem	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5af5b0	ZFFInventoryBridge::GetWeapon	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5af7c0	ZFFInventoryBridge::GiveAmmo	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5afb40	ZFFInventoryBridge::SetAmmo	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5b0e30	GUESS: CSaveMissions::CollectSubZoneCodes (0x5b0e30)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5b1b30	ZKillBox::Command	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5b1bf0	ZKillBox::CopyEventDataBlock	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5b1c90	ZKillBox::FrameUpdate	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5b1ce0	ZKillBox::Kill	inline-damage	exact-1000-faults0	exact-1000-faults0
+0x5b1f40	ZKillBox::Load thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5b2d00	ZActionControlMap::FindGameState (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5b3780	ZActionControlMap::GenerateGameActions	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5b3dd0	ZActionControlMap::Init (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5b3ef0	ZActionControlMap::ModifyGameActions	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5b5310	ZActionControlMap::Save (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5b7710	ZFFHintBox::Load	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5b7760	ZFFHintBox::Save (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5b7900	ZCharisma::Command	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5b7a10	ZTargetObtained2::Command	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5b7a40	ZTargetObtained2::CopyEventDataBlock	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5b7a70	ZTargetObtained2::FrameUpdate	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5b7aa0	ZTargetObtained2::Init2	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5b7ce0	unnamed 0x5b7ce0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5b7d30	copyField8to4 (unnamed)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5b8020	CCheckInsideBox::DoCheck (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5b8120	CCheckInsideBox::Init (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x5b8400	ZFFSimpleTrain2::~ZFFSimpleTrain2	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x5b88a0	ZFFSimpleTrain2::Init2 (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x5b9250	ZFFSimpleTrain2::Stop	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5b9430	CFriendlyControl::~CFriendlyControl (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5bd750	readBitsDB (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5bd8e0	CCheckInsideByType::Init2Wrapper (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5bd970	load (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5bd9e0	CCheckInsideByType::Save thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5bdc70	CCivilianPath::CopyEventDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5bdfa0	CCivilianPathList cleanup (0x5bdfa0)	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x5be080	CCivilianPathList::~CCivilianPathList	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x5be780	CCivilianPathList::Init2 (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5bf340	CCivilianPathList::SetCivilianOnPath	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x5bfc80	CEntityTracker::~CEntityTracker (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5bfdd0	CEntityTracker builder compare (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5c00f0	CEntityTracker::GetEntity (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5c0330	CEntityTracker::GetEntityNear (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5c0470	CEntityTracker::Init2 (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5c0500	CEntityTracker builder (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5c06c0	CEntityTracker::Load	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5c07f0	CEntityTracker::Save (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5c0900	CEntityTracker::UpdateEntity (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5c0e90	CEnemyFlag::~CEnemyFlag (unknown)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5c1670	CEnemyFlag::FrameUpdate	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5c1b20	CEnemyFlag::Load2 (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5c1dc0	CEnemyFlag::ReadInput	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
+0x5c2120	CEnemyFlag::SetFlagFrame (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
+0x5c24d0	ZFenceGate::~ZFenceGate (unknown) thiscall	inline-unclaimed-42	exact-1000-faults0	exact-1000-faults0
+0x5c2630	ZFenceGate::Command (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5c2790	FUN_5c2790 (GUESS) fastcall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x5c27b0	ZFenceGate::Load (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5c2870	ZFenceGate::ReadInput (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5c30b0	CLightToggle::CopyEventDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5c39f0	GUESS FUN_5c39f0 thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5c3dc0	COpenWindow::Save (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5c4190	ZRepositionCharacter::End	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5c41a0	ZRepositionCharacter::Init (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x5c4450	ZRepositionCharacter::Save (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5c53f0	CTargetObtained::Command (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5c5590	forwardCopy5c5590 (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5c5810	CTargetObtained::SendNotiFyMesssageToGeomsList (unknown) thiscall	inline-unclaimed-42	exact-1000-faults0	exact-1000-faults0
+0x5c5bb0	readTwo (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5c5be0	ZFFSearchLightAddActors::Init2 (unknown) thiscall	inline-unclaimed-23	exact-1000-faults0	exact-1000-faults0
+0x5c5cf0	clearFlagCallTwo (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5c63f0	ZFFSearchLightGroup::Command	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5c6610	ZFFSearchLightGroup::CopyEventDataBlock (residue name)	inline-unclaimed-25	exact-1000-faults0	exact-1000-faults0
+0x5c7220	ZFFSearchLightGroup::Load(ZLoadGame*) thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x5c73f0	ZFFSearchLightGroup::LoadSpot (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5c7740	ZFFSearchLightGroup::Save	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5d3740	ZShakeCamera::Save thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5d3aa0	CMPCheckInsideHill::CopyData (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5d4090	ZFFItemBomb::ZFFItemBomb	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5d42d0	ZFFItemBomb::FrameUpdate	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5d4af0	CBoxAutoFire::Init (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5d5ad0	ZCredits::CopyData	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5daff0	ZDamageBox::~ZDamageBox (SEH frame not reproduced)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5db100	ZDamageBox::CopyData (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5db150	ZDamageBox::CopyEventDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5db760	ZFireDamageBox::~ZFireDamageBox (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5db9f0	ZDamageBox2::CopyEventDataBlock	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5dbc30	unnamed 0x5dbc30 thiscall (Load body)	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5dbed0	unnamed 0x5dbed0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5dc3e0	CImpactResponse::End	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5dc3f0	CImpactResponse::Init (high) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5dc420	CImpactResponse::Load (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5dcc70	initFlakFloat (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5dccb0	ZFFFlak::Load	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5dd060	ZFFMortar::~ZFFMortar (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5dd2a0	ZFFMortar::FrameUpdate() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x5dd3f0	ZFFMortar::Load (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5dd470	ZFFMortar::PlayAnimation (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5dd570	ZFFMortar::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5de970	CFFCoverList::SendCoverNoGood (CReservable expired?)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5de9c0	CReservable::Release	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5de9d0	CReservable::Reserve	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5deaf0	GUESS FUN_5deaf0 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x5ded60	CCoverSpot ray helper (unnamed)	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5def10	CCoverSpot::Init	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5df400	CCoverSpot::Reserve	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5df880	ZFFActionThrow::~ZFFActionThrow (unknown) thiscall	inline-unclaimed-05	exact-1000-faults0	exact-1000-faults0
+0x5e0dd0	GUESS FUN_005e0dd0 (max with zero to +0x1d17)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x5e0ee0	GUESS constructor thiscall (vptr 0x6b7678)	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5e0ff0	ctorAfterBase (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5e12f0	ZFFHeroMovementBaseMove::~ZFFHeroMovementBaseMove (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5e1570	ZFFHeroMovementOpenGate::~ZFFHeroMovementOpenGate (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x5e1630	ZFFHeroMovementPlaceC4::~ZFFHeroMovementPlaceC4 (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5e1690	ZFFHeroMovementRaiseFlag::~ZFFHeroMovementRaiseFlag (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
+0x5e18d0	ZFFHeroMovementCloseCombat::CalcNewSpeed	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5e2020	ZFFHeroMovementCloseCombat::FrameUpdate	inline-unclaimed-81	exact-1000-faults0	exact-1000-faults0
+0x5e23d0	ZFFHeroMovementBaseMove::GetActiveAnim	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5e7180	ZFFHeroMovementBaseMove::TerminateControl (unknown) thiscall	doc-only	exact-1000-faults0	exact-1000-faults0
+0x5e7590	ZFFHeroMovementBaseMove::WantControl	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5e90d0	ZWeaponRecycleList::CopyEventDataBlock thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5eaab0	initBlocks (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5eab20	CActorActionMarker::Add	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5eac30	CActorActionMarker::Remove	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5eac90	CActorActionMarker::Update	inline-ai	exact-1000-faults0	exact-1000-faults0
+0x5eaee0	GUESS FUN_5eaee0 constructor thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5eaf20	ZFFActorActionCloseCombat::~ (unknown) thiscall	inline-unclaimed-07	exact-1000-faults0	exact-1000-faults0
+0x5eb020	ZFFActorActionCloseCombat::Execute	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x5eb680	ZFFActorActionCloseCombat::Save thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5eb710	ZFFActorActionThrow::Save thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5eb770	storeVtSlot58 (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5eb7e0	ZFFActorActionCloseCombat::Update	inline-hitreact	exact-1000-faults0	exact-1000-faults0
+0x5eb8c0	actionThrow5eb8 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ebc70	baseRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5ebf00	setFlagA6 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ebf10	vecSerialize5ebf (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ec190	serialize (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ec2b0	setTopByte (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5ec5c0	copyVec3Flag2 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ec660	setField5e (GUESS)	inline-unclaimed-19	exact-1000-faults0	exact-1000-faults0
+0x5ec7e0	GUESS vector-of-pointers dtor (vptr 0x6b8114) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5ed2b0	setPairs (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5ed9b0	GUESS FUN_5ed9b0 (unknown) thiscall const	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x5edb70	setKey (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5edc20	unnamed 0x5edc20	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x5eebb0	setField6f (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5eefa0	serialize (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x5ef240	rangeUpdate (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5ef330	pairCalls (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x5ef880	setRanges (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5efd70	ctorRelease (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5efdf0	GUESS FUN_5efdf0 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x5f0170	CSpriteDivide2D::Save	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5f0370	FUN_5f0370 (setVtable6b823c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f0630	FUN_5f0630 (ctor5f0630)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f0e10	StartPressed (map name)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x5f1420	FUN_5f1420 (setVtable6b84a8)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f1430	unknown::dtor_base_6012e0 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5f1580	FUN_5f1580 (fwdNested)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f1780	FUN_5f1780 (linkThenStore1780)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f17b0	FUN_5f17b0 (tailSlot28)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f1b90	FUN_5f1b90 (storeByteOrHook1b90)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2110	FUN_5f2110 (constPtr6b8498)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f28e0	FUN_5f28e0 (storeSelected28e0)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2b50	FUN_5f2b50 (clearA0)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2c20	FUN_5f2c20 (addToPlus8)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2c30	FUN_5f2c30 (setFields2c30)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2e00	FUN_5f2e00 (fwdSlot68)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2e50	FUN_5f2e50 (fwdSlot60)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2e60	FUN_5f2e60 (cursorPastNul)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f2ef0	LoadSerialInfo_t::loadint16	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5f2f00	FUN_5f2f00 (fwdSlot48)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f3000	FUN_5f3000 (fwdSlot18)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f3150	FUN_5f3150 (sumInto8)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f31b0	FUN_5f31b0 (fwdSlot5c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f3230	SaveSerialInfo_t::saveint32	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5f32b0	SaveSerialInfo_t::saveuint16	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5f3360	FUN_5f3360 (fwdSlot10)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f3370	unknown::append_copy_advance (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5f33d0	FUN_5f33d0 (setPair33)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f33f0	ZScriptDll::setOpaqueCallPrice	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5f3af0	unknown::release_first_dword (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5f3fb0	FUN_5f3fb0 (fwdAca4)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f3ff0	unknown::tree_then_vt48_chain (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5f4990	FUN_5f4990 (rangeSearch4990)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f49d0	FUN_5f49d0 (readAt82)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f49e0	FUN_5f49e0 (callVslot1c)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f4a80	FUN_5f4a80 (indexTable4a80)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f4ec0	FUN_5f4ec0 (indexCounted4ec0)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f4ff0	FUN_5f4ff0 (popRecord)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f5020	FUN_5f5020 (popFloat5020)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f5150	FUN_5f5150 (fwdAca0)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5f94f0	unknown::logger_once (unknown) stdcall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x5f9db0	GUESS: forwarder to unique-append (0x5f9db0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5fa440	GUESS: unique-append array (0x5fa440)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5fa5d0	FUN_5fa5d0 (ctorGlobal724270)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5fa600	ScriptHostInterface_t::~ScriptHostInterface_t (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x5fa630	readGlobal724270 (unnamed)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x5fb910	FUN_5fb910 (setAt30)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5fc010	FUN_5fc010 (firstVtableEntry)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5fc260	FUN_5fc260 (callChain5fc260)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5fe3b0	zstd::vector<CSprite2D::tagSPRITE2DINFO*>::_M_insert_aux	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x5ff0f0	FUN_5ff0f0 (treeSearch5ff0)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5ffb70	unknown::tree_find_word_key (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x600240	FUN_600240 (copyTriple240)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x600810	GUESS FUN_00600810 (leaf difference)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x600820	FUN_600820 (callTwoSlots)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x601440	sdtor601440 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x601470	unknown::dtor_base_6035a0 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x601560	setByte18 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x601570	freeIf (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x601590	tick float (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x602120	guard602120 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x602200	guard602200 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x602260	set602260 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x602c50	match602c50 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x602d70	accessor at 0x602d70 (+0x24 chain)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x602ff0	lookup602ff0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604170	ctor604170 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604310	link604310 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604340	link604340 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604430	setIndexed604430 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6044e0	setWord24 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6044f0	storeWord (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604510	link604510 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604540	clearSlot (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6046d0	dtor6046d0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x604d50	callSlot0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x605100	fwd605100 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x605380	checkName605380 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x605570	unknown::logger_b (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x605ac0	findAny (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x605b20	spanNot (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6061f0	MD5Engine_t::reset	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x606220	FUN_606220 (zero16)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x606a30	copySpan (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x606d40	wordAt23 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x606d90	dwordAt17 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x606e80	setWordAt23 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x606ea0	hash606ea0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6070b0	vector<u16>::insert (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6079d0	run6079d0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x608130	unknown::set_vtable_6bc88c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x608150	GUESS FUN_00608150 (scalar deleting dtor, vtable 0x6bc88c)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x6081f0	sdtor6081f0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x608300	sdtor6083 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x608e30	call608e30 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60cdf0	flag60cdf0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60d840	frac60d840 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60d8e0	frac60d8e0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60d980	ZRenderGC::GetTexCon (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x60ed80	cursorRead60ed80 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60ee10	cursorRead60ee10 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60eeb0	cursorRead60eeb0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60ef50	fwd60ef50 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60ef80	fwd60ef80 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60f1a0	pick60f1a0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60ffb0	ratio float (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x60ffe0	frame60ffe0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x610170	flag610170 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6106c0	setDword118a (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6106d0	setDword20 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6107e0	cc6107 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x610e20	cc610e (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x610f20	cc610f (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x612150	GUESS FUN_00612150 (vtable +0x30 of x via its vtable)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x612160	FUN_612160 (callSlot30)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x612580	sdtor6125 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6128b0	unknown::query_then_record (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x6132f0	slotIndex6132f0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x613900	ctor613900 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x613950	sdtor613950 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x614f00	ZDrawArray<ZPrimInstDrawEntryGC,...>::Entries (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x615090	build615090 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x616b10	GUESS FUN_00616b10 (scalar deleting dtor, vtable 0x6bdc38)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x616b40	sdtor616b (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x616d30	sdtor616d (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x616dd0	sdtor616d2 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x616fa0	packHalf (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x616fe0	copyRecords (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x617050	factory617050 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x617090	factory617090 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6170d0	factory6170d0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x617110	factory617110 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61ab20	set61ab20 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61ba30	initObj (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bbf0	forward4 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bc10	fwd2slot0c (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bc30	GUESS: cdecl forwarder to slot 0x14 (0x61bc30)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x61bc50	GUESS FUN_0061bc50 (cdecl forward to vtable +8)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x61bc60	FUN_61bc60 (callSlot28)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x61bc80	fwd4slot20 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bca0	fwd2slot10 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bcc0	fwd2slot4 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bd00	forward5 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61bfa0	wrap61bfa0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c590	setAt3c (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c5e0	setPair (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c600	setAt6c (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c610	setAt60 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c620	setAt40 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61c630	GUESS: cdecl store at +0x5c (0x61c630)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x61c640	setIfSame (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61cb70	build61cb70 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61cbe0	emit61cbe0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61cd30	wrap61cd30 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61ce20	state61ce20 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61f2c0	parser init (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x61f590	readAt114 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x6204a0	reverse6204a0 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x620840	take620840 (GUESS)	inline-unclaimed-76	exact-1000-faults0	exact-1000-faults0
+0x622b70	unknown::pair_match_zero_first (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x625af0	unknown::pair_match_zero_second (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x625c30	unknown::pair_scanner_class_table (unknown) cdecl	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x628c80	GUESS FUN_00628c80 (encoding/BOM dispatcher)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x628e50	GUESS FUN_00628e50 (wrapper of the BOM dispatcher)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x6304f0	DEFLATE-style bit writer over a symbol list (GUESS name)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x632a70	inflate_trees_fixed	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x63e5f0	ZDrawBase::Free	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x640f20	CRagdoll2::~CRagdoll2 (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x640fe0	unnamed 0x640fe0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x6411b0	CRagdoll2::ComputeParticlePositions() thiscall	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
+0x641b60	unnamed 0x641b60	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x641c50	unnamed 0x641c50	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x641c90	unnamed 0x641c90	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x642140	unnamed 0x642140	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x644820	unnamed 0x644820	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x645120	unnamed 0x645120	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
+0x645ec0	listRemove645 (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x6461d0	GUESS FUN_6461d0 (table lookup)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x646f30	rowCopy (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
+0x647170	unknown::byte_via_291 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x647190	unknown::byte_295 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x647320	GUESS FUN_647320 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x6475f0	ZBoneModifyBase::UnfixParticle (unknown)	inline-unclaimed-08	exact-1000-faults0	exact-1000-faults0
+0x64a670	unknown::drain_list_vt_c (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x64b070	unknown::clear_when_flag_vt24 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x64b140	ZDrawArray<ZGateViewEntry,...>::Entries (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x64b430	unknown::find_chain_key (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x64fb90	GUESS FUN_0064fb90 (float equal zero)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x64fc40	ZRenderBaseDll::GetRagdollContainer (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x64fcb0	unknown::int_ratio_vt_dc_f8 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x651330	ZRender::UPlotFNxt	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x651970	unknown::dtor_base_64f530_free_a5 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x654cb0	unknown::vt230_then_or_bits (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x656490	GUESS FUN_00656490 (vtable +0xc then +0x158, returns true)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x6565b0	unknown::vt148_copy_18_20 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x656d50	GUESS FUN_00656d50 (vtable +0xc then +0xa4)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x658130	unknown::returns_true (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x658270	unknown::float_chain_91 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x658db0	unknown::get_48_plus20 (unknown) thiscall	inline-unclaimed-04	exact-1000-faults0	exact-1000-faults0
+0x659b90	GUESS FUN_00659b90 (vtable +0xe0 then bound 0x63f570)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x65c9d0	GUESS FUN_0065c9d0 (store through pointer)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
+0x65f1b0	ZGeometryDecal::Init	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x65f530	noop6 (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
+0x65f570	ZDrawBuffer::GetCameraToRootMatrix	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
+0x65f5f0	ZDrawBuffer::PixelAspectXY	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0

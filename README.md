@@ -6,7 +6,8 @@ games of that era (Hitman 2: Silent Assassin, Hitman: Contracts, Hitman: Blood M
 families.
 
 **No game data is included.** You need your own copy of the game (the Steam/GOG PC release). Nothing here contains
-game files, extracted assets, game text, scripts, audio, executable bytes or decompiled game code.
+game files, extracted assets, game text, scripts, audio or executable bytes. The `ports/` folder holds C++ functions
+derived from the executable (see "Verified C++ ports" below); they need your own copy of the game to run.
 
 ## What is here
 
@@ -64,17 +65,18 @@ anything that is the game's own content or a direct translation of it:
 
 - **Game files and extracted data:** textures, models, audio, level files, the game's text, its compiled scripts and
   listings of them, collision meshes and renders. These belong to IO Interactive / Electronic Arts.
-- **Executable bytes and disassembly or decompiled code of the game.** A function-by-function rebuild of the
-  executable is a derivative of the copyrighted program, so we do not publish it. The decoders and specs here are
-  independent descriptions of the formats and rebuild nothing from the exe.
+- **Executable bytes, extracted data and game assets.** None are included. The checked C++ ports in `ports/` are
+  functions derived from the game's executable; they contain no executable bytes, and each one runs only with your own
+  copy of the game (see `ports/README.md` and `RESULTS.tsv`).
 - **The playable browser port.** It is not published here.
 
 None of this is hard to regenerate if you own the game: run the decoders on your own install.
 
 ## Project type
 
-Tools and format documentation for Freedom Fighters (2003). This is not a decompilation and contains no decompiled game
-code. Entry type for the awesome-decomp-games list: `tool`.
+Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 1,792 functions from the
+PC executable (see "Verified C++ ports"). This is not a full decompilation of the game. The awesome-list entry type (tool or
+decomp) is for the maintainer to choose.
 
 ## AI assistance
 
@@ -89,4 +91,14 @@ hello@kaustubh.app
 ## Legal
 
 Freedom Fighters is (c) IO Interactive / Electronic Arts. This project is not affiliated with or endorsed by them.
-It contains only independently written documentation and code (MIT licence, see `LICENSE`).
+The decoders, specs, tools and docs are independently written (MIT licence, see `LICENSE`). The C++ ports in `ports/`
+are derived from the game's executable and are shared under the same MIT licence; that licence does not grant any rights
+in the game itself.
+
+## Verified C++ ports
+
+`ports/` holds C++ ports of 1,792 functions from the PC executable, each checked against the original code by running
+both on random inputs and comparing results, memory writes and faults. `RESULTS.tsv` lists every verified address with
+its name and folder. Counting rule: a function counts only when both seed 1 and seed 2 ran 1000 cases each, with status
+exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this first copy;
+thunks, SEH funclets and functions whose specs hook a callee by address are not separated out in this copy.
