@@ -52,4 +52,4 @@ def _x(c):
     return [rec, idx, pbuf]
 
 
-S(0x641c90, 'unnamed 0x641c90', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x641c90, 'unnamed 0x641c90', 'thiscall', None, ret='eax', gen=_x, n=1000)

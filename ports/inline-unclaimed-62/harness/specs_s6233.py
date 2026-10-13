@@ -39,6 +39,6 @@ def _x5646(c):
     return [rec]
 
 
-S(0x54dbd0, 'unnamed 0x54dbd0', 'thiscall', None, ret='eax', gen=_x54d, n=300)
-S(0x54a240, 'unnamed 0x54a240', 'cdecl', None, ret='eax', gen=_x54a2, n=300)
-S(0x5646b0, 'unnamed 0x5646b0', 'thiscall', None, ret='al', gen=_x5646, n=300)
+S(0x54dbd0, 'unnamed 0x54dbd0', 'thiscall', None, ret='eax', gen=_x54d, n=1000)
+S(0x54a240, 'unnamed 0x54a240', 'cdecl', None, ret='eax', gen=_x54a2, n=1000)
+S(0x5646b0, 'unnamed 0x5646b0', 'thiscall', None, ret='al', gen=_x5646, n=1000)

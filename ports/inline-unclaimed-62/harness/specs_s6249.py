@@ -85,7 +85,7 @@ def _x642140(c):
     return [rec, c.rng.choice([0, 1, 5])]
 
 
-S(0x640fe0, 'unnamed 0x640fe0', 'thiscall', None, gen=_x640fe0, n=300)
-S(0x641c50, 'unnamed 0x641c50', 'thiscall', None, gen=_x641c50, n=300)
-S(0x641b60, 'unnamed 0x641b60', 'thiscall', None, gen=_x641b60, n=300)
-S(0x642140, 'unnamed 0x642140', 'thiscall', None, ret='eax', gen=_x642140, n=300)
+S(0x640fe0, 'unnamed 0x640fe0', 'thiscall', None, gen=_x640fe0, n=1000)
+S(0x641c50, 'unnamed 0x641c50', 'thiscall', None, gen=_x641c50, n=1000)
+S(0x641b60, 'unnamed 0x641b60', 'thiscall', None, gen=_x641b60, n=1000)
+S(0x642140, 'unnamed 0x642140', 'thiscall', None, ret='eax', gen=_x642140, n=1000)

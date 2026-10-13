@@ -71,4 +71,4 @@ def _x(c):
     return [self_, x]
 
 
-S(0x502cc0, 'unnamed 0x502cc0', 'thiscall', None, gen=_x, n=300)
+S(0x502cc0, 'unnamed 0x502cc0', 'thiscall', None, gen=_x, n=1000)

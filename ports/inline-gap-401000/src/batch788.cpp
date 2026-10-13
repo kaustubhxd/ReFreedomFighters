@@ -1,0 +1,50 @@
+// batch788.cpp - gap band batch 788 (docs/20-gap-band-401000.md): 0x420270, thiscall (this, idx), returns a bool. Assembly transcription:
+// the SSE compare (ucomiss, lahf) and the vtable call with its one stack argument must stay as in the exe.
+#include "ff.h"
+
+extern "C" void fn420270(void);
+
+asm(
+    ".text\n"
+    ".globl fn420270\n"
+    "fn420270:\n"
+    "  pushl %ebp\n"
+    "  movl %esp, %ebp\n"
+    "  movl 8(%ebp), %edx\n"
+    "  pushl %ebx\n"
+    "  pushl %esi\n"
+    "  leal (%ecx,%edx,4), %esi\n"
+    "  movb 0xa0b(%edx,%esi,1), %bl\n"
+    "  testb $4, %bl\n"
+    "  je 1f\n"
+    "  movb %bl, %al\n"
+    "  andb $0xdf, %al\n"
+    "  movb %al, 0xa0b(%edx,%esi,1)\n"
+    "1:\n"
+    "  movl 0x70039c, %eax\n"
+    "  movss 0x9c7(%eax), %xmm0\n"
+    "  ucomiss 0x6785d0, %xmm0\n"
+    "  lahf\n"
+    "  testb $0x44, %ah\n"
+    "  jnp 2f\n"
+    "  testb $0x20, %bl\n"
+    "  je 2f\n"
+    "  movl (%ecx), %eax\n"
+    "  pushl %edx\n"
+    "  movl 0x1f8(%eax), %eax\n"
+    "  call *%eax\n"
+    "  testb %al, %al\n"
+    "  je 2f\n"
+    "  popl %esi\n"
+    "  movb $1, %al\n"
+    "  popl %ebx\n"
+    "  popl %ebp\n"
+    "  ret $4\n"
+    "2:\n"
+    "  popl %esi\n"
+    "  xorb %al, %al\n"
+    "  popl %ebx\n"
+    "  popl %ebp\n"
+    "  ret $4\n");
+
+PCREG(420270, fn420270);

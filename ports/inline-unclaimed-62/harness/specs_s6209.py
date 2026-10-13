@@ -49,4 +49,4 @@ def _nlr(c):
     return [self_, name, ln]
 
 
-S(0x4d9190, 'unnamed 0x4d9190', 'thiscall', None, gen=_nlr, n=300)
+S(0x4d9190, 'unnamed 0x4d9190', 'thiscall', None, gen=_nlr, n=1000)

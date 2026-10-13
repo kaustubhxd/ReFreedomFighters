@@ -35,6 +35,6 @@ def _tail(c):
     return [self_]
 
 
-S(0x5a8350, 'leaf 0x5a8350', 'thiscall', None, ret='eax', gen=_plain, n=300)
-S(0x5ab050, 'leaf 0x5ab050', 'thiscall', None, gen=_inc, n=300)
-S(0x462bd0, 'leaf 0x462bd0', 'thiscall', None, ret='eax', gen=_tail, n=300)
+S(0x5a8350, 'leaf 0x5a8350', 'thiscall', None, ret='eax', gen=_plain, n=1000)
+S(0x5ab050, 'leaf 0x5ab050', 'thiscall', None, gen=_inc, n=1000)
+S(0x462bd0, 'leaf 0x462bd0', 'thiscall', None, ret='eax', gen=_tail, n=1000)

@@ -21,11 +21,11 @@ def _x(c):
     return [rnd(c, 0x100)]
 
 
-S(0x569380, 'unnamed 0x569380', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x56db70, 'unnamed 0x56db70', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x571960, 'unnamed 0x571960', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x5773f0, 'unnamed 0x5773f0', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x57a3b0, 'unnamed 0x57a3b0', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x57abc0, 'unnamed 0x57abc0', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x57c100, 'unnamed 0x57c100', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x57f1b0, 'unnamed 0x57f1b0', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x569380, 'unnamed 0x569380', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x56db70, 'unnamed 0x56db70', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x571960, 'unnamed 0x571960', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x5773f0, 'unnamed 0x5773f0', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x57a3b0, 'unnamed 0x57a3b0', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x57abc0, 'unnamed 0x57abc0', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x57c100, 'unnamed 0x57c100', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x57f1b0, 'unnamed 0x57f1b0', 'thiscall', None, ret='eax', gen=_x, n=1000)

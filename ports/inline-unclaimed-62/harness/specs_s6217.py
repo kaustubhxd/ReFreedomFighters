@@ -30,4 +30,4 @@ def _x(c):
     return [rec, arch]
 
 
-S(0x516d10, 'unnamed 0x516d10', 'thiscall', None, ret='al', gen=_x, n=300)
+S(0x516d10, 'unnamed 0x516d10', 'thiscall', None, ret='al', gen=_x, n=1000)

@@ -22,4 +22,4 @@ def _x(c):
     return [rnd(c, 0x400), r.getrandbits(32)]
 
 
-S(0x645120, 'unnamed 0x645120', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x645120, 'unnamed 0x645120', 'thiscall', None, ret='eax', gen=_x, n=1000)

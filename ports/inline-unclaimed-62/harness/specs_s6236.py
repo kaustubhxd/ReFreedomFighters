@@ -30,6 +30,6 @@ def _x5a46(c):
     return [rec, c.rng.randint(-2, 8) & 0xffffffff]
 
 
-S(0x4d2300, 'unnamed 0x4d2300', 'thiscall', None, ret='eax', gen=_x4d23, n=300)
-S(0x4e0e30, 'unnamed 0x4e0e30', 'thiscall', None, ret='eax', gen=_x4e0e, n=300)
-S(0x5a46f0, 'unnamed 0x5a46f0', 'thiscall', None, ret='eax', gen=_x5a46, n=300)
+S(0x4d2300, 'unnamed 0x4d2300', 'thiscall', None, ret='eax', gen=_x4d23, n=1000)
+S(0x4e0e30, 'unnamed 0x4e0e30', 'thiscall', None, ret='eax', gen=_x4e0e, n=1000)
+S(0x5a46f0, 'unnamed 0x5a46f0', 'thiscall', None, ret='eax', gen=_x5a46, n=1000)

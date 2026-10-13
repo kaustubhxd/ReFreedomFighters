@@ -70,5 +70,5 @@ def _f523(c):
     return [self_, F(val)]
 
 
-S(0x507e50, 'unnamed 0x507e50', 'thiscall', None, gen=_x507, n=300)
-S(0x523650, 'CMoveAlongPath::InitSplineVal (unconfirmed name)', 'thiscall', None, gen=_f523, n=300)
+S(0x507e50, 'unnamed 0x507e50', 'thiscall', None, gen=_x507, n=1000)
+S(0x523650, 'CMoveAlongPath::InitSplineVal (unconfirmed name)', 'thiscall', None, gen=_f523, n=1000)

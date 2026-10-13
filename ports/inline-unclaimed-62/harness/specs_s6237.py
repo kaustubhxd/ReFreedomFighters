@@ -26,6 +26,6 @@ def _x2(c):
     return [_vec(c), _vec(c)]
 
 
-S(0x4dfd50, 'unnamed 0x4dfd50', 'fastcall', None, gen=_x4dfd50, n=300)
-S(0x4dfd80, 'unnamed 0x4dfd80', 'fastcall', None, gen=_x2, n=300)
-S(0x4e0010, 'unnamed 0x4e0010', 'fastcall', None, gen=_x2, n=300)
+S(0x4dfd50, 'unnamed 0x4dfd50', 'fastcall', None, gen=_x4dfd50, n=1000)
+S(0x4dfd80, 'unnamed 0x4dfd80', 'fastcall', None, gen=_x2, n=1000)
+S(0x4e0010, 'unnamed 0x4e0010', 'fastcall', None, gen=_x2, n=1000)

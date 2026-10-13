@@ -35,5 +35,5 @@ def _x54e(c):
     return [rec, buf]
 
 
-S(0x4dd8d0, 'unnamed 0x4dd8d0', 'thiscall', None, ret='al', gen=_x4dd, n=300)
-S(0x54e600, 'unnamed 0x54e600', 'thiscall', None, gen=_x54e, n=300)
+S(0x4dd8d0, 'unnamed 0x4dd8d0', 'thiscall', None, ret='al', gen=_x4dd, n=1000)
+S(0x54e600, 'unnamed 0x54e600', 'thiscall', None, gen=_x54e, n=1000)

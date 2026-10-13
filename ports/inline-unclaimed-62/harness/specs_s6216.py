@@ -41,4 +41,4 @@ def _x(c):
     return [self_]
 
 
-S(0x44b610, 'unnamed 0x44b610', 'thiscall', None, gen=_x, n=300)
+S(0x44b610, 'unnamed 0x44b610', 'thiscall', None, gen=_x, n=1000)

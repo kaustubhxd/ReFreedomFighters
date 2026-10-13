@@ -54,7 +54,7 @@ def _4ce5b0(c):
     return [rec, r.randint(0, 5 * chunk - 1)]
 
 
-S(0x487650, 'unnamed 0x487650', 'thiscall', None, ret='eax', gen=_487650, n=300)
-S(0x59e610, 'unnamed 0x59e610', 'thiscall', None, gen=_59e610, n=300)
-S(0x545e20, 'unnamed 0x545e20', 'thiscall', None, gen=_545e20, n=300)
-S(0x4ce5b0, 'unnamed 0x4ce5b0', 'thiscall', None, ret='eax', gen=_4ce5b0, n=300)
+S(0x487650, 'unnamed 0x487650', 'thiscall', None, ret='eax', gen=_487650, n=1000)
+S(0x59e610, 'unnamed 0x59e610', 'thiscall', None, gen=_59e610, n=1000)
+S(0x545e20, 'unnamed 0x545e20', 'thiscall', None, gen=_545e20, n=1000)
+S(0x4ce5b0, 'unnamed 0x4ce5b0', 'thiscall', None, ret='eax', gen=_4ce5b0, n=1000)

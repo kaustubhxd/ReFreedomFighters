@@ -14,9 +14,9 @@ def _x(c):
     return [rnd(c, 0x100)]
 
 
-S(0x437070, 'unnamed 0x437070', 'thiscall', None, gen=_x, n=300)
-S(0x438330, 'unnamed 0x438330', 'thiscall', None, gen=_x, n=300)
-S(0x440930, 'unnamed 0x440930', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x440cb0, 'unnamed 0x440cb0', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x44c0f0, 'unnamed 0x44c0f0', 'thiscall', None, ret='eax', gen=_x, n=300)
-S(0x4632f0, 'unnamed 0x4632f0', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x437070, 'unnamed 0x437070', 'thiscall', None, gen=_x, n=1000)
+S(0x438330, 'unnamed 0x438330', 'thiscall', None, gen=_x, n=1000)
+S(0x440930, 'unnamed 0x440930', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x440cb0, 'unnamed 0x440cb0', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x44c0f0, 'unnamed 0x44c0f0', 'thiscall', None, ret='eax', gen=_x, n=1000)
+S(0x4632f0, 'unnamed 0x4632f0', 'thiscall', None, ret='eax', gen=_x, n=1000)

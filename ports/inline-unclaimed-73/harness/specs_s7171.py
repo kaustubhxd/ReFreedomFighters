@@ -1,6 +1,8 @@
-"""specs_s7171.py - area 73 batch 71 (gap band, tail-jump rows; arity = 0x43ea20's ret 0x14 / 4 = 5, target hooked by address).
-FUN_4f6b80: vtable word 0x69aaf0; if the object at +0x93 is non-null its vtable +0x210(1) is called; +0x93 = 0; tail-jump to 0x43ea20.
-FUN_4f7a00: vtable word 0x69ae94; 0x4ccfe0 on this+0xb3 (no arguments, hooked); tail-jump to 0x43ea20."""
+"""specs_s7171.py - area 73 batch 71 (redo, zero arguments). The only call sites are 0x4ee00a (for 0x4f6b80) and 0x4ee026 (for
+0x4f7a00); neither has pushes before the call, so both take no arguments. The chain through 0x43ea20 ends in a plain ret
+(0x43ea20 -> jmp 0x45c3e0 -> ret), so 0x43ea20 is hooked with no arguments and no popped bytes.
+FUN_4f6b80: vtable word 0x69aaf0; a non-null object at +0x93 gets vtable +0x210(1); +0x93 = 0; then 0x43ea20(this).
+FUN_4f7a00: vtable word 0x69ae94; 0x4ccfe0(this+0xb3) (hooked, no arguments); then 0x43ea20(this)."""
 from pilot import S
 
 
@@ -14,8 +16,8 @@ def _hook(c):
     e = c.emu
 
     def h_ea20(em, r):
-        em.calllog.append(('43ea20', 0, em.reg('ecx'), tuple(em.arg32(k) for k in range(5))))
-        em.ret(argbytes=0x14)
+        em.calllog.append(('43ea20', 0, em.reg('ecx'), ()))
+        em.ret(argbytes=0)
 
     def h_cc(em, r):
         em.calllog.append(('4ccfe0', 0, em.reg('ecx'), ()))
@@ -34,15 +36,15 @@ def _gen_6b80(c):
         e.w32(o + 0x93, obj)
     else:
         e.w32(o + 0x93, 0)
-    return [o] + [c.rng.getrandbits(32) for _ in range(5)]
+    return [o]
 
 
 def _gen_7a00(c):
     _hook(c)
-    return [_rnd(c, 0x100)] + [c.rng.getrandbits(32) for _ in range(5)]
+    return [_rnd(c, 0x100)]
 
 
 S(0x4f6b80, 'GUESS FUN_4f6b80 (unknown) thiscall', 'thiscall', None, ret=None, gen=_gen_6b80,
-  note='area 73 batch 71; vt=0x69aaf0; [+0x93] obj vt+0x210(1); [+0x93]=0; jmp 0x43ea20 (ret 0x14, hooked)')
+  note='area 73 batch 71 (redo, 0 args from the call site); vt=0x69aaf0; [+0x93] obj vt+0x210(1); [+0x93]=0; 0x43ea20(this)')
 S(0x4f7a00, 'GUESS FUN_4f7a00 (unknown) thiscall', 'thiscall', None, ret=None, gen=_gen_7a00,
-  note='area 73 batch 71; vt=0x69ae94; 0x4ccfe0(this+0xb3) (hooked); jmp 0x43ea20 (ret 0x14, hooked)')
+  note='area 73 batch 71 (redo, 0 args from the call site); vt=0x69ae94; 0x4ccfe0(this+0xb3); 0x43ea20(this)')

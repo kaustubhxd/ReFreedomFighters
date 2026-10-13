@@ -29,5 +29,5 @@ def _x(c):
     return [rec, r.getrandbits(32), r.getrandbits(32)]
 
 
-S(0x573490, 'unnamed 0x573490', 'thiscall', None, ret='al', gen=_x, n=300)
-S(0x57bd70, 'unnamed 0x57bd70', 'thiscall', None, ret='al', gen=_x, n=300)
+S(0x573490, 'unnamed 0x573490', 'thiscall', None, ret='al', gen=_x, n=1000)
+S(0x57bd70, 'unnamed 0x57bd70', 'thiscall', None, ret='al', gen=_x, n=1000)

@@ -21,5 +21,5 @@ def _b(c):
     return [rec]
 
 
-S(0x4682f0, 'unnamed 0x4682f0', 'thiscall', None, gen=_f, n=300)
-S(0x561ef0, 'unnamed 0x561ef0', 'thiscall', None, ret='al', gen=_b, n=300)
+S(0x4682f0, 'unnamed 0x4682f0', 'thiscall', None, gen=_f, n=1000)
+S(0x561ef0, 'unnamed 0x561ef0', 'thiscall', None, ret='al', gen=_b, n=1000)

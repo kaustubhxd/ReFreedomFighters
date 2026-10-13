@@ -27,4 +27,4 @@ def _mol(c):
     return [self_, flags]
 
 
-S(0x581630, 'CExplodeMolotov::~CExplodeMolotov', 'thiscall', None, ret='eax', gen=_mol, n=300)
+S(0x581630, 'CExplodeMolotov::~CExplodeMolotov', 'thiscall', None, ret='eax', gen=_mol, n=1000)

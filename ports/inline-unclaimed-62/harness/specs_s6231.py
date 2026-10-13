@@ -32,5 +32,5 @@ def _x4d(c):
     return [o, r.getrandbits(32)]
 
 
-S(0x54f0b0, 'unnamed 0x54f0b0', 'thiscall', None, gen=_x54, n=300)
-S(0x4d1df0, 'unnamed 0x4d1df0', 'thiscall', None, ret='st0', gen=_x4d, n=300)
+S(0x54f0b0, 'unnamed 0x54f0b0', 'thiscall', None, gen=_x54, n=1000)
+S(0x4d1df0, 'unnamed 0x4d1df0', 'thiscall', None, ret='st0', gen=_x4d, n=1000)

@@ -68,4 +68,4 @@ def _fe(c):
     return [geom, name]
 
 
-S(0x45e490, 'ZGEOM::FindEvent', 'thiscall', None, ret='eax', gen=_fe, n=300)
+S(0x45e490, 'ZGEOM::FindEvent', 'thiscall', None, ret='eax', gen=_fe, n=1000)

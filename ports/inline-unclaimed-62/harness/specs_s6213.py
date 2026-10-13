@@ -37,4 +37,4 @@ def _get(c):
     return [self_, out, count]
 
 
-S(0x4e1110, 'DBLK::Get', 'thiscall', None, gen=_get, n=300)
+S(0x4e1110, 'DBLK::Get', 'thiscall', None, gen=_get, n=1000)

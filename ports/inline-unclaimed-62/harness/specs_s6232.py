@@ -45,7 +45,7 @@ def _x54a220(c):
     return [rec, r.choice([0, r.getrandbits(16)])]
 
 
-S(0x4d1b70, 'unnamed 0x4d1b70', 'thiscall', None, ret='eax', gen=_x4d1b70, n=300)
-S(0x4d1b90, 'unnamed 0x4d1b90', 'thiscall', None, ret='eax', gen=_x4d1b90, n=300)
-S(0x5a4590, 'unnamed 0x5a4590', 'thiscall', None, ret='eax', gen=_x5a4590, n=300)
-S(0x54a220, 'unnamed 0x54a220', 'thiscall', None, ret='eax', gen=_x54a220, n=300)
+S(0x4d1b70, 'unnamed 0x4d1b70', 'thiscall', None, ret='eax', gen=_x4d1b70, n=1000)
+S(0x4d1b90, 'unnamed 0x4d1b90', 'thiscall', None, ret='eax', gen=_x4d1b90, n=1000)
+S(0x5a4590, 'unnamed 0x5a4590', 'thiscall', None, ret='eax', gen=_x5a4590, n=1000)
+S(0x54a220, 'unnamed 0x54a220', 'thiscall', None, ret='eax', gen=_x54a220, n=1000)

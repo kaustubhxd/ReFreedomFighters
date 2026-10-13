@@ -74,7 +74,7 @@ None of this is hard to regenerate if you own the game: run the decoders on your
 
 ## Project type
 
-Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 1,792 functions from the
+Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 3,944 functions from the
 PC executable (see "Verified C++ ports"). This is not a full decompilation of the game. The awesome-list entry type (tool or
 decomp) is for the maintainer to choose.
 
@@ -97,8 +97,8 @@ in the game itself.
 
 ## Verified C++ ports
 
-`ports/` holds C++ ports of 1,792 functions from the PC executable, each checked against the original code by running
+`ports/` holds C++ ports of 3,944 functions from the PC executable, each checked against the original code by running
 both on random inputs and comparing results, memory writes and faults. `RESULTS.tsv` lists every verified address with
 its name and folder. Counting rule: a function counts only when both seed 1 and seed 2 ran 1000 cases each, with status
-exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this first copy;
+exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (about 70 verified functions are held back for that reason);
 thunks, SEH funclets and functions whose specs hook a callee by address are not separated out in this copy.

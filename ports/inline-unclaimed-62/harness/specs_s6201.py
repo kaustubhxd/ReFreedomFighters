@@ -45,4 +45,4 @@ def _pad(c):
     return [self_, name]
 
 
-S(0x439f60, 'ZInputActions::PrintActionDebugInfo', 'thiscall', None, gen=_pad, n=300)
+S(0x439f60, 'ZInputActions::PrintActionDebugInfo', 'thiscall', None, gen=_pad, n=1000)

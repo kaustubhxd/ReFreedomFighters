@@ -44,7 +44,7 @@ def _x4cdaf0(c):
     return [rec, r.randint(0, 63)]
 
 
-S(0x54dbb0, 'unnamed 0x54dbb0', 'stdcall', None, ret='eax', gen=_x54dbb0, n=300)
-S(0x54e430, 'unnamed 0x54e430', 'thiscall', None, gen=_x54e430, n=300)
-S(0x54e9a0, 'unnamed 0x54e9a0', 'thiscall', None, ret='eax', gen=_x54e9a0, n=300)
-S(0x4cdaf0, 'unnamed 0x4cdaf0', 'thiscall', None, ret='al', gen=_x4cdaf0, n=300)
+S(0x54dbb0, 'unnamed 0x54dbb0', 'stdcall', None, ret='eax', gen=_x54dbb0, n=1000)
+S(0x54e430, 'unnamed 0x54e430', 'thiscall', None, gen=_x54e430, n=1000)
+S(0x54e9a0, 'unnamed 0x54e9a0', 'thiscall', None, ret='eax', gen=_x54e9a0, n=1000)
+S(0x4cdaf0, 'unnamed 0x4cdaf0', 'thiscall', None, ret='al', gen=_x4cdaf0, n=1000)

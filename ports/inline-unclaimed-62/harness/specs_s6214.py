@@ -78,4 +78,4 @@ def _gen(c):
     return [self_, b]
 
 
-S(0x5594d0, 'unnamed 0x5594d0', 'thiscall', None, gen=_gen, n=300)
+S(0x5594d0, 'unnamed 0x5594d0', 'thiscall', None, gen=_gen, n=1000)

@@ -23,4 +23,4 @@ def _x(c):
     return [rnd(c, 0x200), r.getrandbits(32), r.getrandbits(32)]
 
 
-S(0x563620, 'unnamed 0x563620', 'thiscall', None, gen=_x, n=300)
+S(0x563620, 'unnamed 0x563620', 'thiscall', None, gen=_x, n=1000)

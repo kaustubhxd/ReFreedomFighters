@@ -22,4 +22,4 @@ def _flak(c):
     return [self_, load]
 
 
-S(0x5dccb0, 'ZFFFlak::Load', 'thiscall', None, ret='al', gen=_flak, n=300)
+S(0x5dccb0, 'ZFFFlak::Load', 'thiscall', None, ret='al', gen=_flak, n=1000)

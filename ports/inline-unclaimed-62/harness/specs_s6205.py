@@ -28,9 +28,9 @@ def _pathlen(c):
     return [self_]
 
 
-S(0x468210, 'ZCTRLIKLNKOBJ::LightReceived', 'thiscall', None, ret='st0', gen=_plain, n=300)
-S(0x46eed0, 'ZLNKOBJ::GetAnimFile', 'thiscall', None, ret='eax', gen=_plain, n=300)
-S(0x483a10, 'ZPlayer::GetCenterHeight', 'thiscall', None, ret='st0', gen=_plain, n=300)
-S(0x483f10, 'ZPlayer::IsWalking', 'thiscall', None, ret='eax', gen=_plain, n=300)
-S(0x5abcd0, 'CMessageBasics::IsVisible', 'thiscall', None, ret='al', gen=_plain, n=300)
-S(0x5139d0, 'ZMoveOnSpline::PathLen', 'thiscall', None, ret='eax', gen=_pathlen, n=300)
+S(0x468210, 'ZCTRLIKLNKOBJ::LightReceived', 'thiscall', None, ret='st0', gen=_plain, n=1000)
+S(0x46eed0, 'ZLNKOBJ::GetAnimFile', 'thiscall', None, ret='eax', gen=_plain, n=1000)
+S(0x483a10, 'ZPlayer::GetCenterHeight', 'thiscall', None, ret='st0', gen=_plain, n=1000)
+S(0x483f10, 'ZPlayer::IsWalking', 'thiscall', None, ret='eax', gen=_plain, n=1000)
+S(0x5abcd0, 'CMessageBasics::IsVisible', 'thiscall', None, ret='al', gen=_plain, n=1000)
+S(0x5139d0, 'ZMoveOnSpline::PathLen', 'thiscall', None, ret='eax', gen=_pathlen, n=1000)

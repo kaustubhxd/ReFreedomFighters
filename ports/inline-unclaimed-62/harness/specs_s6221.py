@@ -57,9 +57,9 @@ def _5b7ce0(c):
     return [rec] + [r.getrandbits(32) for _ in range(6)]
 
 
-S(0x5edc20, 'unnamed 0x5edc20', 'thiscall', None, gen=_5edc20, n=300)
-S(0x594ed0, 'unnamed 0x594ed0', 'thiscall', None, gen=_594ed0, n=300)
-S(0x547730, 'unnamed 0x547730', 'thiscall', None, gen=_547730, n=300)
-S(0x465470, 'unnamed 0x465470', 'thiscall', None, ret='st0', gen=_465470, n=300)
-S(0x5aef10, 'unnamed 0x5aef10', 'thiscall', None, gen=_5aef10, n=300)
-S(0x5b7ce0, 'unnamed 0x5b7ce0', 'thiscall', None, gen=_5b7ce0, n=300)
+S(0x5edc20, 'unnamed 0x5edc20', 'thiscall', None, gen=_5edc20, n=1000)
+S(0x594ed0, 'unnamed 0x594ed0', 'thiscall', None, gen=_594ed0, n=1000)
+S(0x547730, 'unnamed 0x547730', 'thiscall', None, gen=_547730, n=1000)
+S(0x465470, 'unnamed 0x465470', 'thiscall', None, ret='st0', gen=_465470, n=1000)
+S(0x5aef10, 'unnamed 0x5aef10', 'thiscall', None, gen=_5aef10, n=1000)
+S(0x5b7ce0, 'unnamed 0x5b7ce0', 'thiscall', None, gen=_5b7ce0, n=1000)

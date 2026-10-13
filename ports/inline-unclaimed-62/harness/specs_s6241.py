@@ -20,4 +20,4 @@ def _x(c):
     return [rnd(c, 0x200)]
 
 
-S(0x572e40, 'unnamed 0x572e40', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x572e40, 'unnamed 0x572e40', 'thiscall', None, ret='eax', gen=_x, n=1000)

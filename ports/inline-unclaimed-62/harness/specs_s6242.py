@@ -45,5 +45,5 @@ def _x572(c):
     return [rec, a]
 
 
-S(0x56b430, 'unnamed 0x56b430', 'thiscall', None, gen=_x56b, n=300)
-S(0x572580, 'unnamed 0x572580', 'thiscall', None, gen=_x572, n=300)
+S(0x56b430, 'unnamed 0x56b430', 'thiscall', None, gen=_x56b, n=1000)
+S(0x572580, 'unnamed 0x572580', 'thiscall', None, gen=_x572, n=1000)

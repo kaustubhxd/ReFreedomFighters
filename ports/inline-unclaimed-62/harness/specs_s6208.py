@@ -47,4 +47,4 @@ def _gan(c):
     return [self_, p]
 
 
-S(0x501050, 'ZGeomIf::GetAngleToObject', 'thiscall', None, gen=_gan, n=300)
+S(0x501050, 'ZGeomIf::GetAngleToObject', 'thiscall', None, gen=_gan, n=1000)

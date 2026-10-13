@@ -49,4 +49,4 @@ def _x(c):
     return [rec, arg]
 
 
-S(0x4bb6b0, 'unnamed 0x4bb6b0', 'thiscall', None, ret='al', gen=_x, n=300)
+S(0x4bb6b0, 'unnamed 0x4bb6b0', 'thiscall', None, ret='al', gen=_x, n=1000)

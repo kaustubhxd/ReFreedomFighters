@@ -35,5 +35,5 @@ def _x565b60(c):
     return [rnd(c, 0x200), r.getrandbits(32), r.getrandbits(32)]
 
 
-S(0x565840, 'unnamed 0x565840', 'thiscall', None, ret='eax', gen=_x565840, n=300)
-S(0x565b60, 'unnamed 0x565b60', 'thiscall', None, ret='al', gen=_x565b60, n=300)
+S(0x565840, 'unnamed 0x565840', 'thiscall', None, ret='eax', gen=_x565840, n=1000)
+S(0x565b60, 'unnamed 0x565b60', 'thiscall', None, ret='al', gen=_x565b60, n=1000)

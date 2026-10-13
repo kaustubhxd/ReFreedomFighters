@@ -60,4 +60,4 @@ def _x(c):
     return [rec, r.getrandbits(32), r.getrandbits(32)]
 
 
-S(0x4d9090, 'unnamed 0x4d9090', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x4d9090, 'unnamed 0x4d9090', 'thiscall', None, ret='eax', gen=_x, n=1000)

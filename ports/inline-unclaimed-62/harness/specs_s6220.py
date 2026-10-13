@@ -70,11 +70,11 @@ def _f570(c):
     return [rec, pp]
 
 
-S(0x4e6400, 'unnamed 0x4e6400', 'thiscall', None, ret='al', gen=_e6400, n=300)
-S(0x440cc0, 'unnamed 0x440cc0', 'thiscall', None, ret='eax', gen=_cc0, n=300)
-S(0x4cf100, 'unnamed 0x4cf100', 'thiscall', None, gen=_f100, n=300)
-S(0x594f40, 'unnamed 0x594f40', 'thiscall', None, gen=_f40, n=300)
-S(0x581960, 'unnamed 0x581960', 'thiscall', None, gen=_f60, n=300)
-S(0x5ac600, 'unnamed 0x5ac600', 'thiscall', None, gen=_f600, n=300)
-S(0x5966e0, 'unnamed 0x5966e0', 'thiscall', None, ret='al', gen=_e6e0, n=300)
-S(0x4cf570, 'unnamed 0x4cf570', 'thiscall', None, ret='eax', gen=_f570, n=300)
+S(0x4e6400, 'unnamed 0x4e6400', 'thiscall', None, ret='al', gen=_e6400, n=1000)
+S(0x440cc0, 'unnamed 0x440cc0', 'thiscall', None, ret='eax', gen=_cc0, n=1000)
+S(0x4cf100, 'unnamed 0x4cf100', 'thiscall', None, gen=_f100, n=1000)
+S(0x594f40, 'unnamed 0x594f40', 'thiscall', None, gen=_f40, n=1000)
+S(0x581960, 'unnamed 0x581960', 'thiscall', None, gen=_f60, n=1000)
+S(0x5ac600, 'unnamed 0x5ac600', 'thiscall', None, gen=_f600, n=1000)
+S(0x5966e0, 'unnamed 0x5966e0', 'thiscall', None, ret='al', gen=_e6e0, n=1000)
+S(0x4cf570, 'unnamed 0x4cf570', 'thiscall', None, ret='eax', gen=_f570, n=1000)

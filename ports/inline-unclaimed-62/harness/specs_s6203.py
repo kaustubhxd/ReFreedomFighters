@@ -32,4 +32,4 @@ def _kb(c):
     return [self_, rd]
 
 
-S(0x5b1bf0, 'ZKillBox::CopyEventDataBlock', 'thiscall', None, gen=_kb, n=300)
+S(0x5b1bf0, 'ZKillBox::CopyEventDataBlock', 'thiscall', None, gen=_kb, n=1000)

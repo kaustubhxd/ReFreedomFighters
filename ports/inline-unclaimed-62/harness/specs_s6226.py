@@ -56,4 +56,4 @@ def _x(c):
     return [rec, a1, a2]
 
 
-S(0x4ce6a0, 'unnamed 0x4ce6a0', 'thiscall', None, ret='eax', gen=_x, n=300)
+S(0x4ce6a0, 'unnamed 0x4ce6a0', 'thiscall', None, ret='eax', gen=_x, n=1000)
