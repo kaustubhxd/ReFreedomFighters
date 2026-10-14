@@ -1,5 +1,7 @@
 # ReFreedomFighters
 
+<img width="1512" height="866" alt="image" src="https://github.com/user-attachments/assets/ed1d89b7-c228-4d1e-8a57-ba37a1935303" />
+
 Reverse-engineering notes and file-format decoders for **Freedom Fighters** (IO Interactive, 2003, Glacier 1 engine),
 written while porting the game to the browser. Much of it should also apply to the other Glacier 1
 games of that era (Hitman 2: Silent Assassin, Hitman: Contracts, Hitman: Blood Money), which share the same file
