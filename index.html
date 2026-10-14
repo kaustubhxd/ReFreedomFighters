@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Public progress page: the address map and the counters, from progress-public.json and map-data-public.json (no names except verified functions).
+     Build a Pages folder with browser-next/tools/build_progress_site.sh. No game data is in these files: addresses, sizes and states only. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freedom Fighters RE: progress</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --fg:#e6edf3; --muted:#8b949e; --frame:#30363d; --amber:#d29922; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  main { max-width:1200px; margin:0 auto; padding:24px 16px 48px; } h1 { font-size:20px; margin:0; } h2 { font-size:15px; margin:18px 0 4px; }
+  .sub,.src,.fine { color:var(--muted); font-size:12px; margin:2px 0 12px; } a { color:#5b8bd6; }
+  .stats { display:flex; flex-wrap:wrap; gap:8px 36px; margin:14px 0 6px; } .stats b { font-size:30px; } .stats span { color:var(--muted); display:block; font-size:12px; }
+  .bar { height:8px; background:#2a2f36; margin-top:4px; } .bar i { display:block; height:100%; background:var(--amber); }
+  .mapctl { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; } .mapq { flex:1 1 220px; padding:6px 9px; background:var(--panel); border:1px solid var(--frame); color:var(--fg); font:inherit; }
+  .chip { display:inline-flex; gap:6px; align-items:center; padding:4px 9px; border:1px solid var(--frame); background:var(--panel); color:var(--fg); font:12px inherit; cursor:pointer; }
+  .chip[aria-pressed="false"] { opacity:.4; } .dot { width:10px; height:10px; display:inline-block; }
+  .mapbox { position:relative; } .mapcv { display:block; cursor:crosshair; max-width:100%; }
+  .maptip { position:absolute; display:none; pointer-events:none; background:var(--panel); border:1px solid var(--frame); padding:7px 9px; font-size:12px; max-width:260px; z-index:3; word-break:break-all; }
+</style></head><body><main>
+<h1>Freedom Fighters (2003, PC): reverse-engineering progress</h1>
+<p class="sub">Functions verified exact against the original executable by differential testing, and functions running as that code in a browser port. <a href="https://github.com/kaustubhxd/ReFreedomFighters">source</a></p>
+<div class="stats" id="stats"></div>
+<div class="mapbox" id="mapbox"></div>
+<p class="fine">Not affiliated with IO Interactive or Eidos. No game data is included: this page holds addresses, sizes and verification states only.</p>
+<script type="module">
+import { mountMap } from "./menu/progress-map.mjs";
+const p = await (await fetch("./menu/progress-public.json")).json(), f = p.functions, n = (x) => Number(x).toLocaleString("en-US"), w = (a, b) => (100 * a / b).toFixed(1);
+document.getElementById("stats").innerHTML =
+  `<div><b>${w(f.decompiledBytes, f.totalBytes)}%</b><span>decompiled, by code size (${n(f.decompiled)} of ${n(f.total)} functions)</span><div class="bar"><i style="width:${w(f.decompiledBytes, f.totalBytes)}%"></i></div></div>` +
+  `<div><b>${w(f.portedBytes, f.totalBytes)}%</b><span>ported into the browser game (${n(f.ported)} functions)</span><div class="bar"><i style="width:${w(f.portedBytes, f.totalBytes)}%"></i></div></div><div><span>updated ${p.updated}</span></div>`;
+mountMap(document.getElementById("mapbox"), new URL("./menu/map-data-public.json", location.href));
+</script></main></body></html>
