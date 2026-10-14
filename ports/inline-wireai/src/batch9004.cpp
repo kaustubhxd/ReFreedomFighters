@@ -1,4 +1,4 @@
-// batch9004.cpp - wire-ai thread (2026-10-13): CRagdoll2::InitIndices 0x644660 (name medium), part of CRagdoll2::Init's tree.
+// batch9004.cpp - wire-ai thread (2026-10-13): CRagdoll2::InitIndices 0x644660 (, name medium), part of CRagdoll2::Init's tree.
 #include "ff.h"
 
 // 0x644660 CRagdoll2::InitIndices(), thiscall, plain ret: the link (this+0x36) slot 0x2b4(bone id) gives the bone index of each of the 23

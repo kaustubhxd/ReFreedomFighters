@@ -14,7 +14,7 @@ extern "C" void THISCALL ext_4e0d00(float *v, float s);                         
 extern "C" void FASTCALL ext_4e0d40(float *out, const float *a, float s);             // vscalar3 out = a * s
 extern "C" void FASTCALL ext_451890(float *d, const float *v, float s);               // vaddscalar d += v * s
 
-// 0x542ee0 AdjustCone6 , fastcall: ECX = ia, EDX = ib, stack: ic, id, base matrix m, (unused), a, particle array; ret 0x18.
+// 0x542ee0 AdjustCone6 (), fastcall: ECX = ia, EDX = ib, stack: ic, id, base matrix m, (unused), a, particle array; ret 0x18.
 // Particles (0x34 bytes): position +0xc, mass +0x30. With A, B, C, D the four particles:
 //  Lq = vmtmul(D - A, m); returns when Lq.z < 0, or when Lq.z > |Lq.y * a| (as doubles) and Lq.z > 0 (inside). Otherwise the
 //  point is moved onto the wedge edge: t = (+-Lq.y * a - Lq.z) / (a * a + 1) by the sign of Lq.y (Lq.y >= 0: +); t > 0: Lq.z += t,

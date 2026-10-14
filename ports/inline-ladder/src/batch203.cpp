@@ -8,8 +8,9 @@ extern "C" float THISCALL ext_4602b0(u8 *self, const float *p, float t0, float *
 // thiscall (this is not read), three stack args, ret 0xc, float return in ST0.
 // A ParametricCurve on the stack (vtable 0x67f86c, the float at +0x34 preset to -1.0) is set to the Bezier segment of the
 // four points pts[0..3] (12 bytes apart) with arc-length step 0.1 (0x3dcccccd), then GetClosestPoint(p, 0.0, out, 10)
-// gives the closest point in out and its distance, which is returned. The callees are ParametricCurve::DefineBezier
-// (0x460100) and ParametricCurve::GetClosestPoint (0x4602b0); the PC build never reads GetClosestPoint's float argument.
+// gives the closest point in out and its distance, which is returned. a sibling engine build has the same body with
+// the names ParametricCurve::DefineBezier (0x460100) and ParametricCurve::GetClosestPoint (0x4602b0); the PC build
+// never reads GetClosestPoint's float argument.
 static float THISCALL getDistToSegment(void *self, float *out, const float *pts, const float *p) {
   (void)self;
   u32 curve[0x38 / 4];

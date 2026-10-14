@@ -50,7 +50,7 @@ static int crossing(u8 *f, float *last, float *pos, float *h) {
   return 1;
 }
 
-// 0x543a90 ConstrainedParticleSystem::CheckCollision3 , thiscall, no arguments, returns false (al = 0).
+// 0x543a90 ConstrainedParticleSystem::CheckCollision3() (), thiscall, no arguments, returns false (al = 0).
 // Only particle 5 (record [this+0xf] + 0x104, the head) is tested against the faces, as a point moving from its last position to its
 // position. The face list: [this+0x5d] +0x14 (none -> skip the pass); slot 0x4c(cookie) starts, slot 0x64(cookie) gives the next face.
 //  pass 1, each face with a crossing h: pos = h; the area 81 step 0x546fa0(out pos', pos, out vel', vel, N, 15) (vel' = vel without

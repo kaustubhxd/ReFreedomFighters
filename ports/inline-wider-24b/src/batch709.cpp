@@ -1,7 +1,7 @@
 // batch709.cpp - soldier AI, batch 709 (2026-10-11): the goal stack and the target-manager switch.
 // Goals are script states: a PState {u32 priority, u32 goal (a PPO state address), u32 data, u32 extra} in a
 // PStateQueue (count at actor +0x7ce, up to 16 records at +0x7d2, kept sorted by priority, highest last; GC names
-// PState/PStateQueue from ZFFActor::AddGoal ). The active goal is at +0x8d6, its data at +0x8da.
+// PState/PStateQueue from ZFFActor::AddGoal 80072b38). The active goal is at +0x8d6, its data at +0x8da.
 // GetStateNameFromAddr / GetStateAddrFromName convert between goal ids and the script's state names.
 #include "ff.h"
 

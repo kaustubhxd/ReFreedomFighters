@@ -14,7 +14,7 @@ extern "C" void THISCALL ext_4e0d00(float *v, float s);                         
 extern "C" void FASTCALL ext_4e0d40(float *out, const float *a, float s);           // vscalar3 out = a * s
 extern "C" void FASTCALL ext_451890(float *d, const float *v, float s);             // vaddscalar d += v * s
 
-// 0x5428f0 AdjustCone5(ix1, ix2, ix3, ix5, base, ax, ay, particles) , fastcall: ECX = ix1, EDX = ix2, stack ix3, ix5,
+// 0x5428f0 AdjustCone5(ix1, ix2, ix3, ix5, base, ax, ay, particles) (), fastcall: ECX = ix1, EDX = ix2, stack ix3, ix5,
 // base (3x3 matrix), ax, ay (unused here; Cone6 uses it), particles (0x34-byte records, position +0xc, mass +0x30); ret 0x18.
 //  - L = (x5 - x1) * transpose(base). Planar wedge |ax * L0| <= L2: return when (double)L2 > |(double)(ax * L0)| and L2 > 0 (inside),
 //    or when 0 > L2 (behind).

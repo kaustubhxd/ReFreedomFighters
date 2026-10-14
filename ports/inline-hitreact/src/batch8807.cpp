@@ -18,7 +18,7 @@ extern "C" void FASTCALL ext_4de040(float *m, const float *p, const float *q);  
 
 typedef void(THISCALL *vVP)(void *self, float *p);
 
-// 0x545c80 ConstrainedParticleSystem::GetParticlePos(int i, float* out) : out = particle i position (+0xc of the
+// 0x545c80 ConstrainedParticleSystem::GetParticlePos(int i, float* out) (): out = particle i position (+0xc of the
 // 0x34-byte record at [this+0xf]).
 static void THISCALL getParticlePos(u8 *self, s32 i, float *out) {
   u8 *p = *(u8 **)(self + 0xf);
@@ -29,7 +29,7 @@ static void THISCALL getParticlePos(u8 *self, s32 i, float *out) {
 }
 PCREG(545c80, getParticlePos);
 
-// 0x641e20 CRagdoll2::GetLocalPelvis(float* dir, float* pelvis) . Particle system at +0x17f.
+// 0x641e20 CRagdoll2::GetLocalPelvis(float* dir, float* pelvis) (). Particle system at +0x17f.
 //  pelvis = (p8 + p9) / 2; s = p9 - p8; feet = (p14 + p15) / 2; c = s x (feet - pelvis); pelvis += (feet - pelvis) * 0.1;
 //  dir = pelvis - feet with y = 0, negated when c.y < 0; l = |dir|; w = 1 (l <= 20), 1 - (l - 20) / 20 (20 < l < 40), 0 (l >= 40);
 //  pelvis and dir to the link's local space (the object at +0x36, slots 0x8c / 0x90); dir += ((0, 0, 1) - dir) * w.
@@ -77,7 +77,7 @@ static void THISCALL getLocalPelvis(u8 *self, float *dir, float *pelvis) {
 }
 PCREG(641e20, getLocalPelvis);
 
-// 0x641010 CRagdoll2::CalcGroundOffset(float* mat, float* pos) : the actor's matrix and position from the ragdoll.
+// 0x641010 CRagdoll2::CalcGroundOffset(float* mat, float* pos) (): the actor's matrix and position from the ragdoll.
 //  GetLocalPelvis(dir, pos). t = (engine clock [0x70039c]+0x40 - start +0x2a) / 1024 s. While t < 1: dir = mat row 0 + ((0, 0, 1)
 //  - mat row 0) * (1 - t) and pos -= (+0x8 offset) * (1 - t) (a one-second blend from the pose the ragdoll started in). Then the
 //  heading turns from (0, 0, 1) toward dir by at most 0.349066 ([0x6c2898]) x frame time ([engine+0x48]) (vangpul) and mat =

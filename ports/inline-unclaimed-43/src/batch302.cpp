@@ -1,5 +1,5 @@
 // batch302.cpp - ZBoneModifyBase::CalcCenSize(const ZBone *a, const SBoneDefinition *b) (area 43, 2026-10-12).
-// 0x645660, thiscall (this = ECX), two stack arguments, ret 8. (name map, high). Frame is EBP-relative.
+// 0x645660, thiscall (this = ECX), two stack arguments, ret 8.  (name map, high). Frame is EBP-relative.
 // Count = dword at this+0x11 (unaligned). Each loop step k: tmp1 = mat(a_k) * vec(b_k) + trans(a_k); vb = b_k+0x10;
 // TransformBox(a_k, vb); tmp2 = tmp1 - vb; tmp1 += vb; then the min/max pair (max/min of the steps, copy at k == 0).
 // After the loop: centre at this+0x275 = (max - min) * 0.5, and this+0x281 = max - centre.

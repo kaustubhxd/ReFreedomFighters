@@ -1,0 +1,72 @@
+// batch31096.cpp - assert-hook rows and a /GS-protected thunk (asm, stack exact).
+#include "ff.h"
+
+extern "C" void ext_633654(void);
+
+asm(
+    ".text\n"
+    ".globl thunk601520\n"
+    "thunk601520:\n"
+    "  movl 0x700390, %ecx\n"
+    "  pushl $0x30\n"
+    "  pushl $0x6b9750\n"
+    "  movl (%ecx), %eax\n"
+    "  call *0x20(%eax)\n"
+    "  pushl $0x6b97ac\n"
+    "  pushl $0x69c6b0\n"
+    "  pushl %eax\n"
+    "  movl (%eax), %ecx\n"
+    "  call *0x2c(%ecx)\n"
+    "  movl 0x7003b0, %eax\n"
+    "  addl $0xc, %esp\n"
+    "  testl %eax, %eax\n"
+    "  je 1f\n"
+    "  call *%eax\n"
+    "  xorl %eax, %eax\n"
+    "  ret\n"
+    "1:\n"
+    "  int3\n"
+    ".globl thunk4744c0\n"
+    "thunk4744c0:\n"
+    "  movl 0x7003b0, %eax\n"
+    "  testl %eax, %eax\n"
+    "  je 1f\n"
+    "  call *%eax\n"
+    "  xorl %eax, %eax\n"
+    "  ret $0x1c\n"
+    "1:\n"
+    "  int3\n"
+    ".globl thunk466830\n"
+    "thunk466830:\n"
+    "  pushl %ebp\n"
+    "  movl %esp, %ebp\n"
+    "  subl $0x10, %esp\n"
+    "  movl 0x6f5630, %eax\n"
+    "  xorl %ebp, %eax\n"
+    "  movl %eax, -4(%ebp)\n"
+    "  movl 0x6c(%ecx), %eax\n"
+    "  pushl %esi\n"
+    "  movl 0xc(%ebp), %esi\n"
+    "  pushl %ecx\n"
+    "  pushl 8(%ebp)\n"
+    "  movl (%eax), %edx\n"
+    "  leal -0x10(%ebp), %ecx\n"
+    "  pushl %ecx\n"
+    "  movl %eax, %ecx\n"
+    "  pushl %esi\n"
+    "  movl 0x10(%edx), %eax\n"
+    "  call *%eax\n"
+    "  movl -4(%ebp), %ecx\n"
+    "  xorl %ebp, %ecx\n"
+    "  popl %esi\n"
+    "  call ext_633654\n"
+    "  movl %ebp, %esp\n"
+    "  popl %ebp\n"
+    "  ret $8\n");
+
+extern "C" void thunk601520(void);
+extern "C" void thunk4744c0(void);
+extern "C" void thunk466830(void);
+PCREG(601520, thunk601520);
+PCREG(4744c0, thunk4744c0);
+PCREG(466830, thunk466830);

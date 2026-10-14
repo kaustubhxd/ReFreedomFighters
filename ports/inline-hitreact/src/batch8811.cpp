@@ -1,4 +1,4 @@
-// batch8811.cpp - hit-reaction thread, batch 8811: the ragdoll elliptic-cone joint limit AdjustCone4 , called by
+// batch8811.cpp - hit-reaction thread, batch 8811: the ragdoll elliptic-cone joint limit AdjustCone4 (), called by
 // ConstrainedParticleSystem::ZeroOut 0x547a70.
 #include "ff.h"
 
@@ -14,7 +14,7 @@ extern "C" void THISCALL ext_4e0d00(float *v, float s);                         
 extern "C" void FASTCALL ext_4e0d40(float *out, const float *a, float s);          // vscalar3 out = a * s
 extern "C" void FASTCALL ext_451890(float *d, const float *v, float s);            // vaddscalar d += v * s
 
-// 0x542310 AdjustCone4 , fastcall: ECX = joint particle ia, EDX = ib, stack: ic, id, const float* M (3x3 cone frame),
+// 0x542310 AdjustCone4 (), fastcall: ECX = joint particle ia, EDX = ib, stack: ic, id, const float* M (3x3 cone frame),
 // float a, float b (the cone's x / y slopes), u8* parts (0x34-byte particle records: position +0xc, mass +0x30); ret 0x18.
 // A = parts[ia] is the cone apex; the triangle A, B, C (parts[ib], parts[ic]) carries the frame; D = parts[id] is the limited end.
 //  l = M^T (D - A); s = (l.x a, l.y b, 0). Inside the cone (l.z^2 >= |s|^2 and l.z > 0, ordered compares) -> nothing.

@@ -17,7 +17,7 @@ typedef u8 *(THISCALL *vNext)(void *self, void *cookie);
 
 #define SAU ((void *)0x711d08)   // g_sSauColi: the contact record CollideSolidCappedCylinderAndTriangle fills
 
-// 0x5440b0 ConstrainedParticleSystem::CollideLineBetweenParticles3 , thiscall, no arguments.
+// 0x5440b0 ConstrainedParticleSystem::CollideLineBetweenParticles3() (), thiscall, no arguments.
 //  The face list: [this+0x5d] +0x14 (none -> return); slot 0x4c(cookie) starts, slot 0x64(cookie) returns the next face record (0: end).
 //  Per face f (the triangle at f+0x34, the geom id at f+0):
 //  - neck: A = p1 + (p1 - p5) * 0.5 and its displacement QA = q1 + (q1 - q5) * 0.5 (p = particle position +0xc, q = +0x24);

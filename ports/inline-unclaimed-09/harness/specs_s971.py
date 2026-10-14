@@ -1,0 +1,25 @@
+"""specs_s971.py - area 56 band, claim A37 (0x532a80).
+
+this is a 0x40-byte object of random bytes; flags is random (the low bit set in about half the cases). 0x5329f0 and 0x634273 are
+hooked (recording, plain ret). ret='eax' (returns this)."""
+from pilot import S
+
+
+def _gen(c):
+    def h(e2, r):
+        e2.calllog.append(('H5329f0', e2.reg('ecx')))
+        e2.ret(argbytes=0)
+
+    def hfree(e2, r):
+        e2.calllog.append(('Free634273', e2.arg32(0), e2.arg32(1)))
+        e2.ret(argbytes=0)
+
+    c.emu.hook(0x5329f0, h)
+    c.emu.hook(0x634273, hfree)
+    a = c.emu.alloc(0x40, 4)
+    c.emu.wbytes(a, bytes(c.rng.getrandbits(8) for _ in range(0x40)))
+    return [a, c.rng.getrandbits(32)]
+
+
+S(0x532a80, 'unnamed 0x532a80 (unknown) thiscall', 'thiscall', None, ret='eax', gen=_gen,
+  note='unclaimed-56 A37; 0x5329f0 and 0x634273 hooked (GUESS stubs)')

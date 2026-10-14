@@ -1,5 +1,5 @@
 // batch8815.cpp - hit-reaction thread, batch 8815: the ragdoll limb capsule against a level triangle 0x544330
-// (CollideSolidCappedCylinderAndTriangle) and its segment-segment distance 0x5453c0 (DistLineLineVar).
+// (CollideSolidCappedCylinderAndTriangle, ) and its segment-segment distance 0x5453c0 (DistLineLineVar, ).
 #include "ff.h"
 
 extern "C" void FASTCALL ext_43e920(float *d, const float *a, const float *b);                     // PSVECSubtract d = a - b
@@ -24,7 +24,7 @@ static inline float negx(float x) {
   return bitsf(fbits(t) ^ 0x80000000u);
 }
 
-// 0x5453c0 DistLineLineVar(p0, p1, q0, q1, float& tP, float& sQ, float& maxD, float& dist, float* dir) , fastcall: ECX = p0,
+// 0x5453c0 DistLineLineVar(p0, p1, q0, q1, float& tP, float& sQ, float& maxD, float& dist, float* dir) (), fastcall: ECX = p0,
 // EDX = p1, stack q0, q1, tP, sQ, maxD, dist, dir; ret 0x1c; returns al. r2 = maxD^2; v1 = p0 - q0, v2 = p1 - p0, v3 = q0 - q1 (exe
 // subtract). d21 = v2.v1, d32 = v3.v2, d22 = v2.v2, d33 = v3.v3, den = d33 d22 - d32^2; |den| (double) < 1e-6 (double 0x67fad0) -> false.
 // d31 = v3.v1; sQ = (d32 d21 - d31 d22) / den (stored); |d22| < 1e-6 -> false. tP = -((sQ d32 + d21) / d22) (stored); tP < 0 or
@@ -114,7 +114,7 @@ static inline bool clipEdge(const float *p, const float *pt, const float *a, con
 }
 
 // 0x544330 CollideSolidCappedCylinderAndTriangle(const float* a, const float* b, float r, SSauColi* out, const SFastBoxColiTri* tri)
-// , fastcall: ECX = a, EDX = b, stack r, out, tri; ret 0xc; returns al. Triangle record: +4 normal n, +0x34 v0, +0x40 v1,
+// (), fastcall: ECX = a, EDX = b, stack r, out, tri; ret 0xc; returns al. Triangle record: +4 normal n, +0x34 v0, +0x40 v1,
 // +0x4c v2, +0x58 / +0x64 / +0x70 edge perps (through v1 / v0 / v0). out: +0 n, +0xc axis parameter c, +0x10 depth.
 // 1. Slab |x.n - v0.n| <= r clips [0, 1] (both ends above or both below -> false; crossings clipped when |db - da| > 1e-4).
 // 2. The edge planes +0x64 (v0), +0x70 (v0), +0x58 (v1): see clipEdge.

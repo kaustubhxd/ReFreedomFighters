@@ -1,6 +1,6 @@
 // batch705.cpp - soldier AI, batch 705 (2026-10-11): helpers of CCheckVisible::FrameUpdate.
 // These four have no name-map row; the names are the GameCube CCheckVisible methods whose signatures and bodies match
-// ( GetSeerPosDir, GetObjectPosSneak, UpdateVisible), inferred.
+// (GC ELF GetSeerPosDir, GetObjectPosSneak, UpdateVisible), inferred.
 // Geom virtual slots used (PC ZGEOM/ZIKLNKOBJ vtable, names from the name map): 0x84 GetRootPoint(float*),
 // 0x88 GetRootVect(float*), 0x98 GetRootMatPos(float* mat, float* pos), 0x2ac ZLNKOBJ::GetFocusMatPos(mat, pos),
 // 0x390 ZIKLNKOBJ::GetIKBoneMatPos(int bone, mat, pos), 0x3a0 head bone index (bone 0x17, unnamed),

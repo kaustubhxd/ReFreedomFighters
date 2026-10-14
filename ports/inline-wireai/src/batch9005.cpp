@@ -1,4 +1,4 @@
-// batch9005.cpp - wire-ai thread (2026-10-13): ConstrainedParticleSystem::ComputeDistances 0x544e10 (name low), the rest
+// batch9005.cpp - wire-ai thread (2026-10-13): ConstrainedParticleSystem::ComputeDistances 0x544e10 (, name low), the rest
 // lengths of the ragdoll's constraints, part of CRagdoll2::Init's tree (CRagdoll2::ComputeParticlePositions 0x6411b0 calls it on the
 // bind pose).
 #include "ff.h"
