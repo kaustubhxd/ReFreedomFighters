@@ -82,6 +82,15 @@ decomp) is for the maintainer to choose.
 
 Live progress page: https://kaustubhxd.github.io/ReFreedomFighters/
 
+## Progress
+
+Of 12,955 functions in the PC executable (live numbers on the [progress page](https://kaustubhxd.github.io/ReFreedomFighters/)):
+
+| | by count | by code size |
+|---|---|---|
+| Verified (checked against the original on two seeds) | ![](https://geps.dev/progress/64.2) 64.2% | ![](https://geps.dev/progress/51.8) 51.8% |
+| Ported into the browser game | ![](https://geps.dev/progress/3) 3.0% | ![](https://geps.dev/progress/4.9) 4.9% |
+
 ## AI assistance
 
 Parts of the documentation, decoders and tools were written with the help of an AI coding assistant (Claude), under the
