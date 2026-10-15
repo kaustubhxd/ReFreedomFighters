@@ -41,6 +41,6 @@ static void THISCALL fn4d2030(u8 *t, s32 i) {
     ext_634273((void *)p, 4);
     wr(t + 0x14, 0);
   }
-  wr(t + 0x10, 1);
+  wr(t + 0x10, 0);
 }
 PCREG(4d2030, fn4d2030);

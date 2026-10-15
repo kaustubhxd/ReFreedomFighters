@@ -16,7 +16,7 @@ typedef u8 *(THISCALL *vPU)(void *self, u32 a);
 static inline float neg(float x) { volatile float v = x; return bitsf(fbits(v) ^ 0x80000000u); }   // xorps with the sign mask 0x67af40 (volatile: clang must not fold the flip into a product)
 
 // 0x547080 PullTriangleCyl2(const float[2]* tri, float, float, float, float* PA, float* PB, float wA, float wB, float* QA, float* QB,
-// SSauColi* sau, bool silent, u32 id) (). fastcall: ECX = tri (not read on PC), EDX = PA, the rest on the stack; ret 0x2c.
+// SSauColi* sau, bool silent, u32 id) (GameCube reference). fastcall: ECX = tri (not read on PC), EDX = PA, the rest on the stack; ret 0x2c.
 // sau: +0 normal n, +0xc t (where along the capsule A..B), +0x10 depth. PA / PB are the capsule end positions, QA / QB their
 // displacements (velocities), wA / wB their inverse masses.
 //  den = (1 - t) wA (1 - t) + t wB t; |den| (double) < 0.001 -> nothing. inv = 1 / den, dd = depth inv.

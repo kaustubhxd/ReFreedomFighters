@@ -7,7 +7,7 @@ extern "C" void THISCALL ext_59a860(void *osd, const char *text, u32 changed);  
 static inline u8 *sys() { return G(u8 *, 0x70039c); }
 
 // Action strings in table order (index 1..16). Index 17 reuses the stored text at +0x9df, index 0 returns at once,
-// anything above 17 shows "<debug message>" (0x6ad0d8).
+// anything above 17 shows "Henning Fix This" (0x6ad0d8).
 static const char *const kNames[17] = {
     (const char *)0x6a73b4,  // 1 PickUp
     (const char *)0x6ad018,  // 2 RaiseFlag
@@ -38,7 +38,7 @@ static void THISCALL displayUseAction(u8 *self) {
     return;
   const char *text;
   if (cur > 0x11) {
-    text = (const char *)0x6ad0d8;   // "<debug message>"
+    text = (const char *)0x6ad0d8;   // "Henning Fix This"
   } else if (cur == 0x11) {
     text = *(const char **)(self + 0x9df);
     if (!text)

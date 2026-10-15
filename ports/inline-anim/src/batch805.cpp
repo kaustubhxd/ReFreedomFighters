@@ -15,7 +15,7 @@ struct PMF { u32 w[4]; };
 extern "C" void FASTCALL ext_4de7a0(float *m);                    // mreset
 extern "C" void FASTCALL ext_4de420(float *d, const float *s);     // mcpy
 
-// ZTARGET::Clear() [high].
+// ZTARGET::Clear() [high, GameCube reference].
 static void THISCALL ZTARGET_Clear(u8 *t) {
   ext_4de7a0((float *)(t + 1));
   F32(t, 0x25) = 0;
@@ -30,7 +30,7 @@ static void THISCALL ZTARGET_Clear(u8 *t) {
 }
 PCREG(466220, ZTARGET_Clear);
 
-// ZTARGET::Enable(bool) [high]. Returns the previous byte in AL (the exe loads it; GC's is void).
+// ZTARGET::Enable(bool) [high, GameCube reference]. Returns the previous byte in AL (the exe loads it; GC's is void).
 static u8 THISCALL ZTARGET_Enable(u8 *t, u8 on) {
   u8 old = F8(t, 0);
   F8(t, 0) = on;
@@ -38,7 +38,7 @@ static u8 THISCALL ZTARGET_Enable(u8 *t, u8 on) {
 }
 PCREG(466600, ZTARGET_Enable);
 
-// ZTARGET::SetMatPosGeom(const float* mat, const float* pos, unsigned geom) [low map confidence; the
+// ZTARGET::SetMatPosGeom(const float* mat, const float* pos, unsigned geom) [low map confidence, GameCube reference; the
 // body fits]. A null mat / pos stores 0x7fffffff in the first word as "not set".
 static void THISCALL ZTARGET_SetMatPosGeom(u8 *t, const float *mat, const float *pos, u32 geom) {
   if (!mat) F32(t, 1) = 0x7fffffff;
@@ -55,11 +55,11 @@ static void THISCALL ZTARGET_SetMatPosGeom(u8 *t, const float *mat, const float 
 }
 PCREG(467aa0, ZTARGET_SetMatPosGeom);
 
-// ZTARGET::SetCallBack(member-function pointer by value) [low; body fits].
+// ZTARGET::SetCallBack(member-function pointer by value) [low, GameCube reference; body fits].
 static void THISCALL ZTARGET_SetCallBack(u8 *t, PMF cb) { *(PMF *)(t + 0x3d) = cb; }
 PCREG(4678e0, ZTARGET_SetCallBack);
 
-// ZTARGET::CallBackAndRemove(ZIKLNKOBJ* obj) [medium]: while a callback is set, clear it and call it
+// ZTARGET::CallBackAndRemove(ZIKLNKOBJ* obj) [medium, GameCube reference]: while a callback is set, clear it and call it
 // on obj + adjustment (no stack arguments in the PC build). A callback may set a new one, which then runs too.
 static void THISCALL ZTARGET_CallBackAndRemove(u8 *t, u8 *obj) {
   for (;;) {
@@ -72,7 +72,7 @@ static void THISCALL ZTARGET_CallBackAndRemove(u8 *t, u8 *obj) {
 }
 PCREG(4658d0, ZTARGET_CallBackAndRemove);
 
-// ZTARGET::SetTime(float T, bool out) [low; body fits]. Re-times the blend so the current blend
+// ZTARGET::SetTime(float T, bool out) [low, GameCube reference; body fits]. Re-times the blend so the current blend
 // fraction is kept: frac = elapsed / old T (blending in, start >= 0) or 1 - elapsed / old T (blending out). Then the
 // new duration is stored and the start time is moved back so that frac is reached at the new speed, in the
 // requested direction; blending out also clears +0x39. Times are clock ticks ([0x70039c]+0x40) / 1024.

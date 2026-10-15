@@ -1,5 +1,5 @@
 // batch309.cpp - ZPlayer::ForceLHandItem(ZItem *item, bool flag) (area 43, 2026-10-12). 0x483660.
-// (name map, high). thiscall (this = ECX), two stack arguments (item, flag as a byte), ret 8.
+// GameCube reference (name map, high). thiscall (this = ECX), two stack arguments (item, flag as a byte), ret 8.
 // Body: r = this slot 0x514(). If flag == 0 and r != 0: this slot 0x45c(r == 1 ? 5 : 9, 0); return.
 // Else if item == 0: this slot 0x524(0); return. Else r2 = engine(g_pSysInterface->[0x9b]) slot 0x4c(item);
 // this slot 0x524(r2); item slot 0x2d0(0, 0).

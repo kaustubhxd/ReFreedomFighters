@@ -38,10 +38,9 @@ static inline u8 *crossQuads(u8 *list, int count, float *a, float *b, float *t, 
   return hit;
 }
 
-// 0x52a970 ZPathfinder3::CheckLineAgainstGates(float*, float*, float&) [map high; ]. Same over the gates,
+// 0x52a970 ZPathfinder3::CheckLineAgainstGates(float*, float*, float&) [map high; GameCube reference]. Same over the gates,
 // best t starts at 1.0 (within the segment only).
 static u8 *THISCALL checkLineGates(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x3a), *(int *)(self + 0x36), a, b, t, 1.0f);
 }
 PCREG(52a970, checkLineGates);
-

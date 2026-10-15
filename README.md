@@ -76,7 +76,7 @@ None of this is hard to regenerate if you own the game: run the decoders on your
 
 ## Project type
 
-Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 8,093 functions from the
+Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 8,769 functions from the
 PC executable (see "Verified C++ ports"). This is not a full decompilation of the game. The awesome-list entry type (tool or
 decomp) is for the maintainer to choose.
 
@@ -88,7 +88,7 @@ Of 12,955 functions in the PC executable (live numbers on the [progress page](ht
 
 | | by count | by code size |
 |---|---|---|
-| Verified (checked against the original on two seeds) | ![](https://geps.dev/progress/64.2) 64.2% | ![](https://geps.dev/progress/51.8) 51.8% |
+| Verified (checked against the original on two seeds) | ![](https://geps.dev/progress/69.7) 69.7% | ![](https://geps.dev/progress/56.7) 56.7% |
 | Ported into the browser game | ![](https://geps.dev/progress/3) 3.0% | ![](https://geps.dev/progress/4.9) 4.9% |
 
 ## AI assistance
@@ -110,8 +110,14 @@ in the game itself.
 
 ## Verified C++ ports
 
-`ports/` holds C++ ports of 8,093 functions from the PC executable, each checked against the original code by running
+`ports/` holds C++ ports of 8,769 functions from the PC executable, each checked against the original code by running
 both on random inputs and comparing results, memory writes and faults. `RESULTS.tsv` lists every verified address with
 its name and folder. Counting rule: a function counts only when both seed 1 and seed 2 ran 1000 cases each, with status
-exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (about 60 verified functions are held back for that reason);
+exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (95 verified functions are held back for that reason);
 thunks, SEH funclets and functions whose specs hook a callee by address are not separated out in this copy.
+
+### Verification status (15 October 2026)
+
+The local project has 9,031 functions with retained two-seed results; 8,769 have publishable source here. Another 95 verified functions are held back in mixed batches, and 170 have no matching source file in the export. The browser port links 384 verified functions.
+
+A checker bug mapped the emulated thread environment block at address zero, which could hide null-pointer faults. A corrected shared harness has been tested, but rollout and full re-verification are pending. These totals describe existing results and have not yet been recertified with that fix.

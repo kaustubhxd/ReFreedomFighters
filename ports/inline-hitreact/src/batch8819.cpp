@@ -47,7 +47,7 @@ static void THISCALL getSize(u8 *g, u32 *out) {
 }
 PCREG(4db7c0, getSize);
 
-// 0x545950 ConstrainedParticleSystem::FindFaces() (), thiscall, no arguments.
+// 0x545950 ConstrainedParticleSystem::FindFaces() (GameCube reference), thiscall, no arguments.
 //  Box lo / hi over every particle's position (+0xc) and last position (+0), from lo = 1e7 / hi = -1e7; grown by 15 [0x680a80];
 //  centre c = (lo + hi) * 0.5, half h = (hi - lo) * 0.5, orientation the identity (mreset).
 //  The box query [this+0x5d]: none yet -> new(0x93) and ZFastBoxColi1(obj, [render manager +0xadc], 10.0, 0x20, 0) (a failed new

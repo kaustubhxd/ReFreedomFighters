@@ -42,7 +42,7 @@ static THISCALL void ZCamHelper_Init2(u8 *self) {
   if (!at<u8>(G(u8 *, 0x70039c), 0x6c)) at<u32>(self, 0xe1c) = 3;
   u8 *res = vcall<u8 *>(SYS9B, 0x58, at<u32>(self, 0xc6d));
   if (!res) {
-    init2_log(0x136, 0x2c, (const char *)0x6b4ef8);  // "<debug message>"
+    init2_log(0x136, 0x2c, (const char *)0x6b4ef8);  // "WARNING: ZFFHERO::ClassInit2() ... No Main camera !!!"
     return;
   }
   vcall<void>(res, 0x80, self + 0xcb9, self + 0xcad);

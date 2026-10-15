@@ -30,7 +30,7 @@ static void THISCALL fn58bc60(u8 *self, u8 *entry) {
   if (eq) {
     vec[1] = 0;
     vec[2] = 0x41f00000u;
-    vec[0] = 0xc1bd0000u;
+    vec[0] = 0xc1bc0000u;
     if (*(u8 *)(self + 0xeec) == 0) vec[0] = 0xc1a00000u;
     axisAngle2[0] = 0xc1f00000u; axisAngle2[1] = 0x3f800000u; axisAngle2[2] = 0; axisAngle2[3] = 0;
   } else {

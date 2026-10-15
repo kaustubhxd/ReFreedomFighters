@@ -1,6 +1,6 @@
 #include "ff.h"
 extern "C" void FASTCALL ext_4dfb10(const float*,const float*,float,float*);
-// qpul(float* out, const float* a, const float* b, float t) [medium]. __fastcall (out ECX, a EDX), ret 8.
+// qpul(float* out, const float* a, const float* b, float t) [medium, GameCube reference]. __fastcall (out ECX, a EDX), ret 8.
 // Quaternion blend: dot(a, b) > 0.9 -> per-component lerp a + (b - a) t; otherwise a is flipped to the
 // hemisphere of b (when |b - a|^2 > |b + a|^2) and QuatSlerp(a', b, t, out) is used.
 static void FASTCALL qpul(float *out, const float *a, const float *b, float t) {
@@ -33,4 +33,3 @@ static void FASTCALL qpul(float *out, const float *a, const float *b, float t) {
   ext_4dfb10(tmp, b, t, out);
 }
 PCREG(4df040, qpul);
-

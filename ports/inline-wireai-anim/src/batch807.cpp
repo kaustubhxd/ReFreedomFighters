@@ -9,7 +9,7 @@
 
 struct PMF { u32 w[4]; };
 
-// ZTARGET::Save(ZSaveGame* s, const ZIKLNKOBJ* obj) [high]. Save-stream vtable: +0x60 byte, +0x70 matrix,
+// ZTARGET::Save(ZSaveGame* s, const ZIKLNKOBJ* obj) [high, GameCube reference]. Save-stream vtable: +0x60 byte, +0x70 matrix,
 // +0x68 vec3, +0x4c float, +0x3c dword. The callback is saved as an id: obj->vt[0x3bc](callback) (0 = none).
 // Returns false (AL = 0).
 static bool THISCALL ZTARGET_Save(u8 *t, void *s, void *obj) {
@@ -26,7 +26,7 @@ static bool THISCALL ZTARGET_Save(u8 *t, void *s, void *obj) {
 }
 PCREG(467850, ZTARGET_Save);
 
-// ZTARGET::Load(ZLoadGame* l, const ZIKLNKOBJ* obj) [high]. Load-stream vtable: +0x68 byte*, +0x74 matrix,
+// ZTARGET::Load(ZLoadGame* l, const ZIKLNKOBJ* obj) [high, GameCube reference]. Load-stream vtable: +0x68 byte*, +0x74 matrix,
 // +0x6c vec3, +0x50 float*, +0x40 dword*. The callback id is turned back into a member-function pointer by
 // obj->vt[0x3c0] (returns the 16-byte struct through a hidden pointer). Returns false.
 static bool THISCALL ZTARGET_Load(u8 *t, void *l, void *obj) {
@@ -45,7 +45,7 @@ static bool THISCALL ZTARGET_Load(u8 *t, void *l, void *obj) {
 }
 PCREG(466eb0, ZTARGET_Load);
 
-// ZIKHAND::Save / Load [high]: the target, then 5 bytes at +0x51 (item id + attached flag
+// ZIKHAND::Save / Load [high, GameCube reference / 80187988]: the target, then 5 bytes at +0x51 (item id + attached flag
 // +0x55) and 12 bytes at +0x5a (item offset) through stream vt +0x10 (save) / +0x18 (load). Return true.
 extern "C" bool THISCALL ext_467850(void *t, void *s, void *obj);
 extern "C" bool THISCALL ext_466eb0(void *t, void *l, void *obj);
@@ -64,8 +64,8 @@ static bool THISCALL ZIKHAND_Load(u8 *self, void *l, void *obj) {
 }
 PCREG(474730, ZIKHAND_Load);
 
-// ZIKHAND::AttachItem(ZIKLNKOBJ* obj, unsigned itemId) [medium; the string names it]. Returns the
-// previous item id (+0x51). Same id again: logs "<debug message>"
+// ZIKHAND::AttachItem(ZIKLNKOBJ* obj, unsigned itemId) [medium, GameCube reference; the string names it]. Returns the
+// previous item id (+0x51). Same id again: logs "NOTIFY: ZIKHAND::AttachItem tried to attach same item twice!"
 // (zlnkwhands.cpp line 0x4d) and changes nothing. Item lookup: [[0x70039c]+0x9b]->vt[0x58](id).
 //   Attach (id resolves): flag +0x55 = 1; item->vt[0x2f0](scene->vt[0x4c](obj, scene+0xadc, 1)); obj->vt[0x290](
 //   item geom, bone, 0, offset) where bone = dword +0x56 and the offset is (0, -4, 0) only for bone 0x11; the item

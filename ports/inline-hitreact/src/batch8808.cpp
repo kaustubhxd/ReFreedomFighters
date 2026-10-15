@@ -15,7 +15,7 @@ extern "C" void THISCALL ext_4e0d00(float *v, float s);                         
 typedef double(VECTORCALL *libm2)(double, double);
 static inline double crt_pow(double x, double y) { return (*(libm2 *)0x67634c)(x, y); }   // exe IAT, as the original calls it
 
-// 0x546320 ConstrainedParticleSystem::Move(float dt, bool inWater, float waterLevel) (), result in ST0.
+// 0x546320 ConstrainedParticleSystem::Move(float dt, bool inWater, float waterLevel) (GameCube reference), result in ST0.
 // Particle records (0x34 bytes) at [this+0xf], count +0x28: +0 last position copy, +0xc position, +0x18 old position, +0x24 velocity
 // (displacement per 0.02 s), +0x30 mass (10000 = fixed). Globals: time step 0.02 [0x6ec484], drag 0.01 [0x6ec488], gravity 1500 [0x6ec3cc].
 //  - busy flag +0x1b: assert hook (int3 without one), return 0.

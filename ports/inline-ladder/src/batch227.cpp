@@ -5,13 +5,13 @@
 
 extern "C" long double FASTCALL ext_44c840(float *v);   // vnorm (old length in ST0)
 
-// 0x467d00 ZIKLNKOBJ::UpdateFacing() [high]. With flag 0x200000 in +0x136 and a facing target geom ref
+// 0x467d00 ZIKLNKOBJ::UpdateFacing() [GameCube reference, high]. With flag 0x200000 in +0x136 and a facing target geom ref
 // +0x1a6 that resolves (database slot 0x58): unless own slot 0x324(0) is true and slot 0x320(0) lacks bit 0x200 (the
 // actor is busy with something else, inference), take the target's origin (slot 0x84) into the actor's local space
 // (own slot 0x8c), flatten (y = 0) and normalise (vnorm). With z' = -z and x' = -x of that direction:
 // z' < -0.5 (target behind) picks "Turn_180_*_Quick", else z' < 0.5 picks "Turn_90_*_Quick", else nothing;
 // "Left" when x' < 0 (ordered), else "Right". The clip comes from own slot 0x21c (FindBestAnim) and plays with own
-// slot 0x230(anim, 1); a missing clip logs "<debug message>" through the debug logger
+// slot 0x230(anim, 1); a missing clip logs "WARNING: ZIKLNKOBJ %s does not have animation %s" through the debug logger
 // at 0x700390 (slot 0x20(file, 0x2d4) gives the printer, its slot 0x30 is cdecl (printer, fmt, name, clip)).
 static void THISCALL ikUpdateFacing(u8 *self) {
   if (!(U32(self, 0x136) & 0x200000))

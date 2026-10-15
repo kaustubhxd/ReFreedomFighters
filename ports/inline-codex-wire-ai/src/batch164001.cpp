@@ -20,7 +20,7 @@ static inline void *db() { return *(void **)(*(u8 **)0x70039c + 0x9b); }
 static void sound_warn(u32 line) {
   void *log = vcall<void *>(*(void **)0x700390, 0x20, (const char *)0x6ae6a0, line);
   typedef void(__attribute__((cdecl)) * printf_t)(void *, const char *);
-  (*(printf_t *)(*(u8 **)log + 0x2c))(log, (const char *)0x68aec4);   // "<debug message>"
+  (*(printf_t *)(*(u8 **)log + 0x2c))(log, (const char *)0x68aec4);   // "WARNING: undefined sound event"
 }
 
 // Team test used by Shot and FootStep: bit (source team index) must be set in the team mask of `team`.

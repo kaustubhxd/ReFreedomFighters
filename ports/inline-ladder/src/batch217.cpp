@@ -8,7 +8,7 @@ extern "C" void THISCALL ext_467410(void *handPart, u32 hero, u32 zero, Quad217 
 
 static inline void *db217() { return (void *)U32(G(u32, 0x70039c), 0x9b); }
 
-// 0x5df8b0 ZFFActionDropC4::CallBack() [medium; slot 3], AL = 0. +8 hero, +0xc hand. The C4 is the hand's
+// 0x5df8b0 ZFFActionDropC4::CallBack() [GameCube reference, medium; slot 3], AL = 0. +8 hero, +0xc hand. The C4 is the hand's
 // item (hand slot 0x10); GeomToRef(item) (unused); 0x467410 on hand+4 (hero, 0, {0,0,0,-1}); hand slot 8(hero, 0)
 // empties the hand; item slot 0x2d0(3, 0) (drop mode 3, inference: "placed"); hero slot 0x4f4(item); then item slot
 // 0x2f0(GeomToRef(hero), 0, 1) (the owner is set to the hero; item vtable read before the database call).

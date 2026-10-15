@@ -1,0 +1,20 @@
+// batch66059.cpp - cascade s4 batch 66059: 0x4bd720 (tier F row).
+#include "ff.h"
+
+typedef void(THISCALL *v1_t)(void *, u32);
+
+static inline u32 rd(u8 *p) { return *(u32 *)p; }
+static inline void wr(u8 *p, u32 v) { *(u32 *)p = v; }
+
+// 0x4bd720, thiscall(s) ret 4, returns al = 1 (this = t): t[4] &= ~0x40; s->slot 0x48(&v); t[0x48] = v; then s->slot 0x48 -> t+0x4c, 0x50, 0x54; slot 0x50 -> t+0x5c .. 0x70 (step 4); slot 0x48 -> t+0x74, 0x78; slot 0x50 -> t+0x80, 0x84, 0x7c.
+static u8 THISCALL fn4bd720(u8 *t, u8 *s) {
+  u32 v;
+  wr(t + 4, rd(t + 4) & 0xffffffbf);
+  (*(v1_t **)s)[0x48 / 4](s, (u32)&v);
+  wr(t + 0x48, v);
+  static const u8 offs[17] = {0x4c, 0x50, 0x54, 0x5c, 0x60, 0x64, 0x68, 0x6c, 0x70, 0x74, 0x78, 0x80, 0x84, 0x7c};
+  static const u16 slots[14] = {0x48, 0x48, 0x48, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x48, 0x48, 0x50, 0x50, 0x50};
+  for (int i = 0; i < 14; i++) (*(v1_t **)s)[slots[i] / 4](s, (u32)(t + offs[i]));
+  return 1;
+}
+PCREG(4bd720, fn4bd720);

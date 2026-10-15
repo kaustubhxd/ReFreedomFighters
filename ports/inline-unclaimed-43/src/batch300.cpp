@@ -1,4 +1,4 @@
-// batch300.cpp - ZLNKOBJ::GetDefaultBones(ZBone *out) const (area 43, residue 2, 2026-10-12). (name map, high).
+// batch300.cpp - ZLNKOBJ::GetDefaultBones(ZBone *out) const (area 43, residue 2, 2026-10-12). GameCube reference (name map, high).
 // 0x4630e0, thiscall (this = ECX, out on the stack), ret 4. Frame is EBP-relative in the exe.
 // Callees (all original exe code, register arguments only, no stack arguments):
 //   0x4de7a0 mreset(float *mat) (identity), 0x4df1e0 quattomat(mat, quat), 0x4de480 (mat, parent) matrix product,

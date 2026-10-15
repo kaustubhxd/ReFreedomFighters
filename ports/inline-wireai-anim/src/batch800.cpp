@@ -1,6 +1,6 @@
 // batch800.cpp - animation layer thread, batch 800: blend-frame entry points (PC Freedom.Exe.orig).
 // PC objects are byte packed (/Zp1, docs/36), so fields are read by raw offset.
-// Names: a name map (confidence noted per function).
+// Names: GameCube startup_release.elf via decoders/gc_pc_namemap.tsv (confidence noted per function).
 #include "ff.h"
 
 #define F8(p, o) (*(u8 *)((u8 *)(p) + (o)))
@@ -11,8 +11,8 @@
 // AnimHeader (clip header) fields used here: +0x5c, +0x6c ints (BlendInSpeed), +0x60 first frame, +0x64 last frame.
 
 // ZBoneModifyBase::AddFrame(const ZDeltaBone*, const AnimHeader*, float frame, float weight, unsigned flags)
-// [high]. Appends one layer to the per-object frame list: up to 4 entries of 20 bytes at +0x15,
-// count at +0x65. A fifth add logs "<debug message>" (line 0x65) and is dropped.
+// [high, GameCube reference]. Appends one layer to the per-object frame list: up to 4 entries of 20 bytes at +0x15,
+// count at +0x65. A fifth add logs "ZBoneModifyBase::AddFrame more than %d" (line 0x65) and is dropped.
 static void THISCALL AddFrame(void *self, void *delta, void *hdr, float frame, float weight, u32 flags) {
   u32 n = F32(self, 0x65);
   if (n == 4) {
@@ -31,7 +31,7 @@ static void THISCALL AddFrame(void *self, void *delta, void *hdr, float frame, f
 }
 PCREG(645420, AddFrame);
 
-// ZLNKOBJ::SetBoneFrameBlend(AnimHeader*, float t, float weight, bool absolute, unsigned flags) [high].
+// ZLNKOBJ::SetBoneFrameBlend(AnimHeader*, float t, float weight, bool absolute, unsigned flags) [high, GameCube reference].
 // t is a fraction of the clip unless absolute; then adds the clip's delta bones to the bone modifier (+0x6c)
 // through its vtable slot 6 (AddFrame). Delta bones come from this->vt[0x288] (ZLNKOBJ::GetAnimDeltaBones).
 static void THISCALL SetBoneFrameBlend(void *self, void *hdr, float t, float weight, u8 absolute, u32 flags) {
@@ -44,7 +44,7 @@ static void THISCALL SetBoneFrameBlend(void *self, void *hdr, float t, float wei
 }
 PCREG(464400, SetBoneFrameBlend);
 
-// ZBoneModifyBase::DepackAnimBones(ZAnimFileBase*, ZBoneQuat*, ZBlendBone*, ZActiveBone*) [medium].
+// ZBoneModifyBase::DepackAnimBones(ZAnimFileBase*, ZBoneQuat*, ZBlendBone*, ZActiveBone*) [medium, GameCube reference].
 // When animations run (see DoAnimations), unpacks bones 1..count-1 (count at +0x11); strides: ZBoneQuat 0x30,
 // ZBlendBone 0x24, ZActiveBone 0x1d (packed). Bone 0 (root) is skipped.
 extern "C" void THISCALL ext_645c90(void *self, void *quat, void *blend, void *file, void *active);
@@ -59,18 +59,18 @@ static void THISCALL DepackAnimBones(void *self, void *file, u8 *quat, u8 *blend
 }
 PCREG(645c30, DepackAnimBones);
 
-// ZBoneModifyBase::DoAnimations() const [medium]: true unless ragdoll (+0x291) or flag byte +0x295.
+// ZBoneModifyBase::DoAnimations() const [medium, GameCube reference]: true unless ragdoll (+0x291) or flag byte +0x295.
 static bool THISCALL DoAnimations(void *self) { return F32(self, 0x291) == 0 && F8(self, 0x295) == 0; }
 PCREG(646040, DoAnimations);
 
-// ZMovementBase::BlendInSpeed(const AnimHeader*) [medium]: (float)hdr+0x5c / (float)hdr+0x6c, on x87.
+// ZMovementBase::BlendInSpeed(const AnimHeader*) [medium, GameCube reference]: (float)hdr+0x5c / (float)hdr+0x6c, on x87.
 static float THISCALL BlendInSpeed(void *, void *hdr) {
   volatile float r = (float)(s32)F32(hdr, 0x5c) / (float)(s32)F32(hdr, 0x6c);
   return r;
 }
 PCREG(487a50, BlendInSpeed);
 
-// ZPlayer::SetActiveUpperBody(float t) [high]: t is used only when bits 0..1 of byte +0x417 are set,
+// ZPlayer::SetActiveUpperBody(float t) [high, GameCube reference]: t is used only when bits 0..1 of byte +0x417 are set,
 // else 0. Plays frame t (fraction) of the current upper-body clip (vt 0x5fc, GetCurrentUBAnim) at weight 0 through
 // vt 0x244 = SetBoneFrameBlend(anim, t, 0.0f, false, 0).
 static void THISCALL SetActiveUpperBody(void *self, float t) {
@@ -81,6 +81,6 @@ static void THISCALL SetActiveUpperBody(void *self, float t) {
 }
 PCREG(484ed0, SetActiveUpperBody);
 
-// ZActor::SetHoldWeaponUBAnim(AnimHeader*) [high]: m_pAnimUBHoldRifle (HBM name) at PC +0x74f.
+// ZActor::SetHoldWeaponUBAnim(AnimHeader*) [high, GameCube reference]: m_pAnimUBHoldRifle (HBM name) at PC +0x74f.
 static void THISCALL SetHoldWeaponUBAnim(void *self, void *hdr) { FP(self, 0x74f) = hdr; }
 PCREG(47be00, SetHoldWeaponUBAnim);

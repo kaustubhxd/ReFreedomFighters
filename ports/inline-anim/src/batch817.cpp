@@ -13,7 +13,7 @@ static double crtFmod(double a, double b) {
   return r;
 }
 
-// ZAnimFilePack::GetFrameTime(bone anim, bool loop, float t) [medium]: fmod(t, frames) when looping,
+// ZAnimFilePack::GetFrameTime(bone anim, bool loop, float t) [medium, GameCube reference]: fmod(t, frames) when looping,
 // else min(frames, t) (no clamp at 0 here, unlike the sampler). x87 float return.
 static float THISCALL GetFrameTime(void *, u8 *ba, u8 loop, float t) {
   u32 n = F16(ba, 8);
@@ -39,7 +39,7 @@ extern "C" void FASTCALL ext_4419f0(float *v, const float *m);                  
 extern "C" void FASTCALL ext_441940(float *dst, const float *src);                 // PSVECAdd
 
 // ZBoneModifyBase::SetLocalIKBone(ZBoneQuat* q, const ZBone* bones, const float* mats, const SBoneDefinition* defs,
-// unsigned i, const float* target, const float* pos) const [high]. thiscall (this unused) ret 0x1c.
+// unsigned i, const float* target, const float* pos) const [high, GameCube reference]. thiscall (this unused) ret 0x1c.
 // Turns a world-space bone transform (mats[i] * target, position pos) into the bone's local quaternion and
 // position relative to its parent (defs[i] +0xc; ZBone and SBoneDefinition are 0x30 bytes, matrices 9 floats).
 static void THISCALL SetLocalIKBone(void *, u8 *q, u8 *bones, float *mats, u8 *defs, u32 i, float *target, float *pos) {
@@ -55,7 +55,7 @@ static void THISCALL SetLocalIKBone(void *, u8 *q, u8 *bones, float *mats, u8 *d
 PCREG(647430, SetLocalIKBone);
 
 // ZBoneModifyBase::SolveBoneChain(ZBone* bones, int i, const ZBoneQuat* q, const SBoneDefinition* defs) const
-// [medium]. thiscall ret 0x10. Forward kinematics for one chain: local matrices for bone i and each
+// [medium, GameCube reference]. thiscall ret 0x10. Forward kinematics for one chain: local matrices for bone i and each
 // parent up to (not including) the root, the root copied from q[0] as a matrix, then from the root down each bone
 // becomes parent * local (rotation and position).
 static void THISCALL SolveBoneChain(void *, u8 *bones, u32 i, u8 *q, u8 *defs) {
@@ -86,7 +86,7 @@ static void THISCALL SolveBoneChain(void *, u8 *bones, u32 i, u8 *q, u8 *defs) {
 }
 PCREG(6474f0, SolveBoneChain);
 
-// ZBoneModifyBase::UpdateGlobalIK(ZBone* bones, unsigned geomId, ZLNKOBJ* obj) [medium].
+// ZBoneModifyBase::UpdateGlobalIK(ZBone* bones, unsigned geomId, ZLNKOBJ* obj) [medium, GameCube reference].
 // With a ragdoll (+0x291): the ragdoll writes the bones (0x6421a0). Otherwise, when byte +4 is set, obj->vt[0x49c]()
 // (single-row head look, see GetBonesFrames) is true, obj->vt[0x2fc]() is false and the object's name (vt 0x2e0) is
 // not "Hitman2": bones 0xe and 0x12 of the file-bone map (vt 0xc8 of the definitions) are raised by [0x680a70] on

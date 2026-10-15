@@ -10,7 +10,7 @@ extern "C" void ext_634d10(void *d, int v, u32 n);            // memset (cdecl)
 
 static inline void *defsMgr() { return FP(FP(G(void *, 0x70039c), 0x1aa3), 0x18); }
 
-// ZLNKOBJ::CloseObjMatBone() [high]. thiscall, no args. The per-bone list (+0x18) is walked with its
+// ZLNKOBJ::CloseObjMatBone() [high, GameCube reference]. thiscall, no args. The per-bone list (+0x18) is walked with its
 // iterator: every entry's extra object (+0x70) is deleted (its deleting destructor with flag 1), then the list itself
 // is deleted. The bone-anim table (+0x1c, 0x18 bytes per bone) is freed, and the modifier at +0x6c gets its deleting
 // destructor (flag 1). Both pointers are cleared.
@@ -39,7 +39,7 @@ static void THISCALL CloseObjMatBone(u8 *self) {
 }
 PCREG(461f00, CloseObjMatBone);
 
-// ZLNKOBJ::InitObjMatBone() [high]. thiscall, no args. The bone count comes from the geometry definition
+// ZLNKOBJ::InitObjMatBone() [high, GameCube reference]. thiscall, no args. The bone count comes from the geometry definition
 // (vt 0xb0 of the definitions manager), the bone modifier from vt 0x8c(count), the table is zeroed (count * 0x18),
 // then the modifier is told about this object (vt 0x58) and the object's bone definitions are loaded (vt 0x284).
 // A count that would overflow gives 0xffffffff for the allocation (operator new then fails as the exe does).

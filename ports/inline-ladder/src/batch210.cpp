@@ -18,7 +18,7 @@ static const char *const kZList = (const char *)0x67f610;  // "ZLIST"
 
 static inline void *db() { return (void *)U32(G(u32, 0x70039c), 0x9b); }   // ZEngineDataBase
 
-// 0x4c61a0 ZT1GuideController::CopyEventDataBlock(DBREAD &d) [high; vtable slot 1], thiscall, ret 4.
+// 0x4c61a0 ZT1GuideController::CopyEventDataBlock(DBREAD &d) [GameCube reference, high; vtable slot 1], thiscall, ret 4.
 // Reads one float (discarded) and one unsigned (the camera-plane geom reference) into +0x4a.
 static void THISCALL t1CopyEventDataBlock(u8 *self, void *d) {
   (void)ext_4e5e80(d);
@@ -26,7 +26,7 @@ static void THISCALL t1CopyEventDataBlock(u8 *self, void *d) {
 }
 PCREG(4c61a0, t1CopyEventDataBlock);
 
-// 0x4c61c0 ZT1GuideController::Init() [low (string match; GC body has the same strings and calls)],
+// 0x4c61c0 ZT1GuideController::Init() [GameCube reference, low (string match; GC body has the same strings and calls)],
 // thiscall, no args. +0x48 = RegisterZMsg("MSG_GETCAMERAPLANE", 0, file, 0x3a0) (database slot 0x114). The list
 // "T1GuideList" is looked up in the database's +0xadc object (slot 0x25c) and created as a "ZLIST" (slot 0x294) when
 // missing. The controller's geom (+0x44) gets the position of its own +8 geom (ZBaseGeom::GetPos, then slot 0x70), is
@@ -48,7 +48,7 @@ static void THISCALL t1Init(u8 *self) {
 }
 PCREG(4c61c0, t1Init);
 
-// 0x4c62c0 ZT1GuideController::Command(unsigned short msg, void *data) [high; vtable slot 17], thiscall,
+// 0x4c62c0 ZT1GuideController::Command(unsigned short msg, void *data) [GameCube reference, high; vtable slot 17], thiscall,
 // ret 8, returns 0. For MSG_GETCAMERAPLANE (the registered id at +0x48, when non-zero) with a data pointer, writes the
 // camera-plane geom reference +0x4a to it.
 static u32 THISCALL t1Command(u8 *self, u32 msg, u32 *data) {
@@ -59,7 +59,7 @@ static u32 THISCALL t1Command(u8 *self, u32 msg, u32 *data) {
 }
 PCREG(4c62c0, t1Command);
 
-// 0x4c62f0 ZT1GuideController::Save(ZSaveGame *s) [high; vtable slot 7], thiscall, ret 4, AL = 1.
+// 0x4c62f0 ZT1GuideController::Save(ZSaveGame *s) [GameCube reference, high; vtable slot 7], thiscall, ret 4, AL = 1.
 // Clears flag bit 0x40 of +4, writes +0x4a (stream slot 0x3c).
 static bool THISCALL t1Save(u8 *self, void *s) {
   U32(self, 4) &= ~0x40u;
@@ -68,7 +68,7 @@ static bool THISCALL t1Save(u8 *self, void *s) {
 }
 PCREG(4c62f0, t1Save);
 
-// 0x4c6310 ZT1GuideController::Load(ZLoadGame *l) [low], thiscall, ret 4, AL = 1. Clears bit 0x40 of +4,
+// 0x4c6310 ZT1GuideController::Load(ZLoadGame *l) [GameCube reference, low], thiscall, ret 4, AL = 1. Clears bit 0x40 of +4,
 // reads +0x4a (stream slot 0x40), registers MSG_GETCAMERAPLANE again (line 0x396) into +0x48.
 static bool THISCALL t1Load(u8 *self, void *l) {
   U32(self, 4) &= ~0x40u;

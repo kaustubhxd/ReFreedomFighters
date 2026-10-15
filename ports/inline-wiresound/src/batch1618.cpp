@@ -9,7 +9,7 @@ float THISCALL ZDllSound_GetWaveDurationW(void *self, u8 *w) {
 PCREG(537860, ZDllSound_GetWaveDurationW);
 
 // 0x5377d0 ZDllSound::GetWaveDuration(int id) [high]: a wave's own length, a sound's wave length (+8 -> wave); any
-// other record logs "<debug message>" (sound.cpp line 0x3ed) and gives 0.0. No pitch or
+// other record logs "Unable to get duration for object %s" (sound.cpp line 0x3ed) and gives 0.0. No pitch or
 // looping adjustment: this is what AddNewPlayBuffer stores as the time left (+0x70), and so what
 // PlaySound_Enum_GetTime returns and what the 0.2 s / "still talking" checks compare against.
 float THISCALL ZDllSound_GetWaveDuration(void *self, u32 id) {

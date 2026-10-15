@@ -44,7 +44,7 @@ static void THISCALL fn46c1e0(u8 *B) {
   if (rd(B + 0x60) == 0) {
     u8 *lo = logobj(0x955);
     u8 *cs = namestr(B, s);
-    ((log3_t)vslot(lo, 0x2c))(lo, 0x688c60u, (u32)cs);   // "<debug message>"
+    ((log3_t)vslot(lo, 0x2c))(lo, 0x688c60u, (u32)cs);   // "Weapon %s does not a have an valid itemtemplate - removing weapon"
     ext_4cbec0(s);
     VC(v1_t, B, 0x210)(B, 1);
     ext_633654(0);
@@ -90,7 +90,7 @@ static void THISCALL fn46c1e0(u8 *B) {
     if (n != 0xffffffffu && (s32)rd(B + 0xba) > (s32)n) {
       u8 *lo = logobj(0x994);
       u8 *cs = namestr(B, s);
-      ((log5_t)vslot(lo, 0x2c))(lo, 0x688ca4u, (u32)cs, rd(B + 0xba), n);   // "<debug message>"
+      ((log5_t)vslot(lo, 0x2c))(lo, 0x688ca4u, (u32)cs, rd(B + 0xba), n);   // "NOTIFY: %s contains %d projectiles. Magazine size is %d"
       ext_4cbec0(s);
     }
     w = weapon(B);
@@ -154,7 +154,7 @@ static void THISCALL fn46c1e0(u8 *B) {
   if ((rd(*(u8 **)(B + 8) + 0x3c) >> 10) & 1) {
     u8 *lo = logobj(0x9eb);
     u8 *cs = namestr(B, s);
-    ((log3_t)vslot(lo, 0x30))(lo, 0x688cfcu, (u32)cs);   // "<debug message>"
+    ((log3_t)vslot(lo, 0x30))(lo, 0x688cfcu, (u32)cs);   // "ERROR: %s not active at startup"
     ext_4cbec0(s);
   }
   ext_46f240(B);

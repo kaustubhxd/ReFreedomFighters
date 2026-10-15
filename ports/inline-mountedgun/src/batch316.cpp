@@ -1,4 +1,4 @@
-// batch316.cpp - mounted gun tree, batch 316: ZTankIf::InitTankPosDir (script native by list position).
+// batch316.cpp - mounted gun tree, batch 316: ZTankIf::InitTankPosDir (script native, GameCube reference by list position).
 // The wrapper passes param 0 != 0 to the tank's ZTank::InitTankPosDir(bool) (PC 0x520f20, vehicles thread batch 916),
 // called directly with the tank as this. Only the wrapper is ported here; the callee runs as exe code.
 #include "ff.h"

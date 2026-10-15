@@ -11,7 +11,7 @@
 static inline u8 *sys() { return *(u8 *volatile *)0x70039c; }
 static inline void *srefToPtr(u32 h) { return vcall<void *>(AT(void *, sys(), 0x9b), 0x60, h); }
 
-// 0x467ca0 [map: ZFFHERO::IsSoundCommandDone, medium; by body it is ZIKLNKOBJ::Sound_GetTimeLeft (), the
+// 0x467ca0 [map: ZFFHERO::IsSoundCommandDone, medium; by body it is ZIKLNKOBJ::Sound_GetTimeLeft (GameCube reference), the
 // x87 float return of the current speech's time left (+0x70), 0.0 without one].
 float THISCALL ZIKLNKOBJ_Sound_GetTimeLeft(void *self) {
   u8 *o = (u8 *)srefToPtr(AT(u32, self, 0x13b));

@@ -6,7 +6,7 @@
 
 extern "C" void THISCALL ext_59a580(void *osd, const char *msg, u32 colour, u32 sound);   // ZGameOSD::MessageAdd
 
-// 0x594e30 ZFFHERO::SendInventoryFull(ZItem *item) [medium], thiscall, ret 4.
+// 0x594e30 ZFFHERO::SendInventoryFull(ZItem *item) [GameCube reference, medium], thiscall, ret 4.
 // Throttle: when the last item was the same and its time (float +0x957 * 1024, truncated) is at or after the engine tick
 // [engine+0x40], nothing happens. Otherwise, when the OSD (+0x852) exists, it shows the text "InventoryFull" from the
 // localised table (database +0xae4 slot 0, keys "Menu/HelpText", "InventoryFull") in colour 0xffffff00 with sound 1.

@@ -19,7 +19,7 @@ static inline u8 *engine() { return G(u8 *, 0x70039c); }
 // Stamps the last-use time of this list (clock / 1024), as every GetAnim does first.
 static inline void stamp(u8 *self) { FF(self, 0xc) = (float)(s32)F32(engine(), 0x40) * bitsf(0x3a800000); }
 
-// ZAnimDefsList::GetAnim(ANIMTYPE) [medium]: the first node of the type, and it becomes current.
+// ZAnimDefsList::GetAnim(ANIMTYPE) [medium, GameCube reference]: the first node of the type, and it becomes current.
 // Otherwise the current clip stays.
 static void *THISCALL GetAnim(u8 *self, u32 type) {
   stamp(self);
@@ -40,7 +40,7 @@ static void *THISCALL GetAnim(u8 *self, u32 type) {
 }
 PCREG(4837e0, GetAnim);
 
-// ZAnimDefsListRandom::GetAnim(float t) [medium]. The subclass's vt +0xc(t) gives a float r (the clip's
+// ZAnimDefsListRandom::GetAnim(float t) [medium, GameCube reference]. The subclass's vt +0xc(t) gives a float r (the clip's
 // own time-to-end). If the current clip still has r > t, it stays. Otherwise the weights of the nodes are summed
 // until the sum reaches w = weight-scale * assert(0x227) and the node where that happens is taken. The assert value
 // is 0 when the end time is not ahead of the clock (the usual case).
@@ -73,7 +73,7 @@ static void *THISCALL GetAnimRandom(u8 *self, float t) {
 }
 PCREG(483860, GetAnimRandom);
 
-// ZAnimDefsList::GetFramePrc(float t) [high]: fraction 0..1 of the current clip at time t (seconds).
+// ZAnimDefsList::GetFramePrc(float t) [high, GameCube reference]: fraction 0..1 of the current clip at time t (seconds).
 // 0 without a clip. Frames = clip+0x6c * the engine's scale (+0x48) / (end - start); fmod 1.
 static float THISCALL GetFramePrc(u8 *self, float t) {
   void *clip = FP(self, 4);
@@ -87,7 +87,7 @@ static float THISCALL GetFramePrc(u8 *self, float t) {
 }
 PCREG(483aa0, GetFramePrc);
 
-// ZAnimDefsList::UpdateEnd() [high]: when the stamped time differs from the clock, the current clip is
+// ZAnimDefsList::UpdateEnd() [high, GameCube reference]: when the stamped time differs from the clock, the current clip is
 // dropped and the end time is set to now + 1024 ticks (one second).
 static void THISCALL UpdateEnd(u8 *self) {
   s32 stamped = (s32)(FF(self, 0xc) * G(float, 0x678620));

@@ -98,7 +98,7 @@ static void THISCALL ucCarDampersFollow(u8 *s) {
 PCREG(526360, ucCarDampersFollow);
 
 // 0x524de0 CUnderCarriageCar::CorrectReversedDampers(): as the tank's; a rear damper reset also prints
-// "<debug message>" (undercarriagecar.cpp line 0x35a).
+// "Correcting Back Damper" (undercarriagecar.cpp line 0x35a).
 typedef void *(THISCALL *dbgAt)(void *, const char *, u32);
 typedef void (*dbgPrint)(void *, const char *);
 static void THISCALL ucCarCorrectReversed(u8 *s) {

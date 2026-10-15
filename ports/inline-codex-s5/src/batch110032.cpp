@@ -38,10 +38,9 @@ static inline u8 *crossQuads(u8 *list, int count, float *a, float *b, float *t, 
   return hit;
 }
 
-// 0x52a850 ZPathfinder3::CheckLineAgainstAdditionalDoors(float*, float*, float&) [map high; ]. thiscall,
+// 0x52a850 ZPathfinder3::CheckLineAgainstAdditionalDoors(float*, float*, float&) [map high; GameCube reference]. thiscall,
 // ret 0xc. Best t starts at 10.0, so crossings beyond the segment end (t up to 10) count too.
 static u8 *THISCALL checkLineDoors(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x42), *(int *)(self + 0x3e), a, b, t, 10.0f);
 }
 PCREG(52a850, checkLineDoors);
-

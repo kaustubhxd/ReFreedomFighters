@@ -1,4 +1,4 @@
-// batch8814.cpp - hit-reaction thread, batch 8814: ConstrainedParticleSystem::ZeroOut, the ragdoll constraint solver ().
+// batch8814.cpp - hit-reaction thread, batch 8814: ConstrainedParticleSystem::ZeroOut, the ragdoll constraint solver (GameCube reference).
 // docs/25-ragdoll-joints.md describes the GC version; this follows the PC code (0x547a70, 4651 bytes).
 #include "ff.h"
 
@@ -71,7 +71,7 @@ static inline void separate(u8 *self, s32 ia, s32 ib, const float *B) {
   }
 }
 
-// 0x547a70 ConstrainedParticleSystem::ZeroOut(int n) (), fastcall: ECX = this, EDX = n; plain ret.
+// 0x547a70 ConstrainedParticleSystem::ZeroOut(int n) (GameCube reference), fastcall: ECX = this, EDX = n; plain ret.
 // Fields (PC, packed): +0xf particles (0x34 bytes: position +0xc, mass +0x30), +0x13 distance constraints and +0x2c their count,
 // +0x17 minimum-distance constraints and +0x30 their count (both lists 0xc per entry: s32 i, s32 j, float length), +0x50 joint flag.
 // n times: when the flag byte is set, the joint-limit block (hip frame A = vnorm(p8 + p9 - p5 - p6), B = vnorm(p9 - p8),

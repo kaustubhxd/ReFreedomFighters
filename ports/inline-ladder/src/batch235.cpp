@@ -9,7 +9,7 @@ extern "C" void THISCALL ext_456b70(void *tmpl, u32 *ctlA, u32 *ctlB);   // ZPar
 
 static const char *const kFile = (const char *)0x685ee0;   // "..\..\code\engine\geomsextend\ziklnkobj.cpp"
 
-// 0x4664a0 ZIKLNKOBJ::EmitFootDustParticle(float t) [high; vtable slot 0x3d4+? (ZActor 251)], thiscall, ret 4.
+// 0x4664a0 ZIKLNKOBJ::EmitFootDustParticle(float t) [GameCube reference, high; vtable slot 0x3d4+? (ZActor 251)], thiscall, ret 4.
 // Skipped when the global object at 0x7003b8 has byte +0xab8 set, or the owner geom (+8) lacks flag 0x1000 at +0x3c,
 // or the speed object (+0x6c) has float +0x271 > 2000.0. Template = db(+0x15d). GetController gives two keys.
 // Emitter = db(key A); its slot 0x218 spawns: (key B, world origin, spread, t * 1024 truncated).

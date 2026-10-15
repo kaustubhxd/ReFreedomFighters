@@ -14,7 +14,7 @@
 
 typedef bool(THISCALL *animcb_t)(void *owner, void *ba, float key, float now, u32 flags);
 
-// ZBoneAnim::UpdateCallBacks(float now) [medium]: fires, in time order, every callback whose key is
+// ZBoneAnim::UpdateCallBacks(float now) [medium, GameCube reference]: fires, in time order, every callback whose key is
 // <= now (once per distinct now). A callback that returns false is reported to the assert hook at [0x7003b0]
 // (int3 when none) and re-queued one clip length later (key = frame count +0xc + now). An empty list is deleted.
 static void THISCALL ZBoneAnim_UpdateCallBacks(u8 *ba, float now) {

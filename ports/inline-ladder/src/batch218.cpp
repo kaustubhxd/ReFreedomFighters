@@ -12,7 +12,7 @@ extern "C" long double THISCALL ext_58b9c0(void *hero, float amount, u32 ref, u3
 
 static inline void *db218() { return (void *)U32(G(u32, 0x70039c), 0x9b); }
 
-// 0x5dfd00 ZFFActionUseHealth::CallBack() [high ("HealthFull")], slot 3, AL = 0.
+// 0x5dfd00 ZFFActionUseHealth::CallBack() [GameCube reference, high ("HealthFull")], slot 3, AL = 0.
 // +8 hero, +0xc hand, +0x14 action id (0x14/0x15/0x16 = FirstAid_Small/Medium/Large, docs/20 batch 55).
 // The kit is the hand's item; it is touched (slot 0x2e8) and its owner (slot 0x2f4) gets a ZCamHelper made on demand
 // (+0x85a, owner slot 0x100("ZCamHelper")). If owner +0x7ff equals +0x7fb (health already at maximum; NaN counts as

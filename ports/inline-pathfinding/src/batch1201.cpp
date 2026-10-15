@@ -5,7 +5,7 @@
 // the number of cells along x / z / y (ints). Local coordinates are (x, z, y) shorts: element 1 is the WORLD z axis
 // scaled by +0x40 and element 2 the world y axis scaled by +0x44.
 
-// 0x530b60 ZPFOctree_packed::GetLocalCoords(unsigned short*, float*) [map low; ]. thiscall, ret 8.
+// 0x530b60 ZPFOctree_packed::GetLocalCoords(unsigned short*, float*) [map low; GameCube reference]. thiscall, ret 8.
 // out = trunc((p - min) / (max - min) * cells), stored as 16 bits (cvttss2si: out of range gives 0x80000000 -> 0).
 static void THISCALL getLocalCoords(u8 *self, u16 *out, float *p) {
   float *mn = (float *)(self + 6), *mx = (float *)(self + 0x12);
@@ -19,7 +19,7 @@ static void THISCALL getLocalCoords(u8 *self, u16 *out, float *p) {
 }
 PCREG(530b60, getLocalCoords);
 
-// 0x530db0 ZPFOctree_packed::GetLocalVector(short*, float*) [map medium; ]. thiscall, ret 8.
+// 0x530db0 ZPFOctree_packed::GetLocalVector(short*, float*) [map medium; GameCube reference]. thiscall, ret 8.
 // A world vector (a link offset) in cells: ceil(v / extent * cells) per axis, through the CRT ceil and _ftol2.
 static void THISCALL getLocalVector(u8 *self, s16 *out, float *v) {
   float *mn = (float *)(self + 6), *mx = (float *)(self + 0x12);
@@ -30,7 +30,7 @@ static void THISCALL getLocalVector(u8 *self, s16 *out, float *v) {
 }
 PCREG(530db0, getLocalVector);
 
-// 0x52b080 CContext::isTimeUp() [map high; source engine\pathfinder\timeslicing.h line 0x3d].
+// 0x52b080 CContext::isTimeUp() [map high; GameCube reference; source engine\pathfinder\timeslicing.h line 0x3d].
 // thiscall, no args. +0x44 = time-slice record {u32 start, u32 budget, ..., u8 enabled at +0x10}. When enabled, it
 // reads the engine clock (ZSysInterface vtable +0x1c8 (file, line)) and restarts the slice once more than `budget`
 // has passed (unsigned). Always sets the flag at +0x48. The PC build returns nothing useful in EAX.

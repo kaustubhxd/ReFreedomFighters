@@ -1,5 +1,5 @@
 // batch312.cpp - ZFFActor::PerformDrop(ZItem *item) (core-todo residue-02). 0x5a1a60, thiscall (this = ECX), one stack
-// argument, ret 4. (name map, high). Body: eng = g_pSysInterface; if eng->[0x1b5d] == 1:
+// argument, ret 4. GameCube reference (name map, high). Body: eng = g_pSysInterface; if eng->[0x1b5d] == 1:
 // obj = eng->[0x9b] slot 0x138(); obj slot 0x88("rWeaponRecycleList", &list); AddWeapon 0x5e9300(list, item) (thiscall).
 // Then ZLNKWHANDS::PerformDrop 0x4748b0(this, item) (thiscall, original code; hooked in the spec).
 #include "ff.h"

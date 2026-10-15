@@ -8,7 +8,7 @@
 extern "C" void ext_634dc4(void);                  // _CIfmod (CRT): fmod(ST1, ST0), pops one, result in ST0
 extern "C" u32 THISCALL ext_478a80(void *mt);      // ZActor::SMoveType::GetAnimHeader() const (name map medium)
 
-// ZActor::UpdateBaseMoveFrame() [name map high], thiscall, no args.
+// ZActor::UpdateBaseMoveFrame() [GameCube reference, name map high], thiscall, no args.
 // Move type = own slot 0x5a8(m_iQuePos +0x650); none, or byte +0x771 set -> nothing. Its clip is GetAnimHeader
 // (inlined here: reference word + [[0x70039c]+0x9b]+0x44, 0 stays 0). Phase = (float)fmod((double)+0x755, 1.0).
 // With a non-zero (or NaN) turn +0x76d and move type 8 (Forward): the turn clip is move type 10 (turn > 0) or 9

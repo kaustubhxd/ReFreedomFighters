@@ -1,5 +1,5 @@
-// batch1225.cpp - pathfinding tree: ZPathfinder3::ClassFrameUpdate() [map high; source lines 0x259 / 0x260]
-// and ZPFOctree_packed::ZPFOctree_packed() [map low; ].
+// batch1225.cpp - pathfinding tree: ZPathfinder3::ClassFrameUpdate() [map high; GameCube reference; source lines 0x259 / 0x260]
+// and ZPFOctree_packed::ZPFOctree_packed() [map low; GameCube reference].
 #include "pf.h"
 
 extern "C" void THISCALL ext_52c000(void *self, u32 flag);   // ZPathfinder3::ProcessQueue(bool)
@@ -25,7 +25,7 @@ static void THISCALL classFrameUpdate(u8 *self) {
 }
 PCREG(52ab00, classFrameUpdate);
 
-// 0x52cfd0 ZPFOctree_packed::ZPFOctree_packed() [map low; ]. thiscall, no args, returns this in eax.
+// 0x52cfd0 ZPFOctree_packed::ZPFOctree_packed() [map low; GameCube reference]. thiscall, no args, returns this in eax.
 // Sets the vtable and the defaults of the packed octree: 1 in the eight u16 counters at +0x58..+0x86, 0x14e20 at +0x50,
 // zero for the pointers and counts that Init and SerializeData fill later.
 static u8 *THISCALL octreeCtor(u8 *self) {

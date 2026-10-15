@@ -3,7 +3,7 @@
 
 #define U32(p, off) (*(u32 *)((u8 *)(p) + (off)))
 
-// 0x593f40 ZFFHERO::PlayCommandAnim(COMMANDANIM cmd) [high], thiscall, ret 4.
+// 0x593f40 ZFFHERO::PlayCommandAnim(COMMANDANIM cmd) [GameCube reference, high], thiscall, ret 4.
 // Nothing when the input word +0x417 has flag 0x8000000. Throttled: the last time (dword +0x94f) plus 0x200 ticks must
 // have passed (signed compare with the engine tick [engine+0x40]). Then, unless slot 0x3f0() is true (busy), cmd 0, 1, 2
 // start action 0x1a, 0x1b, 0x1c: slot 0x3d8(slot 0x3ec(action id)). Other values start nothing. The time is then
