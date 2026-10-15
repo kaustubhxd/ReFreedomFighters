@@ -1,4 +1,4 @@
-// batch31082.cpp - tier C vtable and call-through thunks (asm, stack exact).
+// batch31082.cpp - Sonnet h1: tier C vtable and call-through thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_4620d0(void);

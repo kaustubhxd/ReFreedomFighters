@@ -1,4 +1,4 @@
-// batch33105.cpp - h3 () batch 33105: tier H float/SSE functions
+// batch33105.cpp - h3 (Sonnet) batch 33105: tier H float/SSE functions
 #include "ff.h"
 
 // 0x464650: thiscall(a, f1, b, f2, f3, f4) ret 0x18: x1=(float)(a[0x64]-a[0x60])*f1; x0=(float)(b[0x64]-b[0x60])*f2; o=[this+0x6c]; o->slot 0x18(this->slot 0x288(a, a, x1, f4, 4)); o->slot 0x18(this->slot 0x288(b, b, x0, f3, 0))

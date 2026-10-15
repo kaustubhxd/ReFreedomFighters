@@ -1,4 +1,4 @@
-// batch33039.cpp - h3 () batch 33039: ctor/dtor shapes with hooked callees + two vcall tail-jump wrappers
+// batch33039.cpp - h3 (Sonnet) batch 33039: ctor/dtor shapes with hooked callees + two vcall tail-jump wrappers
 #include "ff.h"
 
 extern "C" void THISCALL ext_4ef200(u8 *self, u8 *src);               // thunk to 0x43f8c0, ret 4

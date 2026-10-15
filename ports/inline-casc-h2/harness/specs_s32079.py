@@ -1,4 +1,4 @@
-"""specs_s32079.py - h2 () batch 32079: 0x63af20. 0x63b440 is a recorder (this recorded) that sometimes installs a fresh head block and returns al."""
+"""specs_s32079.py - h2 (Sonnet) batch 32079: 0x63af20. 0x63b440 is a recorder (this recorded) that sometimes installs a fresh head block and returns al."""
 from pilot import S
 from recruits_util import rnd, clear_hooks, hook_rec
 

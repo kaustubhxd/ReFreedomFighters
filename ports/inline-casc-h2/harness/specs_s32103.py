@@ -1,4 +1,4 @@
-"""specs_s32103.py - h2 () batch 32103: three tier H float / SSE functions. Callees/slots are recorders; order pinned with calllog."""
+"""specs_s32103.py - h2 (Sonnet) batch 32103: three tier H float / SSE functions. Callees/slots are recorders; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

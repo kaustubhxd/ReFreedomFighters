@@ -1,4 +1,4 @@
-"""specs_s41001.py - t2 () batch 41001: 0x50ad50, 0x4bfb80. Callees 0x5003d0 and all vtable slots are recorders; the assert hook 0x7003b0 is always set."""
+"""specs_s41001.py - t2 (Sonnet) batch 41001: 0x50ad50, 0x4bfb80. Callees 0x5003d0 and all vtable slots are recorders; the assert hook 0x7003b0 is always set."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

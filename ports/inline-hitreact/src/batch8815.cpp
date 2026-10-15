@@ -1,5 +1,5 @@
 // batch8815.cpp - hit-reaction thread, batch 8815: the ragdoll limb capsule against a level triangle 0x544330
-// (CollideSolidCappedCylinderAndTriangle, ) and its segment-segment distance 0x5453c0 (DistLineLineVar, ).
+// (CollideSolidCappedCylinderAndTriangle) and its segment-segment distance 0x5453c0 (DistLineLineVar).
 #include "ff.h"
 
 extern "C" void FASTCALL ext_43e920(float *d, const float *a, const float *b);                     // PSVECSubtract d = a - b

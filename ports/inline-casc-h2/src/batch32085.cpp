@@ -1,4 +1,4 @@
-// batch32085.cpp - cascade h2 (): eight tier C wrappers (fifth batch); two are naked ports because a slot call leaves its stack arguments for the next callee.
+// batch32085.cpp - cascade h2 (Sonnet): eight tier C wrappers (fifth batch); two are naked ports because a slot call leaves its stack arguments for the next callee.
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_5003d0(u8 *self, u32 a);   // thiscall ret 4

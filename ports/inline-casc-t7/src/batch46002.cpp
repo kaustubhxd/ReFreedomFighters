@@ -1,4 +1,4 @@
-// batch46002.cpp - cascade t7 (), tier G: 0x549840 (stream refill/decode step: fetch samples via slot 0x78, decode/zero-fill, report via slot 0x74).
+// batch46002.cpp - cascade t7 (Sonnet), tier G: 0x549840 (stream refill/decode step: fetch samples via slot 0x78, decode/zero-fill, report via slot 0x74).
 #include "ff.h"
 
 extern "C" u32 FASTCALL ext_54d470(void *self7f, void *out, u32 a1, u32 a2, u32 a3, u32 a4, u32 a5, u32 a6);  // ecx=this, edx=out, ret 0x18

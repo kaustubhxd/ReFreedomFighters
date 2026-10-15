@@ -1,4 +1,4 @@
-// batch33070.cpp - h3 () batch 33070: tier C wrappers, two register-argument (fastcall) functions
+// batch33070.cpp - h3 (Sonnet) batch 33070: tier C wrappers, two register-argument (fastcall) functions
 #include "ff.h"
 
 extern "C" void THISCALL ext_46a4f0(u8 *self);

@@ -1,0 +1,68 @@
+// batch42010.cpp - Sonnet t3: tier H, /GS float function (asm, stack exact).
+#include "ff.h"
+
+extern "C" void ext_633910(void);
+extern "C" void ext_633654(void);
+
+// 0x5621a0, thiscall(float t) ret 4, /GS frame: n = 0x633910(t * [this+0x6c] * K1) (CRT float->int helper, xmm0 in, eax out); slot 0xd4 of this with n;
+// f = K2 - [this+0x6c] * t; v = { float(int(f * K3 + [this+0x78])), float(int(f * K0 + [this+0x7c])), [this+0x80] };
+// when [this+0x54] is set its slot 0x70 gets &v.
+asm(
+    ".text\n"
+    ".globl thunk5621a0\n"
+    "thunk5621a0:\n"
+    "  pushl %ebp\n"
+    "  movl %esp, %ebp\n"
+    "  subl $0x10, %esp\n"
+    "  movl 0x6f5630, %eax\n"
+    "  xorl %ebp, %eax\n"
+    "  movl %eax, -4(%ebp)\n"
+    "  pushl %esi\n"
+    "  pushl %edi\n"
+    "  movl %ecx, %edi\n"
+    "  movss 0x6c(%edi), %xmm0\n"
+    "  mulss 8(%ebp), %xmm0\n"
+    "  movl (%edi), %esi\n"
+    "  mulss 0x6a6888, %xmm0\n"
+    "  call ext_633910\n"
+    "  pushl %eax\n"
+    "  movl %edi, %ecx\n"
+    "  call *0xd4(%esi)\n"
+    "  movss 0x6c(%edi), %xmm0\n"
+    "  mulss 8(%ebp), %xmm0\n"
+    "  movl 0x54(%edi), %ecx\n"
+    "  movss 0x678858, %xmm1\n"
+    "  subss %xmm0, %xmm1\n"
+    "  movaps %xmm1, %xmm0\n"
+    "  mulss 0x6785d0, %xmm1\n"
+    "  mulss 0x680a80, %xmm0\n"
+    "  addss 0x7c(%edi), %xmm1\n"
+    "  addss 0x78(%edi), %xmm0\n"
+    "  cvttss2si %xmm0, %eax\n"
+    "  movd %eax, %xmm0\n"
+    "  cvttss2si %xmm1, %eax\n"
+    "  cvtdq2ps %xmm0, %xmm0\n"
+    "  movss %xmm0, -0x10(%ebp)\n"
+    "  movd %eax, %xmm0\n"
+    "  cvtdq2ps %xmm0, %xmm0\n"
+    "  movss %xmm0, -0xc(%ebp)\n"
+    "  movss 0x80(%edi), %xmm0\n"
+    "  movss %xmm0, -8(%ebp)\n"
+    "  popl %edi\n"
+    "  popl %esi\n"
+    "  testl %ecx, %ecx\n"
+    "  je 9f\n"
+    "  movl (%ecx), %eax\n"
+    "  leal -0x10(%ebp), %edx\n"
+    "  pushl %edx\n"
+    "  call *0x70(%eax)\n"
+    "9:\n"
+    "  movl -4(%ebp), %ecx\n"
+    "  xorl %ebp, %ecx\n"
+    "  call ext_633654\n"
+    "  movl %ebp, %esp\n"
+    "  popl %ebp\n"
+    "  ret $4\n"
+);
+extern "C" void thunk5621a0(void);
+PCREG(5621a0, thunk5621a0);

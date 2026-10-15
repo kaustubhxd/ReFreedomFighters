@@ -1,6 +1,6 @@
 #include "ff.h"
 // batch1510.cpp - unclaimed-15 claim 10 (docs/20-unclaimed-15.md): CExplodeMolotov::PlaySound(unsigned int, int) (0x584a20).
-// Name from the name map (medium). Thiscall, two arguments, ret 8.
+// Name from the GC name map (medium). Thiscall, two arguments, ret 8.
 // Stubbed in the harness: the helper 0x43ec00 (thiscall, no stack args), the sub-object's slot +0x20 (six words) and the
 // render manager's slot +0x60 (one word).
 

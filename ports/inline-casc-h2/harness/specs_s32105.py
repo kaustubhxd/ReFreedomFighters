@@ -1,4 +1,4 @@
-"""specs_s32105.py - h2 () batch 32105: three tier H float / SSE functions. Callees/slots are recorders; stack buffers are recorded with deref; order pinned with calllog."""
+"""specs_s32105.py - h2 (Sonnet) batch 32105: three tier H float / SSE functions. Callees/slots are recorders; stack buffers are recorded with deref; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

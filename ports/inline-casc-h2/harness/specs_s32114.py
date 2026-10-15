@@ -1,4 +1,4 @@
-"""specs_s32114.py - h2 () batch 32114: tier H functions. Callees/slots are recorders; the assert hook 0x7003b0 is always set; order pinned with calllog."""
+"""specs_s32114.py - h2 (Sonnet) batch 32114: tier H functions. Callees/slots are recorders; the assert hook 0x7003b0 is always set; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

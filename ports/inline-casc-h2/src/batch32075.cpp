@@ -1,4 +1,4 @@
-// batch32075.cpp - cascade h2 (): 0x4d0840 (split a free block and mark it used), 0x436b30 (init record with string copy).
+// batch32075.cpp - cascade h2 (Sonnet): 0x4d0840 (split a free block and mark it used), 0x436b30 (init record with string copy).
 #include "ff.h"
 
 extern "C" void THISCALL ext_4cfc70(u8 *self, u8 *blk);              // thiscall ret 4

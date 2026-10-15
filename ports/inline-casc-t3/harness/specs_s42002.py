@@ -1,4 +1,4 @@
-"""specs_s42002.py - batch 42002. 0x4c2e70: pow runs for real; 0x44c230 hooked (this + float arg). Object has a helper object at +0x44 (+0x1c flag, +0x18 -> block)."""
+"""specs_s42002.py - Sonnet t3 batch 42002. 0x4c2e70: pow runs for real; 0x44c230 hooked (this + float arg). Object has a helper object at +0x44 (+0x1c flag, +0x18 -> block)."""
 import struct
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

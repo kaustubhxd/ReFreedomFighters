@@ -1,4 +1,4 @@
-"""specs_s32134.py - h2 () batch 32134: 0x5ddde0, 0x4609f0, 0x4945c0, 0x4c2610. Callees/slots are recorders."""
+"""specs_s32134.py - h2 (Sonnet) batch 32134: 0x5ddde0, 0x4609f0, 0x4945c0, 0x4c2610. Callees/slots are recorders."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

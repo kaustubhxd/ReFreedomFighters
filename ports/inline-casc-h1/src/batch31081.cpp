@@ -1,4 +1,4 @@
-// batch31081.cpp - tier C vtable and global-object call thunks (asm, stack exact).
+// batch31081.cpp - Sonnet h1: tier C vtable and global-object call thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_42ad20(void);

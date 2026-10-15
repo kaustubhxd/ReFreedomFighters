@@ -20,7 +20,7 @@ static void assert_hook() {
   h();
 }
 static void append(u32 *list, u32 v) {
-  if (!(list[0] + 1 <= 0x2001)) assert_hook();
+  if (!(list[0] + 1 <= 0x2000)) assert_hook();
   list[1 + list[0]] = v;
   list[0]++;
 }

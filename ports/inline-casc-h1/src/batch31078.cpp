@@ -1,4 +1,4 @@
-// batch31078.cpp - tier B constructors, loops, list removal and table updates (asm, stack exact).
+// batch31078.cpp - Sonnet h1: tier B constructors, loops, list removal and table updates (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_41e290(void);

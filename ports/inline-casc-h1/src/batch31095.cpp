@@ -1,4 +1,4 @@
-// batch31095.cpp - assert-hook and log-object thunks (asm, stack exact).
+// batch31095.cpp - Sonnet h1: assert-hook and log-object thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_52e240(void);

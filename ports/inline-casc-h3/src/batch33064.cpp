@@ -1,4 +1,4 @@
-// batch33064.cpp - h3 () batch 33064: tier C wrappers with stack-struct args
+// batch33064.cpp - h3 (Sonnet) batch 33064: tier C wrappers with stack-struct args
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_463030(u8 *self, u32 a, u32 b);          // ret 8

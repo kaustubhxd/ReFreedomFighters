@@ -1,4 +1,4 @@
-// batch32070.cpp - cascade h2 (): 0x562af0 (two-digit code string builder, /GS frame), 0x4361a0 (replace an owned string copy), 0x45b2f0 (init).
+// batch32070.cpp - cascade h2 (Sonnet): 0x562af0 (two-digit code string builder, /GS frame), 0x4361a0 (replace an owned string copy), 0x45b2f0 (init).
 #include "ff.h"
 
 extern "C" void THISCALL ext_562b50(u8 *self, char *s);            // thiscall ret 4

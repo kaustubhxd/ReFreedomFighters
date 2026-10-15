@@ -1,4 +1,4 @@
-"""specs_s32127.py - h2 () batch 32127: four tier H functions. Callees/slots are recorders; the vector subtract and the CRT sqrt run as exe code; order pinned with calllog."""
+"""specs_s32127.py - h2 (Sonnet) batch 32127: four tier H functions. Callees/slots are recorders; the vector subtract and the CRT sqrt run as exe code; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

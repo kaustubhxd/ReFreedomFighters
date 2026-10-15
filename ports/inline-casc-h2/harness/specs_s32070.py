@@ -1,4 +1,4 @@
-"""specs_s32070.py - h2 () batch 32070: 0x562af0, 0x4361a0, 0x45b2f0. Callees hooked as recorders; /GS check 0x633654 recorder without args."""
+"""specs_s32070.py - h2 (Sonnet) batch 32070: 0x562af0, 0x4361a0, 0x45b2f0. Callees hooked as recorders; /GS check 0x633654 recorder without args."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec
 

@@ -1,4 +1,4 @@
-// batch32076.cpp - cascade h2 (): 0x42f6e0 (append a token to a growing buffer), 0x5367c0 (find the first table entry the matcher accepts).
+// batch32076.cpp - cascade h2 (Sonnet): 0x42f6e0 (append a token to a growing buffer), 0x5367c0 (find the first table entry the matcher accepts).
 #include "ff.h"
 
 extern "C" void THISCALL ext_5f2d60(u8 *self, u32 a, u32 b);      // thiscall ret 8

@@ -1,4 +1,4 @@
-"""specs_s32072.py - h2 () batch 32072: 0x65f4d0, 0x4d4f70. Callees hooked (0x64b2f0 returns a spec record or 0; 0x4de420 runs the real exe code;
+"""specs_s32072.py - h2 (Sonnet) batch 32072: 0x65f4d0, 0x4d4f70. Callees hooked (0x64b2f0 returns a spec record or 0; 0x4de420 runs the real exe code;
 0x4d4de0 returns a record with the sign bit set; 0x634d22 is a cdecl recorder)."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec

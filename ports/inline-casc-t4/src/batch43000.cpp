@@ -1,4 +1,4 @@
-// batch43000.cpp - t4 () batch 43000: tier H float/SSE functions
+// batch43000.cpp - t4 (Sonnet) batch 43000: tier H float/SSE functions
 #include "ff.h"
 
 extern "C" void ext_634dc4();                                  // x87 CRT fmod: st1 = x, st0 = y on entry, result in st0

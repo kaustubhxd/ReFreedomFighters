@@ -1,4 +1,4 @@
-"""specs_s31097.py - batch 31097. /GS check 0x633654 is a zero-argument recorder that records ECX (= the global cookie when the port is right)."""
+"""specs_s31097.py - Sonnet h1 batch 31097. /GS check 0x633654 is a zero-argument recorder that records ECX (= the global cookie when the port is right)."""
 from pilot import S
 from pe_emu import REGS
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,4 +1,4 @@
-"""specs_s31061.py - batch 31061: tail-jump thunks and small field functions."""
+"""specs_s31061.py - Sonnet h1 batch 31061: tail-jump thunks and small field functions."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

@@ -1,4 +1,4 @@
-// batch32125.cpp - cascade h2 (): one tier H function (stream reader).
+// batch32125.cpp - cascade h2 (Sonnet): one tier H function (stream reader).
 #include "ff.h"
 
 extern "C" void THISCALL ext_4f9c90(u8 *self, u32 a);                 // thiscall ret 4

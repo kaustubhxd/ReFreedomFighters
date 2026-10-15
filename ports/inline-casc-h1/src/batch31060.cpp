@@ -1,4 +1,4 @@
-// batch31060.cpp - vtable/pointer-chasing tail-jump thunks. Assembly so the entry stack is untouched at the jump.
+// batch31060.cpp - Sonnet h1: vtable/pointer-chasing tail-jump thunks. Assembly so the entry stack is untouched at the jump.
 #include "ff.h"
 
 extern "C" void ext_5fd120(void);

@@ -1,4 +1,4 @@
-// batch42000.cpp - tier H, /GS-protected float function (asm, stack exact).
+// batch42000.cpp - Sonnet t3: tier H, /GS-protected float function (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_523330(void);

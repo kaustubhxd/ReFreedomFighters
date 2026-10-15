@@ -1,4 +1,4 @@
-// batch43003.cpp - t4 () batch 43003: tier H float/SSE functions
+// batch43003.cpp - t4 (Sonnet) batch 43003: tier H float/SSE functions
 #include "ff.h"
 
 extern "C" float THISCALL ext_4e5e80(void *cursor);              // float in st0 (script stream read)

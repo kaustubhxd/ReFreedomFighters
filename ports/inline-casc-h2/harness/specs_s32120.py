@@ -1,4 +1,4 @@
-"""specs_s32120.py - h2 () batch 32120: tier H functions. The x87 vector subtract 0x43e920 runs as exe code; callees/slots are recorders; order pinned with calllog."""
+"""specs_s32120.py - h2 (Sonnet) batch 32120: tier H functions. The x87 vector subtract 0x43e920 runs as exe code; callees/slots are recorders; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

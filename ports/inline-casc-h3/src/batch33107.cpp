@@ -1,4 +1,4 @@
-// batch33107.cpp - h3 () batch 33107: tier H float/SSE functions
+// batch33107.cpp - h3 (Sonnet) batch 33107: tier H float/SSE functions
 #include "ff.h"
 
 // 0x5a3690: thiscall(i, j) ret 8: array of 16-byte entries at this+4, count at [this]: i == j: shift entries k+1 -> k for k in i .. count-2, count--; else copy (count-j) entries from j to i (forward) and count += i - j

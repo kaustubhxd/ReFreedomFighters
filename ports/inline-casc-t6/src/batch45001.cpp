@@ -1,4 +1,4 @@
-// batch45001.cpp - tier H slice 5 (t6, ): three /GS-protected thiscall functions written as asm (stack layout exact).
+// batch45001.cpp - tier H slice 5 (t6, Sonnet): three /GS-protected thiscall functions written as asm (stack layout exact).
 #include "ff.h"
 
 extern "C" void ext_633654(void);

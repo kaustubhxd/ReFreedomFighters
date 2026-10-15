@@ -1,4 +1,4 @@
-// batch32116.cpp - cascade h2 (): one tier H (float / SSE) function.
+// batch32116.cpp - cascade h2 (Sonnet): one tier H (float / SSE) function.
 #include "ff.h"
 
 typedef u32 (STDCALL *s3_t)(u32, u32, u32);

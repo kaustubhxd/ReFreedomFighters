@@ -48,7 +48,7 @@ u32 THISCALL ZIKLNKOBJ_PlaySound1(void *self, u32 sound) {
 }
 PCREG(466f60, ZIKLNKOBJ_PlaySound1);
 
-// 0x467c40 ZIKLNKOBJ::Sound_Delete() [ by its body and its only caller, ControlSound; not in the map]:
+// 0x467c40 ZIKLNKOBJ::Sound_Delete() [by its body and its only caller, ControlSound; not in the map]:
 // does not delete, it starts a 0.1 s fade-out of the current speech: fade flag, fade start time (s), start volume,
 // volume drop per second = volume / 0.1.
 void THISCALL ZIKLNKOBJ_Sound_Delete(void *self) {

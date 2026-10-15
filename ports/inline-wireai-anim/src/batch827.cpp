@@ -6,7 +6,7 @@
 // The current link action object lives at +0x1ce; these functions forward to its virtuals (no arguments).
 static inline void *action(u8 *self) { return FP(self, 0x1ce); }
 
-// ZIKLNKOBJ::CallBackLnkActionTarget() [medium]: action vt +0xc.
+// ZIKLNKOBJ::CallBackLnkActionTarget() [medium, GC-mapped]: action vt +0xc.
 static void THISCALL CallBackLnkActionTarget(u8 *self) { vcall<void>(action(self), 0xc); }
 PCREG(465a70, CallBackLnkActionTarget);
 
@@ -27,6 +27,6 @@ static u32 THISCALL CurrentLnkActionId(u8 *self) {
 }
 PCREG(466400, CurrentLnkActionId);
 
-// ZIKLNKOBJ::DisplayGround(bool on) [high]: forwards to its own vt +0x2a8(0, on).
+// ZIKLNKOBJ::DisplayGround(bool on) [high, GC-mapped]: forwards to its own vt +0x2a8(0, on).
 static void THISCALL DisplayGround(u8 *self, u32 on) { vcall<void>(self, 0x2a8, 0u, on); }
 PCREG(466480, DisplayGround);

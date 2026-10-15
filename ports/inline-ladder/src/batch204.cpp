@@ -12,7 +12,7 @@ extern "C" void THISCALL ext_5950c0(void *hero, u32 action, float v, u32 name); 
 #define U32(p, off) (*(u32 *)((u8 *)(p) + (off)))
 
 // 0x5e7f20, ZFFHeroMovementGuide::WantControl(const float *dir, const float *pos, const float *unused)
-// [, medium; vtable slot 3], thiscall, ret 0xc, returns AL.
+// [medium; vtable slot 3], thiscall, ret 0xc, returns AL.
 // Fields of this (PC, packed): +4 the hero (float +0x43d subtracted from pos.y), +0x36d the ZFFHERO (SetUseAction,
 // its +0x9d3 use action and byte +0x66c), +0x54c the ladder list (+0x18 an iterator object: slot 0x4c begin, slot 0x5c
 // next, which writes the "valid" dword of the 12-byte iterator), +0x550 the grabbed ladder (shape), +0x579 grabbed at

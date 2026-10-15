@@ -1,4 +1,4 @@
-// batch44001.cpp - cascade t5 (): tier H float functions.
+// batch44001.cpp - cascade t5 (Sonnet): tier H float functions.
 #include "ff.h"
 #include <xmmintrin.h>
 

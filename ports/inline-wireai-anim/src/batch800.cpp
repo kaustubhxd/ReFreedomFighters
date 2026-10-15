@@ -1,6 +1,6 @@
 // batch800.cpp - animation layer thread, batch 800: blend-frame entry points (PC Freedom.Exe.orig).
 // PC objects are byte packed (/Zp1, docs/36), so fields are read by raw offset.
-// Names: the name map (confidence noted per function).
+// Names: a name map (confidence noted per function).
 #include "ff.h"
 
 #define F8(p, o) (*(u8 *)((u8 *)(p) + (o)))
@@ -12,7 +12,7 @@
 
 // ZBoneModifyBase::AddFrame(const ZDeltaBone*, const AnimHeader*, float frame, float weight, unsigned flags)
 // [high]. Appends one layer to the per-object frame list: up to 4 entries of 20 bytes at +0x15,
-// count at +0x65. A fifth add logs "ZBoneModifyBase::AddFrame more than %d" (line 0x65) and is dropped.
+// count at +0x65. A fifth add logs "<debug message>" (line 0x65) and is dropped.
 static void THISCALL AddFrame(void *self, void *delta, void *hdr, float frame, float weight, u32 flags) {
   u32 n = F32(self, 0x65);
   if (n == 4) {
@@ -81,6 +81,6 @@ static void THISCALL SetActiveUpperBody(void *self, float t) {
 }
 PCREG(484ed0, SetActiveUpperBody);
 
-// ZActor::SetHoldWeaponUBAnim(AnimHeader*) [high]: m_pAnimUBHoldRifle  at PC +0x74f.
+// ZActor::SetHoldWeaponUBAnim(AnimHeader*) [high]: m_pAnimUBHoldRifle (HBM name) at PC +0x74f.
 static void THISCALL SetHoldWeaponUBAnim(void *self, void *hdr) { FP(self, 0x74f) = hdr; }
 PCREG(47be00, SetHoldWeaponUBAnim);

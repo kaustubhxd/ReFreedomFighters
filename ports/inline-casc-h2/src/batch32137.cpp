@@ -1,4 +1,4 @@
-// batch32137.cpp - cascade h2 (): three tier H (float / SSE / x87) functions.
+// batch32137.cpp - cascade h2 (Sonnet): three tier H (float / SSE / x87) functions.
 #include "ff.h"
 
 static inline u32 rd32(const u8 *p) { return p[0] | (p[1] << 8) | (p[2] << 16) | ((u32)p[3] << 24); }

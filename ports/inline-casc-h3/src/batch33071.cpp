@@ -1,4 +1,4 @@
-// batch33071.cpp - h3 () batch 33071: tier C wrappers with imports
+// batch33071.cpp - h3 (Sonnet) batch 33071: tier C wrappers with imports
 #include "ff.h"
 
 extern "C" void THISCALL ext_43ea20(u8 *self);

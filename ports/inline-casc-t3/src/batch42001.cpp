@@ -1,4 +1,4 @@
-// batch42001.cpp - tier H, float-return callee.
+// batch42001.cpp - Sonnet t3: tier H, float-return callee.
 #include "ff.h"
 
 extern "C" void THISCALL ext_6352f0(u8 *self, u32 *out);  // thiscall, ret 4

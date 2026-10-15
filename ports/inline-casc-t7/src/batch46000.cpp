@@ -1,4 +1,4 @@
-// batch46000.cpp - cascade t7 (), tier G: 0x56a220 (UI widget command dispatcher, 393 insns).
+// batch46000.cpp - cascade t7 (Sonnet), tier G: 0x56a220 (UI widget command dispatcher, 393 insns).
 #include "ff.h"
 
 extern "C" void THISCALL ext_562b50(u8 *self, const void *name);     // ret 4

@@ -1,4 +1,4 @@
-"""specs_s32097.py - h2 () batch 32097: eight tier H float / SSE functions. Float args F(); NaN-able heap floats use nan_heap=True; slots are recorder stubs."""
+"""specs_s32097.py - h2 (Sonnet) batch 32097: eight tier H float / SSE functions. Float args F(); NaN-able heap floats use nan_heap=True; slots are recorder stubs."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

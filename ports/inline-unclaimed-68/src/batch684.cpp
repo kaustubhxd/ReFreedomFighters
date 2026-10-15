@@ -1,4 +1,4 @@
-// batch684.cpp - unclaimed-68 batch 4 (claim 4). Names from the name map (naming only, never committed).
+// batch684.cpp - unclaimed-68 batch 4 (claim 4). Names from the GC name map (naming only, never committed).
 // The forwarders call exe code with stack arguments; the calls are written in inline asm with the original's push order,
 // so the compiler adds no cleanup of its own around them.
 #include "ff.h"

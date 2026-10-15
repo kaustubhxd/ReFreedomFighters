@@ -1,4 +1,4 @@
-// batch33052.cpp - h3 () batch 33052: tiny tier C wrappers (vcalls, import call, call sequence)
+// batch33052.cpp - h3 (Sonnet) batch 33052: tiny tier C wrappers (vcalls, import call, call sequence)
 #include "ff.h"
 
 extern "C" void THISCALL ext_54e600(u8 *self, u32 a);   // ret 4

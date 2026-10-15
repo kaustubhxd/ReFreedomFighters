@@ -1,4 +1,4 @@
-"""specs_s32104.py - h2 () batch 32104: three tier H functions. Callees/slots are recorders; order pinned with calllog.
+"""specs_s32104.py - h2 (Sonnet) batch 32104: three tier H functions. Callees/slots are recorders; order pinned with calllog.
 Slot 0x20 of 0x657c50 leaves its stack argument for 0x63eab0 (ret 4): stub pop=0, hook pop=4."""
 import struct
 from pilot import S, F

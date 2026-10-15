@@ -1,4 +1,4 @@
-// batch33040.cpp - h3 () batch 33040: tier B ctors, field copies, call wrappers
+// batch33040.cpp - h3 (Sonnet) batch 33040: tier B ctors, field copies, call wrappers
 #include "ff.h"
 
 extern "C" void THISCALL ext_469870(u8 *self);

@@ -1,4 +1,4 @@
-"""specs_s32074.py - h2 () batch 32074: 0x5d82a0, 0x5c2c10. Callees hooked as recorders."""
+"""specs_s32074.py - h2 (Sonnet) batch 32074: 0x5d82a0, 0x5c2c10. Callees hooked as recorders."""
 from pilot import S
 from recruits_util import rnd, clear_hooks, hook_rec
 

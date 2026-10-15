@@ -1,4 +1,4 @@
-// batch31080.cpp - tier B/C bit writer, buffer grow and vtable call-through thunks (asm, stack exact).
+// batch31080.cpp - Sonnet h1: tier B/C bit writer, buffer grow and vtable call-through thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_54f870(void);

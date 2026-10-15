@@ -1,4 +1,4 @@
-"""specs_s32094.py - h2 () batch 32094: eight tier H float / SSE functions. Float arguments are F(); float returns ret='st0'; heap floats that can be NaN use nan_heap=True."""
+"""specs_s32094.py - h2 (Sonnet) batch 32094: eight tier H float / SSE functions. Float arguments are F(); float returns ret='st0'; heap floats that can be NaN use nan_heap=True."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

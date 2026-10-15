@@ -1,4 +1,4 @@
-// batch31064.cpp - message handlers, pool allocator, table lookups, search, two asm tail-call functions.
+// batch31064.cpp - Sonnet h1: message handlers, pool allocator, table lookups, search, two asm tail-call functions.
 #include "ff.h"
 
 extern "C" void ext_597a70(void);

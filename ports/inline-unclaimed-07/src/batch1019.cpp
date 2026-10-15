@@ -1,5 +1,5 @@
 // batch1019.cpp - unclaimed-07 batch 19 (residue-07): ZFFHeroIf::addMethodDefinitions(OpaqueMethodList_t&).
-// Name from the name map. Body from the PC bytes: six blocks, each adding one function address to the global table
+// Name from the GC name map. Body from the PC bytes: six blocks, each adding one function address to the global table
 // at 0x7140d0 (count at 0x7140c8, at most 0x32 entries). When the count is full, the object's slot +0x44(0x6a5ea4) is called
 // and the assert pointer at 0x7003b0 is called (no arguments). Each block first checks the list's byte at +0xc: when
 // it is zero, the function clears it and calls 0x505a00(list) on this. The same tail runs after the last block.

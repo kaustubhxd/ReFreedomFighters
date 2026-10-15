@@ -1,4 +1,4 @@
-"""specs_s32128.py - h2 () batch 32128: 0x52d1c0 and 0x5b9780. The distance helper 0x4e0870 runs as exe code; slots are recorders; order pinned with calllog."""
+"""specs_s32128.py - h2 (Sonnet) batch 32128: 0x52d1c0 and 0x5b9780. The distance helper 0x4e0870 runs as exe code; slots are recorders; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

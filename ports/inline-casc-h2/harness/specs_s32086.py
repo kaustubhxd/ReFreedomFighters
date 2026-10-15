@@ -1,4 +1,4 @@
-"""specs_s32086.py - h2 () batch 32086: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs."""
+"""specs_s32086.py - h2 (Sonnet) batch 32086: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec, pystub
 

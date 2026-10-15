@@ -1,4 +1,4 @@
-// batch31068.cpp - call-through thunks (asm so the stack is exact) and two field-logic functions.
+// batch31068.cpp - Sonnet h1: call-through thunks (asm so the stack is exact) and two field-logic functions.
 #include "ff.h"
 
 #define P32(p) (*(u32 *)(p))

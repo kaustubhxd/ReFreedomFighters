@@ -1,4 +1,4 @@
-"""specs_s33115.py - h3 () batch 33115: tier H float/SSE functions."""
+"""specs_s33115.py - h3 (Sonnet) batch 33115: tier H float/SSE functions."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
@@ -56,6 +56,14 @@ def _g477670(c):
     e.w32(a + 0x7c, r.choice([0x40, 0, 0x40, 0xffffffff, 0x3f, _w(c)]))
     for off in (0x70, 0x74, 0x78):
         e.w32(a + off, _vb(r.choice([0.0, 0.01, 0.0110, 0.0111, 0.5, -0.5, 1.0, c.fv(-1, 1, 0.05)])))
+    if r.random() < 0.3:
+        e.w32(a + 0x7c, 0x40)
+        e.wbytes(me + 0x726, bytes([1]))
+        e.w32(me + 0x64c, 0)
+        pick = r.choice([(0.0078125, 0.0078125, 0.0), (0.0105, 0.0, 0.0), (0.0104, 0.0, 0.0), (0.0, 0.0105, 0.0), (0.0, 0.0, 0.0105)])
+        for off, v in zip((0x70, 0x74, 0x78), pick):
+            e.w32(a + off, _vb(v))
+        return [me, a, r.choice([0, 1, 8]), _w(c), _w(c), _w(c)]
     return [me, a if r.random() < 0.9 else 0, r.choice([0, 4, 1, 5, _w(c)]), _w(c), _w(c), _w(c)]
 
 

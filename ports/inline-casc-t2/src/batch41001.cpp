@@ -1,4 +1,4 @@
-// batch41001.cpp - cascade t2 (): tier H float functions 0x50ad50 and 0x4bfb80.
+// batch41001.cpp - cascade t2 (Sonnet): tier H float functions 0x50ad50 and 0x4bfb80.
 #include "ff.h"
 
 static inline u32 rd32(const u8 *p) { return p[0] | (p[1] << 8) | (p[2] << 16) | ((u32)p[3] << 24); }

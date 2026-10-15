@@ -1,4 +1,4 @@
-// batch44004.cpp - cascade t5 (): 0x4861f0 (asm, stack exact).
+// batch44004.cpp - cascade t5 (Sonnet): 0x4861f0 (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_467410(void);

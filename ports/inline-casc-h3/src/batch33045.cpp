@@ -1,4 +1,4 @@
-// batch33045.cpp - h3 () batch 33045: tier B loops, list insert, ring push, string copy
+// batch33045.cpp - h3 (Sonnet) batch 33045: tier B loops, list insert, ring push, string copy
 #include "ff.h"
 
 extern "C" void THISCALL ext_64cda0(u8 *self, u32 a);                           // ret 4

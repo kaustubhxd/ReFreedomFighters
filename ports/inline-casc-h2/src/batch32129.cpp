@@ -1,4 +1,4 @@
-// batch32129.cpp - cascade h2 (): two tier H functions.
+// batch32129.cpp - cascade h2 (Sonnet): two tier H functions.
 #include "ff.h"
 
 extern "C" void FASTCALL ext_4e0980(void *a, void *b);        // vector helper (ecx, edx), exe code

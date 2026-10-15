@@ -1,4 +1,4 @@
-// batch31065.cpp - byte flush, swap-remove, tag matcher, message handler, bit scan, copy+tail, list remove, string hash.
+// batch31065.cpp - Sonnet h1: byte flush, swap-remove, tag matcher, message handler, bit scan, copy+tail, list remove, string hash.
 #include "ff.h"
 
 extern "C" void ext_45d5b0(void);

@@ -1,4 +1,4 @@
-"""specs_s33067.py - h3 () batch 33067."""
+"""specs_s33067.py - h3 (Sonnet) batch 33067."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

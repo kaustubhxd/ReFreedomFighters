@@ -1,5 +1,5 @@
 // batch301.cpp - ZMoveOnSpline::GetAimPoint(float *out, ZGEOM *g) (area 43, 2026-10-12). 0x512ea0, stdcall, ret 8.
-//  (name map, high). ECX is not read; both arguments are on the stack.
+// (name map, high). ECX is not read; both arguments are on the stack.
 // g is a ZGEOM-like object: slot 0x1e0 is a class test (class id 0x200074), slots 0x84 (out-param),
 // 0x398 (one word in), 0x3a0 / 0x3a8 (word return) are the calls the body makes. vscalar (0x4e0d00) is original exe code
 // (thiscall with one float on the stack); PSVECAdd (0x441940) is the usual fastcall.

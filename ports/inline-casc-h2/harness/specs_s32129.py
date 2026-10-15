@@ -1,4 +1,4 @@
-"""specs_s32129.py - h2 () batch 32129: 0x457760 and 0x4e3230. The vector helpers run as exe code; the engine integer slot is a recorder returning a sequence."""
+"""specs_s32129.py - h2 (Sonnet) batch 32129: 0x457760 and 0x4e3230. The vector helpers run as exe code; the engine integer slot is a recorder returning a sequence."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

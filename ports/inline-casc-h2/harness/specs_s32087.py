@@ -1,4 +1,4 @@
-"""specs_s32087.py - h2 () batch 32087: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs; the assert hook 0x7003b0 is always set."""
+"""specs_s32087.py - h2 (Sonnet) batch 32087: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs; the assert hook 0x7003b0 is always set."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

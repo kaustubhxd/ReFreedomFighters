@@ -1,0 +1,65 @@
+// batch42007.cpp - Sonnet t3: tier H, /GS float function (asm, stack exact).
+#include "ff.h"
+
+extern "C" void ext_591ae0(void);
+extern "C" void ext_4e0be0(void);
+extern "C" void ext_633654(void);
+
+// 0x5c4940, thiscall(a, out) ret 8, /GS frame: o = 0x591ae0([this+0x60]); slot 0x80 of [o+0x44] with (&v34, a) (callee pops 8); out[0..2] = out[3..5] = v34[0..2];
+// 0x4e0be0(out, {0, -pi/4, 0}) then 0x4e0be0(out+3 floats, {0, +pi/4, 0}) (fastcall ecx = dest, edx = &vec3); finally out[1] = out[4] = 0.
+asm(
+    ".text\n"
+    ".globl thunk5c4940\n"
+    "thunk5c4940:\n"
+    "  pushl %ebp\n"
+    "  movl %esp, %ebp\n"
+    "  subl $0x34, %esp\n"
+    "  movl 0x6f5630, %eax\n"
+    "  xorl %ebp, %eax\n"
+    "  movl %eax, -4(%ebp)\n"
+    "  movl 0x60(%ecx), %ecx\n"
+    "  pushl %esi\n"
+    "  movl 8(%ebp), %esi\n"
+    "  pushl %edi\n"
+    "  movl 0xc(%ebp), %edi\n"
+    "  call ext_591ae0\n"
+    "  pushl %esi\n"
+    "  leal -0x34(%ebp), %edx\n"
+    "  pushl %edx\n"
+    "  movl 0x44(%eax), %ecx\n"
+    "  movl (%ecx), %eax\n"
+    "  call *0x80(%eax)\n"
+    "  movss -0x34(%ebp), %xmm2\n"
+    "  leal -0x10(%ebp), %edx\n"
+    "  movss -0x30(%ebp), %xmm1\n"
+    "  movl %edi, %ecx\n"
+    "  movss -0x2c(%ebp), %xmm0\n"
+    "  movss %xmm2, (%edi)\n"
+    "  movss %xmm1, 4(%edi)\n"
+    "  movss %xmm0, 8(%edi)\n"
+    "  movss %xmm2, 0xc(%edi)\n"
+    "  movss %xmm1, 0x10(%edi)\n"
+    "  movss %xmm0, 0x14(%edi)\n"
+    "  movl $0, -0x10(%ebp)\n"
+    "  movl $0xbf490fdb, -0xc(%ebp)\n"
+    "  movl $0, -8(%ebp)\n"
+    "  call ext_4e0be0\n"
+    "  leal -0x10(%ebp), %edx\n"
+    "  movl $0, -0x10(%ebp)\n"
+    "  leal 0xc(%edi), %ecx\n"
+    "  movl $0x3f490fdb, -0xc(%ebp)\n"
+    "  movl $0, -8(%ebp)\n"
+    "  call ext_4e0be0\n"
+    "  movl -4(%ebp), %ecx\n"
+    "  movl $0, 0x10(%edi)\n"
+    "  xorl %ebp, %ecx\n"
+    "  movl $0, 4(%edi)\n"
+    "  popl %edi\n"
+    "  popl %esi\n"
+    "  call ext_633654\n"
+    "  movl %ebp, %esp\n"
+    "  popl %ebp\n"
+    "  ret $8\n"
+);
+extern "C" void thunk5c4940(void);
+PCREG(5c4940, thunk5c4940);

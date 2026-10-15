@@ -1,4 +1,4 @@
-"""specs_s32136.py - h2 () batch 32136: 0x5291f0, 0x5d7ef0."""
+"""specs_s32136.py - h2 (Sonnet) batch 32136: 0x5291f0, 0x5d7ef0."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

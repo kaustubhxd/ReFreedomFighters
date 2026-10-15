@@ -1,4 +1,4 @@
-"""specs_s32106.py - h2 () batch 32106: three tier H float / SSE functions. Callees/slots are recorders; the CRT float-to-int helper 0x633910 runs as exe code."""
+"""specs_s32106.py - h2 (Sonnet) batch 32106: three tier H float / SSE functions. Callees/slots are recorders; the CRT float-to-int helper 0x633910 runs as exe code."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

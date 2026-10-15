@@ -1,4 +1,4 @@
-// batch33072.cpp - h3 () batch 33072: tier C wrappers (stack-frame tricks, memcpy, big stack buffer)
+// batch33072.cpp - h3 (Sonnet) batch 33072: tier C wrappers (stack-frame tricks, memcpy, big stack buffer)
 #include "ff.h"
 
 extern "C" void __attribute__((cdecl)) ext_634d22(void *dst, const void *src, u32 n);   // memcpy through the IAT

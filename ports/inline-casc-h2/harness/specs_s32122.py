@@ -1,4 +1,4 @@
-"""specs_s32122.py - h2 () batch 32122: 0x45ecd0 (x87 distance mix) and 0x4e8c00 (vector pipeline). The small vector helpers run as exe code; 0x4e8c80 and the slots are recorders."""
+"""specs_s32122.py - h2 (Sonnet) batch 32122: 0x45ecd0 (x87 distance mix) and 0x4e8c00 (vector pipeline). The small vector helpers run as exe code; 0x4e8c80 and the slots are recorders."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,4 +1,4 @@
-"""specs_s31121.py - batch 31121."""
+"""specs_s31121.py - Sonnet h1 batch 31121."""
 from pilot import S
 from pe_emu import REGS
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

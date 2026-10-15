@@ -22,7 +22,7 @@ static u8 STDCALL fn58c150(u8 *a, u8 *p1, u32 *p2) {
     bool done = false;
     if (P) {
       u8 *P2 = (u8 *)vcall<u32>(O, 0x20);
-      if ((u8)vcall<u32>(P2, 0x1e0, 0x1007d0u)) {
+      if ((u8)vcall<u32>(P2, 0x1e0, 0x1007d1u)) {
         ebx = (u8 *)vcall<u32>(O, 0x20);
         vcall<void>(ebx, 0x2e0, (u32)p1, (u32)p2);
         vcall<void>(ebx, 0x98, (u32)p1, (u32)p2);

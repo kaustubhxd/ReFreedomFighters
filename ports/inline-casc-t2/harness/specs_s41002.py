@@ -1,4 +1,4 @@
-"""specs_s41002.py - t2 () batch 41002: 0x58a9b0. Slots 0x48, 0x6c, 0x68, 0x50 are recorders that write to the caller's local; 0x633654 (/GS) is a recorder."""
+"""specs_s41002.py - t2 (Sonnet) batch 41002: 0x58a9b0. Slots 0x48, 0x6c, 0x68, 0x50 are recorders that write to the caller's local; 0x633654 (/GS) is a recorder."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec, pystub
 

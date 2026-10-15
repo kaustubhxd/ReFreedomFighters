@@ -1,4 +1,4 @@
-"""specs_s44003.py - t5 () batch 44003: 0x55bad0."""
+"""specs_s44003.py - t5 (Sonnet) batch 44003: 0x55bad0."""
 import struct
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,4 +1,4 @@
-// batch33051.cpp - h3 () batch 33051: tiny tier C wrappers (the 0x5003d0 / 0x5002f0 pair, vcall chains)
+// batch33051.cpp - h3 (Sonnet) batch 33051: tiny tier C wrappers (the 0x5003d0 / 0x5002f0 pair, vcall chains)
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_59ffc0(u8 *self);                       // returns [this+0x77f]

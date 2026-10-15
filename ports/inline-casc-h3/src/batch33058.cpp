@@ -1,4 +1,4 @@
-// batch33058.cpp - h3 () batch 33058: tier C wrappers, import loop, global array push
+// batch33058.cpp - h3 (Sonnet) batch 33058: tier C wrappers, import loop, global array push
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_4e5e60(u8 *self);

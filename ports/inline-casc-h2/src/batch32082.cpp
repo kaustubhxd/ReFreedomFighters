@@ -1,4 +1,4 @@
-// batch32082.cpp - cascade h2 (): eight tier C vtable-slot wrappers (second batch).
+// batch32082.cpp - cascade h2 (Sonnet): eight tier C vtable-slot wrappers (second batch).
 #include "ff.h"
 
 extern "C" u8 *ext_5fa630();                   // no args, returns an object pointer

@@ -1,6 +1,6 @@
 #include "ff.h"
 // batch1514.cpp - unclaimed-15 claim 14 (docs/20-unclaimed-15.md): CRigidBody::Save(ZSaveGame*) (0x5406e0). Name from the
-// name map (high). Thiscall, one argument (the save object), ret 4, returns true (al = 1).
+// GC name map (high). Thiscall, one argument (the save object), ret 4, returns true (al = 1).
 // Stubbed in the harness: 0x547670 (thiscall, one argument). The save object's virtual slots are logged.
 
 typedef u32(THISCALL *SlotA)(u8 *self, u32 a1);

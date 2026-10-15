@@ -1,4 +1,4 @@
-// batch33102.cpp - h3 () batch 33102: tier H float/SSE functions
+// batch33102.cpp - h3 (Sonnet) batch 33102: tier H float/SSE functions
 #include "ff.h"
 
 #define SYS (*(u8 **)0x70039c)

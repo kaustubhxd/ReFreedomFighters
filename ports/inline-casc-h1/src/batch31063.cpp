@@ -1,4 +1,4 @@
-// batch31063.cpp - constructor, table lookup, bit tests, message handlers, pool alloc, copies.
+// batch31063.cpp - Sonnet h1: constructor, table lookup, bit tests, message handlers, pool alloc, copies.
 #include "ff.h"
 
 // 0x6362d0 thiscall constructor: magic 'NPAL' at +4, vtable 0x6c1fec, rest zero; returns this.

@@ -1,4 +1,4 @@
-// batch32079.cpp - cascade h2 (): 0x63af20 (take a free entry from a pool of 0x4c-byte entries chained through blocks).
+// batch32079.cpp - cascade h2 (Sonnet): 0x63af20 (take a free entry from a pool of 0x4c-byte entries chained through blocks).
 #include "ff.h"
 
 extern "C" u8 THISCALL ext_63b440(u8 *self);   // thiscall, plain ret, bool in al

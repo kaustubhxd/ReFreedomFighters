@@ -1,4 +1,4 @@
-// batch32124.cpp - cascade h2 (): two tier H functions.
+// batch32124.cpp - cascade h2 (Sonnet): two tier H functions.
 #include "ff.h"
 
 extern "C" void FASTCALL ext_633654(u32 cookie);                         // /GS check

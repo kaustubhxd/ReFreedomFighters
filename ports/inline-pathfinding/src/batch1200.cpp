@@ -1,5 +1,5 @@
 // batch1200.cpp - pathfinding tree (inline-pathfinding thread, 2026-10-11): small ZPFOctree_packed / ZPathfinder3 /
-// ZActor pathfinder leaves. Names from decoders/gc_pc_namemap.tsv (GC startup_release.elf symbols); the PC build packs
+// ZActor pathfinder leaves. Names from decoders/gc_pc_namemap.tsv (name map); the PC build packs
 // structs with /Zp1, so offsets such as +0x5a and +0x7d are unaligned on purpose.
 #include "ff.h"
 
@@ -46,7 +46,7 @@ static bool THISCALL nodeCheckBoxIsOK(u8 *self, void *, u32, int *lo, int *hi) {
 }
 PCREG(532800, nodeCheckBoxIsOK);
 
-// 0x530fb0 ZPFOctree_packed::Init0(bool, bool) [map low;  stores +0/+4 there, PC +4/+5]. thiscall, ret 8.
+// 0x530fb0 ZPFOctree_packed::Init0(bool, bool) [map low; stores +0/+4 there, PC +4/+5]. thiscall, ret 8.
 static void THISCALL octreeInit0(u8 *self, u32 a, u32 b) {
   self[4] = (u8)a;
   self[5] = (u8)b;

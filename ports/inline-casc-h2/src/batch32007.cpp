@@ -7,7 +7,7 @@ extern "C" u8 *ext_4daff0(u8 *self);
 extern "C" void ext_4dc630(u8 *self, u32 arg);
 
 // 0x4dc030, thiscall(self) void: ZBaseGeom::MakeInactive
-// Complex: recursion, virtual calls, global reads - escalate to 
+// Complex: recursion, virtual calls, global reads - escalate to Sonnet
 static void THISCALL fn4dc030(u8 *self) {
   ext_4da770(self);
   ext_4dc630(self, 0x400);

@@ -1,4 +1,4 @@
-// batch31079.cpp - tier B loops, list/tree helpers and decoders (asm, stack exact).
+// batch31079.cpp - Sonnet h1: tier B loops, list/tree helpers and decoders (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_41e290(void);

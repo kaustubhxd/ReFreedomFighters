@@ -1,4 +1,4 @@
-// batch31070.cpp - tier B call-through thunks (asm, stack exact).
+// batch31070.cpp - Sonnet h1: tier B call-through thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_42ab26(void);

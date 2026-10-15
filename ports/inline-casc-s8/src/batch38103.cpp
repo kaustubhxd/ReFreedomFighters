@@ -1,0 +1,41 @@
+#include "ff.h"
+#define U(p,o) (*(u32 *)((u8 *)(p)+(o)))
+#define P(p,o) (*(u8 **)((u8 *)(p)+(o)))
+extern "C" void THISCALL ext_534190(u8 *s);
+extern "C" u32 THISCALL ext_534480(u8 *s,u8 *st);
+typedef u32(THISCALL *v1)(u8 *,u32);
+typedef u32(THISCALL *v2)(u8 *,u32,u32);
+typedef void (*logfn)(u32,u32,u32);
+#define SLOT(p,o,T) ((T)U(P(p,0),o))
+static void readfield(u8 *st,u8 *dest,u32 slot) { SLOT(st,slot,v1)(st,(u32)dest); }
+static void THISCALL fn534220(u8 *s,u8 *st) {
+  ext_534190(s);
+  readfield(st,s+0x100c,0x48);
+  u32 i=0;
+  const u32 fields[][2]={
+    {0,0x40},{0x10,0x40},{0x14,0x6c},{0x20,0x6c},{0x2c,0x48},
+    {0x3c,0x40},{0x40,0x40},{0x44,0x50},{0x48,0x50},{0x4c,0x50},
+    {0x50,0x50},{0x54,0x50},{0x5c,0x50},{0x60,0x48},{0x64,0x48},
+    {0x68,0x48},{4,0x40},{8,0x48},{0x6c,0x58},{0x70,0x50},
+    {0x78,0x50},{0x7c,0x48},{0x80,0x48},{0x84,0x50},{0x88,0x50}
+  };
+  for(; (s32)i<(s32)U(s,0x100c);++i) {
+    u8 *rec=P(s,8)+i*0xfd;
+    for(u32 j=0;j<25;++j) readfield(st,rec+fields[j][0],fields[j][1]);
+    U(rec,0x30)=ext_534480(P(G(u8 *,0x70039c),0x1a9f)+0x109f,st);
+    U(rec,0x34)=ext_534480(P(G(u8 *,0x70039c),0x1a9f)+0x109f,st);
+    U(rec,0x38)=ext_534480(P(G(u8 *,0x70039c),0x1a9f)+0x109f,st);
+    U(rec,0x8c)=0;
+  }
+  U(s,0x1010)=i;
+  readfield(st,P(s,0)+0xc,0x40);
+  readfield(st,P(s,0)+0x10,0x40);
+  readfield(st,P(s,0)+0x14,0x40);
+  SLOT(st,0x70,v1)(st,U(P(s,0),8));
+  SLOT(st,0x18,v2)(st,U(P(s,0),4),U(P(s,0),0x10)*4+4);
+  SLOT(st,0x18,v2)(st,U(s,4),U(P(s,0),0x10)*4+4);
+  u8 *logger=G(u8 *,0x700390);
+  u32 l=SLOT(logger,0x20,v2)(logger,0x6a19bc,0x82);
+  SLOT((u8 *)l,0x2c,logfn)(l,0x6a19f8,U(s,0x100c));
+}
+PCREG(534220,fn534220);

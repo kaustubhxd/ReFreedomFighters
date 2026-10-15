@@ -34,7 +34,7 @@ PCREG(4616b0, LnkGetBoneMatPos);
 static void THISCALL SetForcedLODLevel(void *self, u32 l) { F32(FP(self, 0x6c), 0x268) = l; }
 PCREG(464710, SetForcedLODLevel);
 
-// ZLNKOBJ::CopyPoseFrom(ZLNKOBJ*) [high]: only logs "ZLNKOBJ::CopyPoseFrom not supported!. Talk to DG".
+// ZLNKOBJ::CopyPoseFrom(ZLNKOBJ*) [high]: only logs "<debug message>".
 static void THISCALL CopyPoseFrom(void *, void *) {
   void *sink = vcall<void *>(G(void *, 0x700390), 0x20, (const char *)0x685834, 0x5f9);
   typedef void(__attribute__((cdecl)) * pf)(void *, const char *);
@@ -42,7 +42,7 @@ static void THISCALL CopyPoseFrom(void *, void *) {
 }
 PCREG(462430, CopyPoseFrom);
 
-// 0x4632d0 [name ZLNKOBJ::GetAttachedBaseGeomBoneId; the PC body copies the matrix from modifier vt 0x58].
+// 0x4632d0 [GC name ZLNKOBJ::GetAttachedBaseGeomBoneId; the PC body copies the matrix from modifier vt 0x58].
 static void THISCALL GetAttachedBaseGeomBoneId(void *self, float *out) {
   float *m = vcall<float *>(FP(self, 0x6c), 0x58, self);
   ext_4de420(out, m);
@@ -62,7 +62,7 @@ static void THISCALL HitRagdoll(void *self, const float *a, const float *b, floa
 }
 PCREG(647140, HitRagdoll);
 
-// 0x464730 [name ZLNKOBJ::DetachBaseGeomFromBone; the PC body copies the argument matrix into modifier vt 0x58].
+// 0x464730 [GC name ZLNKOBJ::DetachBaseGeomFromBone; the PC body copies the argument matrix into modifier vt 0x58].
 static void THISCALL DetachBaseGeomFromBone(void *self, float *src) {
   if (!F16(FP(self, 8), 0x5a)) return;
   float *m = vcall<float *>(FP(self, 0x6c), 0x58, self);
@@ -79,7 +79,7 @@ PCREG(463320, GetRootFocusMatPos);
 
 // ZBoneModifyBase::GetBoneMatPos(float* m, float* p, unsigned fileBoneId, const ZLNKOBJ* obj) const [medium,
 // ]: maps the file bone id to a bone (definitions vt 0xc8) and asks vt 0x10(m, p, bone, obj); on failure
-// identity/zero and "WARNING: ZBoneModifyBase::GetBoneMatPos got invalid bone id %d" (line 0x104).
+// identity/zero and "<debug message>" (line 0x104).
 static void THISCALL BmGetBoneMatPos(void *self, float *m, float *p, u32 id, void *obj) {
   u32 gid = F32(FP(obj, 8), 0x6c);
   u8 *map = vcall<u8 *>(FP(FP(G(void *, 0x70039c), 0x1aa3), 0x18), 0xc8, gid);

@@ -1,4 +1,4 @@
-"""specs_s42004.py - batch 42004. 0x526f20: slot 0x2c of this returns a float on st0; logger 0x700390 slot 0x20 (callee pops 8, returns a log object) and
+"""specs_s42004.py - Sonnet t3 batch 42004. 0x526f20: slot 0x2c of this returns a float on st0; logger 0x700390 slot 0x20 (callee pops 8, returns a log object) and
 log object slot 0x2c (cdecl printf-like, caller pops) as in the AI specs; unaligned fields +0x19 (flag), +0x25 (float), +0x10 and +0xc written as bytes."""
 import struct
 from pilot import S

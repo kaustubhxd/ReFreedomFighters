@@ -1,4 +1,4 @@
-"""specs_s32081.py - h2 () batch 32081: eight tier C vtable-slot wrappers. Slots are recorder stubs returning random eax."""
+"""specs_s32081.py - h2 (Sonnet) batch 32081: eight tier C vtable-slot wrappers. Slots are recorder stubs returning random eax."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

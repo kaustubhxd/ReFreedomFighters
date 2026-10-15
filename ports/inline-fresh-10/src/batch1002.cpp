@@ -1,5 +1,5 @@
 // batch1002.cpp - fresh-10 batch 2: wrappers, destructors and small accessors (slice 10).
-// Names from the name map; GUESS where it has none or the body does not show the name's meaning.
+// Names from the GC name map; GUESS where it has none or the body does not show the name's meaning.
 #include "ff.h"
 
 extern "C" void ext_634273(void *p, u32 n);   // operator delete (cdecl)

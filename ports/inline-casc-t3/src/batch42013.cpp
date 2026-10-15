@@ -1,0 +1,72 @@
+// batch42013.cpp - Sonnet t3: tier H, serializer-style float function (asm, stack exact).
+#include "ff.h"
+
+extern "C" void ext_5deaf0(void);
+extern "C" void ext_44e630(void);
+extern "C" void ext_5df4d0(void);
+
+// 0x5df440, thiscall(w) ret 4 (w = writer object, vtable slots 0x3c(value) returns a writer, 0x4c(float), 0x68(ptr)): 0x5deaf0(this, w); w.0x3c([this+8]).0x3c([this+0xc]);
+// w.0x68(this+0x10); s = 0x44e630(&v, this+0x1c) (normalise, st0 length stored as float); the stack argument slot is reused as an output of 0x5df4d0(&arg, &v):
+// w.0x3c(arg); w.0x4c(s); 0x5df4d0(&arg, this+0x28); w.0x3c(arg); w.0x3c([this+0x34]).
+asm(
+    ".text\n"
+    ".globl thunk5df440\n"
+    "thunk5df440:\n"
+    "  pushl %ebp\n"
+    "  movl %esp, %ebp\n"
+    "  subl $0x10, %esp\n"
+    "  pushl %esi\n"
+    "  pushl %edi\n"
+    "  movl 8(%ebp), %edi\n"
+    "  movl %ecx, %esi\n"
+    "  pushl %edi\n"
+    "  call ext_5deaf0\n"
+    "  movl (%edi), %eax\n"
+    "  movl %edi, %ecx\n"
+    "  pushl 8(%esi)\n"
+    "  call *0x3c(%eax)\n"
+    "  pushl 0xc(%esi)\n"
+    "  movl %eax, %ecx\n"
+    "  movl (%eax), %edx\n"
+    "  call *0x3c(%edx)\n"
+    "  movl (%edi), %edx\n"
+    "  leal 0x10(%esi), %eax\n"
+    "  pushl %eax\n"
+    "  movl %edi, %ecx\n"
+    "  call *0x68(%edx)\n"
+    "  leal 0x1c(%esi), %edx\n"
+    "  leal -0x10(%ebp), %ecx\n"
+    "  call ext_44e630\n"
+    "  leal -0x10(%ebp), %edx\n"
+    "  leal 8(%ebp), %ecx\n"
+    "  fstps -4(%ebp)\n"
+    "  call ext_5df4d0\n"
+    "  movl (%edi), %eax\n"
+    "  movl %edi, %ecx\n"
+    "  pushl 8(%ebp)\n"
+    "  call *0x3c(%eax)\n"
+    "  movl (%edi), %eax\n"
+    "  movss -4(%ebp), %xmm0\n"
+    "  pushl %ecx\n"
+    "  movl %edi, %ecx\n"
+    "  movss %xmm0, (%esp)\n"
+    "  call *0x4c(%eax)\n"
+    "  leal 0x28(%esi), %edx\n"
+    "  leal 8(%ebp), %ecx\n"
+    "  call ext_5df4d0\n"
+    "  movl (%edi), %eax\n"
+    "  movl %edi, %ecx\n"
+    "  pushl 8(%ebp)\n"
+    "  call *0x3c(%eax)\n"
+    "  movl (%edi), %eax\n"
+    "  movl %edi, %ecx\n"
+    "  pushl 0x34(%esi)\n"
+    "  call *0x3c(%eax)\n"
+    "  popl %edi\n"
+    "  popl %esi\n"
+    "  movl %ebp, %esp\n"
+    "  popl %ebp\n"
+    "  ret $4\n"
+);
+extern "C" void thunk5df440(void);
+PCREG(5df440, thunk5df440);

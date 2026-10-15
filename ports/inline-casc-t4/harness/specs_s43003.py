@@ -1,4 +1,4 @@
-"""specs_s43003.py - t4 () batch 43003. 0x46f600 / 0x5ddea0: stream readers 0x4e5e80 (float in st0), 0x4e5e60 (eax), 0x4e6180 (writes floats) hooked;
+"""specs_s43003.py - t4 (Sonnet) batch 43003. 0x46f600 / 0x5ddea0: stream readers 0x4e5e80 (float in st0), 0x4e5e60 (eax), 0x4e6180 (writes floats) hooked;
 0x5496e0: object with a count word at +0xc, pointer at this+0x5d (unaligned)."""
 import struct
 import math

@@ -1,4 +1,4 @@
-// batch317.cpp - mounted gun tree, batch 317: ZTankIf::DriveToSplineVal (script native,  by list position).
+// batch317.cpp - mounted gun tree, batch 317: ZTankIf::DriveToSplineVal (script native by list position).
 // Wrapper: param 0 (float) and param 1 (bool, != 0) go to ZTank::DriveToSplineVal(float, bool) at PC 0x520c50 (vehicles
 // thread batch 916), called with the tank as this. Only the wrapper is ported; the callee runs as exe code.
 #include "ff.h"

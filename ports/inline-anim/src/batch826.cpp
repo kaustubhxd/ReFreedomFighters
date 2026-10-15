@@ -8,7 +8,7 @@
 #define F32(p, o) (*(u32 *)((u8 *)(p) + (o)))
 #define FF(p, o) (*(float *)((u8 *)(p) + (o)))
 
-// ZIKLNKOBJ::DisableIK() [high]: clears flag 0x20000 at +0x136.
+// ZIKLNKOBJ::DisableIK() [high, GC-mapped]: clears flag 0x20000 at +0x136.
 static void THISCALL DisableIK(u8 *self) { F32(self, 0x136) &= 0xfffdffffu; }
 PCREG(466470, DisableIK);
 
@@ -16,7 +16,7 @@ PCREG(466470, DisableIK);
 static void THISCALL EnableIK(u8 *self) { F32(self, 0x136) |= 0x20000u; }
 PCREG(466620, EnableIK);
 
-// ZIKLNKOBJ::EnableFacing() [mapped]: clears the facing byte at +0x158.
+// ZIKLNKOBJ::EnableFacing() [GC-mapped]: clears the facing byte at +0x158.
 static void THISCALL EnableFacing(u8 *self) { F8(self, 0x158) = 0; }
 PCREG(466610, EnableFacing);
 

@@ -1,4 +1,4 @@
-"""specs_s31095.py - batch 31095: assert-hook pointer at 0x7003b0 is always set (recorder returning a random EAX), log object at 0x700390."""
+"""specs_s31095.py - Sonnet h1 batch 31095: assert-hook pointer at 0x7003b0 is always set (recorder returning a random EAX), log object at 0x700390."""
 from pilot import S
 from pe_emu import REGS
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

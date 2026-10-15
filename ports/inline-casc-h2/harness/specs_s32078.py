@@ -1,4 +1,4 @@
-"""specs_s32078.py - h2 () batch 32078: 0x4d14a0. 0x41e290 (alloc, returns a fixed buffer) and 0x634d22 (memcpy) are cdecl recorders."""
+"""specs_s32078.py - h2 (Sonnet) batch 32078: 0x4d14a0. 0x41e290 (alloc, returns a fixed buffer) and 0x634d22 (memcpy) are cdecl recorders."""
 from pilot import S
 from recruits_util import rnd, clear_hooks, hook_rec
 

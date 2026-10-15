@@ -1,4 +1,4 @@
-"""specs_s31096.py - batch 31096: assert hook at 0x7003b0 always set; log object at 0x700390; /GS check 0x633654 a zero-argument recorder."""
+"""specs_s31096.py - Sonnet h1 batch 31096: assert hook at 0x7003b0 always set; log object at 0x700390; /GS check 0x633654 a zero-argument recorder."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec, pystub
 

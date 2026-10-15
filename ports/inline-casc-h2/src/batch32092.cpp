@@ -1,4 +1,4 @@
-// batch32092.cpp - cascade h2 (): eight tier C wrappers (twelfth batch).
+// batch32092.cpp - cascade h2 (Sonnet): eight tier C wrappers (twelfth batch).
 #include "ff.h"
 
 extern "C" u8 *THISCALL ext_4d1cf0(u8 *self, u32 a);   // thiscall ret 4

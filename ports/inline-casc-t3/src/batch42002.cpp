@@ -1,4 +1,4 @@
-// batch42002.cpp - tier H.
+// batch42002.cpp - Sonnet t3: tier H.
 #include "ff.h"
 
 extern "C" double VECTORCALL ext_634db2(double, double);  // CRT pow thunk

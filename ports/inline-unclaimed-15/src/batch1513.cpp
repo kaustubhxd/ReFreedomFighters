@@ -1,6 +1,6 @@
 #include "ff.h"
 // batch1513.cpp - unclaimed-15 claim 13 (docs/20-unclaimed-15.md): ZFFHeroIf::CenterPrint(OpaqueCallParameters_t&) (0x55f5e0).
-// Name from the name map (medium). Thiscall, one argument, ret 4. The callees 0x5003d0, 0x506040, 0x589c20 and 0x59a580
+// Name from the GC name map (medium). Thiscall, one argument, ret 4. The callees 0x5003d0, 0x506040, 0x589c20 and 0x59a580
 // are stubbed in the harness (thiscall; they clean their own arguments). The hero's slot +0x1e0 is a logged vtable slot.
 
 typedef u32(THISCALL *Slot1)(u8 *self, u32 a1);

@@ -1,4 +1,4 @@
-"""specs_s42000.py - batch 42000. 0x514c70: /GS float function. Hooked: 0x633654 (zero-arg recorder, ECX = cookie), 0x523330 (this + 1 arg, fills the
+"""specs_s42000.py - Sonnet t3 batch 42000. 0x514c70: /GS float function. Hooked: 0x633654 (zero-arg recorder, ECX = cookie), 0x523330 (this + 1 arg, fills the
 caller's local vec3 with random floats), 0x4e0d80 (this = &local + float arg bits, rewrites local), vtable slot 0x84; 0x441940 (fadd vec3) runs for real."""
 import struct
 from pilot import S

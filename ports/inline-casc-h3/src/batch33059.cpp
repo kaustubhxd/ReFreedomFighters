@@ -1,4 +1,4 @@
-// batch33059.cpp - h3 () batch 33059: tier C wrappers
+// batch33059.cpp - h3 (Sonnet) batch 33059: tier C wrappers
 #include "ff.h"
 
 #define SYS (*(u8 **)0x70039c)

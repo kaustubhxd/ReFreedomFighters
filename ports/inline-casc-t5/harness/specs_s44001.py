@@ -1,4 +1,4 @@
-"""specs_s44001.py - t5 () batch 44001: 0x43d020, 0x64f9f0."""
+"""specs_s44001.py - t5 (Sonnet) batch 44001: 0x43d020, 0x64f9f0."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

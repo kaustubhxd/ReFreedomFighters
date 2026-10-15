@@ -1,4 +1,4 @@
-// batch32071.cpp - cascade h2 (): 0x4e6720 (store a string copy + value), 0x4ccd60 (free-list table init), 0x5f1720 (pull a pointer back by whole dwords).
+// batch32071.cpp - cascade h2 (Sonnet): 0x4e6720 (store a string copy + value), 0x4ccd60 (free-list table init), 0x5f1720 (pull a pointer back by whole dwords).
 #include "ff.h"
 
 extern "C" void THISCALL ext_5fb5a0(u8 *self);              // thiscall, plain ret

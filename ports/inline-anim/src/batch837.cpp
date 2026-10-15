@@ -8,7 +8,7 @@
 
 extern "C" void THISCALL ext_466ce0(void *self);   // ZIKLNKOBJ::KillAllSounds (not ported here)
 
-// ZLNKOBJ::DisplayBone(unsigned bone, bool on) [high]. Returns the previous display state (bit 8 of the
+// ZLNKOBJ::DisplayBone(unsigned bone, bool on) [high, GC-mapped]. Returns the previous display state (bit 8 of the
 // bone's flags). Turning a bone on also sets the root's bit; turning it off clears the root's bit when no other bone
 // is still displayed. Only the low byte of "on" is used.
 static u8 THISCALL DisplayBone(u8 *self, u32 bone, u32 on) {

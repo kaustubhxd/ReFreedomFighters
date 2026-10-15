@@ -1,4 +1,4 @@
-// batch31062.cpp - sysobj tail thunk and small field/array functions.
+// batch31062.cpp - Sonnet h1: sysobj tail thunk and small field/array functions.
 #include "ff.h"
 
 asm(

@@ -6,7 +6,7 @@
 
 extern "C" const char *THISCALL ext_4e5330(void *pack);   // ZAnimFilePack::GetAnimFileName() const (name map medium)
 
-// ZLNKOBJ::CopyAnimFilePointersFrom(ZLNKOBJ* src) [name map, see docs/20-anim.md], thiscall, ret 4.
+// ZLNKOBJ::CopyAnimFilePointersFrom(ZLNKOBJ* src) [GC name map, see docs/20-anim.md], thiscall, ret 4.
 // Clears the anim file (+0x5c) and extra anim file (+0x60) pointers; for each one the source has, the file is looked
 // up again by name through own slot 0x2f4(name, out) with out = this+0x64 / this+0x68, and the result is stored.
 // The "stray push" noted before was MSVC's argument order: out is pushed before GetAnimFileName is called, then the

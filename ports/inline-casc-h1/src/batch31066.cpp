@@ -1,4 +1,4 @@
-// batch31066.cpp - array index lookup, copy constructors, bit gather, list remove, lowercase, range lookup, UTF-16 byte-swap copy.
+// batch31066.cpp - Sonnet h1: array index lookup, copy constructors, bit gather, list remove, lowercase, range lookup, UTF-16 byte-swap copy.
 #include "ff.h"
 
 // 0x589f70 thiscall ret 4: index of pointer p within the 0xf4-byte record array at this+0xd91 (count at +0xd8d), else -1.

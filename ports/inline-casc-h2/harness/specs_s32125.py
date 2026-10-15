@@ -1,4 +1,4 @@
-"""specs_s32125.py - h2 () batch 32125: 0x4f7e00. The stream reader 0x4e11e0 is a recorder that writes 4 random bytes through its destination (heap pointers recorded as is, the stack slot as a marker)."""
+"""specs_s32125.py - h2 (Sonnet) batch 32125: 0x4f7e00. The stream reader 0x4e11e0 is a recorder that writes 4 random bytes through its destination (heap pointers recorded as is, the stack slot as a marker)."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, clear_hooks, hook_rec

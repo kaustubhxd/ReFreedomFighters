@@ -1,4 +1,4 @@
-"""specs_s32085.py - h2 () batch 32085: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs.
+"""specs_s32085.py - h2 (Sonnet) batch 32085: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs.
 Slots whose arguments stay on the stack for the next callee (0x467230 slot 0x20, 0x5f0d80 slot 0x2c4) are stubs with pop=0."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

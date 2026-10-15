@@ -1,4 +1,4 @@
-// batch41002.cpp - cascade t2 (): tier H (SSE movups copy) function 0x58a9b0.
+// batch41002.cpp - cascade t2 (Sonnet): tier H (SSE movups copy) function 0x58a9b0.
 #include "ff.h"
 
 static inline u32 rd32(const u8 *p) { return p[0] | (p[1] << 8) | (p[2] << 16) | ((u32)p[3] << 24); }

@@ -1,4 +1,4 @@
-// batch32073.cpp - cascade h2 (): 0x57c910 (copy-assign: base copy + tail fields), 0x45b3a0 (init with memset).
+// batch32073.cpp - cascade h2 (Sonnet): 0x57c910 (copy-assign: base copy + tail fields), 0x45b3a0 (init with memset).
 #include "ff.h"
 
 extern "C" void THISCALL ext_4cbee0(u8 *self, u8 *src);            // thiscall ret 4

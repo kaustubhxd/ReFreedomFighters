@@ -8,7 +8,7 @@
 extern "C" void THISCALL ext_4639f0(void *self);     // ZLNKOBJ::PushState (base; not ported here)
 extern "C" void THISCALL ext_463940(void *self);     // ZLNKOBJ::PopState (base; ported below as PopState)
 
-// ZLNKOBJ::PopState() [high]. Calls vt +0x2f8(0) and vt +0x330(), then restores the saved clip pair (+0x7a
+// ZLNKOBJ::PopState() [high, GC-mapped]. Calls vt +0x2f8(0) and vt +0x330(), then restores the saved clip pair (+0x7a
 // -> +0x64, +0x7e -> +0x68) and moves the pending pair (+0x72/+0x76) into the current pair (+0x5c/+0x60), clearing the
 // pending pair.
 static void THISCALL ZLNKOBJ_PopState(u8 *self) {

@@ -1,4 +1,4 @@
-// batch31077.cpp - tier B loops, list/tree walks and call-through thunks (asm, stack exact).
+// batch31077.cpp - Sonnet h1: tier B loops, list/tree walks and call-through thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_498750(void);

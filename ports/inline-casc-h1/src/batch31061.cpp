@@ -1,4 +1,4 @@
-// batch31061.cpp - tail-jump thunks (asm, stack untouched) plus three small C bodies.
+// batch31061.cpp - Sonnet h1: tail-jump thunks (asm, stack untouched) plus three small C bodies.
 #include "ff.h"
 
 extern "C" void ext_4690b0(void);

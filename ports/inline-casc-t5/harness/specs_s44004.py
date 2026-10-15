@@ -1,4 +1,4 @@
-"""specs_s44004.py - t5 () batch 44004: 0x4861f0."""
+"""specs_s44004.py - t5 (Sonnet) batch 44004: 0x4861f0."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

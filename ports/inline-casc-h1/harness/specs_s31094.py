@@ -1,4 +1,4 @@
-"""specs_s31094.py - batch 31094."""
+"""specs_s31094.py - Sonnet h1 batch 31094."""
 import struct
 from pilot import S
 from pe_emu import REGS

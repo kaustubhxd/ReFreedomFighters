@@ -1,5 +1,5 @@
 #include "ff.h"
-// batch1517.cpp - unclaimed-15 claim 17 (docs/20-unclaimed-15.md): ZFFHERO::~ZFFHERO() (0x58b5a0). Name from the name map
+// batch1517.cpp - unclaimed-15 claim 17 (docs/20-unclaimed-15.md): ZFFHERO::~ZFFHERO() (0x58b5a0). Name from the GC name map
 // (medium). Thiscall, no arguments. The exe's SEH frame (fs:[0]) is stack state and is not ported.
 // Stubbed in the harness: 0x634273 (cdecl, (p, size)), 0x45fa70 (thiscall, two args), 0x4cbec0 and 0x480ff0 (thiscall, none).
 

@@ -1,4 +1,4 @@
-// batch43002.cpp - t4 () batch 43002: tier H float/SSE functions
+// batch43002.cpp - t4 (Sonnet) batch 43002: tier H float/SSE functions
 #include "ff.h"
 
 extern "C" void ext_42abee(u8 *buf, u32 fmt, u32 *va);   // cdecl: format into buf

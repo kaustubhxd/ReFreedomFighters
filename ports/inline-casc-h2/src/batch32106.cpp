@@ -1,4 +1,4 @@
-// batch32106.cpp - cascade h2 (): three tier H (float / SSE) functions.
+// batch32106.cpp - cascade h2 (Sonnet): three tier H (float / SSE) functions.
 #include "ff.h"
 
 extern "C" s32 VECTORCALL ext_633910(float f);               // CRT float-to-int helper, argument in XMM0, result in EAX

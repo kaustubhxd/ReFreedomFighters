@@ -1,4 +1,4 @@
-"""specs_s42001.py - batch 42001. 0x476390: hooked 0x6352f0 (writes a random dword through its arg), 0x4e5e80 (st0 float), 0x4e5e40 (ax), 0x4e5e60 (eax),
+"""specs_s42001.py - Sonnet t3 batch 42001. 0x476390: hooked 0x6352f0 (writes a random dword through its arg), 0x4e5e80 (st0 float), 0x4e5e40 (ax), 0x4e5e60 (eax),
 src vtable slots 0x58 and 0x68."""
 import struct
 from pilot import S

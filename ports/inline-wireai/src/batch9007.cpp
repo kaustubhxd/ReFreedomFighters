@@ -1,4 +1,4 @@
-// batch9007.cpp - wire-ai thread (2026-10-13): PlayBodySound 0x546980 ( PlayBodySound(float*, bool, float, unsigned int, bool),
+// batch9007.cpp - wire-ai thread (2026-10-13): PlayBodySound 0x546980 (PlayBodySound(float*, bool, float, unsigned int, bool),
 // high), the ragdoll's body impact / drag sound, called by PullTriangleCyl2 0x547080 when a limb hits a face fast enough.
 #include "ff.h"
 

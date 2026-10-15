@@ -555,3 +555,224 @@ def _gen(c):
 
 
 S(0x4e0130, 'vangpul', 'fastcall', None, ret='al', gen=_gen, note='batch310; x87 normalise; CRT acos/sin/cos')
+
+
+# ---------------------------------------------------------------- run 26: ZLNKWHANDS::UpdateAimTarget 0x475ae0 (inline-weapons batch519, copied unchanged)
+def _ua(c):
+    """UpdateAimTarget(): self (ZLNKWHANDS) +0x26a the aim ZTARGET (enabled byte, +0x25 point (0x7fffffff = none), +0x31 / +0x35 fade,
+    +0x39 geom handle, +0x3d callback), +0x136 flags, +0x3bc last aim point, +0x3c8 previous aim, +0x3d4 velocity, +0x3e0 time, +0x3e4
+    bullet speed, +0x3e9 reached byte, +0x1e2 recoil blend, +0x70 byte, +0x6c the animation object (+0x251..+0x265 written); own slots
+    0x84 / 0x8c (point to / from the hero's space: deterministic affine stand-ins), 0x50c (the weapon; template slot 0x350, its slot 0x320
+    the recoil in ST0); the geometry (render manager slot 0x58 on the handle): slots 0x20 (parent; +8 -> a frame), 0x1e0 (class test), 0x2b4,
+    0x390, 0x2ac, 0x98, 0x84. The callback, when set, is the hooked exe function 0x58c2b0. The strict vector helpers, the ZTARGET queries,
+    weight (0x466b70), CallBackIfTime (0x465930) and vangpul (0x4e0130) run as exe code on both sides."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    now = r.getrandbits(20)
+    e.w32(eng + 0x40, now)
+
+    def fv3(lo=-500.0, hi=500.0):
+        return [f32(r.uniform(lo, hi)) for _ in range(3)]
+    gm = [f32(r.uniform(-1, 1)) for _ in range(9)]
+    gp = fv3()
+    off = fv3(-50, 50)
+
+    def p84(e2, a):    # point -> a deterministic affine stand-in
+        for i in range(3):
+            e2.wf32(a[0] + 4 * i, f32(e2.rf32(a[0] + 4 * i) * 0.5 + off[i]))
+        return 0, None, None
+
+    def p8c(e2, a):
+        for i in range(3):
+            e2.wf32(a[0] + 4 * i, f32(e2.rf32(a[0] + 4 * i) - off[i]))
+        return 0, None, None
+    def p98(e2, a):    # (matrix, point) in place: the point goes through the same affine stand-in (so the +30 lift before it shows)
+        for i in range(3):
+            e2.wf32(a[1] + 4 * i, f32(e2.rf32(a[1] + 4 * i) * 0.5 + off[i]))
+        return 0, None, None
+    # the target
+    self_ = K.rnd(c, 0x500)
+    t = self_ + 0x26a
+    e.w8(t, r.choice([1, 1, 1, 0]))
+    nopos = r.random() < 0.12
+    if nopos:
+        e.w32(t + 0x25, 0x7fffffff)
+    else:
+        for i, v in enumerate(fv3()):
+            e.wf32(t + 0x25 + 4 * i, v)
+    d = r.choice([0.0, 0.5, 1.0, 2.0, f32(c.fv(0.0, 4.0))])
+    el = r.choice([0.0, 0.25, d, f32(c.fv(0.0, 5.0))])
+    stamp = f32(max(0.0, now / 1024.0 - el))
+    st = stamp if r.random() < 0.6 else -stamp
+    e.wf32(t + 0x31, d)
+    e.wf32(t + 0x35, st)
+    fn = 0x58c2b0 if r.random() < 0.7 else 0
+    for i, v in enumerate((fn, r.choice([0, 8]), 0xffffffff, 0xffffffff)):
+        e.w32(t + 0x3d + 4 * i, v)
+    # the geometry
+    go = K.rnd(c, 0x20)
+    mat_ptr = K.rnd(c, 36)
+    for i in range(9):
+        e.wf32(mat_ptr + 4 * i, f32(r.uniform(-1, 1)))
+    e.w32(go + 8, mat_ptr)
+    cls = r.choice([0, 1])
+    byte390 = r.choice([0, 1])
+    g = K.rnd(c, 0x60)
+    e.w32(g, K.vt(c, 'geom', {
+        0x20: (0, lambda e2, a: (go, None, None)),
+        0x1e0: (1, lambda e2, a: (cls, None, None)),
+        0x2b4: (1, lambda e2, a: (7, None, None)),
+        0x390: (3, lambda e2, a: (_writer(gm, gp)(e2, [a[1], a[2]])[0] or byte390, None, None)),
+        0x2ac: (2, _writer(gm, gp)),
+        0x98: (2, p98),
+        0x84: (1, p84)}, 0x3a0))
+    has_geom = r.random() < 0.85
+    gh = r.getrandbits(16) | 1
+    e.w32(t + 0x39, gh if has_geom else 0)
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (g if (has_geom and a[0] == gh) else 0, None, None))}, 0x120))
+    e.w32(eng + 0x9b, rm)
+    # the weapon and its template
+    tm = K.rnd(c, 0x40)
+    recoil = r.choice([0.0, 0.25, 0.5, 1.0, f32(r.uniform(0, 3))])
+    e.w32(tm, K.vt(c, 'tmpl', {0x320: (0, lambda e2, a: (0, recoil, None))}, 0x330))
+    w = K.rnd(c, 0x40)
+    e.w32(w, K.vt(c, 'weapon', {0x350: (0, lambda e2, a: (tm, None, None))}, 0x360))
+    has_w = r.random() < 0.85
+    # self
+    e.w32(self_, K.vt(c, 'hands', {0x84: (1, p84), 0x8c: (1, p8c), 0x50c: (0, lambda e2, a: (w if has_w else 0, None, None))}, 0x520))
+    e.w32(self_ + 0x136, r.choice([0, 0x400000, 0x400000, r.getrandbits(32)]))
+    for off_, v in ((0x3bc, fv3()), (0x3c8, fv3()), (0x3d4, fv3())):
+        for i in range(3):
+            e.wf32(self_ + off_ + 4 * i, v[i])
+    e.wf32(self_ + 0x3e0, f32(max(0.0, now / 1024.0 - r.choice([0.0, 0.0, 0.03, 0.1, 1.0, -0.5]))))
+    e.wf32(self_ + 0x3e4, r.choice([1000.0, 10000.0, f32(r.uniform(100, 100000))]))
+    e.wf32(self_ + 0x1e2, r.choice([0.0, 0.0, 1.0, f32(r.uniform(0, 2)), 0.05]))
+    e.w8(self_ + 0x70, r.choice([0, 1]))
+    an = K.rnd(c, 0x280)
+    e.w32(self_ + 0x6c, an)
+
+    fm = e.alloc(32, 16)   # the _CIfmod import slot: the exe's fprem loop (fmod is exact, so this is the CRT's result)
+    e.wbytes(fm, b'\xd9\xc9\xd9\xf8\xdf\xe0\x9e\x7a\xf9\xdd\xd9\xc3')
+    e.w32(0x676358, fm)
+
+    def cb(e2, r2):
+        e2.calllog.append(('callback', K.nostack(e2.reg('ecx')) - self_))
+        e2.ret(eax=0, argbytes=0)
+    e.hook(0x58c2b0, cb)
+    e.mu.ctl_flush_tb()
+    return [self_]
+
+
+S(0x475ae0, 'ZLNKWHANDS::UpdateAimTarget', 'thiscall', None, ret='al', gen=_ua, nan_heap=True,
+  note='wire-hero-combat run 26; batch519 (copy); hands / target / geometry / weapon objects, callback hooked at 0x58c2b0')
+
+
+# ---------------------------------------------------------------- run 26: ZLNKWHANDS::SetAimTarget 0x4754e0 (inline-weapons batch505, copied unchanged)
+def _sat(c):
+    """SetAimTarget(geom, pos, time, cb): self +0x3e8 (aiming disabled), +0x6c the animation object (+0x255 = the blend time), +0x26a the aim
+    ZTARGET, +0x136 flags, +0x3bc / +0x3c8 / +0x3d4 aim points, +0x3e4 muzzle velocity; own slot 0x84 and 0x50c (the weapon: slot 0x32c takes
+    the target point, template slot 0x350 -> slot 0x344 in ST0); render manager slot 0x58 maps the geom handle to a geometry (slot 0x84).
+    The cb member pointer is the 4 words after time on the stack. The ZTARGET methods, ZTARGET::Remove helpers run as exe code."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    now = r.getrandbits(20)
+    e.w32(eng + 0x40, now)
+    off = [f32(r.uniform(-50, 50)) for _ in range(3)]
+
+    def p84(e2, a):
+        for i in range(3):
+            e2.wf32(a[0] + 4 * i, f32(e2.rf32(a[0] + 4 * i) * 0.5 + off[i]))
+        return 0, None, None
+    self_ = K.rnd(c, 0x500)
+    e.w8(self_ + 0x3e8, r.choice([0, 0, 0, 0, 1]))
+    an = K.rnd(c, 0x280)
+    e.w32(self_ + 0x6c, an)
+    t = self_ + 0x26a
+    e.w8(t, r.choice([0, 1, 1]))
+    if r.random() < 0.15:
+        e.w32(t + 0x25, 0x7fffffff)
+    else:
+        for i in range(3):
+            e.wf32(t + 0x25 + 4 * i, f32(r.uniform(-500, 500)))
+    d = r.choice([0.0, 0.5, 1.0, f32(c.fv(0.0, 4.0))])
+    el = r.choice([0.0, 0.3, d, f32(c.fv(0.0, 5.0))])
+    stamp = f32(max(0.0, now / 1024.0 - el))
+    e.wf32(t + 0x31, d)
+    e.wf32(t + 0x35, stamp if r.random() < 0.7 else -stamp)
+    gh = r.getrandbits(16) | 1
+    geom_arg = r.choice([gh, gh, gh, 0, r.getrandbits(16) | 1])
+    e.w32(t + 0x39, gh if r.random() < 0.4 else r.choice([0, r.getrandbits(16)]))
+    for i, v in enumerate((r.choice([0, 0x58c2b0]), 0, 0xffffffff, 0xffffffff)):
+        e.w32(t + 0x3d + 4 * i, v)
+    g = K.rnd(c, 0x60)
+    e.w32(g, K.vt(c, 'geom', {0x84: (1, p84)}, 0x90))
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (g if a[0] == gh else 0, None, None))}, 0x120))
+    e.w32(eng + 0x9b, rm)
+    tm = K.rnd(c, 0x40)
+    mv = r.choice([0.0, 600.0, 10000.0, f32(r.uniform(100, 100000))])
+    e.w32(tm, K.vt(c, 'tmpl', {0x344: (0, lambda e2, a: (0, mv, None))}, 0x350))
+    w = K.rnd(c, 0x40)
+    e.w32(w, K.vt(c, 'weapon', {0x350: (0, lambda e2, a: (tm, None, None)), 0x32c: (1, p84)}, 0x360))
+    has_w = r.random() < 0.8
+    e.w32(self_, K.vt(c, 'hands', {0x84: (1, p84), 0x50c: (0, lambda e2, a: (w if has_w else 0, None, None))}, 0x520))
+    e.w32(self_ + 0x136, r.getrandbits(32))
+    for off_ in (0x3bc, 0x3c8, 0x3d4):
+        for i in range(3):
+            e.wf32(self_ + off_ + 4 * i, f32(r.uniform(-500, 500)))
+    e.wf32(self_ + 0x3e4, 123.0)
+    pos = K.rnd(c, 16)
+    for i in range(3):
+        e.wf32(pos + 4 * i, f32(r.uniform(-1000, 1000)))
+    def cb(e2, r2):
+        e2.calllog.append(('callback', K.nostack(e2.reg('ecx')) - self_))
+        e2.ret(eax=0, argbytes=0)
+    e.hook(0x58c2b0, cb)
+    cbw = [r.choice([0, 0x58c2b0]), r.choice([0, 8]), 0xffffffff, 0xffffffff]
+    e.mu.ctl_flush_tb()
+    return [self_, geom_arg, pos, F(r.choice([0.0, 0.5, 1.0, f32(c.fv(0.0, 4.0))]))] + cbw
+
+
+S(0x4754e0, 'ZLNKWHANDS::SetAimTarget', 'thiscall', None, ret=None, gen=_sat, nan_heap=True,
+  note='wire-hero-combat run 26; batch505 (copy); hands / target / geometry / weapon objects; the member-pointer callback after time')
+
+
+# ---------------------------------------------------------------- run 33: ZFFHeroMovementBaseMove::GetActiveAnim 0x5e23d0 (portable copy of inline-unclaimed-22 batch260)
+def _bm(c):
+    """GetActiveAnim(out, _, a, m, b): self +0xc phase, +0x21 the anim control (nullable; +0 the header, +0xc / +0x14 the root-motion vector),
+    +0x36d the hero (+0x417 flags: & 3 selects the root-motion branch), own slot 0x44 (phase0, phase1) logged; the header's +0x60 / +0x64
+    frames and +0x6c rate; the engine frame time at +0x48 of the global 0x70039c. vnorm, PSVECSubtract and vmtmul run as exe code."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    e.wf32(eng + 0x48, r.choice([1 / 30, 1 / 60, 0.0, f32(r.uniform(0, 0.2)), f32(c.fv(-1.0, 1.0))]))
+    hdr = K.rnd(c, 0x80)
+    first = r.randrange(0, 30)
+    e.w32(hdr + 0x60, first)
+    e.w32(hdr + 0x64, first + r.choice([0, 1, 20, 30, 59, r.randrange(0, 200)]))
+    e.w32(hdr + 0x6c, r.choice([1, 25, 30, r.randrange(1, 90)]))
+    ctl = K.rnd(c, 0x40)
+    e.w32(ctl, hdr)
+    mv = r.choice([[0.0, 0.0], [1.0, 0.0], [0.0, -2.0], [f32(c.fv(-300, 300)), f32(c.fv(-300, 300))], [1e-5, 0.0]])
+    e.wf32(ctl + 0xc, mv[0]); e.wf32(ctl + 0x14, mv[1])
+    hero = K.rnd(c, 0x440)
+    e.w32(hero + 0x417, r.choice([0, 1, 2, 3, r.getrandbits(32)]))
+    self_ = K.rnd(c, 0x400)
+    e.wf32(self_ + 0xc, r.choice([0.0, 0.25, 0.5, 0.99, 1.5, -0.5, f32(c.fv(-3, 3))]))
+    e.w32(self_ + 0x21, 0 if r.random() < 0.06 else ctl)
+    e.w32(self_ + 0x36d, hero)
+    e.w32(self_, K.vt(c, 'move', {0x44: (2, lambda e2, a: (0, None, None))}, 0x60))
+    a = K.rnd(c, 16); b = K.rnd(c, 16); m = K.rnd(c, 48)
+    for p, n in ((a, 3), (b, 3), (m, 9)):
+        for i in range(n):
+            e.wf32(p + 4 * i, f32(r.uniform(-400, 400)) if n == 3 else f32(r.uniform(-1, 1)))
+    fm = e.alloc(32, 16)   # the exe's _CIfmod import slot: its fprem loop (fmod is exact)
+    e.wbytes(fm, b'\xd9\xc9\xd9\xf8\xdf\xe0\x9e\x7a\xf9\xdd\xd9\xc3')
+    e.w32(0x676358, fm)
+    out = K.rnd(c, 8)
+    e.mu.ctl_flush_tb()
+    return [self_, out, 0, a, m, b]
+
+
+S(0x5e23d0, 'ZFFHeroMovementBaseMove::GetActiveAnim', 'thiscall', None, ret='st0', gen=_bm, nan_heap=True,
+  note='wire-hero-combat run 33; portable copy of batch260 (no x87 fmod, no sqrt thunk); anim control, hero flags, root-motion vector')

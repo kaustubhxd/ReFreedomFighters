@@ -1,4 +1,4 @@
-"""specs_s43001.py - t4 () batch 43001: tier H float/SSE functions. 0x4b0f90: pow stubbed (logged), 0x4e5e80 hooked with float returns;
+"""specs_s43001.py - t4 (Sonnet) batch 43001: tier H float/SSE functions. 0x4b0f90: pow stubbed (logged), 0x4e5e80 hooked with float returns;
 0x52a300: 0x52cea0 / 0x52cf60 hooked; 0x5272e0: object floats chosen around the K threshold."""
 import struct
 import math

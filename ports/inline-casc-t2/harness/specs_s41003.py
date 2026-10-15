@@ -1,4 +1,4 @@
-"""specs_s41003.py - t2 () batch 41003: 0x52d3f0, 0x4bf110. The CRT sqrt thunk runs as exe code; vtable slots are recorders; engine slot 0x1c0 returns a float on st0."""
+"""specs_s41003.py - t2 (Sonnet) batch 41003: 0x52d3f0, 0x4bf110. The CRT sqrt thunk runs as exe code; vtable slots are recorders; engine slot 0x1c0 returns a float on st0."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

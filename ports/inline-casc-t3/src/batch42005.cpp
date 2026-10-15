@@ -1,4 +1,4 @@
-// batch42005.cpp - tier H, /GS cdecl varargs forwarder (asm, stack exact).
+// batch42005.cpp - Sonnet t3: tier H, /GS cdecl varargs forwarder (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_633654(void);

@@ -1,4 +1,4 @@
-// batch33115.cpp - h3 () batch 33115: tier H float/SSE functions
+// batch33115.cpp - h3 (Sonnet) batch 33115: tier H float/SSE functions
 #include "ff.h"
 
 static inline void W32(u8 *p, u32 v) { __builtin_memcpy(p, &v, 4); }
@@ -38,6 +38,7 @@ static void THISCALL fn578aa0(u8 *self) {
   if (!(f == -1.0f)) {
     u32 saved = R32(self + 0x194);
     s32 k = _mm_cvttss_si32(_mm_set_ss(f));
+    W32(self + 0x194, 0);
     ext_579a60(self, k != 0);
     W32(self + 0x194, saved);
     W32(self + 0x1b0, 0xbf800000);

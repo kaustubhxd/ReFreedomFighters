@@ -1,5 +1,5 @@
 // batch0601.cpp - fresh-06 batch 1 (docs/20-fresh-06.md): small leaves and one-call wrappers.
-// Names are from the name map (naming only; GUESS where there is no map entry). Bodies follow the PC bytes.
+// Names are from the GC name map (naming only; GUESS where there is no map entry). Bodies follow the PC bytes.
 #include "ff.h"
 
 // 0x65c9e0 (no map name; GUESS: pointer iterator post-increment by 8): returns the dword at this+4, then adds 8 to it.

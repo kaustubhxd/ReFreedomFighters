@@ -1,4 +1,4 @@
-"""specs_s32126.py - h2 () batch 32126: 0x512be0 and 0x46ab30. Slots are recorders; the engine float slot returns x87 values; order pinned with calllog."""
+"""specs_s32126.py - h2 (Sonnet) batch 32126: 0x512be0 and 0x46ab30. Slots are recorders; the engine float slot returns x87 values; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

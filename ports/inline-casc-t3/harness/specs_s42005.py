@@ -1,4 +1,4 @@
-"""specs_s42005.py - batch 42005. 0x424650: cdecl varargs forwarder. Hooked: 0x633654 (ECX = cookie), logger 0x700390 slot 0x4c (3 args, callee pops 12, writes 16 bytes
+"""specs_s42005.py - Sonnet t3 batch 42005. 0x424650: cdecl varargs forwarder. Hooked: 0x633654 (ECX = cookie), logger 0x700390 slot 0x4c (3 args, callee pops 12, writes 16 bytes
 into the buffer, records the fmt and the two vararg dwords), node slot 0x124 (cdecl 4 args, records node/a/b and the first 16 buffer bytes). Engine float +0x9c7 is 0 in about a third of the cases."""
 import struct
 from pilot import S

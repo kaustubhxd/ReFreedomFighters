@@ -1,4 +1,4 @@
-// batch31122.cpp - tier C thunks (asm, stack exact).
+// batch31122.cpp - Sonnet h1: tier C thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_441940(void);

@@ -1,4 +1,4 @@
-// batch32081.cpp - cascade h2 (): eight tier C vtable-slot wrappers.
+// batch32081.cpp - cascade h2 (Sonnet): eight tier C vtable-slot wrappers.
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_4690b0(u8 *self);   // thiscall, plain ret (eax comes back through the tail jump)

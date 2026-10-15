@@ -1,4 +1,4 @@
-"""specs_s32133.py - h2 () batch 32133: 0x470720, 0x4f8510, 0x52ab00. Callees/slots are recorders; 0x4db500 runs as exe code."""
+"""specs_s32133.py - h2 (Sonnet) batch 32133: 0x470720, 0x4f8510, 0x52ab00. Callees/slots are recorders; 0x4db500 runs as exe code."""
 import struct
 from pilot import S, F
 from unicorn.x86_const import UC_X86_REG_EDX

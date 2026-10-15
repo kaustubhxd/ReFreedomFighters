@@ -1,4 +1,4 @@
-"""specs_s31075.py - batch 31075."""
+"""specs_s31075.py - Sonnet h1 batch 31075."""
 from pilot import S
 from pe_emu import REGS
 from recruits_util import rnd, obj, clear_hooks, hook_rec

@@ -1,4 +1,4 @@
-"""specs_s32112.py - h2 () batch 32112: one tier H function (sibling of 0x520bb0). Callees/slots are recorders; the buffer is recorded with deref and modified by the 0x4e09b0 hook."""
+"""specs_s32112.py - h2 (Sonnet) batch 32112: one tier H function (sibling of 0x520bb0). Callees/slots are recorders; the buffer is recorded with deref and modified by the 0x4e09b0 hook."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

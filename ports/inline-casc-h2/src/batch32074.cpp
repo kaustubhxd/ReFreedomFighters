@@ -1,4 +1,4 @@
-// batch32074.cpp - cascade h2 (): 0x5d82a0 (copy fields from a dynamic-cast object), 0x5c2c10 (register an index in a looked-up record).
+// batch32074.cpp - cascade h2 (Sonnet): 0x5d82a0 (copy fields from a dynamic-cast object), 0x5c2c10 (register an index in a looked-up record).
 #include "ff.h"
 
 extern "C" u8 *ext_634d2e(u32 v, u32 a, u32 b, u32 c, u32 d);   // RTDynamicCast-style thunk, cdecl, 5 args

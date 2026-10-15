@@ -1,4 +1,4 @@
-// batch31128.cpp - tier C thunks (asm, stack exact).
+// batch31128.cpp - Sonnet h1: tier C thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_43ea20(void);
@@ -68,7 +68,7 @@ asm(
     "  pushl %eax\n"
     "  call *0xfc(%ecx)\n"
     "1:\n"
-    "  movl 0xc(%ebp), %edx\n"
+    "  movl 8(%ebp), %edx\n"
     "  cmpl %edx, 0x724888(,%esi,4)\n"
     "  je 2f\n"
     "  movl 0x724a00, %eax\n"

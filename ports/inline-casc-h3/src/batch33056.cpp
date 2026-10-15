@@ -1,4 +1,4 @@
-// batch33056.cpp - h3 () batch 33056: tier C wrappers with flags, loops and imports
+// batch33056.cpp - h3 (Sonnet) batch 33056: tier C wrappers with flags, loops and imports
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_4614d0(u8 *self, u32 a, u32 b, u32 c);   // ret 0xc

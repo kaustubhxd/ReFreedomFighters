@@ -1,4 +1,4 @@
-// batch32072.cpp - cascade h2 (): 0x65f4d0 (create a record and copy a 9-dword block + vector), 0x4d4f70 (copy out of a record payload).
+// batch32072.cpp - cascade h2 (Sonnet): 0x65f4d0 (create a record and copy a 9-dword block + vector), 0x4d4f70 (copy out of a record payload).
 #include "ff.h"
 
 extern "C" u8 *THISCALL ext_64b2f0(u8 *self, u32 a, u32 c, u32 d);   // thiscall ret 0xc

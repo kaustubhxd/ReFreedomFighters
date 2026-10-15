@@ -1,4 +1,4 @@
-// batch33047.cpp - h3 () batch 33047: tiny tier C vtable wrappers
+// batch33047.cpp - h3 (Sonnet) batch 33047: tiny tier C vtable wrappers
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_4db2c0(u8 *self, u32 a, u32 b);   // ret 8

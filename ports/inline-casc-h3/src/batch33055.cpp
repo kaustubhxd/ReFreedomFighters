@@ -1,4 +1,4 @@
-// batch33055.cpp - h3 () batch 33055: tiny tier C wrappers, a log-style function, one SEH funclet
+// batch33055.cpp - h3 (Sonnet) batch 33055: tiny tier C wrappers, a log-style function, one SEH funclet
 #include "ff.h"
 
 extern "C" void THISCALL ext_4e6330(u8 *self, u8 *p);                 // ret 4

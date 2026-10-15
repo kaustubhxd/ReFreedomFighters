@@ -1,4 +1,4 @@
-// batch32131.cpp - cascade h2 (): three tier H (float / x87) functions.
+// batch32131.cpp - cascade h2 (Sonnet): three tier H (float / x87) functions.
 #include "ff.h"
 
 extern "C" void FASTCALL ext_633654(u32 cookie);                              // /GS check

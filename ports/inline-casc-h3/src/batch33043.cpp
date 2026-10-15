@@ -1,4 +1,4 @@
-// batch33043.cpp - h3 () batch 33043: tier B loops, list walkers, ctors
+// batch33043.cpp - h3 (Sonnet) batch 33043: tier B loops, list walkers, ctors
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_49c980(u8 *self, u32 a, u32 b);                  // ret 8

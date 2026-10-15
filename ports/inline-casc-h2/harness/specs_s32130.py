@@ -1,4 +1,4 @@
-"""specs_s32130.py - h2 () batch 32130: 0x4def50 (quaternion product), 0x449100, 0x5d9210. Callees/slots are recorders; order pinned with calllog."""
+"""specs_s32130.py - h2 (Sonnet) batch 32130: 0x4def50 (quaternion product), 0x449100, 0x5d9210. Callees/slots are recorders; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

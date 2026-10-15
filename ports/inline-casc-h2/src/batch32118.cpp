@@ -1,4 +1,4 @@
-// batch32118.cpp - cascade h2 (): tier H (float / SSE) functions, batch 32118.
+// batch32118.cpp - cascade h2 (Sonnet): tier H (float / SSE) functions, batch 32118.
 #include "ff.h"
 
 extern "C" double THISCALL ext_522f60(u8 *self, float a, float b);   // thiscall ret 8, double in st0

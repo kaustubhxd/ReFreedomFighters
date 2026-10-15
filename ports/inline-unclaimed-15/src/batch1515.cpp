@@ -1,6 +1,6 @@
 #include "ff.h"
 // batch1515.cpp - unclaimed-15 claim 15 (docs/20-unclaimed-15.md): ZActionControlMap::Load(ZLoadGame*) (0x5b3e60).
-// Name from the name map (high). Thiscall, one argument, ret 4, returns true.
+// Name from the GC name map (high). Thiscall, one argument, ret 4, returns true.
 // The load object's slots +0x40 and +0x50 are writer stubs in the harness: each stores a value through its pointer
 // argument. The render manager's slot +0x58 is a logged stub. The exe's argument slot is written by the first load (it
 // is the caller's stack word), so the port takes the parameter's address, as the exe does.

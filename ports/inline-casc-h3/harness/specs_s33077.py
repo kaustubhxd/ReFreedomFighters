@@ -1,4 +1,4 @@
-"""specs_s33077.py - h3 () batch 33077: tier H float/SSE functions."""
+"""specs_s33077.py - h3 (Sonnet) batch 33077: tier H float/SSE functions."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, clear_hooks, hook_rec, pystub

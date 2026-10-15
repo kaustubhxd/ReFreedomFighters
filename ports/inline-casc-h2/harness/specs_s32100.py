@@ -1,4 +1,4 @@
-"""specs_s32100.py - h2 () batch 32100: eight tier H float / SSE functions. NaN-able heap floats use nan_heap=True; slots/callees are recorders; order pinned with calllog."""
+"""specs_s32100.py - h2 (Sonnet) batch 32100: eight tier H float / SSE functions. NaN-able heap floats use nan_heap=True; slots/callees are recorders; order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

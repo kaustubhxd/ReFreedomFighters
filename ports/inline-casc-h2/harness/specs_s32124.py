@@ -1,4 +1,4 @@
-"""specs_s32124.py - h2 () batch 32124: 0x43ed70 and 0x63eca0. Slots/callees are recorders; the chunk list is built in the spec."""
+"""specs_s32124.py - h2 (Sonnet) batch 32124: 0x43ed70 and 0x63eca0. Slots/callees are recorders; the chunk list is built in the spec."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

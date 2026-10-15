@@ -10,7 +10,7 @@ extern "C" void FASTCALL ext_43e8e0(float *d, const float *a, const float *b);  
 extern "C" float THISCALL ext_44c840(float *v);                                  // vnorm in place (length in st0, dropped)
 extern "C" void THISCALL ext_4e0d00(float *v, float s);                          // vscalar in place
 
-// 0x6354a0 ZFastBoxColi1::AddFace(ZBaseGeom* geom, const float* a, const float* b, const float* c) (, name low), thiscall,
+// 0x6354a0 ZFastBoxColi1::AddFace(ZBaseGeom* geom, const float* a, const float* b, const float* c) (name low), thiscall,
 // ret 0x10. Builds a 0x7c-byte face record on the stack and appends it to the face list at this+0x14 (slot 4(0) returns the new
 // element + 4; the record is copied to that address - 4):
 //  +0 ref of the geom (geom database slot 0x50), +4 N = unit normal of (b - a) x (c - a) (0x53d160), +0x10..+0x30 the 3x3 inverse

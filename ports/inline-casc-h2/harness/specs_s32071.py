@@ -1,4 +1,4 @@
-"""specs_s32071.py - h2 () batch 32071: 0x4e6720, 0x4ccd60, 0x5f1720. Callees hooked as recorders (0x41e290 returns a fixed spec buffer)."""
+"""specs_s32071.py - h2 (Sonnet) batch 32071: 0x4e6720, 0x4ccd60, 0x5f1720. Callees hooked as recorders (0x41e290 returns a fixed spec buffer)."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec
 

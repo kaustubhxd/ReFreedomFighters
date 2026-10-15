@@ -1,4 +1,4 @@
-// batch33094.cpp - h3 () batch 33094: tier H float/SSE functions
+// batch33094.cpp - h3 (Sonnet) batch 33094: tier H float/SSE functions
 #include "ff.h"
 
 #define LOGOBJ (*(u8 **)0x700390)

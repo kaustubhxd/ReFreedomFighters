@@ -6,7 +6,7 @@ extern "C" void ext_45c510(void *p);                        // ZGEOM::operator d
 extern "C" void ext_4690b0(void *self, u32 code);           // error/leak-check hook used when the object is not heap-owned (cdecl)
 extern "C" void THISCALL ext_45d5b0(void *self, void *geom);   // ZGEOM::CopyData (not ported here)
 
-// ZIKLNKOBJ::~ZIKLNKOBJ() [medium], scalar deleting form: flag bit 0 = delete the storage. If the flag's
+// ZIKLNKOBJ::~ZIKLNKOBJ() [medium, GC-mapped], scalar deleting form: flag bit 0 = delete the storage. If the flag's
 // bit 2 is clear the storage goes back through ZGEOM::operator delete; if set, the leak hook (code 0x1d2) runs instead.
 // Returns this.
 static void *THISCALL ZIKLNKOBJ_dtor(void *self, u32 flag) {
@@ -19,7 +19,7 @@ static void *THISCALL ZIKLNKOBJ_dtor(void *self, u32 flag) {
 }
 PCREG(465720, ZIKLNKOBJ_dtor);
 
-// ZIKLNKOBJ::CopyData(const ZGEOM* g) [medium]: the geometry base copy, then (when g is of class 0x200006)
+// ZIKLNKOBJ::CopyData(const ZGEOM* g) [medium, GC-mapped]: the geometry base copy, then (when g is of class 0x200006)
 // this->vt +0x2e4(g).
 static void THISCALL CopyData(void *self, void *g) {
   ext_45d5b0(self, g);

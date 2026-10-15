@@ -1,4 +1,4 @@
-// batch42004.cpp - tier H, float function with logger vcalls (asm, stack exact).
+// batch42004.cpp - Sonnet t3: tier H, float function with logger vcalls (asm, stack exact).
 #include "ff.h"
 
 // 0x526f20, thiscall, no args: once only ([this+0x19] == 0): f = slot 0x2c of this (x87 float, stored as float); x = [this+0x25];

@@ -1,4 +1,4 @@
-// batch33042.cpp - h3 () batch 33042: tier B ctors, vector push, small wrappers
+// batch33042.cpp - h3 (Sonnet) batch 33042: tier B ctors, vector push, small wrappers
 #include "ff.h"
 
 extern "C" void THISCALL ext_5e0e10(u8 *self, u32 a, u32 b);            // ret 8

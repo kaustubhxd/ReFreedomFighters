@@ -1,4 +1,4 @@
-// batch40001.cpp - cascade t1 (), tier H: 0x5ab970, 0x5a0da0, 0x52a700, 0x452e60, 0x4f1b20, 0x4804e0.
+// batch40001.cpp - cascade t1 (Sonnet), tier H: 0x5ab970, 0x5a0da0, 0x52a700, 0x452e60, 0x4f1b20, 0x4804e0.
 #include "ff.h"
 
 extern "C" void THISCALL ext_4db7c0(u8 *self, float *out);       // thiscall ret 4

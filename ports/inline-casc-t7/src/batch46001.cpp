@@ -1,4 +1,4 @@
-// batch46001.cpp - cascade t7 (), tier G: 0x5a04f0 (loads a table of ~44 named resource handles into a 0x98-byte record).
+// batch46001.cpp - cascade t7 (Sonnet), tier G: 0x5a04f0 (loads a table of ~44 named resource handles into a 0x98-byte record).
 #include "ff.h"
 
 extern "C" u8 *ext_41e290(u32 size);                          // cdecl alloc

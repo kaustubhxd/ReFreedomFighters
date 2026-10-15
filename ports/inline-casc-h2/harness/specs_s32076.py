@@ -1,4 +1,4 @@
-"""specs_s32076.py - h2 () batch 32076: 0x42f6e0, 0x5367c0. Callees hooked as recorders (0x4cc850 returns a precomputed sequence)."""
+"""specs_s32076.py - h2 (Sonnet) batch 32076: 0x42f6e0, 0x5367c0. Callees hooked as recorders (0x4cc850 returns a precomputed sequence)."""
 from pilot import S
 from recruits_util import rnd, clear_hooks, hook_rec
 

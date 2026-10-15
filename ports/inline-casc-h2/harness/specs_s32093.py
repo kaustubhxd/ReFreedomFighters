@@ -1,4 +1,4 @@
-"""specs_s32093.py - h2 () batch 32093: eight tier H small float functions. Float arguments are F(); float returns ret='st0'."""
+"""specs_s32093.py - h2 (Sonnet) batch 32093: eight tier H small float functions. Float arguments are F(); float returns ret='st0'."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, clear_hooks, hook_rec, pystub

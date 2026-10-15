@@ -1,4 +1,4 @@
-// batch40000.cpp - cascade t1 (), tier H: 0x479090, 0x4d6150, 0x45aff0, 0x421810.
+// batch40000.cpp - cascade t1 (Sonnet), tier H: 0x479090, 0x4d6150, 0x45aff0, 0x421810.
 #include "ff.h"
 
 extern "C" void ext_634dc4();                                    // x87 CRT routine (st0 = 1.0, st1 = x on entry; result in st0)

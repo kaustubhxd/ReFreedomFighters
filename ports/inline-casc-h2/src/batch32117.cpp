@@ -1,4 +1,4 @@
-// batch32117.cpp - cascade h2 (): tier H (float / SSE) functions, batch 32117.
+// batch32117.cpp - cascade h2 (Sonnet): tier H (float / SSE) functions, batch 32117.
 #include "ff.h"
 
 extern "C" u32 FASTCALL ext_4de420(void *dst, const void *src);                              // 36-byte copy (verified)

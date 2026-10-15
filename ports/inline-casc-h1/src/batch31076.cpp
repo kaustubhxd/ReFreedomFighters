@@ -1,4 +1,4 @@
-// batch31076.cpp - tier B constructors, loops and conditional call thunks (asm, stack exact).
+// batch31076.cpp - Sonnet h1: tier B constructors, loops and conditional call thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_45c3a0(void);

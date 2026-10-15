@@ -1,4 +1,4 @@
-// batch32138.cpp - cascade h2 (): two tier H (float / SSE) functions.
+// batch32138.cpp - cascade h2 (Sonnet): two tier H (float / SSE) functions.
 #include "ff.h"
 #include <xmmintrin.h>
 

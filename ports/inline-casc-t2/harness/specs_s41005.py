@@ -1,4 +1,4 @@
-"""specs_s41005.py - t2 () batch 41005: 0x565760. Slots are recorders (engine slot 0xc takes four float args)."""
+"""specs_s41005.py - t2 (Sonnet) batch 41005: 0x565760. Slots are recorders (engine slot 0xc takes four float args)."""
 import struct
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,6 +1,6 @@
 // batch806.cpp - animation layer thread, batch 806: ZIKHAND (hand IK + held item). PC layout (packed):
 //   +0 vtable, +4 ZTARGET (0x4d bytes, batch 805), +0x51 dword, +0x56 hand bone id (byte), +0x5a item offset vec3.
-// ZIKHAND vtable used: +8 (detach/release item(obj, 0); name from the engine order is a guess), +0x10 GetItem().
+// ZIKHAND vtable used: +8 (detach/release item(obj, 0); name from HBM order is a guess), +0x10 GetItem().
 #include "ff.h"
 
 #define F8(p, o) (*(u8 *)((u8 *)(p) + (o)))

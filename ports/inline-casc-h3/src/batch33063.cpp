@@ -1,4 +1,4 @@
-// batch33063.cpp - h3 () batch 33063: dtor dispatchers (vtable first), list teardown, small wrappers
+// batch33063.cpp - h3 (Sonnet) batch 33063: dtor dispatchers (vtable first), list teardown, small wrappers
 #include "ff.h"
 
 extern "C" void __attribute__((cdecl)) ext_45c510(u8 *p);

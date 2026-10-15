@@ -1,4 +1,4 @@
-"""specs_s32119.py - h2 () batch 32119: 0x5718b0. Callees are recorders; the 32-byte record is checked through the destination heap block."""
+"""specs_s32119.py - h2 (Sonnet) batch 32119: 0x5718b0. Callees are recorders; the 32-byte record is checked through the destination heap block."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, clear_hooks, hook_rec

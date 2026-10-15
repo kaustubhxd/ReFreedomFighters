@@ -1,4 +1,4 @@
-// batch32119.cpp - cascade h2 (): one tier H (SSE block copy) function.
+// batch32119.cpp - cascade h2 (Sonnet): one tier H (SSE block copy) function.
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_596ce0(u8 *self);                 // thiscall, plain ret

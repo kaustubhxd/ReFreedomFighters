@@ -1,4 +1,4 @@
-"""specs_s32077.py - h2 () batch 32077: import call + five vtable thunks. Slots are recorder stubs returning a random eax."""
+"""specs_s32077.py - h2 (Sonnet) batch 32077: import call + five vtable thunks. Slots are recorder stubs returning a random eax."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, pystub
 

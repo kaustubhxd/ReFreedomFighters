@@ -1,4 +1,4 @@
-// batch31075.cpp - tier B constructors, destructor bodies, local-variable thunks (asm, stack exact).
+// batch31075.cpp - Sonnet h1: tier B constructors, destructor bodies, local-variable thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_41e290(void);

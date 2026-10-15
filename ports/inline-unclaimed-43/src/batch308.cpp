@@ -1,4 +1,4 @@
-// batch308.cpp - ZGROUP::DrawDebugObjects, 0x43fe60 (area 43, 2026-10-12). Name map says  with one argument
+// batch308.cpp - ZGROUP::DrawDebugObjects, 0x43fe60 (area 43, 2026-10-12). Name map says with one argument
 // (ZDrawDebugRender*); the exe code takes FOUR stack arguments (ret 0x10), so the names below are GUESS.
 // thiscall (this = ECX): a1 = [ebp+8] (object, slot 0xd8 is called on it), a2 = [ebp+0xc] (unused), a3 = [ebp+0x10]
 // (matrix, 9 floats), a4 = [ebp+0x14] (translation, 3 floats).

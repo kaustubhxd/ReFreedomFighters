@@ -1,4 +1,4 @@
-// batch31071.cpp - tier B call-through thunks (asm, stack exact): getters, constructors/destructors with optional delete.
+// batch31071.cpp - Sonnet h1: tier B call-through thunks (asm, stack exact): getters, constructors/destructors with optional delete.
 #include "ff.h"
 
 extern "C" void ext_42acb5(void);

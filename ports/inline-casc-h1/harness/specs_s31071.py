@@ -1,4 +1,4 @@
-"""specs_s31071.py - batch 31071: tier B call-through thunks."""
+"""specs_s31071.py - Sonnet h1 batch 31071: tier B call-through thunks."""
 from pilot import S
 from pe_emu import REGS
 from recruits_util import rnd, obj, clear_hooks, hook_rec

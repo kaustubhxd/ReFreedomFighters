@@ -3,7 +3,7 @@
 
 #define U32(p, off) (*(u32 *)((u8 *)(p) + (off)))
 
-// 0x467740, ZIKLNKOBJ::RunLnkAction(ZLnkAction *action) [, high], vtable slot 0x3d8 of ZIKLNKOBJ,
+// 0x467740, ZIKLNKOBJ::RunLnkAction(ZLnkAction *action) [high], vtable slot 0x3d8 of ZIKLNKOBJ,
 // ZCTRLIKLNKOBJ, ZLNKWHANDS, ZActor, ZPlayer, ZPlayerTest, ZFFHERO and ZFFActor. thiscall, one stack arg, returns EAX.
 // The object at +0x1ce is the action runner (GC +0x1e4). Assert that its +4 is zero (no action running): MSVC's
 // assert here calls the hook at 0x7003b0 when one is set, and breaks (int3) otherwise. Then it tail-jumps to slot 4

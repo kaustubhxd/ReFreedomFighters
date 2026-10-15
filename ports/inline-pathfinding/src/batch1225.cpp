@@ -1,4 +1,4 @@
-// batch1225.cpp - pathfinding tree: ZPathfinder3::ClassFrameUpdate() [map high; ; source lines 0x259 / 0x260]
+// batch1225.cpp - pathfinding tree: ZPathfinder3::ClassFrameUpdate() [map high; source lines 0x259 / 0x260]
 // and ZPFOctree_packed::ZPFOctree_packed() [map low; ].
 #include "pf.h"
 

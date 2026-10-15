@@ -1,4 +1,4 @@
-// batch31072.cpp - tier B destructors, constructors, lookup thunks (asm, stack exact).
+// batch31072.cpp - Sonnet h1: tier B destructors, constructors, lookup thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_43e920(void);

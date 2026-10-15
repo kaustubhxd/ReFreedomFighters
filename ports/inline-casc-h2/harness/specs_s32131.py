@@ -1,4 +1,4 @@
-"""specs_s32131.py - h2 () batch 32131: 0x503670, 0x5ec670, 0x4a3710. Callees/slots are recorders; the vector subtract runs as exe code."""
+"""specs_s32131.py - h2 (Sonnet) batch 32131: 0x503670, 0x5ec670, 0x4a3710. Callees/slots are recorders; the vector subtract runs as exe code."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

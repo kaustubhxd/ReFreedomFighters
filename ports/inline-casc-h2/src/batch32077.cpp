@@ -1,4 +1,4 @@
-// batch32077.cpp - cascade h2 (): 0x425240 (import call to bool), five vtable-slot thunks (0x466f40, 0x467400, 0x4ce510, 0x566e30, 0x4cbdc0).
+// batch32077.cpp - cascade h2 (Sonnet): 0x425240 (import call to bool), five vtable-slot thunks (0x466f40, 0x467400, 0x4ce510, 0x566e30, 0x4cbdc0).
 #include "ff.h"
 
 typedef u32 (*imp0_t)();

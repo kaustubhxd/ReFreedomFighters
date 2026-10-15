@@ -1,4 +1,4 @@
-"""specs_s32090.py - h2 () batch 32090: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs; call order pinned with calllog side effects."""
+"""specs_s32090.py - h2 (Sonnet) batch 32090: eight tier C wrappers. Callees hooked as recorders; slots are recorder stubs; call order pinned with calllog side effects."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

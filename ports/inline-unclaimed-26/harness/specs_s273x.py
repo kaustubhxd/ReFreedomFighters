@@ -2,7 +2,7 @@
 Same address as specs_s273.py; this one builds the object with make_list() instead of the local protocol stub."""
 import os
 import sys
-sys.path.insert(0, os.path.join(os.environ.get('FF_RE_ROOT', '.'), 'decomp-pilot', 'inline-unclaimed-66', 'harness'))
+sys.path.insert(0, os.path.join(os.environ.get('FF_RE_ROOT', '/path/to/repo'), 'decomp-pilot', 'inline-unclaimed-66', 'harness'))
 from pilot import S  # noqa: E402
 from iter66 import make_list  # noqa: E402
 

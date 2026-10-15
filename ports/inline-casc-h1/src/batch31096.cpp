@@ -1,4 +1,4 @@
-// batch31096.cpp - assert-hook rows and a /GS-protected thunk (asm, stack exact).
+// batch31096.cpp - Sonnet h1: assert-hook rows and a /GS-protected thunk (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_633654(void);

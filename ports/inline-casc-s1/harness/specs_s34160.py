@@ -64,7 +64,7 @@ def _g5272e0(c):
     r = c.rng
     k = _const(0x679540)
     so = rnd(c, 0x60)
-    c.emu.w32(so + 0x48, _fbits(r))
+    c.emu.w32(so + 0x48, 0 if r.random() < 0.3 else _fbits(r))   # a zero rate keeps x equal to [this+4]: exact boundary cases
     c.emu.w32(0x70039c, so)
     me = rnd(c, 0x40)
     f = r.choice([1.0, -1.0, 0.0, -0.0, 3.0, -3.0, 0.5])
@@ -72,7 +72,8 @@ def _g5272e0(c):
     c.emu.w32(me + 0x10, struct.unpack('<I', struct.pack('<f', r.choice([1.0, 2.0, 0.5, -1.0]))) [0] if r.random() < 0.7 else _fbits(r))
     lim = r.choice([0.0, 10.0, -10.0, 100.0, r.uniform(-50, 50)])
     c.emu.w32(me + 8, struct.unpack('<I', struct.pack('<f', lim))[0] if r.random() < 0.85 else _fbits(r))
-    x = lim + r.choice([k, -k, 2 * k, -2 * k, 0.0, 1.0, -1.0, 5.0, -5.0, k / 2])
+    f32 = lambda v: struct.unpack('<f', struct.pack('<f', v))[0]
+    x = r.choice([f32(f32(lim) + k), f32(f32(lim) - k), lim + 2 * k, lim - 2 * k, lim, lim + 1.0, lim - 1.0, lim + 5.0, lim - 5.0, lim + k / 2])
     c.emu.w32(me + 4, struct.unpack('<I', struct.pack('<f', x))[0] if r.random() < 0.8 else _fbits(r))
     c.emu.wbytes(me + 0x18, r.getrandbits(40).to_bytes(5, 'little'))
     return [me]

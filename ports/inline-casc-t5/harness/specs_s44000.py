@@ -1,4 +1,4 @@
-"""specs_s44000.py - t5 () batch 44000: 0x4e41e0, 0x551830. Callees/slots are recorders."""
+"""specs_s44000.py - t5 (Sonnet) batch 44000: 0x4e41e0, 0x551830. Callees/slots are recorders."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

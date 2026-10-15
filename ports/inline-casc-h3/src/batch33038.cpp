@@ -1,4 +1,4 @@
-// batch33038.cpp - h3 () cascade batch 33038: three scalar-deleting dtor shapes + one bool combiner
+// batch33038.cpp - h3 (Sonnet) cascade batch 33038: three scalar-deleting dtor shapes + one bool combiner
 #include "ff.h"
 
 extern "C" void __attribute__((cdecl)) ext_634273(void *p, u32 n);   // sized operator delete, caller pops

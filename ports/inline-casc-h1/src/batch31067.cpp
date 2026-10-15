@@ -1,4 +1,4 @@
-// batch31067.cpp - list/table lookups, flag decoder, record compare, linked list/tree inserts, tree iterator.
+// batch31067.cpp - Sonnet h1: list/table lookups, flag decoder, record compare, linked list/tree inserts, tree iterator.
 #include "ff.h"
 
 #define P32(p) (*(u32 *)(p))

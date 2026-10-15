@@ -1,4 +1,4 @@
-// batch33113.cpp - h3 () batch 33113: tier H float/SSE functions
+// batch33113.cpp - h3 (Sonnet) batch 33113: tier H float/SSE functions
 #include "ff.h"
 
 static inline u32 R32(u8 *p) { u32 v; __builtin_memcpy(&v, p, 4); return v; }

@@ -1,4 +1,4 @@
-// batch32103.cpp - cascade h2 (): three tier H (float / SSE) functions.
+// batch32103.cpp - cascade h2 (Sonnet): three tier H (float / SSE) functions.
 #include "ff.h"
 
 extern "C" void THISCALL ext_515950(u8 *self);                      // thiscall, plain ret

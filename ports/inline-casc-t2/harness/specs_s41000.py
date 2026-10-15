@@ -1,4 +1,4 @@
-"""specs_s41000.py - t2 () batch 41000: 0x462510, 0x51d000. Callees (0x523520, 0x51db60, 0x51cf10) and vtable slots are recorders."""
+"""specs_s41000.py - t2 (Sonnet) batch 41000: 0x462510, 0x51d000. Callees (0x523520, 0x51db60, 0x51cf10) and vtable slots are recorders."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

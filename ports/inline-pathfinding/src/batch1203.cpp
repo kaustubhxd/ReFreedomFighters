@@ -2,7 +2,7 @@
 #include "pf.h"
 
 // 0x52d3f0 ZPFOctreeElementFuncGetNearest_packed::Apply(ZPFOctree_packed*, int&, int, int*, int*, int, unsigned short)
-// [map medium; , vtable slot 0]. thiscall, ret 0x1c, returns 1 when the element became the best so far.
+// [map medium; vtable slot 0]. thiscall, ret 0x1c, returns 1 when the element became the best so far.
 // Functor: +4/+8/+0xc target cell (ints, local x z y), +0x10..+0x18 best cell, +0x1c best distance, +0x20 weight of
 // the third (world y) axis. Distance = sqrt(dx*dx (float) + dz*dz (int, wraps)) + |dy| * weight; only walkable
 // (non-zero) elements count. A strictly smaller distance wins.
@@ -27,7 +27,7 @@ static int THISCALL elemGetNearest(u8 *self, void *, int *elem, int, int *c, int
 }
 PCREG(52d3f0, elemGetNearest);
 
-// 0x530fd0 ZPFOctree_packed::Init(int) [map medium; ; source engine\pathfinder\zpfoctreepacked.cpp line
+// 0x530fd0 ZPFOctree_packed::Init(int) [map medium; source engine\pathfinder\zpfoctreepacked.cpp line
 // 0x12b]. thiscall, ret 4. Allocates the A* array (0x15-byte SPFAStarData_packed records, count kept as u16 at +0x50,
 // array at +0x98) and resets every record: f = 100000.0, words +0 / +0xe and links +0x10 / +0x12 = 0, byte +0x14 = 0.
 // More than 65535 entries is reported and clamped.

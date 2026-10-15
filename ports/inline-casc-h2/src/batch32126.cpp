@@ -1,4 +1,4 @@
-// batch32126.cpp - cascade h2 (): two tier H functions.
+// batch32126.cpp - cascade h2 (Sonnet): two tier H functions.
 #include "ff.h"
 
 typedef u32 (THISCALL *fn_p_t)(u32);

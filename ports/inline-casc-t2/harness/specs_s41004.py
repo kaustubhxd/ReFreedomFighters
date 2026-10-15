@@ -1,4 +1,4 @@
-"""specs_s41004.py - t2 () batch 41004: 0x51f930. Slots are recorders; 0x43e920 (x87 vector subtract) runs as exe code; 0x633654 (/GS) is a recorder."""
+"""specs_s41004.py - t2 (Sonnet) batch 41004: 0x51f930. Slots are recorders; 0x43e920 (x87 vector subtract) runs as exe code; 0x633654 (/GS) is a recorder."""
 import struct
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

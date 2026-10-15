@@ -1,4 +1,4 @@
-"""specs_s32137.py - h2 () batch 32137: 0x5034f0, 0x441790, 0x5c8c50. Callees/slots are recorders; 0x4de040 and 0x45f960 run as exe code."""
+"""specs_s32137.py - h2 (Sonnet) batch 32137: 0x5034f0, 0x441790, 0x5c8c50. Callees/slots are recorders; 0x4de040 and 0x45f960 run as exe code."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,4 +1,4 @@
-// batch32080.cpp - cascade h2 (): eight tier C thunks (vtable slots, imports, assert-hook stubs, a global object release).
+// batch32080.cpp - cascade h2 (Sonnet): eight tier C thunks (vtable slots, imports, assert-hook stubs, a global object release).
 #include "ff.h"
 
 extern "C" void THISCALL ext_461c40(u8 *self);   // thiscall, plain ret (tail jump target)

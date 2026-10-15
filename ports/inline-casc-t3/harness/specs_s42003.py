@@ -1,4 +1,4 @@
-"""specs_s42003.py - batch 42003. 0x521ed0: /GS float function. Hooked: 0x633654 (ECX = cookie), vtable slot 0x84 (this + 1 arg, vec3 pointee recorded);
+"""specs_s42003.py - Sonnet t3 batch 42003. 0x521ed0: /GS float function. Hooked: 0x633654 (ECX = cookie), vtable slot 0x84 (this + 1 arg, vec3 pointee recorded);
 0x43e920 and 0x4e0030 run for real (vec3 subtract, x87 float result)."""
 import struct
 from pilot import S

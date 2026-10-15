@@ -1,4 +1,4 @@
-// batch1001.cpp - fresh-10 batch 1: small slice-10 wrappers. Names from the name map; GUESS where it has none.
+// batch1001.cpp - fresh-10 batch 1: small slice-10 wrappers. Names from the GC name map; GUESS where it has none.
 #include "ff.h"
 
 // 0x650c20 ZRender::RemoveView(ZViewBase*): forwards to slot 0x30 of the object at this+0xbd.

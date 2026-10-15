@@ -1,4 +1,4 @@
-// batch32078.cpp - cascade h2 (): 0x4d14a0 (new list node holding a byte copy, linked after a node or at the tail of an owner).
+// batch32078.cpp - cascade h2 (Sonnet): 0x4d14a0 (new list node holding a byte copy, linked after a node or at the tail of an owner).
 #include "ff.h"
 
 extern "C" u8 *ext_41e290(u32 n);                          // alloc, cdecl

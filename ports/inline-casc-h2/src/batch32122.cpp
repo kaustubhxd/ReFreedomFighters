@@ -1,4 +1,4 @@
-// batch32122.cpp - cascade h2 (): two tier H (x87 / vector) functions.
+// batch32122.cpp - cascade h2 (Sonnet): two tier H (x87 / vector) functions.
 #include "ff.h"
 
 extern "C" float FASTCALL ext_4e0870(void *a, void *b);                          // distance between two vectors (real exe code, float in st0)

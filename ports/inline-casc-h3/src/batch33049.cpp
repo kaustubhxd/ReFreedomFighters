@@ -1,4 +1,4 @@
-// batch33049.cpp - h3 () batch 33049: tiny tier C wrappers (sysobj table lookups, pointer calls, tail-calls)
+// batch33049.cpp - h3 (Sonnet) batch 33049: tiny tier C wrappers (sysobj table lookups, pointer calls, tail-calls)
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_478b70(u8 *self, u32 a, u32 b);            // ret 8

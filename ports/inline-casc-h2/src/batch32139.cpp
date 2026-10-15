@@ -1,4 +1,4 @@
-// batch32139.cpp - cascade h2 (): three tier H (float / SSE / x87) functions.
+// batch32139.cpp - cascade h2 (Sonnet): three tier H (float / SSE / x87) functions.
 #include "ff.h"
 #include <xmmintrin.h>
 
@@ -67,7 +67,7 @@ PCREG(551830, fn551830);
 // 0x462510, thiscall(flag byte) ret 4: [this+0x6c] == 0 -> return. flag != 0: slot 0x4c of it with (&iter[3]); e = slot 0x64 with (&iter); while e: x = slot 0x9c with (e) (float on x87);
 // if [e+4] != 0: ([e+8])(ecx = [this+0x74], this, x, -1.0f, 0) (callee pops 16); e = slot 0x64 with (&iter). Then (always): slot 0 (scalar deleting destructor) of [this+0x6c] with 1 if it is non-null; [this+0x6c] = 0.
 static void THISCALL fn462510(u8 *self, u32 flag) {
-  if (!*(void **)(self + 0x70)) return;
+  if (!*(void **)(self + 0x6c)) return;
   if ((u8)flag) {
     u32 it[3];
     vcall<void>(*(void **)(self + 0x6c), 0x4c, (u32)it);

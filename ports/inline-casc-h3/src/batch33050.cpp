@@ -1,4 +1,4 @@
-// batch33050.cpp - h3 () batch 33050: tiny tier C wrappers, one SEH funclet with import calls
+// batch33050.cpp - h3 (Sonnet) batch 33050: tiny tier C wrappers, one SEH funclet with import calls
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_463940(u8 *self);   // ret 0

@@ -1,4 +1,4 @@
-"""specs_s32115.py - h2 () batch 32115: tier H functions. Imports are stubs written into the IAT slot (pystub with st0 for an x87 float result); slots/callees are recorders."""
+"""specs_s32115.py - h2 (Sonnet) batch 32115: tier H functions. Imports are stubs written into the IAT slot (pystub with st0 for an x87 float result); slots/callees are recorders."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

@@ -1,4 +1,4 @@
-"""specs_s32116.py - h2 () batch 32116: 0x6101b0. Slot 0xc8 is a recorder stub with three stdcall arguments (ECX there is the vtable, not recorded); the object field is rewritten between calls."""
+"""specs_s32116.py - h2 (Sonnet) batch 32116: 0x6101b0. Slot 0xc8 is a recorder stub with three stdcall arguments (ECX there is the vtable, not recorded); the object field is rewritten between calls."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, clear_hooks, pystub

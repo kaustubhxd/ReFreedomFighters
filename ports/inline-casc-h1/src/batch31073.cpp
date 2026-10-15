@@ -1,4 +1,4 @@
-// batch31073.cpp - tier B constructors/destructors and small call-through thunks (asm, stack exact).
+// batch31073.cpp - Sonnet h1: tier B constructors/destructors and small call-through thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_43de70(void);

@@ -1,4 +1,4 @@
-// batch33076.cpp - h3 () batch 33076: tier H float/SSE functions
+// batch33076.cpp - h3 (Sonnet) batch 33076: tier H float/SSE functions
 #include "ff.h"
 
 extern "C" void THISCALL ext_51c470(u8 *self);

@@ -1,4 +1,4 @@
-"""specs_s32080.py - h2 () batch 32080: eight tier C thunks. Slots and imports are recorder stubs; the assert hook 0x7003b0 is always set (random EAX)."""
+"""specs_s32080.py - h2 (Sonnet) batch 32080: eight tier C thunks. Slots and imports are recorder stubs; the assert hook 0x7003b0 is always set (random EAX)."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 

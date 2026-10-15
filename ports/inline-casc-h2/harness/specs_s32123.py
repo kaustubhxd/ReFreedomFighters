@@ -1,4 +1,4 @@
-"""specs_s32123.py - h2 () batch 32123: three tier H functions. Callees/slots are recorders (the matrix helpers 0x4deb20 / 0x4de4f0 run as exe code); order pinned with calllog."""
+"""specs_s32123.py - h2 (Sonnet) batch 32123: three tier H functions. Callees/slots are recorders (the matrix helpers 0x4deb20 / 0x4de4f0 run as exe code); order pinned with calllog."""
 import struct
 from pilot import S, F
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub

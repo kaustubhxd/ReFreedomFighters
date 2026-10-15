@@ -1,4 +1,4 @@
-// batch33062.cpp - h3 () batch 33062: dtor-flag dispatchers and small wrappers
+// batch33062.cpp - h3 (Sonnet) batch 33062: dtor-flag dispatchers and small wrappers
 #include "ff.h"
 
 extern "C" void __attribute__((cdecl)) ext_45c510(u8 *p);

@@ -1,4 +1,4 @@
-"""specs_s33038.py - h3 () batch 33038: dtor shapes (hooked delete 0x634273, base dtor 0x602240) and bool combiner 0x4746d0."""
+"""specs_s33038.py - h3 (Sonnet) batch 33038: dtor shapes (hooked delete 0x634273, base dtor 0x602240) and bool combiner 0x4746d0."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, hook_rec
 

@@ -1,4 +1,4 @@
-// batch46003.cpp - cascade t7 (), tier G: 0x53b8d0 (builds the list of unique 0x89-byte "slot records" for a list of items, copies them into this+0xc9).
+// batch46003.cpp - cascade t7 (Sonnet), tier G: 0x53b8d0 (builds the list of unique 0x89-byte "slot records" for a list of items, copies them into this+0xc9).
 #include "ff.h"
 
 extern "C" u32 THISCALL ext_53bfd0(u8 *self, u8 *a1, u32 *l10, u8 *p14, u8 *pc);                              // ret 0x10, returns al

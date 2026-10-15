@@ -1,4 +1,4 @@
-// batch31097.cpp - /GS-protected and vtable thunks (asm, stack exact).
+// batch31097.cpp - Sonnet h1: /GS-protected and vtable thunks (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_4d6520(void);

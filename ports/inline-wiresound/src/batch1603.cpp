@@ -1,9 +1,9 @@
 // batch1603.cpp - the script natives FFActor_If.PlaySound_Enum and PlaySound_Enum_GetTime (soundtimers thread).
 //
-// PC addresses found through the method tables: GC ZFFActorIf::addMethodDefinitions registers 103
+// PC addresses found through the method tables: GC ZFFActorIf::addMethodDefinitions (80122910) registers 103
 // methods from the PMF table at 803eb120; PC's (0x55cfb0) registers 104 into 0x713f18 in the same order with one
 // extra method between GC index 27 and 56 (anchors: 15 name-map pairs, all at PC index = GC index or GC index + 1).
-// GC 72 PlaySound_EnumBased -> PC 73 0x55baa0; GC 73 PlaySound_EnumBased_GetTime -> PC 74
+// GC 72 PlaySound_EnumBased (8012c7f8) -> PC 73 0x55baa0; GC 73 PlaySound_EnumBased_GetTime (8012c890) -> PC 74
 // 0x55bad0. The bodies agree (both call ZFFActor vtable +0x6e8 = PlaySound_Enum, slot 442).
 //
 // Script call frame (OpaqueCallParameters_t): +4 the argument view, +8 the result view; ext_5003d0(view, i) returns

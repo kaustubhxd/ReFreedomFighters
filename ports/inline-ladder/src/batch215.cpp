@@ -32,7 +32,7 @@ static void *THISCALL dtor18(u8 *self, u32 flags) {
 }
 PCREG(485f30, dtor18);
 
-// 0x5e0250 ZFFActionFFCommand::Execute() [, medium; slot 2], thiscall, AL = 0 (the action ends at once).
+// 0x5e0250 ZFFActionFFCommand::Execute() [medium; slot 2], thiscall, AL = 0 (the action ends at once).
 // Fields: +8 hero, +0xc animation with a rifle, +0x10 animation otherwise, byte +0x14 flag (true for id 0x1a).
 // Picks +0xc when the held item (hero slot 0x504) is a weapon (slot 0x1e0(0x1007d2)) whose kind (slot 0x330 of its slot
 // 0x350 object) is 2..7, else +0x10; plays it with hero slot 0x228(anim, 1, 0.0, -1.0, 1.0); with the flag set, hero
@@ -54,7 +54,7 @@ static bool THISCALL ffCommandExecute(u8 *self) {
 }
 PCREG(5e0250, ffCommandExecute);
 
-// 0x5e0330 ZFFActionPickupItem::Execute() [, medium; slot 2], thiscall, AL = 0.
+// 0x5e0330 ZFFActionPickupItem::Execute() [medium; slot 2], thiscall, AL = 0.
 // +8 the item, +0xc the hero, +0x10 the hand. item slot 0x144("QRigidBody") (0x68ce24); when item slot
 // 0x1e0(0x1007d8) is true: item slot 0x2d0(1, 0), then item slot 0x2f0(ref(hero), 0, 1) with ref = database slot 0x4c
 // (GeomToRef); the item's vtable is read before the database call. Otherwise hand slot 8(hero, ref(item)).

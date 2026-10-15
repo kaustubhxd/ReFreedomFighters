@@ -1,4 +1,4 @@
-"""specs_s43002.py - t4 () batch 43002: 0x585350 (lower bound over 0x48-byte records), 0x6511d0 (flag test through engine slot 0x1b0),
+"""specs_s43002.py - t4 (Sonnet) batch 43002: 0x585350 (lower bound over 0x48-byte records), 0x6511d0 (flag test through engine slot 0x1b0),
 0x4246e0 (conditional vsprintf then slot 0x124; 0x42abee hooked and fills the buffer)."""
 import struct
 from pilot import S
@@ -75,7 +75,7 @@ def _g4246e0(c):
     def fmt(em, kk):
         em.wbytes(em.arg32(0), pat)
     hook_rec(c, 0x42abee, 3, pop=0, stackmark=(0,), deref={2: 1}, side=fmt, ret=_w(c))
-    s = pystub(c, 4, pop=0, stackmark=(3,), deref={3: 3})
+    s = pystub(c, 4, pop=0, deref={3: 3})
     ob = obj(c, 0x40, {0x124: s})
     return [_w(c), ob, _w(c), _w(c), _w(c), _w(c)]
 

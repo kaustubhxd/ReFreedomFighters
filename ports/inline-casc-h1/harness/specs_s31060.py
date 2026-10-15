@@ -1,4 +1,4 @@
-"""specs_s31060.py - batch 31060: vtable / pointer-chasing tail-jump thunks (8 functions).
+"""specs_s31060.py - Sonnet h1 batch 31060: vtable / pointer-chasing tail-jump thunks (8 functions).
 Each slot (or the 0x5fd120 target) is a recorder that records ECX and 2 stack args and pops 2, so the thunk must leave the stack alone."""
 from pilot import S
 from recruits_util import rnd, obj, clear_hooks, pystub, hook_rec

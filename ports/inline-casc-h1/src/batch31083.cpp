@@ -1,4 +1,4 @@
-// batch31083.cpp - tier C vtable call chains (asm, stack exact).
+// batch31083.cpp - Sonnet h1: tier C vtable call chains (asm, stack exact).
 #include "ff.h"
 
 extern "C" void ext_467cd0(void);

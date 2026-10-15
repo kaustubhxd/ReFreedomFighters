@@ -1,4 +1,4 @@
-// batch45000.cpp - tier H slice 5 (t6, ): two thiscall helpers that finish with len = sqrt(|P.v|^2) + K, 0x4dce50(P, len).
+// batch45000.cpp - tier H slice 5 (t6, Sonnet): two thiscall helpers that finish with len = sqrt(|P.v|^2) + K, 0x4dce50(P, len).
 #include "ff.h"
 
 extern "C" void THISCALL ext_4dc600(void *, void *);
