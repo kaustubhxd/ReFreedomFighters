@@ -63,3 +63,4 @@ extern "C" u8 *THISCALL famV_447b60(u8 *self, u32 flags) {
   return self;
 }
 PCREG(447b60, famV_447b60);
+

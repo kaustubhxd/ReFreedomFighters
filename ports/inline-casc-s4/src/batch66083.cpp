@@ -36,7 +36,7 @@ asm(
     "  movl $0, -0x48(%ebp)\n"
     "  movss 0x67cd44, %xmm0\n"
     "  movss %xmm0, -0x44(%ebp)\n"
-    "  movl $3, -0x38(%ebp)\n"
+    "  movl $2, -0x38(%ebp)\n"
     "  jmp 2f\n"
     "1:\n"
     "  movl -0x38(%ebp), %ecx\n"

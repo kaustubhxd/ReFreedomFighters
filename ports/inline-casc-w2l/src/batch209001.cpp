@@ -609,3 +609,4 @@ extern "C" u32 FASTCALL lifted_504660(u32 ecx_in, u32 edx_in) {
   return eax;
 }
 PCREG(504660, lifted_504660);
+

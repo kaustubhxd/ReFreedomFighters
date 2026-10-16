@@ -245,3 +245,4 @@ extern "C" u32 THISCALL factory_5b7990(void *self) {
   return (u32)p;
 }
 PCREG(5b7990, factory_5b7990);
+

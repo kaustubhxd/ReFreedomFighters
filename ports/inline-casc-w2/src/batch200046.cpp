@@ -30,3 +30,4 @@ extern "C" u32 FASTCALL famX2_6043c0(u32 c_in, u32 d_in) {
   return r;
 }
 PCREG(6043c0, famX2_6043c0);
+

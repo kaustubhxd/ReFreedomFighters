@@ -138,3 +138,4 @@ extern "C" u8 *THISCALL famP_4be380(u8 *self, u32 flags) {
   return self;
 }
 PCREG(4be380, famP_4be380);
+

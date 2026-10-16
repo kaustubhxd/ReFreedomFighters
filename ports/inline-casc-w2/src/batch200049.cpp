@@ -59,3 +59,4 @@ extern "C" u8 *THISCALL famCA_4bda50(u8 *self) {
   return self;
 }
 PCREG(4bda50, famCA_4bda50);
+

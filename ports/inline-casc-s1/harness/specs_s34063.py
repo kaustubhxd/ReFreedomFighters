@@ -64,7 +64,7 @@ def _g64d560(c):
     e.w32(edx + 0x10, 0 if a_null else ablk)
     if a_null:
         try:
-            e.w32(0, 0)   # make a (wrongly) unguarded read through a null pointer look like a zero count
+            pass   # TEB fix: page 0 is unmapped now
         except Exception:
             pass
     p = rnd(c, 0x20)

@@ -61,3 +61,4 @@ extern "C" u32 THISCALL famN_42fe20(u8 *self, u32 a) {
   return a;
 }
 PCREG(42fe20, famN_42fe20);
+

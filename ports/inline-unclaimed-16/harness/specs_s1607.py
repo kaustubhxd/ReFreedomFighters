@@ -20,8 +20,8 @@ def _base(c):
     # The null page is mapped in this emulator but its content is not zero; a port that reads through a null result
     # would see that content. Zero the two dwords the function reads (p+0 and p+8 with p = 0) so a missing null test
     # shows as a store the exe does not make.
-    c.emu.w32(0, 0)
-    c.emu.w32(8, 0)
+    pass   # TEB fix: page 0 is unmapped now, a NULL read faults
+    pass   # TEB fix: page 0 is unmapped now, a NULL read faults
     ptr = 0
     if c.rng.random() < 0.8:
         ptr = _rnd(c, 0x20)

@@ -618,3 +618,4 @@ extern "C" u8 *THISCALL famCT_5c7f50(u8 *self) {
   return self;
 }
 PCREG(5c7f50, famCT_5c7f50);
+

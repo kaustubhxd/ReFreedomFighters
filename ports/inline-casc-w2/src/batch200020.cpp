@@ -408,3 +408,4 @@ extern "C" u8 *THISCALL famA_5b77c0(u8 *self, u32 flags) {
   return self;
 }
 PCREG(5b77c0, famA_5b77c0);
+

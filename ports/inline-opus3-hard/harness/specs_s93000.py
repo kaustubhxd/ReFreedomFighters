@@ -1,3 +1,4 @@
+import pe_emu
 """specs_s93000.py - hard trial opus 3: 0x4fae80, an SEH function whose EH state changes (0..3, -1 between) around four
 stack objects that are registered with the engine object table (slot 0x34 of [0x70039c]+0x9b).
 Every callee is a hook that (a) copies the SEH chain it sees (seh_record: next/handler/state of 3 records, so the state
@@ -11,7 +12,7 @@ from recruits_util import rnd, sysobj, clear_hooks, hook_rec, pystub, seh_record
 
 
 def _rel(emu, v):
-    return (v - emu.r32(0)) & 0xffffffff   # pointer relative to the registration record at fs:[0]
+    return (v - emu.r32(pe_emu.TEB)) & 0xffffffff   # pointer relative to the registration record at fs:[0]
 
 
 def _side(c, getptr, extra=None, rows=8):

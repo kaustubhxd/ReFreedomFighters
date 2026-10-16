@@ -23,10 +23,15 @@ def _g462d80(c):
         for off in range(0, 0x30, 4):
             e.wbytes(B + 0x30 * i + off, _fl(r.choice(vals)))
             e.wbytes(A + 0x30 * i + off, _fl(r.choice(vals)))
+    struct_mode = r.random() < 0.5
+    if struct_mode:
+        for i in range(8):
+            for j, v in enumerate((2.0, 2.0, 1.0)):
+                e.wbytes(B + 0x30 * i + 0x10 + 4 * j, _fl(v))
     seq = {'v4': [], 'd': []}
     cnt = {'v4': 0, 'd': 0}
     for _ in range(24):
-        seq['v4'].append([r.choice(vals) for _ in range(3)])
+        seq['v4'].append(r.choice([[1.0, 1.0, 1.0], [1.0, -1.0, -1.0], [1.0, 1.0, 0.5], [0.5, -1.0, 1.0], [2.0, 1.0, 1.0], [-3.0, 1.0, 1.0], [-1.0, -3.0, 1.0]]) if struct_mode else [r.choice(vals) for _ in range(3)])
         seq['d'].append(r.choice(vals))
 
     def h460e20(em, rr):                  # fastcall (ecx = dst, edx = src): copy three floats
@@ -50,7 +55,7 @@ def _g462d80(c):
         k = cnt['v4']
         cnt['v4'] += 1
         d = em.reg('ecx')
-        em.calllog.append(('h43e920', em.reg('edx'), em.arg32(0)))
+        em.calllog.append(('h43e920', em.reg('edx'), bytes(em.rbytes(em.arg32(0), 12))))
         for j in range(3):
             em.wbytes(d + 4 * j, _fl(seq['v4'][k % 24][j]))
         em.ret(eax=0, argbytes=4)

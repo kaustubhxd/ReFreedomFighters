@@ -1,0 +1,51 @@
+#include "ff.h"
+extern "C" void THISCALL ext_517630(u8 *self, u32 arg);
+extern "C" void THISCALL ext_4e12e0(u8 *self, u32 *out, u32 mode);
+extern "C" void THISCALL ext_4e1b30(u8 *self);
+
+static void THISCALL __attribute__((naked)) fn51f710(u8 *, u32) {
+  __asm__ volatile(
+    ".intel_syntax noprefix\n"
+    "push ebp\n"
+    "mov ebp, esp\n"
+    "push ebx\n"
+    "push esi\n"
+    "push edi\n"
+    "mov edi, dword ptr [ebp+8]\n"
+    "mov ebx, ecx\n"
+    "push edi\n"
+    "call ext_517630\n"
+    "push 1\n"
+    "lea esi, [ebx+0x165c]\n"
+    "mov ecx, edi\n"
+    "push esi\n"
+    "call ext_4e12e0\n"
+    "cmp dword ptr [esi], 0\n"
+    "jne 3f\n"
+    "mov ecx, dword ptr [0x700390]\n"
+    "push 0x57\n"
+    "push 0x69fed8\n"
+    "mov eax, dword ptr [ecx]\n"
+    "call dword ptr [eax+0x20]\n"
+    "mov ecx, dword ptr [ebx+4]\n"
+    "mov esi, 0x67c8e8\n"
+    "test ecx, ecx\n"
+    "mov edx, dword ptr [eax]\n"
+    "cmovne esi, ecx\n"
+    "push esi\n"
+    "push 0x69ff04\n"
+    "push eax\n"
+    "call dword ptr [edx+0x2c]\n"
+    "add esp, 0xc\n"
+    "3:\n"
+    "mov ecx, edi\n"
+    "call ext_4e1b30\n"
+    "pop edi\n"
+    "pop esi\n"
+    "pop ebx\n"
+    "pop ebp\n"
+    "ret 4\n"
+    ".att_syntax prefix\n"
+  );
+}
+PCREG(51f710, fn51f710);

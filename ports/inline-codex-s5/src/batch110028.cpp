@@ -33,3 +33,4 @@ static void FASTCALL qpul(float *out, const float *a, const float *b, float t) {
   ext_4dfb10(tmp, b, t, out);
 }
 PCREG(4df040, qpul);
+

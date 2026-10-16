@@ -368,3 +368,4 @@ extern "C" u32 FASTCALL famB_5a5b40(u32 c_in, u32 d_in, u32 a, u32 b) {
   return r;
 }
 PCREG(5a5b40, famB_5a5b40);
+

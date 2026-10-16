@@ -43,3 +43,5 @@ extern "C" u32 THISCALL lifted_485900(u32 ecx_in, u32 a0) {
   return eax;
 }
 PCREG(485900, lifted_485900);
+
+

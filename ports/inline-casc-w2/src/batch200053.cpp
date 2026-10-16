@@ -49,3 +49,4 @@ extern "C" u8 *THISCALL famCC_447580(u8 *self, u32 a, u32 b, u32 c) {
   return self;
 }
 PCREG(447580, famCC_447580);
+

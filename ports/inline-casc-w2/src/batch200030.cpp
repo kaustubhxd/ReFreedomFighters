@@ -279,3 +279,4 @@ extern "C" void THISCALL famG_604ca0(u8 *self) {
   SEH_LEAVE();
 }
 PCREG(604ca0, famG_604ca0);
+

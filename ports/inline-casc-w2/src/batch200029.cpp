@@ -178,3 +178,4 @@ extern "C" u8 *THISCALL famF_5dc6a0(u8 *self, u32 flags) {
   return self;
 }
 PCREG(5dc6a0, famF_5dc6a0);
+

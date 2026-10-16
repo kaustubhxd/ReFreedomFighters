@@ -358,3 +358,4 @@ extern "C" u8 *THISCALL famA_572450(u8 *self, u32 flags) {
   return self;
 }
 PCREG(572450, famA_572450);
+

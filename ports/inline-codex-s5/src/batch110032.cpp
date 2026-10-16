@@ -44,3 +44,4 @@ static u8 *THISCALL checkLineDoors(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x42), *(int *)(self + 0x3e), a, b, t, 10.0f);
 }
 PCREG(52a850, checkLineDoors);
+

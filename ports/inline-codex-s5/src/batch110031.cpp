@@ -44,3 +44,4 @@ static u8 *THISCALL checkLineGates(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x3a), *(int *)(self + 0x36), a, b, t, 1.0f);
 }
 PCREG(52a970, checkLineGates);
+

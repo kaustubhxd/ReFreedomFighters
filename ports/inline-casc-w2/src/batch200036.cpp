@@ -101,3 +101,4 @@ extern "C" u32 THISCALL famM_490ff0(u8 *self, u32 a, u32 b) {
   return r;
 }
 PCREG(490ff0, famM_490ff0);
+

@@ -174,3 +174,4 @@ extern "C" u32 THISCALL famFT_4beb10(void *self) {
   return p;
 }
 PCREG(4beb10, famFT_4beb10);
+

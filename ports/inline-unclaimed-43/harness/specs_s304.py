@@ -60,8 +60,8 @@ def _gen(c):
     x = r.random()
     if x < 0.15:
         p = 0
-        c.emu.w32(8, 0)
-        c.emu.w32(0, 0)
+        pass   # TEB fix: page 0 is unmapped now, a NULL read faults
+        pass   # TEB fix: page 0 is unmapped now, a NULL read faults
     elif x < 0.5:
         blk = E.zero_obj(c, 0x20)
         p = blk + 4
