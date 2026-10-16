@@ -28,11 +28,19 @@ extern "C" void FASTCALL ext_451890(float *a, const float *b, float s); // a += 
 extern "C" u8 FASTCALL ext_4e0130(float *v, const float *prev, const float *dir, float maxAng);   // vangpul
 extern "C" long double FASTCALL ext_44c840(float *v);                   // vnorm, returns the old length
 
-static inline double cifmod(double x, double y) {   // _CIfmod through the import slot: x in ST1, y in ST0
-  double r;
-  asm volatile("fldl %1\n\tfldl %2\n\tcall *0x676358\n\tfstpl %0"
-               : "=m"(r) : "m"(x), "m"(y) : "eax", "ecx", "edx", "memory", "st", "st(1)");
-  return r;
+// PORTABLE COPY for wasm (wire-hero-combat run 78): _CIfmod through the import slot is the exact IEEE fmod, written here as binary long
+// division (every subtraction is exact), so no x87 inline asm; the wobble's sin / cos stay crt:: here (the x86 harness) and become the
+// JS Math imports in the wasm build (build.sh rewrites them).
+static inline double cifmod(double x, double y) {
+  if (x != x || y != y || y == 0.0) return x - x;
+  double ax = x < 0 ? -x : x, ay = y < 0 ? -y : y;
+  if (ax > 1.7e308) return x - x;
+  while (ax >= ay) {
+    double t = ay;
+    while (t * 2.0 <= ax) t *= 2.0;
+    ax -= t;
+  }
+  return x < 0 ? -ax : ax;
 }
 static inline s32 ticks() { return *(s32 *)(G(u8 *, 0x70039c) + 0x40); }
 

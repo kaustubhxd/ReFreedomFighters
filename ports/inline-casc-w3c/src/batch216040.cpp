@@ -754,5 +754,4 @@ extern "C" u32 THISCALL lifted_5ca720(u32 ecx_in) {
   SEH_LEAVE();  // @140_5ca720
   return eax;  // @141_5ca720
 }
-PCREG(5ca720, lifted_5ca720);
 

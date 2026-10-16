@@ -76,7 +76,7 @@ None of this is hard to regenerate if you own the game: run the decoders on your
 
 ## Project type
 
-Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 10,136 functions from the
+Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 10,227 functions from the
 PC executable (see "Verified C++ ports"). This is not a full decompilation of the game. The awesome-list entry type (tool or
 decomp) is for the maintainer to choose.
 
@@ -88,8 +88,8 @@ Of 12,955 functions in the PC executable (live numbers on the [progress page](ht
 
 | | by count | by code size |
 |---|---|---|
-| Verified (checked against the original on two seeds) | ![](https://geps.dev/progress/89.6) 89.6% | ![](https://geps.dev/progress/66.1) 66.1% |
-| Ported into the browser game | ![](https://geps.dev/progress/3) 3.0% | ![](https://geps.dev/progress/4.9) 4.9% |
+| Verified (checked against the original on two seeds) | ![](https://geps.dev/progress/90.5) 90.5% | ![](https://geps.dev/progress/67.5) 67.5% |
+| Ported into the browser game | ![](https://geps.dev/progress/6.4) 6.4% | ![](https://geps.dev/progress/7.7) 7.7% |
 
 ## AI assistance
 
@@ -110,14 +110,14 @@ in the game itself.
 
 ## Verified C++ ports
 
-`ports/` holds C++ ports of 10,136 functions from the PC executable, each checked against the original code by running
+`ports/` holds C++ ports of 10,227 functions from the PC executable, each checked against the original code by running
 both on random inputs and comparing results, memory writes and faults. `RESULTS.tsv` lists every verified address with
 its name and folder. Counting rule: a function counts only when both seed 1 and seed 2 ran 1000 cases each, with status
-exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (1,294 verified functions are held back for that reason);
+exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (1,321 verified functions are held back for that reason);
 thunks, SEH funclets and functions whose specs hook a callee by address are not separated out in this copy.
 
 ### Verification status (16 October 2026)
 
-The local project has 11,602 functions with retained two-seed results; 10,136 have publishable source here. Another 1,294 verified functions are held back in mixed batches, and 170 have no matching source file in the export. The browser port links 386 verified functions.
+The local project has 11,721 functions with retained two-seed results; 10,227 have publishable source here. Another 1,321 verified functions are held back in mixed batches, and 176 have no matching source file in the export. The browser port links 823 verified functions.
 
-A checker bug mapped the emulated thread environment block at address zero, which could hide null-pointer faults. A corrected shared harness has been tested and its rollout and full re-verification have started, but they are not finished. These totals describe existing results and have not yet been recertified with that fix.
+A checker bug mapped the emulated thread environment block at address zero, which could hide null-pointer faults. A corrected shared harness was rolled out on 16 October 2026 and 6,293 of the verified functions that could be re-run were checked again: 6,090 are still exact with no faulting cases. The rest, 243 rows, are on a re-verify list (faulting cases, mismatches on null pointers, or stale builds) and still count in these totals until they are fixed; about 2,300 verified functions could not be re-run. Separately, the original game most likely runs its x87 floating-point code at 24-bit precision, while these ports were verified at 53-bit; a re-check of the x87 ports at 24-bit is pending.

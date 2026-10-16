@@ -287,7 +287,7 @@ def _logger(c):
     def logprint(e2, r2):   # cdecl: (obj, fmt), the caller cleans the stack
         e2.calllog.append(('logobj', 0x2c, K.nostack(e2.arg32(0)), K.nostack(e2.arg32(1))))
         e2.ret(eax=lo, argbytes=0)
-    e.w32(lo, e.fake_vtable('logobj', 0x30, {0x2c: logprint}))
+    e.w32(lo, e.fake_vtable('logobj', 0x40, {0x2c: logprint, 0x30: logprint}))   # slot 0x2c / 0x30: printf-style, cdecl (the caller cleans the stack)
     lg = K.rnd(c, 0x40)
     e.w32(lg, K.vt(c, 'log', {0x20: (2, lambda e2, a: (lo, None, None))}, 0x24))
     e.w32(0x700390, lg)
@@ -776,3 +776,587 @@ def _bm(c):
 
 S(0x5e23d0, 'ZFFHeroMovementBaseMove::GetActiveAnim', 'thiscall', None, ret='st0', gen=_bm, nan_heap=True,
   note='wire-hero-combat run 33; portable copy of batch260 (no x87 fmod, no sqrt thunk); anim control, hero flags, root-motion vector')
+
+
+# ---------------------------------------------------------------- run 79: the hand ammo / reload group (batch501 GetAmmoFor, GetInventoryAmmoFor, Reload, Chamber; batch513 SetAmmoFor; batch510 AddAction)
+def _rm_env(c, objmap=None, handle=0x77):
+    """The engine global with a render manager: slot 0x58 maps a handle through objmap (dict) else 0; slot 0x4c answers a fixed handle; the
+    'unlimited ammo' byte +0xbac is set by the caller."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    e.w32(eng + 0x40, r.getrandbits(20))
+    rm = K.rnd(c, 0xc10)
+    om = objmap if objmap is not None else {}
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (om.get(a[0], 0), None, None)), 0x4c: (1, lambda e2, a: (handle, None, None))}, 0x120))
+    e.w32(eng + 0x9b, rm)
+    return rm
+
+
+def _gaf(c):
+    e, r = c.emu, c.rng
+    rm = _rm_env(c)
+    e.w8(rm + 0xbac, r.choice([0, 0, 0, 1]))
+    tm = K.rnd(c, 0x40)
+    fires = r.choice([0, 1, 1, 1])
+    e.w32(tm, K.vt(c, 'tmpl', {0x328: (0, lambda e2, a: (fires, None, None))}, 0x330))
+    w = K.rnd(c, 0x40)
+    has_t = r.random() < 0.9
+    e.w32(w, K.vt(c, 'weapon', {0x350: (0, lambda e2, a: (tm if has_t else 0, None, None))}, 0x360))
+    cnt = r.choice([0, 1, 7, 30, r.getrandbits(31), r.getrandbits(32)])
+    is_ammo = r.choice([0, 1, 1, 1])
+    a = K.rnd(c, 0x40)
+    e.w32(a, K.vt(c, 'ammo', {0x1e0: (1, lambda e2, x: (is_ammo, None, None)), 0x320: (0, lambda e2, x: (cnt, None, None))}, 0x330))
+    has_a = r.random() < 0.85
+    self_ = K.rnd(c, 0x40)
+    e.w32(self_, K.vt(c, 'hands', {0x55c: (1, lambda e2, x: (a if has_a else 0, None, None))}, 0x570))
+    e.mu.ctl_flush_tb()
+    return [self_, w]
+
+
+S(0x473fe0, 'ZLNKWHANDS::GetAmmoFor', 'thiscall', None, ret='eax', gen=_gaf, nan_heap=True,
+  note='wire-hero-combat run 79; batch501 (copy); render manager cheat byte, template, inventory ammo item')
+
+
+def _gia(c):
+    e, r = c.emu, c.rng
+    ah = r.getrandbits(16) | 1
+    a = K.rnd(c, 0x40)
+    is_ammo = r.choice([0, 1, 1, 1])
+    e.w32(a, K.vt(c, 'ammo', {0x1e0: (1, lambda e2, x: (is_ammo, None, None))}, 0x330))
+    rm = _rm_env(c, {ah: a} if r.random() < 0.85 else {})
+    _logger(c)
+    tm = K.rnd(c, 0x40)
+    fires = r.choice([0, 1, 1, 1]); at = r.getrandbits(32)
+    e.w32(tm, K.vt(c, 'tmpl', {0x328: (0, lambda e2, x: (fires, None, None)), 0x340: (1, lambda e2, x: (at, None, None))}, 0x350))
+    w = K.rnd(c, 0x40)
+    has_t = r.random() < 0.9
+    e.w32(w, K.vt(c, 'weapon', {0x350: (0, lambda e2, x: (tm if has_t else 0, None, None))}, 0x360))
+    inv = K.rnd(c, 0x40)
+    found = r.choice([ah, ah, 0, ah ^ 4])
+    e.w32(inv, K.vt(c, 'inv', {0x98: (2, lambda e2, x: (found, None, None))}, 0xa0))
+    self_ = K.rnd(c, 0x400)
+    e.w32(self_ + 0x2e3, inv if r.random() < 0.9 else 0)
+    e.mu.ctl_flush_tb()
+    return [self_, w]
+
+
+S(0x474320, 'ZLNKWHANDS::GetInventoryAmmoFor', 'thiscall', None, ret='eax', gen=_gia, nan_heap=True,
+  note='wire-hero-combat run 79; batch501 (copy); inventory list, ammo template, render manager handle map, the warning log')
+
+
+def _hand_actions(c, with_spare):
+    e, r = c.emu, c.rng
+    rm = _rm_env(c)
+    item_r = K.rnd(c, 0x40); item_l = K.rnd(c, 0x40); other = K.rnd(c, 0x40)
+    cur = r.choice([0, 0xc, 0xd, 0xe, 0xf, 1, r.getrandbits(8)])
+    spare = r.choice([0, 0, 1, 30])
+    slots = {0x504: (0, lambda e2, a: (item_r if r.random() < 2 else 0, None, None)),
+             0x500: (0, lambda e2, a: (item_l, None, None)),
+             0x3f0: (0, lambda e2, a: (cur, None, None)),
+             0x45c: (2, lambda e2, a: (0, None, None))}
+    if with_spare:
+        slots[0x560] = (1, lambda e2, a: (spare, None, None))
+    self_ = K.rnd(c, 0x400)
+    e.w32(self_, K.vt(c, 'hands', slots, 0x570))
+    item = r.choice([item_r, item_r, item_l, item_l, other])
+    e.mu.ctl_flush_tb()
+    return [self_, item]
+
+
+S(0x475010, 'ZLNKWHANDS::Reload', 'thiscall', None, ret=None, gen=lambda c: _hand_actions(c, True), nan_heap=True,
+  note='wire-hero-combat run 79; batch501 (copy); queued action 0xd / 0xc with the item handle')
+S(0x4728a0, 'ZLNKWHANDS::Chamber', 'thiscall', None, ret=None, gen=lambda c: _hand_actions(c, False), nan_heap=True,
+  note='wire-hero-combat run 79; batch501 (copy); queued action 0xe / 0xf with the item handle')
+
+
+def _saf(c):
+    e, r = c.emu, c.rng
+    _rm_env(c)
+    _logger(c)
+    n = r.choice([0, 1, 30, -1, -50, r.getrandbits(31), -(r.getrandbits(31))]) & 0xffffffff
+    a = K.rnd(c, 0x40)
+    e.w32(a, K.vt(c, 'ammo', {0x324: (1, lambda e2, x: (0, None, None))}, 0x330))
+    w = K.rnd(c, 0x40)
+    e.w32(w, K.vt(c, 'weapon', {0x1d8: (2, lambda e2, x: (K.rnd(c, 0x20), None, None))}, 0x1e0))
+    self_ = K.rnd(c, 0x400)
+    e.w32(self_, K.vt(c, 'hands', {0x55c: (1, lambda e2, x: (a if r.random() < 0.85 else 0, None, None))}, 0x570))
+    _hook(c, 0x4cbec0, 'MystrDtor', 0)
+    _hook(c, 0x4cc1d0, 'MystrCStr', 0, lambda: 0x6897e8)
+    e.mu.ctl_flush_tb()
+    return [self_, w, n]
+
+
+S(0x475740, 'ZLNKWHANDS::SetAmmoFor', 'thiscall', None, ret=None, gen=_saf, nan_heap=True,
+  note='wire-hero-combat run 79; batch513 (copy); inventory ammo item SetNr, the negative-amount warning path with its MYSTR calls hooked')
+
+
+def _aa(c):
+    e, r = c.emu, c.rng
+    h = r.getrandbits(16) | 1
+    obj = K.rnd(c, 0x40)
+    _rm_env(c, {h: obj} if r.random() < 0.8 else {})
+    act = K.rnd(c, 0x60)
+    self_ = K.rnd(c, 0x400)
+    e.w32(self_, K.vt(c, 'hands', {0x3ec: (1, lambda e2, x: (act, None, None)), 0x3d8: (1, lambda e2, x: (0, None, None))}, 0x570))
+    e.mu.ctl_flush_tb()
+    return [self_, r.randrange(1, 16), h]
+
+
+S(0x471ff0, 'ZLNKWHANDS::AddAction', 'thiscall', None, ret=None, gen=_aa, nan_heap=True,
+  note='wire-hero-combat run 79; batch510 (copy); CreateLnkAction + RunLnkAction, the item set on ids 1-4, 7, 8')
+
+
+# ---------------------------------------------------------------- run 81: the hands' item handling (batch511: AttachR/LHandItem, SlipL/RHandItem, LetItemFall, EmptyHands, DestroyR/LHandItem, ForceR/LHandItem)
+def _hands_items(c, kind):
+    """self (ZLNKWHANDS): own slots 0x46c / 0x4f4 (drop), 0x510 / 0x514 (hand item type), 0x520 / 0x524 (attach by handle), 0x548 / 0x54c (put away),
+    0x504 / 0x500 (held item); hand slot objects at +0x34f (right) and +0x2e7 (left): slots 0x8 attach(owner, handle), 0xc slip(owner), 0x10 the item;
+    items: slots 0x2d0 state, 0x2f0, 0x210; render manager slot 0x4c (the item's handle). ZTARGET release 0x467410 hooked (logged). All calls are logged
+    by the vtable stubs (name, slot, this, arguments)."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x4c: (1, lambda e2, a: (0x1000 + (a[0] & 0xfff), None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+
+    def item():
+        it = K.rnd(c, 0x40)
+        e.w32(it, K.vt(c, 'item', {0x2d0: (2, lambda e2, a: (0, None, None)), 0x2f0: (3, lambda e2, a: (0, None, None)), 0x210: (1, lambda e2, a: (0, None, None))}, 0x300))
+        return it
+    # DestroyR/LHandItem calls the held item without a null test: it is always there for them
+    must = kind in ('destroyR', 'destroyL')
+    cur_r = item() if (must or r.random() < 0.8) else 0
+    cur_l = item() if (must or r.random() < 0.8) else 0
+    new = item() if r.random() < 0.85 else 0
+    held_r_is_new = kind in ('forceR', 'forceL') and r.random() < 0.15
+    if held_r_is_new:
+        cur_r = new
+    ty_r = r.choice([0, 0, 1, 2, 3]); ty_l = r.choice([0, 0, 1, 2, 3])
+    self_ = K.rnd(c, 0x400)
+    hdr = self_ + 0x34f; hdl = self_ + 0x2e7
+    e.w32(hdr, K.vt(c, 'handR', {0x8: (2, lambda e2, a: (0, None, None)), 0xc: (1, lambda e2, a: (0, None, None)), 0x10: (0, lambda e2, a: (cur_r, None, None))}, 0x20))
+    e.w32(hdl, K.vt(c, 'handL', {0x8: (2, lambda e2, a: (0, None, None)), 0xc: (1, lambda e2, a: (0, None, None)), 0x10: (0, lambda e2, a: (cur_l, None, None))}, 0x20))
+    e.w32(self_, K.vt(c, 'hands', {
+        0x46c: (1, lambda e2, a: (0, None, None)), 0x4f4: (1, lambda e2, a: (0, None, None)),
+        0x510: (0, lambda e2, a: (ty_r, None, None)), 0x514: (0, lambda e2, a: (ty_l, None, None)),
+        0x520: (1, lambda e2, a: (0, None, None)), 0x524: (1, lambda e2, a: (0, None, None)),
+        0x548: (2, lambda e2, a: (0, None, None)), 0x54c: (2, lambda e2, a: (0, None, None)),
+        0x504: (0, lambda e2, a: (cur_r, None, None)), 0x500: (0, lambda e2, a: (cur_l, None, None))}, 0x570))
+    _hook(c, 0x467410, 'TargetRelease', 6)
+    e.mu.ctl_flush_tb()
+    if kind in ('attachR', 'attachL'):
+        return [self_, r.getrandbits(16)]
+    if kind in ('slipL', 'slipR', 'empty', 'destroyR', 'destroyL'):
+        return [self_]
+    if kind == 'fall':
+        return [self_, new]
+    return [self_, new, r.choice([0, 1, 1])]
+
+
+for _a, _n, _k in ((0x472420, 'AttachRHandItem', 'attachR'), (0x472400, 'AttachLHandItem', 'attachL'), (0x475aa0, 'SlipLHandItem', 'slipL'),
+                   (0x475ac0, 'SlipRHandItem', 'slipR'), (0x474700, 'LetItemFall', 'fall'), (0x473b20, 'EmptyHands', 'empty'),
+                   (0x473960, 'DestroyRHandItem', 'destroyR'), (0x473910, 'DestroyLHandItem', 'destroyL'),
+                   (0x473cd0, 'ForceRHandItem', 'forceR'), (0x473b70, 'ForceLHandItem', 'forceL')):
+    S(_a, 'ZLNKWHANDS::' + _n, 'thiscall', None, ret=None, gen=(lambda k: (lambda c: _hands_items(c, k)))(_k), nan_heap=True,
+      note='wire-hero-combat run 81; batch511 (copy); hand slot objects, items and the hands vtable logged')
+
+
+# ---------------------------------------------------------------- run 82: the pickup / drop / use-item decisions (batch522 ControlDrop + ControlUseOneAlone, batch524 ControlPickup + ControlPushButton,
+# batch517 the hero's ControlUseOneAlone, PerformDrop, GetItemBack, GetFFItemType)
+def _tmpl_items(c, n=3):
+    """n items whose template (slot 0x2e8) answers GetItemSize (0x308) and the state-like value (0x300); each item has slot 0x1e0 (class test) and 0x2d0."""
+    e, r = c.emu, c.rng
+    items = []
+    for _ in range(n):
+        t = K.rnd(c, 0x40)
+        size = r.choice([0, 0, 1, 2]); st = r.choice([0, 1, 2])
+        e.w32(t, K.vt(c, 'tmpl', {0x308: (0, lambda e2, a, v=size: (v, None, None)), 0x300: (0, lambda e2, a, v=st: (v, None, None))}, 0x310))
+        it = K.rnd(c, 0x40)
+        cls = r.choice([0, 1])
+        e.w32(it, K.vt(c, 'item', {0x2e8: (0, lambda e2, a, tt=t: (tt, None, None)), 0x1e0: (1, lambda e2, a, v=cls: (v, None, None)),
+                                   0x2d0: (2, lambda e2, a: (0, None, None))}, 0x310))
+        items.append(it)
+    return items
+
+
+def _hands_ctl(c, kind):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    items = _tmpl_items(c, 4)
+    cur_r = r.choice([0, items[0], items[1], items[2]]); cur_l = r.choice([0, 0, items[1], items[3]])
+    act = r.choice([0, 0, 1, 3, 4, 5, 6, 9, 0xa, 0xb, 0xd])
+    # the current action id is asked several times: for ControlPickup it may change between the asks (the second half of the function is
+    # only reachable then): a per-call sequence, the same on both sides
+    seq = [r.choice([act, act, 0, 4, 0xa, 6, 3]) for _ in range(8)] if kind == 'pickup' else None
+    cnt = [0]
+
+    def act_fn(e2, a):
+        if seq is None:
+            return act, None, None
+        v = seq[min(cnt[0], len(seq) - 1)]; cnt[0] += 1
+        return v, None, None
+    ltype = r.choice([0, 1, 2])
+    back_h = r.choice([0, 0x99]); handle_to_item = {0x70 + i: it for i, it in enumerate(items)}
+    handle_to_item[0x99] = items[2]
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (handle_to_item.get(a[0], 0), None, None)),
+                             0x4c: (1, lambda e2, a: (0x70 + (items.index(a[0]) if a[0] in items else 9), None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+    _logger(c)
+    self_ = K.rnd(c, 0x900)
+    e.w32(self_ + 0x842, back_h)
+    slots = {0x504: (0, lambda e2, a: (cur_r, None, None)), 0x500: (0, lambda e2, a: (cur_l, None, None)),
+             0x3f0: (0, act_fn), 0x45c: (2, lambda e2, a: (0, None, None)),
+             0x514: (0, lambda e2, a: (ltype, None, None)), 0x3ec: (1, lambda e2, a: (K.rnd(c, 0x40), None, None)),
+             0x3d8: (1, lambda e2, a: (0, None, None))}
+    e.w32(self_, K.vt(c, 'hands', slots, 0x570))
+    e.mu.ctl_flush_tb()
+    if kind == 'drop':
+        return [self_, r.choice([0, items[0], items[1], items[3], K.rnd(c, 0x40)])]
+    if kind in ('use', 'heroUse'):
+        return [self_, r.choice([0, 0x70, 0x71, 0x72, 0x73, 0x99, 0x55])]
+    if kind == 'pickup':
+        return [self_, r.choice(items)]
+    return [self_, K.rnd(c, 0x40)]   # push button geom
+
+
+S(0x473000, 'ZLNKWHANDS::ControlDrop', 'thiscall', None, ret=None, gen=lambda c: _hands_ctl(c, 'drop'), nan_heap=True, note='run 82; batch522 (copy)')
+S(0x4732a0, 'ZLNKWHANDS::ControlUseOneAlone', 'thiscall', None, ret=None, gen=lambda c: _hands_ctl(c, 'use'), nan_heap=True, note='run 82; batch522 (copy)')
+S(0x4730b0, 'ZLNKWHANDS::ControlPickup', 'thiscall', None, ret='eax', gen=lambda c: _hands_ctl(c, 'pickup'), nan_heap=True, note='run 82; batch524 (copy)')
+S(0x473240, 'ZLNKWHANDS::ControlPushButton', 'thiscall', None, ret=None, gen=lambda c: _hands_ctl(c, 'push'), nan_heap=True, note='run 82; batch524 (copy)')
+S(0x590140, 'ZFFHERO::ControlUseOneAlone', 'thiscall', None, ret=None, gen=lambda c: _hands_ctl(c, 'heroUse'), nan_heap=True, note='run 82; batch517 (copy)')
+
+
+def _gib(c):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    it = K.rnd(c, 0x40)
+    rm = K.rnd(c, 0x40)
+    h = r.choice([0, 0x99, r.getrandbits(16)])
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (it if a[0] == 0x99 else 0, None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+    self_ = K.rnd(c, 0x900)
+    e.w32(self_ + 0x842, h)
+    e.mu.ctl_flush_tb()
+    return [self_]
+
+
+S(0x591f00, 'ZFFHERO::GetItemBack', 'thiscall', None, ret='eax', gen=_gib, nan_heap=True, note='run 82; batch517 (copy)')
+
+
+def _ffit(c):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    e.w32(eng + 0x9b, K.rnd(c, 0x40))
+    self_ = K.rnd(c, 0x900)
+    cur = r.choice([0, 0x1234, 0x1234, 0x5678])
+    e.w32(self_ + 0x417, r.choice([0, 0, 0x2000000, r.getrandbits(32) & 0x2000000]))
+    e.w32(self_ + 0x654, r.getrandbits(8)); e.w32(self_ + 0x658, r.choice([0, 0x1234, 0x9999])); e.w8(self_ + 0x65c, r.choice([0, 1]))
+    dead = r.choice([0, 0, 0, 1])
+    e.w32(self_, K.vt(c, 'hero', {0x504: (0, lambda e2, a: (cur, None, None)), 0x438: (0, lambda e2, a: (dead, None, None))}, 0x570))
+    _hook(c, 0x5aeff0, 'InfoType', 1, lambda: r.getrandbits(8))
+    e.mu.ctl_flush_tb()
+    return [self_]
+
+
+S(0x591b20, 'ZFFHERO::GetFFItemType', 'thiscall', None, ret='eax', gen=_ffit, nan_heap=True, note='run 82; batch517 (copy); ZFFInventoryInfoList::GetFFItemType hooked')
+
+
+def _pdrop(c):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    lst = K.rnd(c, 0x20)
+    x = K.rnd(c, 0x40)
+    e.w32(x, K.vt(c, 'db', {0x88: (2, lambda e2, a: (e2.w32(a[1], lst) or 0, None, None))}, 0x90))
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x138: (0, lambda e2, a: (x, None, None))}, 0x140))
+    e.w32(eng + 0x9b, rm)
+    self_ = K.rnd(c, 0x900)
+    e.w8(self_ + 0x9e7, r.choice([0, 1]))
+    _hook(c, 0x5e9300, 'RecycleAdd', 1)
+    _hook(c, 0x4748b0, 'HandDrop', 1)
+    e.mu.ctl_flush_tb()
+    return [self_, K.rnd(c, 0x40)]
+
+
+S(0x593ee0, 'ZFFHERO::PerformDrop', 'thiscall', None, ret=None, gen=_pdrop, nan_heap=True, note='run 82; batch517 (copy); the recycle list and the hand drop hooked')
+
+
+# ---------------------------------------------------------------- run 83: ZItemWeapon's state machine (batch500 accessors + FireEnd + SelectNextWeaponOperation, batch502 ChamberStart / ChamberEnd / ReloadEnd / WeaponReady)
+def _zi(c, kind):
+    """A ZItemWeapon: +0xaa target[3], +0xba rounds in the magazine, +0xbf bullet in the chamber, +0xc4 firing counter, +0xd1 next-shot time (float s), +0xd5 weapon operation;
+    own slots 0x35c (rounds in the magazine), 0x358 (SetBulletInChamber), 0x350 (the template), 0x374 (the reload sound); the template: slot 0x328 (fires projectiles), 0x338 (time
+    between shots, ST0), 0x358 (SelectNextWeaponOperation); the engine clock at +0x40; ZItem::SetState 0x4711f0 hooked (logged)."""
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    now = r.getrandbits(22)
+    e.w32(eng + 0x40, now)
+    tbs = r.choice([0.0, 0.1, 0.0999, 0.5, 1.0, f32(c.fv(0.0, 3.0)), f32(c.fv(-1.0, 100.0))])
+    fires = r.choice([0, 1, 1, 1])
+    tm = K.rnd(c, 0x40)
+    e.w32(tm, K.vt(c, 'tmpl', {0x328: (0, lambda e2, a: (fires, None, None)), 0x338: (0, lambda e2, a: (0, tbs, None)),
+                               0x358: (1, lambda e2, a: (a[0] ^ 0x5a, None, None))}, 0x360))
+    mags = r.choice([0, 0, 1, 7, r.getrandbits(31), r.getrandbits(32)])
+    self_ = K.rnd(c, 0x140)
+    e.w32(self_, K.vt(c, 'weapon', {0x35c: (0, lambda e2, a: (mags, None, None)), 0x358: (1, lambda e2, a: (0, None, None)),
+                                    0x350: (0, lambda e2, a: (tm, None, None)), 0x374: (0, lambda e2, a: (0, None, None))}, 0x380))
+    e.w32(self_ + 0xba, mags if kind != 'fireEnd' else r.choice([0, 0, 5]))
+    e.w8(self_ + 0xbf, r.choice([0, 1, 1]))
+    e.w32(self_ + 0xc4, r.getrandbits(32)); e.w32(self_ + 0xd5, r.getrandbits(4))
+    t_next = r.choice([f32(max(0.0, now / 1024.0 - r.choice([0.0, 0.05, 0.1, 1.0]))), f32(c.fv(0.0, 5000.0)), f32(now / 1024.0 - tbs if tbs == tbs else 0.0)])
+    e.wf32(self_ + 0xd1, t_next)
+    tv = [f32(c.fv()), f32(c.fv()), f32(c.fv())]
+    if r.random() < 0.4:
+        tv[0] = tv[1] = 0.0                      # only z (or nothing) set
+        if r.random() < 0.4:
+            tv[2] = 0.0
+    for i, v in enumerate(tv):
+        e.wf32(self_ + 0xaa + 4 * i, v)
+    _hook(c, 0x4711f0, 'SetState', 2)
+    e.mu.ctl_flush_tb()
+    if kind == 'setChamber':
+        return [self_, r.choice([0, 1])]
+    if kind == 'setMag':
+        return [self_, r.getrandbits(32)]
+    if kind == 'setOp':
+        return [self_, r.getrandbits(32)]
+    if kind == 'getTarget':
+        return [self_, K.rnd(c, 16)]
+    if kind == 'setTarget':
+        p = K.rnd(c, 16)
+        for i in range(3):
+            e.wf32(p + 4 * i, r.choice([0.0, 1.0, f32(c.fv())]))
+        return [self_, p]
+    return [self_]
+
+
+_ZI = (
+    (0x46e570, 'GetBulletInChamber', 'getBullet', 'al'), (0x470c50, 'SetBulletInChamber', 'setChamber', None),
+    (0x46eda0, 'GetProjectilesInMagazine', 'getMag', 'eax'), (0x4711e0, 'SetProjectilesInMagazine', 'setMag', None),
+    (0x46efa0, 'GetWeaponOperation', 'getOp', 'eax'), (0x471670, 'SetWeaponOperation', 'setOp', None),
+    (0x46eef0, 'GetTarget', 'getTarget', 'al'), (0x471640, 'SetTarget', 'setTarget', None),
+    (0x470bf0, 'SelectNextWeaponOperation', 'selectNext', None), (0x46d8c0, 'FireEnd', 'fireEnd', None),
+    (0x46b730, 'ChamberStart', 'chamberStart', None), (0x46b700, 'ChamberEnd', 'chamberEnd', None),
+    (0x4703b0, 'ReloadEnd', 'reloadEnd', None), (0x471ad0, 'WeaponReady', 'weaponReady', 'al'),
+)
+for _a, _n, _k, _r in _ZI:
+    S(_a, 'ZItemWeapon::' + _n, 'thiscall', None, ret=_r, gen=(lambda k: (lambda c: _zi(c, k)))(_k), nan_heap=True,
+      note='wire-hero-combat run 83; batch500 / batch502 (copy); ZItemWeapon fields, template and own slots stubbed, SetState hooked')
+
+
+# ---------------------------------------------------------------- run 84: the weapon / ammo templates (batch503: the data getters, GetRecoil, CalcImpact, CalcDamage, SelectNextWeaponOperation, ammo handles, flash parts)
+def _tpl_get(c, off=None, kind='U'):
+    e, r = c.emu, c.rng
+    s = K.rnd(c, 0x100)
+    if off is not None and kind == 'F':
+        e.wf32(s + off, f32(c.fv()))
+    if kind == 'H':
+        e.w32(s + 0x8c, r.choice([4, 5, 6, r.getrandbits(32)]))
+    e.mu.ctl_flush_tb()
+    return [s]
+
+
+_TPL_GETS = (
+    ('B', 0x46b6e0, 'twCanFireProjectiles', 0xc4), ('B', 0x46b6f0, 'twCanHaveMagazines', 0xc5), ('U', 0x46e6a0, 'twGetDefaultProjectilesPerMagazine', 0xa4),
+    ('F', 0x46e6c0, 'twGetFarRange', 0xb4), ('F', 0x46ecd0, 'twGetMuzzleVelocity', 0xa8), ('F', 0x46ecf0, 'twGetNearRange', 0xb0), ('U', 0x46ed10, 'twGetPitchChange', 0xd3),
+    ('F', 0x46ed20, 'twGetPrecisionDegrees', 0xac), ('U', 0x46eec0, 'twGetSoundSet', 0xcf), ('F', 0x46ef60, 'twGetTimeBetweenShots', 0xc0), ('U', 0x46efb0, 'twGetWeaponParts', 0xc7),
+    ('U', 0x46efd0, 'twGetWeaponType', 0x9c), ('B', 0x46efe0, 'twHasSniperMode', 0xc6), ('U', 0x46e690, 'taGetDefaultProjectilesPerMagazine', 0x7c), ('F', 0x46e6b0, 'taGetFarDamage', 0x88),
+    ('F', 0x46ece0, 'taGetNearDamage', 0x84), ('U', 0x46ee00, 'taGetProjectilesPerShot', 0x80),
+)
+for _k, _a, _n, _o in _TPL_GETS:
+    S(_a, 'ZItemTemplate::' + _n, 'thiscall', None, ret={'B': 'al', 'U': 'eax', 'F': 'st0'}[_k],
+      gen=(lambda o, k: (lambda c: _tpl_get(c, o, k)))(_o, _k), nan_heap=True, note='wire-hero-combat run 84; batch503 (copy); a random template, the field read back')
+S(0x46e730, 'ZItemTemplateWeapon::GetItemClassName', 'thiscall', None, ret='eax', gen=lambda c: _tpl_get(c), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46e710, 'ZItemTemplateAmmo::GetItemClassName', 'thiscall', None, ret='eax', gen=lambda c: _tpl_get(c), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46f500, 'ZItemTemplateAmmo::IsHeavyCaliber', 'thiscall', None, ret='al', gen=lambda c: _tpl_get(c, None, 'H'), nan_heap=True, note='run 84; batch503 (copy)')
+
+
+def _tpl_handles(c, which):
+    e, r = c.emu, c.rng
+    _rm_env_objs = {}
+    s = K.rnd(c, 0x100)
+
+    def geom():
+        g = K.rnd(c, 0x40); fl = K.rnd(c, 0x80)
+        e.w32(fl + 0x3c, r.getrandbits(32)); e.w32(g + 8, fl)
+        e.w32(g, K.vt(c, 'geom', {0x2c: (0, lambda e2, a: (0, None, None))}, 0x30))
+        return g
+    h1, h2 = r.getrandbits(16) | 1, r.getrandbits(16) | 1
+    objs = {h1: geom(), h2: geom()}
+    eng = K.engine(c)
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (objs.get(a[0], 0), None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+    if which == 'cart':
+        e.w32(s + 0x94, r.choice([h1, h2, 0]))
+    elif which == 'proj':
+        e.w32(s + 0x90, r.choice([h1, h2, 0]))
+    elif which == 'inst':
+        arr = K.rnd(c, 16)
+        e.w32(arr, h1); e.w32(arr + 4, h2)
+        e.w32(s + 0x98, arr); e.w32(s + 0x9c, r.choice([1, 2])); e.w32(s + 0xa0, r.randrange(0, 2) if True else 0)
+        if e.r32(s + 0xa0) >= e.r32(s + 0x9c):
+            e.w32(s + 0xa0, 0)
+    elif which == 'ammotpl':
+        lst = K.rnd(c, 0x40)
+        e.w32(lst, K.vt(c, 'list', {0x30: (1, lambda e2, a: (r.choice([h1, h2, 0]), None, None))}, 0x40))
+        e.w32(s + 0xa0, lst)
+        e.mu.ctl_flush_tb()
+        return [s, r.randrange(0, 3)]
+    e.mu.ctl_flush_tb()
+    return [s]
+
+
+S(0x46e590, 'ZItemTemplateAmmo::GetCartridge', 'thiscall', None, ret='eax', gen=lambda c: _tpl_handles(c, 'cart'), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46ed30, 'ZItemTemplateAmmo::GetProjectile', 'thiscall', None, ret='eax', gen=lambda c: _tpl_handles(c, 'proj'), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46ed50, 'ZItemTemplateAmmo::GetProjectileInstance', 'thiscall', None, ret='eax', gen=lambda c: _tpl_handles(c, 'inst'), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46e410, 'ZItemTemplateWeapon::GetAmmoTemplate', 'thiscall', None, ret='eax', gen=lambda c: _tpl_handles(c, 'ammotpl'), nan_heap=True, note='run 84; batch503 (copy)')
+
+
+def _tpl_float(c, kind):
+    e, r = c.emu, c.rng
+    s = K.rnd(c, 0x100)
+    for off in (0xac, 0xb0, 0xb4, 0xb8, 0xbc):
+        e.wf32(s + off, r.choice([f32(c.fv()), f32(r.uniform(0, 100)), 10.0, 1.0, 0.0]))
+    if kind == 'recoil':
+        return [s]
+    d = r.choice([f32(c.fv()), f32(r.uniform(0, 200)), e.rf32(s + 0xb0), e.rf32(s + 0xb4)])
+    if kind == 'impact':
+        return [s, K.rnd(c, 16), F(d)]
+    # damage: the weapon (slot 0x328 = its ammo template, slots 0x324 / 0x328 of that = near / far damage in ST0)
+    nd = r.choice([f32(c.fv()), f32(r.uniform(0, 100)), 20.0, 60.0]); fd = r.choice([f32(c.fv()), f32(r.uniform(0, 100)), 20.0, 40.0])
+    a = K.rnd(c, 0x40)
+    e.w32(a, K.vt(c, 'ammo', {0x324: (0, lambda e2, x: (0, nd, None)), 0x328: (0, lambda e2, x: (0, fd, None))}, 0x330))
+    w = K.rnd(c, 0x40)
+    has = r.random() < 0.9
+    e.w32(w, K.vt(c, 'weapon', {0x328: (0, lambda e2, x: (a if has else 0, None, None))}, 0x330))
+    _logger(c)
+    e.mu.ctl_flush_tb()
+    return [s, w, F(d)]
+
+
+S(0x46ee10, 'ZItemTemplateWeapon::GetRecoil', 'thiscall', None, ret='st0', gen=lambda c: _tpl_float(c, 'recoil'), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46b5d0, 'ZItemTemplateWeapon::CalcImpact', 'thiscall', None, ret='st0', gen=lambda c: _tpl_float(c, 'impact'), nan_heap=True, note='run 84; batch503 (copy)')
+S(0x46b4c0, 'ZItemTemplateWeapon::CalcDamage', 'thiscall', None, ret='st0', gen=lambda c: _tpl_float(c, 'damage'), nan_heap=True, note='run 84; batch503 (copy)')
+
+
+def _tpl_next(c):
+    e, r = c.emu, c.rng
+    s = K.rnd(c, 0x100)
+    op = r.choice([0, 1, 2, 3, 3, r.randrange(4, 40)])
+    mask = r.choice([0, 0xf, 0x7, 0xa, 0x1, r.getrandbits(32)])
+    if mask:
+        if op <= 3:
+            mask |= r.choice([1, 2, 4, 8])
+        else:
+            mask |= 1 << (op & 31)
+    e.w32(s, K.vt(c, 'tmpl', {0x334: (0, lambda e2, a: (mask, None, None))}, 0x340))
+    e.w32(s + 4, K.rnd(c, 0x20))
+    _logger(c)
+    e.mu.ctl_flush_tb()
+    return [s, op]
+
+
+S(0x470b00, 'ZItemTemplateWeapon::SelectNextWeaponOperation', 'thiscall', None, ret='eax', gen=_tpl_next, nan_heap=True, note='run 84; batch503 (copy)')
+
+
+def _tpl_flash(c):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    s = K.rnd(c, 0x100)
+    gh = r.getrandbits(16) | 1
+    g = K.rnd(c, 0x40); ci = K.rnd(c, 0x40)
+    e.w32(ci + 0x23, r.choice([0x100000, 0, r.getrandbits(32)]))
+    e.w32(g + 0xc, ci); e.w32(g + 4, r.choice([0, K.rnd(c, 0x20)]))
+    found = r.choice([0, K.rnd(c, 0x20)])
+    e.w32(g, K.vt(c, 'grp', {0x25c: (2, lambda e2, a: (found, None, None))}, 0x260))
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (g if (a[0] == gh and r.random() < 2) else 0, None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+    e.w32(s + 0xcb, gh if r.random() < 0.9 else 0)
+    _logger(c)
+    e.mu.ctl_flush_tb()
+    return [s]
+
+
+for _a, _n in ((0x46eac0, 'GetMuzzleFire'), (0x46ec20, 'GetMuzzleSmoke'), (0x46e5b0, 'GetCartridgeSmoke2'), (0x46eb70, 'GetMuzzleLight')):
+    S(_a, 'ZItemTemplateWeapon::' + _n, 'thiscall', None, ret='eax', gen=_tpl_flash, nan_heap=True, note='run 84; batch503 (copy); the flash group part lookup with its warnings')
+
+
+# ---------------------------------------------------------------- run 85: the item ownership / hand accessors (inline-inventory batch1300 ZItem accessors, batch501 hand item getters, batch520 hand/list accessors)
+def _item_acc(c, kind):
+    e, r = c.emu, c.rng
+    eng = K.engine(c)
+    ids = [r.getrandbits(16) | 1 for _ in range(3)]
+    objs = {i: K.rnd(c, 0x40) for i in ids}
+    rm = K.rnd(c, 0x40)
+    e.w32(rm, K.vt(c, 'rm', {0x58: (1, lambda e2, a: (objs.get(a[0], 0), None, None))}, 0x60))
+    e.w32(eng + 0x9b, rm)
+    s = K.rnd(c, 0x400)
+    pick = lambda: r.choice(ids + [0, 0x99999])
+    if kind in ('owner', 'main', 'setMain', 'useGeom'):
+        e.w32(s + 0x64, pick()); e.w32(s + 0x68, pick()); e.w32(s + 0xe1, pick())
+        if kind == 'setMain':
+            return [s, r.getrandbits(32)]
+        if kind == 'useGeom':
+            return [s, K.rnd(c, 0x20)]
+        return [s]
+    if kind == 'isMain':
+        return [s]
+    if kind == 'action':
+        a = K.rnd(c, 0x40)
+        e.w32(a, K.vt(c, 'grp', {0x8c: (4, lambda e2, x: (r.getrandbits(32), None, None))}, 0x90))
+        grp = r.choice([a, 0])
+        e.w32(s, K.vt(c, 'item', {0x100: (1, lambda e2, x: (grp, None, None))}, 0x110))
+        return [s, r.getrandbits(8)]
+    if kind in ('cam', 'center'):
+        part = r.choice([0, K.rnd(c, 0x20)])
+        e.w32(s, K.vt(c, 'tpl', {0x25c: (2, lambda e2, x: (part, None, None))}, 0x260))
+        return [s]
+    if kind == 'deactivate':
+        ctl = K.rnd(c, 0x40)
+        e.w32(ctl, K.vt(c, 'ctl', {0x98: (3, lambda e2, x: (0, None, None))}, 0xa0))
+        e.w32(s + 0x74, ctl)
+        e.w32(s, K.vt(c, 'item', {0x110: (2, lambda e2, x: (0, None, None))}, 0x120))
+        return [s, r.getrandbits(16), F(r.choice([0.0, 1.5, f32(c.fv())]))]
+    if kind == 'matpos':
+        g = K.rnd(c, 0x40); gg = K.rnd(c, 0x40)
+        e.w32(g + 8, gg)
+        has = r.choice([g, 0])
+        e.w32(s, K.vt(c, 'item', {0x2dc: (0, lambda e2, x: (has, None, None))}, 0x2e0))
+        m = K.rnd(c, 48); p = K.rnd(c, 16)
+        _hook(c, 0x4db2c0, 'GetMatPos', 2)
+        e.mu.ctl_flush_tb()
+        return [s, m, p]
+    if kind in ('rItem', 'rType', 'lItem', 'lType', 'rWeapon', 'lWeapon'):
+        item = K.rnd(c, 0x40)
+        cls = r.choice([0, 1])
+        e.w32(item, K.vt(c, 'item', {0x1e0: (1, lambda e2, x: (cls, None, None))}, 0x1f0))
+        for off in (0x34f, 0x2e7):
+            e.w32(s + off, K.vt(c, 'hand', {0x10: (0, lambda e2, x, it=item: (r.choice([it, 0]), None, None)), 0x14: (0, lambda e2, x: (r.getrandbits(4), None, None))}, 0x20))
+        return [s]
+    if kind in ('setRState', 'setLState'):
+        it = K.rnd(c, 0x40)
+        e.w32(it, K.vt(c, 'item', {0x2d0: (2, lambda e2, x: (0, None, None))}, 0x2e0))
+        has = r.choice([it, 0])
+        e.w32(s, K.vt(c, 'hands', {0x504: (0, lambda e2, x: (has, None, None)), 0x500: (0, lambda e2, x: (has, None, None))}, 0x510))
+        return [s, r.getrandbits(4)]
+    if kind in ('getRHand', 'getLHand', 'invList', 'nearItems', 'getDialog'):
+        e.w32(s + 0x2e3, r.getrandbits(32)); e.w32(s + 0x3b7, r.getrandbits(32)); e.w8(s + 0x3bb, r.getrandbits(8))
+        return [s]
+    if kind == 'setDialog':
+        return [s, r.getrandbits(8)]
+    raise KeyError(kind)
+
+
+_ITEM_ACC = (
+    (0x468a20, 'ZItemState::IsMain', 'isMain', 'al'), (0x46e740, 'ZItem::GetItemOwner', 'owner', 'eax'), (0x46e8c0, 'ZItem::GetMain', 'main', 'eax'), (0x4711c0, 'ZItem::SetMain', 'setMain', 'eax'),
+    (0x46ef70, 'ZItemState::GetUseGeom', 'useGeom', 'eax'), (0x46e3e0, 'ZItem::GetAction', 'action', 'eax'), (0x46e580, 'ZItemTemplate::GetCameraPos', 'cam', 'eax'),
+    (0x46e660, 'ZItemTemplate::GetCenterPos', 'center', 'eax'), (0x46abb0, 'ZItem::AddDeactivate', 'deactivate', None), (0x46e980, 'ZItem::GetMainMatPos', 'matpos', 'eax'),
+    (0x474670, 'ZLNKWHANDS::GetRHandItem', 'rItem', 'eax'), (0x474680, 'ZLNKWHANDS::GetRHandItemType', 'rType', 'eax'), (0x474450, 'ZLNKWHANDS::GetLHandItem', 'lItem', 'eax'),
+    (0x474460, 'ZLNKWHANDS::GetLHandItemType', 'lType', 'eax'), (0x474690, 'ZLNKWHANDS::GetRHandWeapon', 'rWeapon', 'eax'), (0x474470, 'ZLNKWHANDS::GetLHandWeapon', 'lWeapon', 'eax'),
+    (0x4759f0, 'ZLNKWHANDS::SetRHandItemState', 'setRState', None), (0x475980, 'ZLNKWHANDS::SetLHandItemState', 'setLState', None),
+    (0x4744e0, 'ZLNKWHANDS::GetRHand', 'getRHand', 'eax'), (0x474440, 'ZLNKWHANDS::GetLHand', 'getLHand', 'eax'), (0x4743e0, 'ZLNKWHANDS::GetInventoryList', 'invList', 'eax'),
+    (0x4744b0, 'ZLNKWHANDS::GetNearItems', 'nearItems', 'eax'), (0x474310, 'ZLNKWHANDS::GetDialog', 'getDialog', 'al'), (0x475910, 'ZLNKWHANDS::SetDialog', 'setDialog', None),
+)
+for _a, _n, _k, _r in _ITEM_ACC:
+    S(_a, _n, 'thiscall', None, ret=_r, gen=(lambda k: (lambda c: _item_acc(c, k)))(_k), nan_heap=True, note='wire-hero-combat run 85; batch1300 / batch501 / batch520 (copies)')

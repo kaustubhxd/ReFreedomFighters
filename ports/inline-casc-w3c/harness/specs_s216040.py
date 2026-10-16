@@ -565,4 +565,3 @@ S(0x57db50, 'GUESS lifted 0x57db50', 'thiscall', None, ret='eax', gen=g57db50, n
 S(0x57c500, 'GUESS lifted 0x57c500', 'thiscall', None, ret='eax', gen=g57c500, note='batch216040')
 S(0x4923e0, 'GUESS lifted 0x4923e0', 'thiscall', None, ret='eax', gen=g4923e0, note='batch216040')
 S(0x476720, 'GUESS lifted 0x476720', 'thiscall', None, ret='eax', gen=g476720, note='batch216040')
-S(0x5ca720, 'GUESS lifted 0x5ca720', 'thiscall', None, ret='eax', gen=g5ca720, note='batch216040')

@@ -62,7 +62,7 @@ extern "C" void THISCALL fn_559f90(u8 *self, u8 *rec) {
         u32 v2[3] = {0, 0, 0};
         (*(V1 *)(vt(Y) + 0x84))(Y, (u32)v2);
         float d = ext_4e0830(v2, pos);
-        if (G(float, 0x692798) < d) {
+        if (G(float, 0x692798) > d) {
           fid = rd32u(ent + 4);
           found = true;
           break;
