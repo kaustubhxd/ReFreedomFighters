@@ -227,7 +227,7 @@ def g442050(c):
     c.emu.w32(this, vt)
     c.emu.w32(vt + 0x310, pystub(c, 0, ret=lambda emu, k: r.choice([0, 0, 1]), this=True, side=mk(1)))
     c.emu.w32(vt + 0x308, pystub(c, 0, ret=lambda emu, k: r.choice([0, 0, 1]), this=True, side=mk(2)))
-    c.emu.w32(vt + 0x20, pystub(c, 0, ret=lambda emu, k: r.choice([0, A, A]), this=True, side=mk(3)))
+    c.emu.w32(vt + 0x20, pystub(c, 0, ret=lambda emu, k: A, this=True, side=mk(3)))   # the code dereferences the result without a null test
     if r.random() > 0.5:
         c.emu.wbytes(this + 0x7b, buffer().to_bytes(4, 'little'))
     else:

@@ -19,7 +19,7 @@ static inline u8 *vt(void *o) { return *(u8 **)o; }
 // 0x5c5010 which returns an index or -1 = stop). If the engine random slot 0x1c0(0x6b410c, 0xf2) (a double on the x87 stack) is below [0x70039c]+0x48 * [0x6b4140]
 // it advances the ring cursor this[0x5c] (modulo this[0x58]) up to twice: the object this[0x44]->[0x18] slot 0x30(cursor), the table slot 0x58 object, 0x5c4a00 gives a
 // point v10 and 0x4e0830(v10, p34) a squared distance fl. A candidate fails (-> 0x5c4cc0(v10, index, cursor) and return) when [0x6b414c] > fl, or when fl < [0x6b4148] / [0x6b4150]
-// and, with this[0x60] set, the offset w = v10 - p34 (0x43e920) has dot(p28.A, w) > 0 and dot(p28.B, w) > 0 (resp. dot(A, w) > 0 and dot(B, w) > 0 for the second range
+
 // the failure needs the B dot product to be above zero). Otherwise the loop continues; a plain finish returns normally.
 extern "C" void THISCALL fn_5c4700(u8 *self) {
   float p34[3], p28[6], v10[3], w[3];

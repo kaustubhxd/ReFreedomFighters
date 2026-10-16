@@ -1059,6 +1059,7 @@ address	name	folder	seed1	seed2
 0x44bc00	GUESS fade timer step	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x44bca0	GUESS base copy 45d5b0, flag-gated byte copy and 44bcf0	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x44bcf0	GUESS copy state fields	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
+0x44bdb0	archive_read_record	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x44c060	GUESS lifted 0x44c060	inline-casc-w3d	exact-1000-faults0	exact-1000-faults0
 0x44c0f0	unnamed 0x44c0f0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
 0x44c100	ZSNDOBJ::GetPitch (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
@@ -1250,6 +1251,7 @@ address	name	folder	seed1	seed2
 0x458300	GUESS copy settings block from matching object	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x4583d0	GUESS_read_camera_overlay	inline-codex-t2	exact-1000-faults0	exact-1000-faults0
 0x4584f0	GUESS read id and colour from stream	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
+0x4585b0	stream_loader	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x459980	GUESS slot 0x4c then update on time change	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x4599e0	ZCubeGridParticles::DrawBufferViewUpdate thiscall	inline-codex-t4	exact-1000-faults0	exact-1000-faults0
 0x459ab0	ZParticleBox::DrawBufferViewUpdate	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
@@ -1325,6 +1327,7 @@ address	name	folder	seed1	seed2
 0x45c0e0	GUESS release array entry via child vcall	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
 0x45c140	ZBloodSplatters::RunMark	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
 0x45c160	boolWrap (GUESS)	doc-only-json	exact-1000-faults0	exact-1000-faults0
+0x45c180	timed_ring_expire	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x45c3a0	GUESS ctor linking this and owner c	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x45c4f0	GUESS: cdecl forwarder to sys child slot 0x10 (0x45c4f0)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
 0x45c510	GUESS engine table obj slot 0x14	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
@@ -1792,6 +1795,7 @@ address	name	folder	seed1	seed2
 0x46f240	GUESS look up three named handles via global+0x1a9f slot 0x60	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x46f500	GUESS field +0x8c >= 5	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x46f510	callThenTail (GUESS)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
+0x46f5a0	GUESS lifted 0x46f5a0	inline-casc-w2s64	exact-1000-faults0	exact-1000-faults0
 0x46f5d0	GUESS 46f520(arg) then arg slot 0x70(this+0x94), true	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x46f600	GUESS read two pointers via vcalls then stream float and flags	inline-casc-t4	exact-1000-faults0	exact-1000-faults0
 0x46f660	GUESS 440e10(p), slot 0x70, true	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
@@ -2778,6 +2782,7 @@ address	name	folder	seed1	seed2
 0x4a8790	GUESS famA 0x4a8790	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x4a8850	GUESS factory init 4a8850	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x4a88c0	GUESS message handler by id	inline-casc-s6	exact-1000-faults0	exact-1000-faults0
+0x4a8a60	view_accumulate	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x4a8d20	ZSIGTE::GetpCUI (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
 0x4a8d90	ZSIGTE::HideAll (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
 0x4a8dd0	GUESS initialize resource profile and reset timers	inline-codex-h1	exact-1000-faults0	exact-1000-faults0
@@ -3686,6 +3691,7 @@ address	name	folder	seed1	seed2
 0x4d9bf0	unnamed C-set 0x4d9bf0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
 0x4d9ce0	ZBaseGeom::AttachToDynamicContainer (unknown) thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
 0x4d9d20	ZBaseGeom::AttachToRoomsDrawLists	inline-collision	exact-1000-faults0	exact-1000-faults0
+0x4d9f90	pick_list_build	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x4da1d0	GUESS update bounded area vector and radius	inline-codex-h3	exact-1000-faults0	exact-1000-faults0
 0x4da2f0	vtSlot1d8OrBase (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
 0x4da340	member_slot_124_or_zero	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
@@ -3748,7 +3754,6 @@ address	name	folder	seed1	seed2
 0x4dc130	ZBaseGeom::ParentGroup	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
 0x4dc140	remove_key_from_array	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x4dc1a0	unnamed A+D+E 0x4dc1a0 thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
-0x4dc1e0	unnamed A+D+E 0x4dc1e0 thiscall	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
 0x4dc290	ZBaseGeom::RequestCustomDraw	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x4dc2b0	GUESS serialise entry to stream	inline-casc-s6	exact-1000-faults0	exact-1000-faults0
 0x4dc420	GUESS null-checked this->[0x54] vtable tail slot 0xc	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
@@ -3792,6 +3797,7 @@ address	name	folder	seed1	seed2
 0x4de6a3	partial-frame transform interpolation	inline-codex-s1	exact-1000-faults0	exact-1000-faults0
 0x4de7a0	mreset	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x4deb20	GUESS_axis_angle_matrix	inline-codex-t2	exact-1000-faults0	exact-1000-faults0
+0x4dec90	GUESS lifted 0x4dec90	inline-casc-w2s63	exact-1000-faults0	exact-1000-faults0
 0x4def50	qmul	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x4df040	qpul quaternion blend	inline-codex-s5	exact-1000-faults0	exact-1000-faults0
 0x4df1e0	quaternion matrix conversion	inline-codex-s1	exact-1000-faults0	exact-1000-faults0
@@ -3991,6 +3997,7 @@ address	name	folder	seed1	seed2
 0x4e86b0	treeFind (unknown) thiscall	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x4e86f0	GUESS tree lookup by key	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
 0x4e8770	GUESS FUN_4e8770 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
+0x4e87b0	track_sampler	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x4e89d0	fn4e89d0 (GUESS) stdcall	inline-unclaimed-41	exact-1000-faults0	exact-1000-faults0
 0x4e8b70	readBitField (GUESS)	inline-unclaimed-20	exact-1000-faults0	exact-1000-faults0
 0x4e8bd0	GUESS FUN_4e8bd0 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
@@ -4386,6 +4393,7 @@ address	name	folder	seed1	seed2
 0x4fad00	GUESS famA 0x4fad00	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x4fadc0	GUESS famA 0x4fadc0	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x4fae80	RegisterHandlers_4fae80	inline-opus3-hard	exact-1000-faults0	exact-1000-faults0
+0x4fb040	config_reset	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x4fb260	ZBaseCamera::Command	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x4fb2f0	GUESS push flag bytes and table value to object	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x4fb360	GUESS deserialize two bytes and a resolved reference	inline-casc-s5	exact-1000-faults0	exact-1000-faults0
@@ -4810,6 +4818,7 @@ address	name	folder	seed1	seed2
 0x514f60	GUESS vehicle actor front bounds and events	inline-codex-u6	exact-1000-faults0	exact-1000-faults0
 0x515100	GUESS push actor within vehicle bounds	inline-codex-u2	exact-1000-faults0	exact-1000-faults0
 0x515270	GUESS vehicle local bounds event	inline-codex-t1	exact-1000-faults0	exact-1000-faults0
+0x5153e0	timer_vector_message	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x515620	thunk_5124c0	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x515630	GUESS initialize vehicle aligned bounds	inline-codex-u2	exact-1000-faults0	exact-1000-faults0
 0x515790	ZVehicle::CopyDataBlock thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
@@ -4841,6 +4850,7 @@ address	name	folder	seed1	seed2
 0x516730	GUESS FUN_516730 (unknown) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
 0x516780	GUESS FUN_00516780 (float constants; 0x4690b0 twice; 0x524890 with the float)	inline-unclaimed-66	exact-1000-faults0	exact-1000-faults0
 0x5167d0	sub_5167d0	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
+0x5168b0	emitter_update	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x516b60	GUESS lifted 0x516b60	inline-casc-w3c	exact-1000-faults0	exact-1000-faults0
 0x516d10	unnamed 0x516d10	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
 0x516e20	GUESS serializeSettings	inline-codex-u4	exact-1000-faults0	exact-1000-faults0
@@ -4855,6 +4865,7 @@ address	name	folder	seed1	seed2
 0x517540	GUESS refresh via 5253b0 and slots	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x5175a0	GUESS initialise widget from engine services	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x517630	ZCar::CopyDataBlock thiscall	inline-unclaimed-63	exact-1000-faults0	exact-1000-faults0
+0x5179c0	aim_update_log	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x517c60	GUESS directional virtual dispatch	inline-codex-t6	exact-1000-faults0	exact-1000-faults0
 0x517d50	GUESS initialize car position and direction	inline-codex-u3	exact-1000-faults0	exact-1000-faults0
 0x517f20	ZCar::Load	doc-only-json	exact-1000-faults0	exact-1000-faults0
@@ -5044,6 +5055,7 @@ address	name	folder	seed1	seed2
 0x521070	GUESS load record from stream	inline-casc-s8	exact-1000-faults0	exact-1000-faults0
 0x5212f0	GUESS tank camera entry	inline-codex-t1	exact-1000-faults0	exact-1000-faults0
 0x5213d0	GUESS forward float to embedded	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
+0x5213f0	serialize_fields_b	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x521600	GUESS store a direction vector and normalise it in place	inline-casc-t3	exact-1000-faults0	exact-1000-faults0
 0x5216a0	GUESS wanted turret direction	inline-codex-t1	exact-1000-faults0	exact-1000-faults0
 0x521760	GUESS FUN_00521760 (unknown) thiscall	inline-unclaimed-73	exact-1000-faults0	exact-1000-faults0
@@ -5059,6 +5071,7 @@ address	name	folder	seed1	seed2
 0x521bd0	update planar motion	inline-codex-s1	exact-1000-faults0	exact-1000-faults0
 0x521db0	GUESS_compare_transformed_vector_distance	inline-codex-h2	exact-1000-faults0	exact-1000-faults0
 0x521ed0	GUESS vec3 offset clamp to float field (GS)	inline-casc-t3	exact-1000-faults0	exact-1000-faults0
+0x522250	GUESS lifted 0x522250	inline-casc-w2s67	exact-1000-faults0	exact-1000-faults0
 0x522520	GUESS per-frame update of actor timed object	inline-casc-u1	exact-1000-faults0	exact-1000-faults0
 0x522740	ZTankIf::~ZTankIf	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
 0x522770	GUESS 5003d0 twice then 520c50 with float and flag	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
@@ -5101,6 +5114,7 @@ address	name	folder	seed1	seed2
 0x523e10	CMoveAlongPath::SetSplineVal (unknown) thiscall	inline-unclaimed-06	exact-1000-faults0	exact-1000-faults0
 0x523e80	CMoveAlongPath::SetTargetSpeed (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
 0x523ec0	GUESS float update step	inline-casc-t1	exact-1000-faults0	exact-1000-faults0
+0x523f50	two_sample_compare	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x524180	ZActor-area unknown (0x524180) thiscall no args	inline-gap-401000	exact-1000-faults0	exact-1000-faults0
 0x524270	state_machine_float	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x524350	unnamed 0x524350 (unknown) thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
@@ -5126,6 +5140,7 @@ address	name	folder	seed1	seed2
 0x524930	setTuningB (unknown) thiscall	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x524980	GUESS set pointers and abs difference	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x5249c0	GUESS lifted 0x5249c0	inline-casc-w3c	exact-1000-faults0	exact-1000-faults0
+0x524b00	aim_angles_step	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x524de0	GUESS_transform_two_float_record_sets	inline-codex-h2	exact-1000-faults0	exact-1000-faults0
 0x524f50	GUESS refresh child flags	inline-casc-t1	exact-1000-faults0	exact-1000-faults0
 0x524ff0	GUESS undercarriage fixed timestep update	inline-codex-u6	exact-1000-faults0	exact-1000-faults0
@@ -5171,6 +5186,7 @@ address	name	folder	seed1	seed2
 0x5274e0	unnamed 0x5274e0 (unknown) thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
 0x5274f0	three_slot68_then_527190	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x527530	FUN_527530 (GUESS) thiscall	inline-unclaimed-68	exact-1000-faults0	exact-1000-faults0
+0x527710	aim_angles_step	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5279f0	GUESS correct reversed tank dampers	inline-codex-t1	exact-1000-faults0	exact-1000-faults0
 0x527b30	GUESS update all records and set active flag	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x527bd0	GUESS_dynamics_update	inline-codex-t2	exact-1000-faults0	exact-1000-faults0
@@ -5236,6 +5252,7 @@ address	name	folder	seed1	seed2
 0x52b3f0	GUESS init word from table slot 0x114, tail 52b9d0	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x52b430	GUESS read a counted array from a stream and clear its fields	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x52b4a0	GUESS check then arg vcall 48	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
+0x52c000	ring_consumer	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x52c240	GUESS seven arg pass-through	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
 0x52cb00	GUESS write record to stream when accepted	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x52cea0	(GUESS) 0x52cea0 store and clear	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
@@ -5921,6 +5938,7 @@ address	name	folder	seed1	seed2
 0x564680	CFileWindow::ConstructControlPrompt (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
 0x5646b0	unnamed 0x5646b0	inline-unclaimed-62	exact-1000-faults0	exact-1000-faults0
 0x5646e0	GUESS (no name) conditional vt[0xfc](0) thiscall ret 4	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
+0x564700	GUESS lifted 0x564700	inline-casc-w2s62	exact-1000-faults0	exact-1000-faults0
 0x564a40	GUESS broadcast a visibility flag	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
 0x564b10	GUESS init then table slot 0x134 object slot 0x5c	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x564b50	GUESS init dialog controls	inline-casc-s8	exact-1000-faults0	exact-1000-faults0
@@ -5999,6 +6017,7 @@ address	name	folder	seed1	seed2
 0x56a7e0	GUESS lifted 0x56a7e0	inline-casc-w2s22	exact-1000-faults0	exact-1000-faults0
 0x56a840	GUESS resolve_engine_handle_and_run_fallback	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x56a8b0	GUESS method 0x56a8b0 thiscall	inline-unclaimed-35	exact-1000-faults0	exact-1000-faults0
+0x56a900	obj_state_handler	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x56ac30	GUESS dispatch four controls using manager mask	inline-codex-s4	exact-1000-faults0	exact-1000-faults0
 0x56ad00	GUESS hide six objects then show one	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x56ad80	FUN_0056ad80 constructor (vtable 0x6a7858)	inline-fresh-12	exact-1000-faults0	exact-1000-faults0
@@ -6017,6 +6036,7 @@ address	name	folder	seed1	seed2
 0x56ba00	GUESS call 564b10 then tail 56bd90	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x56ba10	GUESS initialize mode dependent dialog controls	inline-codex-s8	exact-1000-faults0	exact-1000-faults0
 0x56bd80	chain56bd80 (CLoadMenu::Load2 per GC map; calls 0x564e40, then 0x56bd90)	doc-only-json	exact-1000-faults0	exact-1000-faults0
+0x56c1a0	menu_command	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x56c4c0	GUESS window message filter	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x56c550	GUESS 5630f0 then slot 0x25c/0x250 on two objects	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x56c5a0	mode_dispatch	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
@@ -6239,6 +6259,7 @@ address	name	folder	seed1	seed2
 0x57aec0	GUESS famA 0x57aec0	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x57aff0	GUESS save per-slot value of matching children	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x57b060	GUESS restore per-slot value of matching children	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
+0x57b0d0	option_change	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x57b610	GUESS prepare and dispatch nested engine objects	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
 0x57b670	GUESS 563510, slot 0x84 object slot 0x34c(5 args), 57b6d0, 563110	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x57baa0	(GUESS) 0x57baa0 helper then vtable	inline-unclaimed-79	exact-1000-faults0	exact-1000-faults0
@@ -6275,6 +6296,7 @@ address	name	folder	seed1	seed2
 0x57c870	FUN_0057c870 (copy constructor)	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x57c910	GUESS copy-assign fields 0x80..0xb3	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x57cad0	GUESS FUN_57cad0 (factory, ctor 0x57c7c0)	inline-fresh-17	exact-1000-faults0	exact-1000-faults0
+0x57cb40	GUESS lifted 0x57cb40	inline-casc-w2s60	exact-1000-faults0	exact-1000-faults0
 0x57cd30	FUN_57cd30 (copy data block)	inline-fresh-15	exact-1000-faults0	exact-1000-faults0
 0x57cfb0	FUN_57cfb0 (+0x23c list to [0x70038c] slot 0xcc)	inline-fresh-15	exact-1000-faults0	exact-1000-faults0
 0x57d000	GUESS update_control_group	inline-codex-s6	exact-1000-faults0	exact-1000-faults0
@@ -6426,6 +6448,7 @@ address	name	folder	seed1	seed2
 0x58a360	GUESS swap-remove from list, bool	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x58a3b0	GUESS serialize event collections	inline-codex-s8	exact-1000-faults0	exact-1000-faults0
 0x58a660	GUESS byte-indexed dword slot store at +0x2c2d thiscall	inline-unclaimed-11	exact-1000-faults0	exact-1000-faults0
+0x58a680	debug_lines_update	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x58a8d0	Collect58a8d0 (GUESS name)	doc-only-json	exact-1000-faults0	exact-1000-faults0
 0x58a9b0	GUESS append records to list	inline-casc-t2	exact-1000-faults0	exact-1000-faults0
 0x58aa40	GUESS write array of 48-byte records to stream	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
@@ -6455,6 +6478,7 @@ address	name	folder	seed1	seed2
 0x591080	GUESS detach looked-up object	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x5910d0	ZFFHERO::Die	inline-damage	exact-1000-faults0	exact-1000-faults0
 0x591190	ZFFHERO::DisplayUseAction	rerun-results	exact-1000-faults0	exact-1000-faults0
+0x591480	ray_basis_attach	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x591710	ZFFHERO::FireWeaponAtPos	inline-weapons	exact-1000-faults0	exact-1000-faults0
 0x591820	ZFFHERO::ForwardEventToFollowers	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x591880	field_by_flags_kind	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
@@ -6474,6 +6498,7 @@ address	name	folder	seed1	seed2
 0x5922c0	callIfOk (GUESS)	inline-unclaimed-21	exact-1000-faults0	exact-1000-faults0
 0x592350	engine_lookup_by_sel	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x592580	GUESS resolve config entries by name	inline-casc-s8	exact-1000-faults0	exact-1000-faults0
+0x592850	element_list_init	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x592c20	ZFFHERO::IsRunning	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x592c40	ZFFHERO::IsSneaking	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x592c60	ZFFHERO::Load2 (unknown) thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
@@ -6586,6 +6611,7 @@ address	name	folder	seed1	seed2
 0x59b3c0	ZFFLevelController::GetStartingSewerLid	inline-wiremission	exact-1000-faults0	exact-1000-faults0
 0x59b6d0	ZFFLevelController::GetSubZone	inline-wiremission	exact-1000-faults0	exact-1000-faults0
 0x59b710	ZFFLevelController::GiveRemainingCharisma	inline-wiremission	exact-1000-faults0	exact-1000-faults0
+0x59b820	prompt_update	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x59bd00	ZFFLevelController::Init	inline-wiremission	exact-1000-faults0	exact-1000-faults0
 0x59be70	ZFFLevelController::LevelComplete	inline-unclaimed-64	exact-1000-faults0	exact-1000-faults0
 0x59bf00	ZFFLevelController::Load2	inline-wiremission	exact-1000-faults0	exact-1000-faults0
@@ -7029,6 +7055,7 @@ address	name	folder	seed1	seed2
 0x5b8400	ZFFSimpleTrain2::~ZFFSimpleTrain2	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
 0x5b8530	ZFFSimpleTrain2::Command	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x5b8550	ZFFSimpleTrain2::CopyData (unknown) thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
+0x5b86a0	GUESS lifted 0x5b86a0	inline-casc-w2s67	exact-1000-faults0	exact-1000-faults0
 0x5b87f0	GUESS timer advance and fire	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x5b88a0	ZFFSimpleTrain2::Init2 (unknown) thiscall	inline-unclaimed-03	exact-1000-faults0	exact-1000-faults0
 0x5b8b50	GUESS lifted 0x5b8b50	inline-casc-w3d	exact-1000-faults0	exact-1000-faults0
@@ -7124,6 +7151,7 @@ address	name	folder	seed1	seed2
 0x5bea10	CCivilianPathList::Load2 (civilian path builder)	inline-unclaimed-22	exact-1000-faults0	exact-1000-faults0
 0x5bedd0	load_entry_table	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x5beeb0	GUESS load packed formation element with resolved reference	inline-codex-s4	exact-1000-faults0	exact-1000-faults0
+0x5bef80	record_bounds_add	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5bf1f0	CCivilianPathList::Save(ZSaveGame*) thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
 0x5bf340	CCivilianPathList::SetCivilianOnPath	inline-unclaimed-49	exact-1000-faults0	exact-1000-faults0
 0x5bf4a0	GUESS (no name) constructor over base 0x469870 thiscall	doc-only-json	exact-1000-faults0	exact-1000-faults0
@@ -7311,6 +7339,7 @@ address	name	folder	seed1	seed2
 0x5c9600	GUESS famA 0x5c9600	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x5c96c0	ZFFCam::ActivateCamera	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5c97f0	GUESS update indexed offset and transformed position	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
+0x5c9910	box_extents_dir	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5c9ba0	GUESS camera collision rays and closest selection	inline-codex-u6	exact-1000-faults0	exact-1000-faults0
 0x5c9da0	ZFFCam focus->world (unnamed)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5c9dd0	ZFFCam focus geom slot 0x84 (unnamed)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
@@ -7326,6 +7355,7 @@ address	name	folder	seed1	seed2
 0x5c9f80	GUESS load settings block from stream	inline-casc-s8	exact-1000-faults0	exact-1000-faults0
 0x5ca140	ZFFCam::LookAtFocal (inferred)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5ca1c0	ZFFCam::ResetCamPos	inline-wirerender	exact-1000-faults0	exact-1000-faults0
+0x5ca270	serialize_fields	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5ca460	ZFFCam SetCamPos (unnamed)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5ca490	ZFFCam SetCamPosAndPlace (unnamed)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5ca4c0	ZFFCam SetCamMatPos (unnamed)	inline-wirerender	exact-1000-faults0	exact-1000-faults0
@@ -7404,6 +7434,7 @@ address	name	folder	seed1	seed2
 0x5d0310	ZCamHelper InitRecruitWayPoints	inline-codex-s5	exact-1000-faults0	exact-1000-faults0
 0x5d0490	ZCamHelper can target actor	inline-batch45	exact-1000-faults0	exact-1000-faults0
 0x5d05b0	GUESS init tmp and store call result	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
+0x5d0600	GUESS lifted 0x5d0600	inline-casc-w2s62	exact-1000-faults0	exact-1000-faults0
 0x5d0ba0	GUESS once int over -127	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
 0x5d0bd0	ZCamHelper::MoveFocus	inline-wirerender	exact-1000-faults0	exact-1000-faults0
 0x5d0c30	GUESS store int over constant once	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
@@ -7534,6 +7565,7 @@ address	name	folder	seed1	seed2
 0x5d8880	GUESS release two buffers then tail	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x5d88d0	dtor_flags_5d88d0	inline-casc-w2s26	exact-1000-faults0	exact-1000-faults0
 0x5d8940	GUESS famU 0x5d8940	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
+0x5d8a50	tile_grid_build	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5d8c90	GUESS conditionally copy state block	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x5d8cf0	read_fields_six_calls	inline-casc-w2s26	exact-1000-faults0	exact-1000-faults0
 0x5d8d60	unnamed_5d8d60 (GUESS) thiscall	inline-codex-s5	exact-1000-faults0	exact-1000-faults0
@@ -8140,6 +8172,7 @@ address	name	folder	seed1	seed2
 0x5fbb00	GUESS lifted 0x5fbb00	inline-casc-w3d	exact-1000-faults0	exact-1000-faults0
 0x5fbf90	GUESS find value in tree by key address	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x5fc010	FUN_5fc010 (firstVtableEntry)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
+0x5fc030	list_row_text	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5fc260	FUN_5fc260 (callChain5fc260)	inline-unclaimed-67	exact-1000-faults0	exact-1000-faults0
 0x5fc2f0	GUESS std::map insert with hint	inline-casc-s8	exact-1000-faults0	exact-1000-faults0
 0x5fc480	GUESS insert_string_key	inline-codex-s6	exact-1000-faults0	exact-1000-faults0
@@ -8147,6 +8180,7 @@ address	name	folder	seed1	seed2
 0x5fcb80	PPOLibrary_t::loadProcess	inline-fresh-16	exact-1000-faults0	exact-1000-faults0
 0x5fcc40	GUESS lower bound in a string tree	inline-casc-s1	exact-1000-faults0	exact-1000-faults0
 0x5fccb0	GUESS replace '/' with the path separator	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
+0x5fcd70	node_list_transfer	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x5fd0a0	GUESS list push_back	inline-casc-w2	exact-1000-faults0	exact-1000-faults0
 0x5fd120	GUESS release: 5fd240 gate, 5fa630 slot 0x24, 5fd2a0, 5f3b00, free	inline-casc-h1	exact-1000-faults0	exact-1000-faults0
 0x5fd170	GUESS release every entry of a pointer array	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
@@ -8777,6 +8811,7 @@ address	name	folder	seed1	seed2
 0x6302f0	GUESS zlib build_tree	inline-casc-s6	exact-1000-faults0	exact-1000-faults0
 0x6304f0	DEFLATE-style bit writer over a symbol list (GUESS name)	inline-unclaimed-24	exact-1000-faults0	exact-1000-faults0
 0x630910	write_stored_block	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
+0x6309a0	GUESS lifted 0x6309a0	inline-casc-w3b	exact-1000-faults0	exact-1000-faults0
 0x630bb0	genCodes (GUESS)	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x630c50	zlib init_block	inline-casc-w3a	exact-1000-faults0	exact-1000-faults0
 0x630ce0	zlib pqdownheap	inline-casc-s4	exact-1000-faults0	exact-1000-faults0
@@ -9324,6 +9359,7 @@ address	name	folder	seed1	seed2
 0x656f80	GUESS 0x656f80 dual vtable dispatch	inline-casc-h2	exact-1000-faults0	exact-1000-faults0
 0x656fa0	GUESS vcall c twice (+0x84)	inline-casc-h3	exact-1000-faults0	exact-1000-faults0
 0x656fc0	ZPrimControlGC::GetNrBones (unknown) thiscall	inline-unclaimed-77	exact-1000-faults0	exact-1000-faults0
+0x656fe0	GUESS lifted 0x656fe0	inline-casc-w2s69	exact-1000-faults0	exact-1000-faults0
 0x657060	GUESS extract vertex or index fields	inline-codex-s8	exact-1000-faults0	exact-1000-faults0
 0x657450	ZPrimControlGC::GetPrimSplineIndices(unsigned int)	inline-fresh-17	exact-1000-faults0	exact-1000-faults0
 0x657470	twoCalls (GUESS)	doc-only-json	exact-1000-faults0	exact-1000-faults0

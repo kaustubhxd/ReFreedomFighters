@@ -140,7 +140,7 @@ def g5f9720(c):
     hook_rec(c, 0x41e290, 1, ret=r.getrandbits(32), pop=0, this=False, side=side_41e290)
     def side_6014a0(emu, k, _s=mkside(1)):
         _s(emu, k)
-    hook_rec(c, 0x6014a0, 1, ret=lambda emu, k: (0 if r.random() < 0.3 else O[('ret', 1)]), pop=4, this=False, side=side_6014a0)
+    hook_rec(c, 0x6014a0, 1, ret=lambda emu, k: O[('ret', 1)], pop=4, this=False, side=side_6014a0)
     return [O[('this',)]]
 
 

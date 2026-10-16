@@ -270,7 +270,8 @@ def g605400(c):
         return side
     def side_41e290(emu, k, _s=mkside(0)):
         _s(emu, k)
-    hook_rec(c, 0x41e290, 1, ret=lambda emu, k: (0 if r.random() < 0.3 else O[('ret', 0)]), pop=0, this=False, side=side_41e290)
+    null0 = r.random() < 0.3   # only the first allocation may fail: the second result is written without a null test
+    hook_rec(c, 0x41e290, 1, ret=lambda emu, k: ((0 if null0 else O[('ret', 0)]) if k == 0 else O[('ret', 2)]), pop=0, this=False, side=side_41e290)
     def side_604ca0(emu, k, _s=mkside(1)):
         _s(emu, k)
     hook_rec(c, 0x604ca0, 0, ret=r.getrandbits(32), pop=0, this=True, side=side_604ca0)
