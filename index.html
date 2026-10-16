@@ -21,7 +21,6 @@
 <div class="stats" id="stats"></div>
 <div class="mapbox" id="mapbox"></div>
 <p class="fine">Not affiliated with IO Interactive or Eidos. No game data is included: this page holds addresses, sizes and verification states only.</p>
-<p class="sub">Verification caveat: existing results predate rollout of a checker fix for null-pointer faults; full re-verification is pending.</p>
 <script type="module">
 import { mountMap } from "./menu/progress-map.mjs";
 const p = await (await fetch("./menu/progress-public.json")).json(), f = p.functions, n = (x) => Number(x).toLocaleString("en-US"), w = (a, b) => (100 * a / b).toFixed(1);
