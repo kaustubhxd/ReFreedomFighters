@@ -1,12 +1,12 @@
 {
- "updated": "2026-10-16 22:25 IST",
+ "updated": "2026-10-17 09:40 IST",
  "functions": {
   "total": 12955,
-  "decompiled": 11787,
-  "ported": 824,
-  "headlineWithDocOnly": 11800,
+  "decompiled": 12227,
+  "ported": 835,
+  "headlineWithDocOnly": 12240,
   "totalBytes": 2380549,
-  "decompiledBytes": 1645642,
-  "portedBytes": 184287
+  "decompiledBytes": 1825379,
+  "portedBytes": 195677
  }
 }
