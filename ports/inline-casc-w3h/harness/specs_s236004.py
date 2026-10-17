@@ -52,7 +52,12 @@ def g585f90(c):
     em.w32(VX + 0x2e0, pystub(c, 6, ret=x2e0, this=True, stackmark=(0,)))
     hook_rec(c, 0x585a40, 7, ret=R, pop=28, this=True, deref={0: 3, 1: 3, 2: 3, 3: 3})
     A0 = rnd(c, 0x20); A1 = rnd(c, 0x20)
-    em.wbytes(A0, struct.pack('<3I', FB(), FB(), FB())); em.wbytes(A1, struct.pack('<3I', FB(), FB(), FB()))
+    big = [100.0, -100.0, 200.0, -150.0, 300.0, 0.0, 80.0, -90.0, 250.0]
+    FBG = lambda: struct.unpack('<I', struct.pack('<f', r.choice(big)))[0] | (r.getrandbits(8) if r.random() < 0.15 else 0)
+    if r.random() < 0.7:
+        em.wbytes(A0, struct.pack('<3I', FBG(), FBG(), FBG())); em.wbytes(A1, struct.pack('<3I', FBG(), FBG(), FBG()))
+    else:
+        em.wbytes(A0, struct.pack('<3I', FB(), FB(), FB())); em.wbytes(A1, struct.pack('<3I', FB(), FB(), FB()))
     return [THIS, A0, A1, r.choice([0, 1, 1, 5, 0x100]), FB(), r.getrandbits(32), r.getrandbits(32)]
 
 

@@ -203,7 +203,7 @@ extern "C" u32 THISCALL lifted_585f90(u32 ecx_in, u32 a0, u32 a1, u32 a2, u32 a3
   L586185:;
   eax = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(edi + 68), sizeof v); (u32)v; });  // @169_585f90
   ecx = (u32)((EBP - 248) + 220);  // @170_585f90
-  { u32 v = (u32)((u32)(1)); __builtin_memcpy((void *)(u32)((EBP - 248) + 228), &v, sizeof v); }  // @171_585f90
+  { u32 v = (u32)((u32)(0)); __builtin_memcpy((void *)(u32)((EBP - 248) + 228), &v, sizeof v); }  // @171_585f90
   { u32 v = (u32)((u32)(0)); __builtin_memcpy((void *)(u32)((EBP - 248) + 224), &v, sizeof v); }  // @172_585f90
   { u32 v = (u32)((u32)(0)); __builtin_memcpy((void *)(u32)((EBP - 248) + 220), &v, sizeof v); }  // @173_585f90
   edx = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(eax + 8), sizeof v); (u32)v; });  // @174_585f90
