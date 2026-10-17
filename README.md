@@ -76,9 +76,9 @@ None of this is hard to regenerate if you own the game: run the decoders on your
 
 ## Project type
 
-Tools and format documentation for Freedom Fighters (2003), plus a set of verified C++ ports of 10,575 functions from the
-PC executable (see "Verified C++ ports"). This is not a full decompilation of the game. The awesome-list entry type (tool or
-decomp) is for the maintainer to choose.
+A work-in-progress decompilation of Freedom Fighters (2003) for PC: verified C++ ports of 10,575 functions from the
+executable (see "Verified C++ ports"), plus the tools and format documentation used to get there. It is not yet a complete
+source tree that builds into a full executable: the remaining functions are still being decompiled and verified.
 
 Live progress page: https://kaustubhxd.github.io/ReFreedomFighters/
 
