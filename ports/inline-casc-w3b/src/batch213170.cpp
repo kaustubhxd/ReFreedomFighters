@@ -52,7 +52,7 @@ static void body_4748b0(u8 *ebx, u8 *edi) {
     WF(P(0xc838), m[8]);
   }
   ext_4e2d60(P(0xc840));
-  ext_4de420(P(0xc8a0), P(0xc834));
+  ext_4de420(P(0xc8a0), P(0xc840));
   W32(P(0xc844), R32(P(0xc808)));
   __builtin_memcpy(P(0xc84c), P(0xc810), 8);
   u8 *eng = G(u8 *, 0x70039c);

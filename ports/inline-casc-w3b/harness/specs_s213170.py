@@ -75,9 +75,9 @@ def g4748b0(c):
         n = st['n']
         st['n'] += 1
         a1 = emu.arg32(1)
-        if n == 2 and a1 != 0:
+        if n == 3 and a1 != 0:
             emu.calllog.append(('f5c', n, bytes(emu.rbytes(a1, 4))))
-        elif n == 3 and a1 != 0:
+        elif n == 4 and a1 != 0:
             emu.calllog.append(('f5c', n, bytes(emu.rbytes(a1, 0x88))))
     fx = obj(c, 0x40, {0x5c: pystub(c, 3, this=True, stackmark=(1,), side=s5c)}, nslots=0x60)
     objX = obj(c, 0x20, {0x318: pystub(c, 0, this=True, ret=lambda emu, k: rb())}, nslots=0x140)

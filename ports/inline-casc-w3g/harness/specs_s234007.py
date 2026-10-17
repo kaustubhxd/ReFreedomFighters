@@ -72,4 +72,4 @@ def g576670(c):
     return [THIS, r.choice([0, 0x1234, 7]), r.choice([0, 1])]
 
 
-S(0x576670, 'GUESS lifted 0x576670', 'thiscall', None, ret=None, gen=g576670, note='batch234007')
+S(0x576670, 'GUESS lifted 0x576670', 'thiscall', None, ret='eax', gen=g576670, note='batch234007')

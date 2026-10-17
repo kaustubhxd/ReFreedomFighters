@@ -80,4 +80,4 @@ def g58cab0(c):
     return [THIS, a0, A1]
 
 
-S(0x58cab0, 'GUESS lifted 0x58cab0', 'thiscall', None, ret=None, gen=g58cab0, note='batch234008')
+S(0x58cab0, 'GUESS lifted 0x58cab0', 'thiscall', None, ret='eax', gen=g58cab0, note='batch234008')

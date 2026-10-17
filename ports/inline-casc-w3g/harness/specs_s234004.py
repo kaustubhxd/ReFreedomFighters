@@ -67,8 +67,8 @@ def g4a1270(c):
 
 
 S(0x515cf0, 'GUESS thunk to 0x5145e0', 'thiscall', None, ret='eax', gen=g515cf0, note='batch234004')
-S(0x5d89f0, 'GUESS handle slot init', 'thiscall', None, ret=None, gen=g5d89f0, note='batch234004')
-S(0x4a1270, 'GUESS list register', 'thiscall', None, ret=None, gen=g4a1270, note='batch234004')
+S(0x5d89f0, 'GUESS handle slot init', 'thiscall', None, ret='eax', gen=g5d89f0, note='batch234004')
+S(0x4a1270, 'GUESS list register', 'thiscall', None, ret='eax', gen=g4a1270, note='batch234004')
 
 
 def g4559d0(c):
@@ -96,4 +96,4 @@ def g4559d0(c):
     return [THIS, SRC]
 
 
-S(0x4559d0, 'GUESS copy assign', 'thiscall', None, ret=None, gen=g4559d0, note='batch234004')
+S(0x4559d0, 'GUESS copy assign', 'thiscall', None, ret='st0', gen=g4559d0, note='batch234004')

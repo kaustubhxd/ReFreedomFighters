@@ -301,9 +301,9 @@ def g5b2e90(c):
     return [THIS]
 
 
-S(0x5b8d80, 'GUESS lifted 0x5b8d80', 'thiscall', None, ret=None, gen=g5b8d80, note='batch234000')
-S(0x5dc8b0, 'GUESS lifted 0x5dc8b0', 'thiscall', None, ret=None, gen=g5dc8b0, note='batch234000')
-S(0x47ca20, 'GUESS lifted 0x47ca20', 'thiscall', None, ret=None, gen=g47ca20, note='batch234000')
-S(0x47c160, 'GUESS lifted 0x47c160', 'thiscall', None, ret=None, gen=g47c160, note='batch234000')
-S(0x4e0390, 'GUESS lifted 0x4e0390', 'fastcall', None, ret=None, gen=g4e0390, note='batch234000')
-S(0x5b2e90, 'GUESS lifted 0x5b2e90', 'thiscall', None, ret=None, gen=g5b2e90, note='batch234000')
+S(0x5b8d80, 'GUESS lifted 0x5b8d80', 'thiscall', None, ret='st0', gen=g5b8d80, note='batch234000')
+S(0x5dc8b0, 'GUESS lifted 0x5dc8b0', 'thiscall', None, ret='st0', gen=g5dc8b0, note='batch234000')
+S(0x47ca20, 'GUESS lifted 0x47ca20', 'thiscall', None, ret='eax', gen=g47ca20, note='batch234000')
+S(0x47c160, 'GUESS lifted 0x47c160', 'thiscall', None, ret='eax', gen=g47c160, note='batch234000')
+S(0x4e0390, 'GUESS lifted 0x4e0390', 'fastcall', None, ret='st0', gen=g4e0390, note='batch234000')
+S(0x5b2e90, 'GUESS lifted 0x5b2e90', 'thiscall', None, ret='eax', gen=g5b2e90, note='batch234000')

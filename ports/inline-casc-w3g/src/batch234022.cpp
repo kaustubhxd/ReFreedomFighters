@@ -688,7 +688,7 @@ extern "C" u32 THISCALL lifted_5ce0b0(u32 ecx_in) {
   X1[1] = 0;  // @639_5ce0b0
   X1[2] = 0;  // @640_5ce0b0
   X1[3] = 0;  // @641_5ce0b0
-  X1[0] = F2U(U2F(X1[0]) + U2F(({ u32 v; __builtin_memcpy(&v, (void *)((u32)((EBP - 232) + 52) + 0), 4); v; })));  // @642_5ce0b0
+  X1[0] = F2U(U2F(X1[0]) * U2F(({ u32 v; __builtin_memcpy(&v, (void *)((u32)((EBP - 232) + 52) + 0), 4); v; })));  // @642_5ce0b0
   X1[0] = F2U(U2F(X1[0]) + U2F(X0[0]));  // @643_5ce0b0
   X0[0] = ({ u32 v; __builtin_memcpy(&v, (void *)((u32)((EBP - 232) + 140) + 0), 4); v; });  // @644_5ce0b0
   X0[1] = 0;  // @645_5ce0b0

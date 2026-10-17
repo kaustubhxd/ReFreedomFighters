@@ -39,11 +39,11 @@ def g5ce0b0(c):
             for i in outs: w3(emu, emu.arg32(i))
             emu.calllog.append(row_of(emu, n, off))
         return pystub(c, n, ret=ret or RB, this='mark', stackmark=tuple(range(n)), side=side)
-    Z1 = r.random() < 0.2   # first lookup finds nothing (branch at 0x5ce3dc)
+    Z1 = r.random() < 0.1   # first lookup finds nothing (branch at 0x5ce3dc)
     # entity chain found through slot 0x84 (4 args: out vec, 500.0, &cursor, -1) of the lookup object
     ents = []
     def mkent():
-        e = obj(c, 0x900, {0x438: stub(0x438, 0, BOOL), 0x84: stubw(0x84, 1, outs=(0,)), 0x80: stubw(0x80, 2, outs=(0, 1)), 0x648: stub(0x648, 1), 0x4d0: stub(0x4d0, 0, BOOL), 0x3f0: stub(0x3f0, 0, lambda emu, k: r.choice([0x11, 1, 2, 3])), 0x218: stub(0x218, 1), 0x390: stub(0x390, 1), 0x39c: stub(0x39c, 1), 0x8c: stubw(0x8c, 1, outs=(0,)), 0x3a0: stubw(0x3a0, 2, outs=(0, 1)), 0x63c: stub(0x63c, 1), 0x628: stub(0x628, 1), 0x5d0: stub(0x5d0, 0, lambda emu, k: r.choice([0x10, 0x11, 3, 0x20, r.getrandbits(8)])), 0x5c0: stub(0x5c0, 1), 0x2ec: stub(0x2ec, 1)}, nslots=0x1a0)
+        e = obj(c, 0x900, {0x438: stub(0x438, 0, lambda emu, k: (r.getrandbits(24) << 8) | (1 if r.random() < 0.15 else 0)), 0x84: stubw(0x84, 1, outs=(0,)), 0x80: stubw(0x80, 2, outs=(0, 1)), 0x648: stub(0x648, 1), 0x4d0: stub(0x4d0, 0, BOOL), 0x3f0: stub(0x3f0, 0, lambda emu, k: r.choice([0x11, 1, 2, 3])), 0x218: stub(0x218, 1), 0x390: stub(0x390, 1), 0x39c: stub(0x39c, 1), 0x8c: stubw(0x8c, 1, outs=(0,)), 0x3a0: stubw(0x3a0, 2, outs=(0, 1)), 0x63c: stub(0x63c, 1), 0x628: stub(0x628, 1), 0x5d0: stub(0x5d0, 0, lambda emu, k: r.choice([0x10, 0x11, 3, 0x20, r.getrandbits(8)])), 0x5c0: stub(0x5c0, 1), 0x2ec: stub(0x2ec, 1)}, nslots=0x1a0)
         em.w32(e + 0x417, r.getrandbits(32)); em.wbytes(e + 0x600, bytes([r.choice([0, 1, 1])])); em.wbytes(e + 0x66f, bytes([r.choice([0, 1])])); em.w32(e + 0x80b, Bf(r.choice(fl))); em.wbytes(e + 0x94e, bytes([r.choice([0, 1])]))
         return e
     ents = [mkent() for _ in range(4)]
@@ -69,4 +69,4 @@ def g5ce0b0(c):
     return [THIS]
 
 
-S(0x5ce0b0, 'GUESS lifted 0x5ce0b0', 'thiscall', None, ret=None, gen=g5ce0b0, note='batch234022')
+S(0x5ce0b0, 'GUESS lifted 0x5ce0b0', 'thiscall', None, ret='st0', gen=g5ce0b0, note='batch234022')

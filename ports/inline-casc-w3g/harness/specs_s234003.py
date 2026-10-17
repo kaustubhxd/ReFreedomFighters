@@ -56,4 +56,4 @@ def g509b10(c):
     return [D, S]
 
 
-S(0x509b10, 'GUESS lifted 0x509b10', 'thiscall', None, ret=None, gen=g509b10, note='batch234003')
+S(0x509b10, 'GUESS lifted 0x509b10', 'thiscall', None, ret='eax', gen=g509b10, note='batch234003')
