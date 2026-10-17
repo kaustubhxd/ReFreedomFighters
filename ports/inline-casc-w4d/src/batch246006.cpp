@@ -2331,7 +2331,7 @@ extern "C" s32 GUESS_62bb10(u32 enc, u32 ptr, u32 end, u32 nextTok) {
               if (((W6Pred)*(u32 *)(enc + 0x164))(enc, esi) != 0) goto def;
               esi += 2; rem -= 2;
             } else if (h3 == 0x62bd05) {
-              if (rem < 4) return -2;
+              if (rem < 3) return -2;
               if (((W6Pred)*(u32 *)(enc + 0x168))(enc, esi) != 0) goto def;
               esi += 3; rem -= 3;
             } else if (h3 == 0x62bd27) {
@@ -2361,3 +2361,3185 @@ def:
   return 0;
 }
 PCREG(62bb10, GUESS_62bb10);
+
+// ---------------------------------------------------------------- 0x42bae0
+extern "C" u32 THISCALL ext_4d3f80_w6(u32) __asm__("ext_4d3f80");
+extern "C" u32 THISCALL ext_430010_w6(u32, u32) __asm__("ext_430010");
+extern "C" u32 THISCALL ext_54f870_w6(u32, u32, u32) __asm__("ext_54f870");
+extern "C" u32 FASTCALL ext_42b080_w6(u32, u32, u32) __asm__("ext_42b080");
+extern "C" void ext_634273_w6(u32, u32) __asm__("ext_634273");
+
+// 0x42bae0: thiscall(), void: destructor (SEH 0x664bfa; states -1 -> 0 -> 1 -> -1 for [0x1b65], 2 -> 3 -> -1 for [0x1b69], 4 -> 5 -> -1 for [0x1b6d], 6 for [0x1b61] and the 22 string members).
+// this[0] = 0x6797a0; [0x70038c] vslot 0x38(); this[0x1b37] object: 0x4d3f80, free(p, 0x10f4); this[0x1b55]: free(p, 1); this[0x1b51]: deleting-destructor vslot 0(1);
+// this[0x1b65] (list head): if [+4] != 0 the nodes are reset (0x430010([[p]+1]), [[p]+5] = [p], [[p]+1] = 0, [[p]+9] = [p], [p+4] = 0), then 0x54f870(p, [p], 0x25) and free(p, 9);
+// this[0x1b69] / [0x1b6d] (vectors of 12-byte elements): 0x42b080([p], [p+4], this), element block released with 0x54f870(p, begin, count * 12) when non-empty, free(p, 0xc);
+// this[0x1b61] (vector of dwords): 0x54f870(p, begin, bytes), free(p, 0xc); finally 0x4cbec0 on the 22 embedded strings (offsets 0x1ab7 ... 0xa3). All pointers unaligned.
+extern "C" void THISCALL GUESS_42bae0(u32 self) {
+  SEH_ENTER(0x664bfa);
+  *(u32 *)self = 0x6797a0;
+  u32 g = *(u32 *)0x70038c;
+  if (g) ((W6B)*(u32 *)(*(u32 *)g + 0x38))(g);
+  u32 edi = w6ld(self + 0x1b37);
+  if (edi) {
+    ext_4d3f80_w6(edi);
+    ext_634273_w6(edi, 0x10f4);
+  }
+  u32 eax = w6ld(self + 0x1b55);
+  if (eax) ext_634273_w6(eax, 1);
+  u32 ecx = w6ld(self + 0x1b51);
+  w6st(self + 0x1b55, 0);
+  if (ecx) ((W6T1)*(u32 *)(*(u32 *)ecx))(ecx, 1);
+  edi = w6ld(self + 0x1b65);
+  w6st(self + 0x1b51, 0);
+  if (edi) {
+    reg.state = 0;
+    if (*(u32 *)(edi + 4) != 0) {
+      u32 n = *(u32 *)edi;
+      ext_430010_w6(edi, w6ld(n + 1));
+      n = *(u32 *)edi;
+      w6st(n + 5, n);
+      n = *(u32 *)edi;
+      w6st(n + 1, 0);
+      n = *(u32 *)edi;
+      w6st(n + 9, n);
+      *(u32 *)(edi + 4) = 0;
+    }
+    reg.state = 1;
+    ext_54f870_w6(edi, *(u32 *)edi, 0x25);
+    reg.state = -1;
+    ext_634273_w6(edi, 9);
+    w6st(self + 0x1b65, 0);
+  }
+  for (int pass = 0; pass < 2; pass++) {
+    u32 off = pass == 0 ? 0x1b69 : 0x1b6d;
+    edi = w6ld(self + off);
+    if (edi) {
+      reg.state = pass == 0 ? 2 : 4;
+      ext_42b080_w6(*(u32 *)edi, *(u32 *)(edi + 4), self);
+      u32 ebx = *(u32 *)edi;
+      s32 diff = (s32)(*(u32 *)(edi + 8) - ebx);
+      s32 q = (s32)(((long long)diff * (long long)(s32)0x2aaaaaab) >> 32);
+      q = q >> 1;
+      s32 cnt = q + (s32)((u32)q >> 31);
+      reg.state = pass == 0 ? 3 : 5;
+      if (cnt != 0) ext_54f870_w6(edi, ebx, (u32)cnt * 12);
+      reg.state = -1;
+      ext_634273_w6(edi, 0xc);
+      w6st(self + off, 0);
+    }
+  }
+  edi = w6ld(self + 0x1b61);
+  if (edi) {
+    s32 d = (s32)(*(u32 *)(edi + 8) - *(u32 *)edi) >> 2;
+    ecx = *(u32 *)edi;
+    reg.state = 6;
+    if (d != 0) ext_54f870_w6(edi, ecx, (u32)d << 2);
+    ext_634273_w6(edi, 0xc);
+    w6st(self + 0x1b61, 0);
+  }
+  static const u16 offs[22] = {0x1ab7, 0x1a17, 0x1997, 0x1917, 0x923, 0x8a3, 0x823, 0x7a3, 0x723, 0x6a3, 0x623, 0x5a3, 0x523, 0x4a3, 0x423, 0x3a3, 0x323, 0x2a3, 0x223, 0x1a3, 0x123, 0xa3};
+  for (int i = 0; i < 22; i++) ext_4cbec0_w6(self + offs[i]);
+  SEH_LEAVE();
+}
+PCREG(42bae0, GUESS_42bae0);
+
+// ---------------------------------------------------------------- 0x43afe0
+extern "C" u32 THISCALL ext_43a380_w6(u32) __asm__("ext_43a380");
+extern "C" u32 THISCALL ext_43a440_w6(u32) __asm__("ext_43a440");
+extern "C" u32 THISCALL ext_43a130_w6(u32, u32, u32) __asm__("ext_43a130");
+extern "C" u32 THISCALL ext_43b630_w6(u32, u32, u32) __asm__("ext_43b630");
+extern "C" u32 THISCALL ext_4395d0_w6(u32) __asm__("ext_4395d0");
+
+// 0x43afe0: thiscall(), void. Debug line 0x259 (slot 0x178, text 0x67a8b4). The N pointers in this[0x121c..] (count this[0x1218]) get byte [+0x32] = ((b & 0x10) << 1) | (b & 0x9f);
+// N = 0; if [0x7003a0][0xc] != 0: 0x43a380(this); if [0x7003a0][0x1c] != 0: 0x43a440(this); 0x43a130(i, key) for (0, 0x6e4a50) (1, 0x6e4b80) (2, 0x6e4cb0) (3, 0x6e4de0).
+// For each of this[0x1210] entries i (10-byte records at this[0x1344], values from the byte array this[0x131c]): flag = value != 0; when the record's flag byte (+8) differs it is
+// updated, +9 = value and every object of the record's list (head at +4, next at +5, object = node[0], base = object - 4) with object[0] == 0 gets base[0x31] = value,
+// base[0x42] += / -= 1 (by node[4] == flag) and is appended to the pointer array once; objects of type 2 call 0x43b630(object, i, flag); when only the value (+9) differs the
+// objects with type 0 get base[0x2d] = value. Then every array entry is rewritten: [+0x19] == [+0x42]: unless bits 0x30 / [+0x10] == 0, [+0x32] = ([+0x32] & 0xbf) | 0x10 and the
+// dword at +0x25 is copied to +0x29; otherwise with both bits 0x30 and [+0x10] set [+0x32] &= 0xaf and +0x1d is copied to +0x21; the source dword is then refreshed from
+// [0x70039c] + 0x1c. 0x4395d0(this); debug line 0x260 (slot 0x17c).
+extern "C" void THISCALL GUESS_43afe0(u32 self) {
+  w6dbg(*(u32 *)0x70039c, 0x259, 0x178, 0x67a8b4);
+  u32 n = *(u32 *)(self + 0x1218);
+  if (n != 0) {
+    u32 i = 0;
+    do {
+      u32 p = *(u32 *)(self + 0x121c + i * 4);
+      u8 b = *(u8 *)(p + 0x32);
+      u8 c = (u8)((b & 0x10) + (b & 0x10));
+      *(u8 *)(p + 0x32) = (u8)(c | (b & 0x9f));
+      i++;
+    } while (i != *(u32 *)(self + 0x1218));
+  }
+  *(u32 *)(self + 0x1218) = 0;
+  u32 g = *(u32 *)0x7003a0;
+  if (*(u32 *)(g + 0xc) != 0) {
+    ext_43a380_w6(self);
+    g = *(u32 *)0x7003a0;
+  }
+  if (*(u32 *)(g + 0x1c) != 0) ext_43a440_w6(self);
+  ext_43a130_w6(self, 0, 0x6e4a50);
+  ext_43a130_w6(self, 1, 0x6e4b80);
+  ext_43a130_w6(self, 2, 0x6e4cb0);
+  ext_43a130_w6(self, 3, 0x6e4de0);
+  u32 M = *(u32 *)(self + 0x1210);
+  if (M != 0) {
+    u32 i = 0, j = 0;
+    u32 edxg = 0;   // the exe passes the stale upper bits of edx to 0x43b630; the callee only uses the low byte
+    do {
+      u8 bl = *(u8 *)(*(u32 *)(self + 0x131c) + i);
+      u8 dl = (bl != 0) ? 1 : 0;
+      (void)edxg;
+      u32 tab = *(u32 *)(self + 0x1344);
+      if (*(u8 *)(tab + j + 8) != dl) {
+        *(u8 *)(tab + j + 8) = dl;
+        tab = *(u32 *)(self + 0x1344);
+        *(u8 *)(tab + j + 9) = bl;
+        tab = *(u32 *)(self + 0x1344);
+        u32 node = w6ld(tab + j + 4);
+        while (node != 0) {
+          u32 O = *(u32 *)node;
+          if (*(u32 *)O == 0) {
+            u32 base = O - 4;
+            *(u8 *)(base + 0x31) = bl;
+            if (*(u8 *)(node + 4) == dl) (*(u32 *)(base + 0x42))++;
+            else (*(u32 *)(base + 0x42))--;
+            u32 cnt = *(u32 *)(self + 0x1218);
+            u32 k = 0;
+            if (cnt != 0) {
+              for (k = 0; k < cnt; k++) {
+                if (*(u32 *)(self + 0x121c + k * 4) == base) break;
+              }
+            }
+            if (k == cnt) {
+              *(u32 *)(self + 0x121c + cnt * 4) = base;
+              (*(u32 *)(self + 0x1218))++;
+            }
+          }
+          if (*(u32 *)O == 2) ext_43b630_w6(O, i, dl);
+          node = w6ld(node + 5);
+        }
+        bl = bl;
+      }
+      tab = *(u32 *)(self + 0x1344);
+      if (*(u8 *)(tab + j + 9) != bl) {
+        u32 node = w6ld(tab + j + 4);
+        while (node != 0) {
+          u32 c = *(u32 *)node;
+          if (*(u32 *)c == 0) *(u8 *)(c + 0x2d) = bl;
+          node = w6ld(node + 5);
+        }
+      }
+      i++;
+      j += 10;
+    } while (i != *(u32 *)(self + 0x1210));
+  }
+  n = *(u32 *)(self + 0x1218);
+  if (n != 0) {
+    u32 i = 0;
+    do {
+      u32 p = *(u32 *)(self + 0x121c + i * 4);
+      u32 src = 0, dst = 0;
+      bool go = false;
+      if (w6ld(p + 0x19) == *(u32 *)(p + 0x42)) {
+        u8 al = *(u8 *)(p + 0x32);
+        if (!(al & 0x30) && *(u8 *)(p + 0x10) != 0) {
+          al = (u8)((al & 0xbf) | 0x10);
+          *(u8 *)(p + 0x32) = al;
+          src = p + 0x25;
+          dst = p + 0x29;
+          go = true;
+        }
+      } else {
+        u8 dl = *(u8 *)(p + 0x32);
+        if ((dl & 0x30) == 0x30 && *(u8 *)(p + 0x10) != 0) {
+          dl &= 0xaf;
+          *(u8 *)(p + 0x32) = dl;
+          src = p + 0x1d;
+          dst = p + 0x21;
+          go = true;
+        }
+      }
+      if (go) {
+        if (dst != src) w6st(dst, w6ld(src));
+        u32 gg = *(u32 *)0x70039c + 0x1c;
+        if (src != gg) w6st(src, w6ld(gg));
+      }
+      i++;
+    } while (i != *(u32 *)(self + 0x1218));
+  }
+  ext_4395d0_w6(self);
+  w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x67a8b4);
+}
+PCREG(43afe0, GUESS_43afe0);
+
+// ---------------------------------------------------------------- 0x4dd0c0
+extern "C" u32 THISCALL ext_4dc630_w6(u32, u32, u32) __asm__("ext_4dc630");
+extern "C" u32 THISCALL ext_4dafb0_w6(u32) __asm__("ext_4dafb0");
+extern "C" u32 THISCALL ext_4db2f0_w6(u32, u32) __asm__("ext_4db2f0");
+extern "C" u32 THISCALL ext_4de7a0_w6(u32) __asm__("ext_4de7a0");
+extern "C" u32 THISCALL ext_4db600_w6(u32, u32, u32) __asm__("ext_4db600");
+extern "C" u32 THISCALL ext_4db1f0_w6(u32, u32) __asm__("ext_4db1f0");
+extern "C" u32 FASTCALL ext_441a60_w6(u32, u32) __asm__("ext_441a60");
+extern "C" u32 THISCALL ext_4db270_w6(u32, u32) __asm__("ext_4db270");
+extern "C" u32 FASTCALL ext_43e960_w6c(u32, u32) __asm__("ext_43e960");
+extern "C" u32 FASTCALL ext_4dac50_w6(u32, u32) __asm__("ext_4dac50");
+extern "C" u32 FASTCALL ext_4dba00_w6(u32, u32, u32) __asm__("ext_4dba00");
+extern "C" u32 FASTCALL ext_4db070_w6(u32, u32, u32, u32) __asm__("ext_4db070");
+typedef u32(THISCALL *W6A11)(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);
+typedef u32(*W6C5b)(u32, u32, u32, u32, u32);
+
+// 0x4dd0c0: thiscall(), void (own frame via __chkstk: candidate pointer array A1 (0x1000 bytes), scratch A2 (0x200 bytes); /GS cookie not reproduced). H = G[0x9b][0x5d35] (unaligned); H == 0
+// or this[0x3c] & 0x200000: only 0x4dc630(this, 0, 0x2000000). Otherwise R = H vslot 0xc(&out); edi = a world object: this[0x3c] & 0x40040000 == 0 -> 0x4db2f0(this[0x54][8], 0); else
+// base = (flag 0x40000000 ? 0x4dafb0(this) : this), word id = [base + 0x5c]: id != 0 and G[0x9b][8] vslot 0x5c(id) -> record with byte [+0x1c] != 0 gives edi = [record], else edi =
+// G[0x9b][0xadc]. M (3 vectors) = 0x4de7a0(), V = this[0x30..0x38]; 0x4db600(this, &M, &V); node = edi[8]: when node[0x50]: 0x4db1f0(node[0x50], &V), 0x43e960(&V, node + 0x24), 0x441a60(&V,
+// node) and the same 0x4db270 / 0x441a60 pair for each of the three vectors of M (each guarded by node[0x50]). K = G[0x1aa3][0x1c] vslot 0x3c(A1, A2, edi, 1, &M, &V, this + 0x40, -1, 1, 1, 1)
+// (11 stack args); for each candidate c = A1[i] without flag 0x400: kind = c[0x54] ? c[0x54][0xc][0x23] (0x80000d skips) : 0x200002; kind & 0x800000: c[0x68] != 0, 0x4dac50(c, A2) and
+// 0x4dba00(this, r, A2) true -> R[n++] = c; else with c[0x3c] & 0x40000 and kind & 0x100000 and (c[0x54] vslot 0x2a8() & 0x10000): n = 0x4db070(n, R, this, c). n > 12: logger
+// [0x700390] vslot 0x20(0x696e24, 0xd0d) then its vslot 0x30(0x697050, name or "", n, 12), n = 12. H vslot 0(n, this); 0x4dc630(this, 0, 0x2000000).
+extern "C" void THISCALL GUESS_4dd0c0(u32 self) {
+  u8 A1[0x1010] __attribute__((aligned(16)));
+  u8 A2[0x210] __attribute__((aligned(16)));
+  float V[4] = {0, 0, 0, 0};
+  float M[10];
+  for (int q = 0; q < 10; q++) M[q] = 0.0f;
+  u32 outv = 0;
+  u32 g = *(u32 *)0x70039c;
+  u32 H = w6ld(*(u32 *)(g + 0x9b) + 0x5d35);
+  if (H == 0 || (*(u32 *)(self + 0x3c) & 0x200000)) {
+    ext_4dc630_w6(self, 0, 0x2000000);
+    return;
+  }
+  u32 R = ((W6T1)*(u32 *)(*(u32 *)H + 0xc))(H, (u32)&outv);
+  u32 flags = *(u32 *)(self + 0x3c);
+  u32 edi;
+  if (!(flags & 0x40040000)) {
+    u32 t = *(u32 *)(self + 0x54);
+    edi = ext_4db2f0_w6(*(u32 *)(t + 8), 0);
+  } else {
+    u32 base;
+    if (flags & 0x40000000) base = ext_4dafb0_w6(self);
+    else base = self;
+    u32 id = *(u16 *)(base + 0x5c);
+    bool found = false;
+    edi = 0;
+    if (id != 0) {
+      u32 gg = *(u32 *)0x70039c;
+      u32 o8 = *(u32 *)(w6ld(gg + 0x9b) + 8);
+      u32 rec = ((W6T1)*(u32 *)(*(u32 *)o8 + 0x5c))(o8, id);
+      if (rec != 0 && *(u8 *)(rec + 0x1c) != 0) { edi = *(u32 *)rec; found = true; }
+    }
+    if (!found) {
+      u32 gg = *(u32 *)0x70039c;
+      edi = w6ld(w6ld(gg + 0x9b) + 0xadc);
+    }
+  }
+  ext_4de7a0_w6((u32)(M));
+  V[0] = bitsf(*(u32 *)(self + 0x30));
+  V[1] = bitsf(*(u32 *)(self + 0x34));
+  V[2] = bitsf(*(u32 *)(self + 0x38));
+  ext_4db600_w6(self, (u32)M, (u32)V);
+  u32 node = *(u32 *)(edi + 8);
+  u32 w3 = (u32)&M[0], w2 = (u32)&M[3], w1 = (u32)&M[6];
+  if (*(u32 *)(node + 0x50) != 0) {
+    ext_4db1f0_w6(*(u32 *)(node + 0x50), (u32)V);
+    ext_43e960_w6c((u32)V, node + 0x24);
+    ext_441a60_w6((u32)V, node);
+    if (*(u32 *)(node + 0x50) != 0) { ext_4db270_w6(*(u32 *)(node + 0x50), w1); ext_441a60_w6(w1, node); }
+    if (*(u32 *)(node + 0x50) != 0) { ext_4db270_w6(*(u32 *)(node + 0x50), w2); ext_441a60_w6(w2, node); }
+    if (*(u32 *)(node + 0x50) != 0) { ext_4db270_w6(*(u32 *)(node + 0x50), w3); ext_441a60_w6(w3, node); }
+  }
+  g = *(u32 *)0x70039c;
+  u32 q = *(u32 *)(w6ld(g + 0x1aa3) + 0x1c);
+  u32 K = ((W6A11)*(u32 *)(*(u32 *)q + 0x3c))(q, (u32)A1, (u32)A2, edi, 1, (u32)M, (u32)V, self + 0x40, 0xffffffffu, 1, 1, 1);
+  u32 n = 0;
+  if (K != 0) {
+    u32 i = 0;
+    do {
+      u32 c = ((u32 *)A1)[i];
+      u32 cf = *(u32 *)(c + 0x3c);
+      if (!(cf & 0x400)) {
+        u32 ecx = *(u32 *)(c + 0x54);
+        u32 kind;
+        bool skip = false;
+        if (ecx != 0) {
+          kind = w6ld(*(u32 *)(ecx + 0xc) + 0x23);
+          if (kind == 0x80000d) skip = true;
+        } else {
+          kind = 0x200002;
+        }
+        if (!skip) {
+          if (kind & 0x800000) {
+            if (*(u32 *)(c + 0x68) != 0) {
+              u32 r4 = ext_4dac50_w6(c, (u32)A2);
+              if ((u8)ext_4dba00_w6(self, r4, (u32)A2) != 0) {
+                ((u32 *)R)[n] = c;
+                n++;
+              }
+            }
+          } else if ((cf & 0x40000) && (kind & 0x100000)) {
+            u32 o = *(u32 *)(c + 0x54);
+            u32 e = ((W6B)*(u32 *)(*(u32 *)o + 0x2a8))(o);
+            if (e & 0x10000) n = ext_4db070_w6(n, R, self, c);
+          }
+        }
+      }
+      i++;
+    } while (i < K);
+    if (n > 0xc) {
+      u32 lg = *(u32 *)0x700390;
+      u32 x = ((W6T2b)*(u32 *)(*(u32 *)lg + 0x20))(lg, 0x696e24, 0xd0d);
+      u32 t = *(u32 *)(self + 0x54);
+      u32 txt = 0x67c8e8;
+      if (t != 0) {
+        u32 s4 = *(u32 *)(t + 4);
+        if (s4 != 0) txt = s4;
+      }
+      ((W6C5b)*(u32 *)(*(u32 *)x + 0x30))(x, 0x697050, txt, n, 0xc);
+      n = 0xc;
+    }
+  }
+  ((W6T2b)*(u32 *)(*(u32 *)H))(H, n, self);
+  ext_4dc630_w6(self, 0, 0x2000000);
+}
+PCREG(4dd0c0, GUESS_4dd0c0);
+
+// ---------------------------------------------------------------- 0x60c4a0
+extern "C" u32 THISCALL ext_60ee10_w7(u32, u32, u32) __asm__("ext_60ee10");
+extern "C" u32 THISCALL ext_60ed80_w7(u32, u32, u32) __asm__("ext_60ed80");
+typedef u32(STDCALL *W7S1)(u32);
+typedef u32(STDCALL *W7S6)(u32, u32, u32, u32, u32, u32);
+
+// 0x60c4a0: thiscall(u32 mode, vertex records (9 dwords each), u32 n, u16 *indices, u32 count), ret 0x14, void. mode > 4: nothing. Else the exe's own jump table
+// at 0x60c758 picks (primitive type s4, primitive count ebx): 2 -> (cnt >> 1), 3 -> cnt - 1, 4 -> cnt / 3, 5 -> cnt - 2, 6 -> cnt - 2. Render-state cache against the globals
+// 0x724970/0x7249b0 (device vslot 0x14c(0, self[0x13f2][0], 0x24)), 0x7249f0/0x7249f4 (vslot 0x154(self[0x13f6][0], 0)) and 0x7249f8 (vslot 0x130(0x152)). The vertex
+// buffer object A = self[0x13f2] is locked by 0x60ee10(&n, &voff); n > 0 copies n 36-byte records to the returned pointer; then A is unlocked (vslot 0x30) when A[0x10] and A[0].
+// The index buffer object B = self[0x13f6] is locked by 0x60ed80(&count, &ioff) (ioff replaces the old local, count the pointer); count > 0 copies indices adding the low word
+// of voff; B unlocked (vslot 0x30 when B[0xc] and B[0]); the final call is self[0x1377] vslot 0x11c(s4, voff, n, ioff, primcount).
+extern "C" void THISCALL GUESS_60c4a0(u32 self, u32 mode, u32 src, u32 n, u32 idx, u32 cnt) {
+  if (mode > 4) return;
+  u32 h = *(u32 *)(0x60c758 + mode * 4);
+  u32 s4, pc;
+  switch (h) {
+    case 0x60c4c1: s4 = 5; pc = cnt - 2; break;
+    case 0x60c4d0: s4 = 6; pc = cnt - 2; break;
+    case 0x60c4df: s4 = 4; pc = (u32)(((u64)cnt * 0xaaaaaaabULL) >> 32) >> 1; break;
+    case 0x60c4f4: s4 = 3; pc = cnt - 1; break;
+    case 0x60c503: s4 = 2; pc = cnt >> 1; break;
+    default: return;
+  }
+  u32 A = w6ld(self + 0x13f2);
+  u32 e = *(u32 *)A;
+  u32 d;
+  if (*(u32 *)0x724970 != e || *(u32 *)0x7249b0 != 0x24) {
+    d = *(u32 *)0x724a00;
+    *(u32 *)0x724970 = e;
+    *(u32 *)0x7249b0 = 0x24;
+    ((W6S4)*(u32 *)(*(u32 *)d + 0x14c))(d, 0, e, 0x24);
+  }
+  u32 B = w6ld(self + 0x13f6);
+  e = *(u32 *)B;
+  if (*(u32 *)0x7249f0 != e || *(u32 *)0x7249f4 != 0) {
+    d = *(u32 *)0x724a00;
+    *(u32 *)0x7249f0 = e;
+    *(u32 *)0x7249f4 = 0;
+    ((W6S3)*(u32 *)(*(u32 *)d + 0x154))(d, e, 0);
+  }
+  if (*(u32 *)0x7249f8 != 0x152) {
+    d = *(u32 *)0x724a00;
+    *(u32 *)0x7249f8 = 0x152;
+    ((W6S2)*(u32 *)(*(u32 *)d + 0x130))(d, 0x152);
+  }
+  u32 voff;
+  u32 dst = ext_60ee10_w7(A, (u32)&n, (u32)&voff);
+  if (n != 0) {
+    for (u32 i = 0; i < n; i++)
+      for (int q = 0; q < 9; q++) w6st(dst + i * 36 + q * 4, w6ld(src + i * 36 + q * 4));
+  }
+  A = w6ld(self + 0x13f2);
+  if (*(u8 *)(A + 0x10) != 0) {
+    u32 o = *(u32 *)A;
+    if (o != 0) {
+      ((W7S1)*(u32 *)(*(u32 *)o + 0x30))(o);
+      *(u8 *)(A + 0x10) = 0;
+    }
+  }
+  u32 ioff;
+  u32 ip = ext_60ed80_w7(B = w6ld(self + 0x13f6), (u32)&cnt, (u32)&ioff);
+  if (cnt != 0) {
+    for (u32 i = 0; i < cnt; i++) *(u16 *)(ip + i * 2) = (u16)(*(u16 *)(idx + i * 2) + (u16)voff);
+  }
+  B = w6ld(self + 0x13f6);
+  if (*(u8 *)(B + 0xc) != 0) {
+    u32 o = *(u32 *)B;
+    if (o != 0) {
+      ((W7S1)*(u32 *)(*(u32 *)o + 0x30))(o);
+      *(u8 *)(B + 0xc) = 0;
+    }
+  }
+  u32 obj = w6ld(self + 0x1377);
+  ((W7S6)*(u32 *)(*(u32 *)obj + 0x11c))(obj, s4, voff, n, ioff, pc);
+}
+PCREG(60c4a0, GUESS_60c4a0);
+
+// ---------------------------------------------------------------- 0x5460b0
+extern "C" double VECTORCALL ext_634d70_d7(double) __asm__("ext_634d70");
+extern "C" double VECTORCALL ext_634d76_d7(double) __asm__("ext_634d76");
+extern "C" double VECTORCALL ext_634dac_d7(double) __asm__("ext_634dac");
+extern "C" void FASTCALL ext_446ee0_w7(u32, u32, u32) __asm__("ext_446ee0");
+static inline float w7rf(u32 p) { float v; __builtin_memcpy(&v, (void *)p, 4); return v; }
+static inline void w7wf(u32 p, float v) { __builtin_memcpy((void *)p, &v, 4); }
+// normalize the float triple at p in place with the x87 stack (precision from the control word), when any component is not equal to 0 (NaN counts as not equal)
+static void w7norm(u32 p) {
+  if (w7rf(p) != 0.0f || w7rf(p + 4) != 0.0f || w7rf(p + 8) != 0.0f) {
+    long double x = w7rf(p), y = w7rf(p + 4), z = w7rf(p + 8);
+    long double s = x * x;
+    s += y * y;
+    s += z * z;
+    long double len = fsqrt_x87(s);
+    long double inv = 1.0L / len;
+    w7wf(p, (float)(x * inv));
+    w7wf(p + 4, (float)(y * inv));
+    w7wf(p + 8, (float)(z * inv));
+  }
+}
+
+// 0x5460b0: fastcall(V = ECX, float *O1 = EDX, float *O2, f0, f1, f2, f3) ret 0x14, void. a = (f0 + f1) * [0x67a6ac] * [0x67da04] (single float math), b = (f2 + f3) * same: V[0] = (float)sin(a),
+// V[2] = (float)cos(a), V[1] = (float)(tan(b) * (double)V[2]); V normalized (x87) unless all three are equal to 0. W = V + 0x18 = (V[2], 0, V[0] xor [0x67af40]) normalized the same
+// way; U = V + 0xc = 0x446ee0(V, W) (cross product), normalized the same way. *O1 = (float)([0x678610] / tan((f1 - f0) * k * k)), *O2 = (float)([0x678610] / tan((f3 - f2) * k * k)).
+extern "C" void FASTCALL GUESS_5460b0(u32 V, u32 o1, u32 o2, float f0, float f1, float f2, float f3) {
+  float k1 = *(float *)0x67a6ac, k2 = *(float *)0x67da04;
+  float a = (f0 + f1) * k1 * k2;
+  double da = (double)a;
+  float sv = (float)ext_634d76_d7(da);
+  w7wf(V, sv);
+  float cv = (float)ext_634d70_d7(da);
+  w7wf(V + 8, cv);
+  float b = (f2 + f3) * k1 * k2;
+  double tb = ext_634dac_d7((double)b);
+  float mid = (float)(tb * (double)cv);
+  w7wf(V + 4, mid);
+  w7norm(V);
+  u32 W = V + 0x18;
+  w6st(W, w6ld(V + 8));
+  w7wf(W + 8, bitsf(*(u32 *)V ^ *(u32 *)0x67af40));
+  w7wf(W + 4, 0.0f);
+  w7norm(W);
+  ext_446ee0_w7(V + 0xc, V, W);
+  w7norm(V + 0xc);
+  float c1 = (f1 - f0) * k1 * k2;
+  double r1 = *(double *)0x678610 / ext_634dac_d7((double)c1);
+  w7wf(o1, (float)r1);
+  float c2 = (f3 - f2) * k1 * k2;
+  double r2 = *(double *)0x678610 / ext_634dac_d7((double)c2);
+  w7wf(o2, (float)r2);
+}
+PCREG(5460b0, GUESS_5460b0);
+
+// ---------------------------------------------------------------- 0x55c1a0
+extern "C" float FASTCALL ext_4e0830_w7(u32, u32) __asm__("ext_4e0830");
+static inline void w7fatal(u32 line, u32 msg) {
+  u32 lg = *(u32 *)0x700390;
+  u32 x = ((W6T2b)*(u32 *)(*(u32 *)lg + 0x20))(lg, 0x69c8e0, line);
+  ((u32(*)(u32, u32, u32))*(u32 *)(*(u32 *)x + 0x2c))(x, 0x69c6b0, msg);
+  u32 f = *(u32 *)0x7003b0;
+  if (f) ((void (*)())f)();
+  else asm volatile("int3");
+}
+
+// 0x55c1a0: thiscall(src) ret 4, void (/GS cookie not reproduced). Arguments through 0x5003d0(src[4], i): i = 0 kind 3 -> edi = dword, kind 4 -> edi = (*entry) vslot 0x34(),
+// otherwise logged (line 0x111, text 0x69c9b0) + fatal pointer, edi = 0; i = 1 (kind 0 or 2, else logged line 0x104 / 0x69c938 + fatal) float R; i = 2 and i = 3 (kind 0 or 1, else
+// the same log) dwords E2 and E3. h = G[0x9b] vslot 0x114(edi, 0, 0x6a5eb0, 0x2fb) & 0xffff; W = this[0x1c], list = W[0x913] (unaligned); null -> end. P = {0,0,0};
+// W vslot 0x84(&P); for (it = list vslot 0x84(&P, R, &cursor (-1), -1); it; it = list vslot 0x84(&P, R, &cursor, -1)): when it[0x54][4] == W[0x54][4] and it != W:
+// Q = {0,0,0}; it vslot 0x84(&Q); d = 0x4e0830(&P, &Q) (x87, stored as float); unless d > R * R: it vslot 0x128(h, {E2, E3}, 0).
+extern "C" void THISCALL GUESS_55c1a0(u32 self, u32 src) {
+  u32 e = ext_5003d0_w6(*(u32 *)(src + 4), 0);
+  u32 edi;
+  u8 k = *(u8 *)(e + 4);
+  if (k == 3) edi = *(u32 *)e;
+  else if (k == 4) {
+    u32 o = *(u32 *)e;
+    edi = ((W6B)*(u32 *)(*(u32 *)o + 0x34))(o);
+  } else {
+    w7fatal(0x111, 0x69c9b0);
+    edi = 0;
+  }
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 1);
+  k = *(u8 *)(e + 4);
+  if (k != 0 && k != 2) w7fatal(0x104, 0x69c938);
+  u32 rb = *(u32 *)e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 2);
+  k = *(u8 *)(e + 4);
+  if (k != 0 && k != 1) w7fatal(0x104, 0x69c938);
+  u32 e2 = *(u32 *)e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 3);
+  k = *(u8 *)(e + 4);
+  if (k != 0 && k != 1) w7fatal(0x104, 0x69c938);
+  u32 e3 = *(u32 *)e;
+  float r = bitsf(rb);
+  float lim = r * r;
+  u32 gg = *(u32 *)0x70039c;
+  u32 h9 = w6ld(gg + 0x9b);
+  u32 h = ((W6T4)*(u32 *)(*(u32 *)h9 + 0x114))(h9, edi, 0, 0x6a5eb0, 0x2fb) & 0xffff;
+  u32 pair[2] = {e2, e3};
+  u32 W = *(u32 *)(self + 0x1c);
+  u32 list = w6ld(W + 0x913);
+  if (list == 0) return;
+  u32 P[3] = {0, 0, 0};
+  ((W6T1)*(u32 *)(*(u32 *)W + 0x84))(W, (u32)P);
+  u32 cur = 0xffffffff;
+  u32 it = ((W6T4)*(u32 *)(*(u32 *)list + 0x84))(list, (u32)P, rb, (u32)&cur, 0xffffffff);
+  while (it != 0) {
+    if (*(u32 *)(*(u32 *)(it + 0x54) + 4) == *(u32 *)(*(u32 *)(*(u32 *)(self + 0x1c) + 0x54) + 4) && it != *(u32 *)(self + 0x1c)) {
+      u32 Q[3] = {0, 0, 0};
+      ((W6T1)*(u32 *)(*(u32 *)it + 0x84))(it, (u32)Q);
+      float d = ext_4e0830_w7((u32)P, (u32)Q);
+      if (!(d > lim)) ((W6T3)*(u32 *)(*(u32 *)it + 0x128))(it, h, (u32)pair, 0);
+    }
+    it = ((W6T4)*(u32 *)(*(u32 *)list + 0x84))(list, (u32)P, rb, (u32)&cur, 0xffffffff);
+  }
+}
+PCREG(55c1a0, GUESS_55c1a0);
+
+// ---------------------------------------------------------------- 0x559a10
+// 0x559a10: thiscall(src) ret 4, void (/GS cookie not reproduced). P = three floats of the entries 0x5003d0(src[4], 0..2) (copied without a kind check), S = entry 3. L = 3 floats filled by
+// W = this[0x1c] vslot 0x84(&L); D = 0x43e920(P, L) (P - L) normalized (x87) unless all three are equal to 0, D *= S (0x4e0d00), P += D (0x43e960). Ray query: K = G[0x1aa3][0x1c]
+// vslot 0x30(&R, 0, {P.x, P.y + [0x67cd40], P.z}, {0, -500.0, 0}, 1, 1, 1, 0) with R[0] = 1.0; when al is set P = (R[1], R[2], R[3]). Then P.x, P.y, P.z are stored (type byte 2) into the entries
+// 0x5003d0(src[8], 0..2); a type byte other than 0 or 2 is logged (line 0xd5, text 0x69c938) + fatal pointer instead and that entry is not written.
+extern "C" void THISCALL GUESS_559a10(u32 self, u32 src) {
+  u32 vb[3], sc, e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 0); vb[0] = *(u32 *)e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 1); vb[1] = *(u32 *)e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 2); vb[2] = *(u32 *)e;
+  e = ext_5003d0_w6(*(u32 *)(src + 4), 3); sc = *(u32 *)e;
+  u32 W = *(u32 *)(self + 0x1c);
+  u32 L[3] = {0, 0, 0};
+  ((W6T1)*(u32 *)(*(u32 *)W + 0x84))(W, (u32)L);
+  u32 D[3];
+  ext_43e920_w6((u32)D, (u32)vb, (u32)L);
+  w7norm((u32)D);
+  ext_4e0d00_w6((u32)D, sc);
+  ext_43e960_w6c((u32)vb, (u32)D);
+  u32 R[4] = {0x3f800000, 0, 0, 0};
+  float ty = bitsf(vb[1]) + *(float *)0x67cd40;
+  u32 A34[3] = {vb[0], fbits(ty), vb[2]};
+  u32 A28[3] = {0, 0xc3fa0000, 0};
+  u32 gg = *(u32 *)0x70039c;
+  u32 ob = w6ld(gg + 0x1aa3);
+  u32 K = *(u32 *)(ob + 0x1c);
+  u8 hit = (u8)((W6A8)*(u32 *)(*(u32 *)K + 0x30))(K, (u32)R, 0, (u32)A34, (u32)A28, 1, 1, 1, 0);
+  if (hit) { vb[0] = R[1]; vb[1] = R[2]; vb[2] = R[3]; }
+  for (int i = 0; i < 3; i++) {
+    e = ext_5003d0_w6(*(u32 *)(src + 8), i);
+    u8 k = *(u8 *)(e + 4);
+    if (k == 0 || k == 2) {
+      *(u32 *)e = vb[i];
+      *(u8 *)(e + 4) = 2;
+    } else {
+      w7fatal(0xd5, 0x69c938);
+    }
+  }
+}
+PCREG(559a10, GUESS_559a10);
+
+// ---------------------------------------------------------------- 0x553a30
+extern "C" float FASTCALL ext_4e0870_w7(u32, u32) __asm__("ext_4e0870");
+static inline u32 w7ent(u32 src4, u32 i) {
+  u32 e = ext_5003d0_w6(src4, i);
+  u8 k = *(u8 *)(e + 4);
+  if (k != 0 && k != 2) w7fatal(0x104, 0x69c938);
+  return e;
+}
+
+// 0x553a30: stdcall(src) ret 4, void (/GS cookie not reproduced). Reads the float entries 0x5003d0(src[4], i) in the order 2, 1, 0, 5, 4, 3 (each type byte must be 0 or 2, else logged
+// (line 0x104, text 0x69c938) + fatal pointer, execution continues): A = (e0, e1, e2), B = (e3, e4, e5), d = 0x4e0870(&A, &B) (distance, x87 return stored as float); the entry
+// 0x5003d0(src[8], 0) gets the same type check, then its type byte is set to 2 and d is stored (also after a failed check).
+extern "C" void STDCALL GUESS_553a30(u32 src) {
+  u32 A[3], B[3];
+  u32 s4 = *(u32 *)(src + 4);
+  u32 e;
+  e = w7ent(s4, 2); A[2] = *(u32 *)e;
+  e = w7ent(s4, 1); A[1] = *(u32 *)e;
+  e = w7ent(s4, 0); A[0] = *(u32 *)e;
+  e = w7ent(s4, 5); B[2] = *(u32 *)e;
+  e = w7ent(s4, 4); B[1] = *(u32 *)e;
+  e = w7ent(s4, 3); B[0] = *(u32 *)e;
+  float d = ext_4e0870_w7((u32)A, (u32)B);
+  e = w7ent(*(u32 *)(src + 8), 0);
+  *(u8 *)(e + 4) = 2;
+  *(u32 *)e = fbits(d);
+}
+PCREG(553a30, GUESS_553a30);
+
+// ---------------------------------------------------------------- 0x556780
+extern "C" u32 THISCALL ext_4db7c0_w7(u32, u32) __asm__("ext_4db7c0");
+static inline u32 w7ent01(u32 src4, u32 i) {
+  u32 e = ext_5003d0_w6(src4, i);
+  u8 k = *(u8 *)(e + 4);
+  if (k != 0 && k != 1) w7fatal(0x104, 0x69c938);
+  return e;
+}
+static inline double w7absd(float f) {
+  double d = (double)f;
+  u64 b;
+  __builtin_memcpy(&b, &d, 8);
+  b &= *(u64 *)0x67cd50;
+  __builtin_memcpy(&d, &b, 8);
+  return d;
+}
+
+// 0x556780: thiscall(src) ret 4, void (/GS cookie not reproduced). Entry 0 (0x5003d0(src[4], 0)): kind 3 -> esi = dword, kind 4 -> esi = (*entry) vslot 0x34(), otherwise logged (line 0x111,
+// text 0x69c9b0) + fatal pointer, esi = 0. Entries 1 and 2 (kind 0 or 1, else logged line 0x104 / 0x69c938 + fatal): ID = dword 1, V = dword 2. ID == 0 ends. h = G[0x9b] vslot 0x114(esi, 0,
+// 0x6a57fc, 0x502) & 0xffff; N = G[0x9b] vslot 0x58(ID); when this[0x10] == 0: this[0x10] = G[0x9b][0xadc] vslot 0x25c(0x685f44, 0), 0 ends. 0x4db7c0(N[8], &E) fills the extent E (3 floats);
+// C = this[0x10][0x18] (0 ends) vslot 0x4c(&it); item = C vslot 0x5c(&it) (re-read each time); while it[0] != 0: M = G[0x9b] vslot 0x58(item); when bit 0x400 of M vslot 0x20()[8][0x3c] is
+// clear: M vslot 0x84(&D), N vslot 0x8c(&D) and when E.x > |D.x| and E.y > |D.y| and E.z > |D.z| (doubles; NaN fails) M vslot 0x128(h, &V, 0).
+extern "C" void THISCALL GUESS_556780(u32 self, u32 src) {
+  u32 s4 = *(u32 *)(src + 4);
+  u32 e = ext_5003d0_w6(s4, 0);
+  u32 esi;
+  u8 k = *(u8 *)(e + 4);
+  if (k == 3) esi = *(u32 *)e;
+  else if (k == 4) {
+    u32 o = *(u32 *)e;
+    esi = ((W6B)*(u32 *)(*(u32 *)o + 0x34))(o);
+  } else {
+    w7fatal(0x111, 0x69c9b0);
+    esi = 0;
+  }
+  e = w7ent01(*(u32 *)(src + 4), 1);
+  u32 id = *(u32 *)e;
+  e = w7ent01(*(u32 *)(src + 4), 2);
+  u32 vv = *(u32 *)e;
+  if (id == 0) return;
+  u32 H = w6ld(*(u32 *)0x70039c + 0x9b);
+  u32 h = ((W6T4)*(u32 *)(*(u32 *)H + 0x114))(H, esi, 0, 0x6a57fc, 0x502) & 0xffff;
+  H = w6ld(*(u32 *)0x70039c + 0x9b);
+  u32 N = ((W6T1)*(u32 *)(*(u32 *)H + 0x58))(H, id);
+  if (*(u32 *)(self + 0x10) == 0) {
+    u32 S = w6ld(w6ld(*(u32 *)0x70039c + 0x9b) + 0xadc);
+    u32 r = ((W6T2b)*(u32 *)(*(u32 *)S + 0x25c))(S, 0x685f44, 0);
+    *(u32 *)(self + 0x10) = r;
+    if (r == 0) return;
+  }
+  float E[3];
+  ext_4db7c0_w7(*(u32 *)(N + 8), (u32)E);
+  u32 C = *(u32 *)(*(u32 *)(self + 0x10) + 0x18);
+  if (C == 0) return;
+  u32 it[3];
+  ((W6T1)*(u32 *)(*(u32 *)C + 0x4c))(C, (u32)it);
+  C = *(u32 *)(*(u32 *)(self + 0x10) + 0x18);
+  u32 item = ((W6T1)*(u32 *)(*(u32 *)C + 0x5c))(C, (u32)it);
+  if (it[0] == 0) return;
+  do {
+    u32 H3 = w6ld(*(u32 *)0x70039c + 0x9b);
+    u32 M = ((W6T1)*(u32 *)(*(u32 *)H3 + 0x58))(H3, item);
+    u32 o2 = ((W6B)*(u32 *)(*(u32 *)M + 0x20))(M);
+    u32 fl = *(u32 *)(*(u32 *)(o2 + 8) + 0x3c);
+    if (!((fl >> 10) & 1)) {
+      float D[3] = {0, 0, 0};
+      ((W6T1)*(u32 *)(*(u32 *)M + 0x84))(M, (u32)D);
+      ((W6T1)*(u32 *)(*(u32 *)N + 0x8c))(N, (u32)D);
+      if ((double)E[0] > w7absd(D[0]) && (double)E[1] > w7absd(D[1]) && (double)E[2] > w7absd(D[2]))
+        ((W6T3)*(u32 *)(*(u32 *)M + 0x128))(M, h, (u32)&vv, 0);
+    }
+    C = *(u32 *)(*(u32 *)(self + 0x10) + 0x18);
+    item = ((W6T1)*(u32 *)(*(u32 *)C + 0x5c))(C, (u32)it);
+  } while (it[0] != 0);
+}
+PCREG(556780, GUESS_556780);
+
+// ---------------------------------------------------------------- 0x491b70
+typedef float(THISCALL *W8F3)(u32, u32, u32, u32);
+static inline void w8prog(u32 self, u32 n, u32 T) {
+  float ratio = (float)(s32)n / (float)(s32)T;
+  ((W8F3)*(u32 *)(*(u32 *)self + 0x90))(self, 5, 0, fbits(ratio));
+}
+
+// 0x491b70: thiscall(list L) ret 4, void. T = L vslot 0x14() * 2 + this[0x5d2d]; counter n = 0; progress call = this vslot 0x90(5, 0, (float)n / (float)T) (x87 result dropped).
+// S = G[0x9b][0xadc] vslot 0x154(). Pass A: L vslot 0x4c(&it); for item = L vslot 0x5c(&it) while it[0] != 0: progress(n++), X = G[0x9b] vslot 0x54(item); X and X[0x54] non-null
+// -> X[0x54] vslot 0x154(); item = L vslot 0x5c(&it). Pass B over the node list this[0x5d29] (next = node[0x28]): n++; nodes with byte [0x14] & 1: progress(n), obj = node[0x30], non-null:
+// when node[0x14] & 0x200 or bit 0x400 of obj[8][0x3c] is clear: when byte node[4] & 1 is clear node vslot 8(), node[4] |= 4 (skipping the rest unless bit 1 is now set), then node vslot 0x4c(),
+// node[4] |= 0x100, node vslot 0x54(node[0x30]); then obj vslot 0x1e8(). Pass C: same over nodes with [0x14] & 2 with slot 0xc and node[4] |= 8, no 0x1e8 call. S2 vslot 0x158(). Pass D: L
+// again; for each item: progress(n++), M = G[0x9b] vslot 0x54(item); M non-null: 0x4dc630(M, 0x800000, 0) and M[0x54] non-null -> M[0x54] vslot 0x158().
+extern "C" void THISCALL GUESS_491b70(u32 self, u32 L) {
+  u32 cnt = ((W6B)*(u32 *)(*(u32 *)L + 0x14))(L);
+  u32 T = cnt * 2 + w6ld(self + 0x5d2d);
+  u32 n = 0;
+  u32 S = w6ld(w6ld(*(u32 *)0x70039c + 0x9b) + 0xadc);
+  ((W6B)*(u32 *)(*(u32 *)S + 0x154))(S);
+  u32 it[3];
+  ((W6T1)*(u32 *)(*(u32 *)L + 0x4c))(L, (u32)it);
+  u32 item = ((W6T1)*(u32 *)(*(u32 *)L + 0x5c))(L, (u32)it);
+  if (it[0] != 0) {
+    do {
+      w8prog(self, n, T);
+      u32 H = w6ld(*(u32 *)0x70039c + 0x9b);
+      n++;
+      u32 X = ((W6T1)*(u32 *)(*(u32 *)H + 0x54))(H, item);
+      if (X != 0) {
+        u32 Y = *(u32 *)(X + 0x54);
+        if (Y != 0) ((W6B)*(u32 *)(*(u32 *)Y + 0x154))(Y);
+      }
+      item = ((W6T1)*(u32 *)(*(u32 *)L + 0x5c))(L, (u32)it);
+    } while (it[0] != 0);
+  }
+  u32 node = w6ld(self + 0x5d29);
+  while (node != 0) {
+    u32 next = *(u32 *)(node + 0x28);
+    n++;
+    if (*(u8 *)(node + 0x14) & 1) {
+      w8prog(self, n, T);
+      u32 obj = *(u32 *)(node + 0x30);
+      if (obj != 0) {
+        bool doit = (*(u32 *)(node + 0x14) & 0x200) || !((*(u32 *)(*(u32 *)(obj + 8) + 0x3c) >> 10) & 1);
+        if (doit) {
+          bool go = true;
+          if (!(*(u8 *)(node + 4) & 1)) {
+            ((W6B)*(u32 *)(*(u32 *)node + 8))(node);
+            *(u32 *)(node + 4) |= 4;
+            if (!(*(u8 *)(node + 4) & 1)) go = false;
+          }
+          if (go) {
+            ((W6B)*(u32 *)(*(u32 *)node + 0x4c))(node);
+            u32 v = *(u32 *)(node + 0x30);
+            *(u32 *)(node + 4) |= 0x100;
+            ((W6T1)*(u32 *)(*(u32 *)node + 0x54))(node, v);
+          }
+        }
+        ((W6B)*(u32 *)(*(u32 *)obj + 0x1e8))(obj);
+      }
+    }
+    node = next;
+  }
+  node = w6ld(self + 0x5d29);
+  while (node != 0) {
+    u32 next = *(u32 *)(node + 0x28);
+    n++;
+    if (*(u8 *)(node + 0x14) & 2) {
+      w8prog(self, n, T);
+      u32 obj = *(u32 *)(node + 0x30);
+      if (obj != 0) {
+        bool doit = (*(u32 *)(node + 0x14) & 0x200) || !((*(u32 *)(*(u32 *)(obj + 8) + 0x3c) >> 10) & 1);
+        if (doit) {
+          bool go = true;
+          if (!(*(u8 *)(node + 4) & 1)) {
+            ((W6B)*(u32 *)(*(u32 *)node + 0xc))(node);
+            *(u32 *)(node + 4) |= 8;
+            if (!(*(u8 *)(node + 4) & 1)) go = false;
+          }
+          if (go) {
+            ((W6B)*(u32 *)(*(u32 *)node + 0x4c))(node);
+            u32 v = *(u32 *)(node + 0x30);
+            *(u32 *)(node + 4) |= 0x100;
+            ((W6T1)*(u32 *)(*(u32 *)node + 0x54))(node, v);
+          }
+        }
+      }
+    }
+    node = next;
+  }
+  u32 S2 = w6ld(w6ld(*(u32 *)0x70039c + 0x9b) + 0xadc);
+  ((W6B)*(u32 *)(*(u32 *)S2 + 0x158))(S2);
+  ((W6T1)*(u32 *)(*(u32 *)L + 0x4c))(L, (u32)it);
+  item = ((W6T1)*(u32 *)(*(u32 *)L + 0x5c))(L, (u32)it);
+  if (it[0] != 0) {
+    do {
+      w8prog(self, n, T);
+      u32 H = w6ld(*(u32 *)0x70039c + 0x9b);
+      n++;
+      u32 M = ((W6T1)*(u32 *)(*(u32 *)H + 0x54))(H, item);
+      if (M != 0) {
+        ext_4dc630_w6(M, 0x800000, 0);
+        u32 Y = *(u32 *)(M + 0x54);
+        if (Y != 0) ((W6B)*(u32 *)(*(u32 *)Y + 0x158))(Y);
+      }
+      item = ((W6T1)*(u32 *)(*(u32 *)L + 0x5c))(L, (u32)it);
+    } while (it[0] != 0);
+  }
+}
+PCREG(491b70, GUESS_491b70);
+
+// ---------------------------------------------------------------- 0x554f20
+extern "C" void FASTCALL ext_451890_w8(u32, u32, float) __asm__("ext_451890");
+typedef u32(THISCALL *W8T2)(u32, u32, u32);
+
+// 0x554f20: stdcall(src) ret 4, void (/GS cookie not reproduced). ID = dword of entry 0x5003d0(src[4], 0) (kind 0 or 1, else logged line 0x104 / 0x69c938 + fatal). O = G[0x9b]
+// vslot 0x58(ID); a chain of vslot 0x20() calls (O, then O again and its result, then O again giving B) must be non-null at O, O's first result and the second-level result;
+// then B vslot 0x80(&M, &V) (M = 9 floats, V = 3 floats) and V += M[6..8] * 0xc289947b (as float), V += M[0..2] * 0xc1971893 (0x451890, real exe code). Any null
+// link instead gives V = 0 and M = identity (0x4de7a0). V.x/y/z and M[6], M[7], M[8] are stored into the entries 0x5003d0(src[8], 0..5) (kind 0 or 2, else the same log; the
+// type byte is set to 2 in every case).
+extern "C" void STDCALL GUESS_554f20(u32 src) {
+  u32 M[9], V[3];
+  u32 e = w7ent01(*(u32 *)(src + 4), 0);
+  u32 id = *(u32 *)e;
+  u32 H = w6ld(*(u32 *)0x70039c + 0x9b);
+  u32 O = ((W6T1)*(u32 *)(*(u32 *)H + 0x58))(H, id);
+  bool ok = false;
+  if (O != 0) {
+    u32 a = ((W6B)*(u32 *)(*(u32 *)O + 0x20))(O);
+    if (a != 0) {
+      u32 a2 = ((W6B)*(u32 *)(*(u32 *)O + 0x20))(O);
+      u32 b = ((W6B)*(u32 *)(*(u32 *)a2 + 0x20))(a2);
+      if (b != 0) {
+        u32 a4 = ((W6B)*(u32 *)(*(u32 *)O + 0x20))(O);
+        u32 B = ((W6B)*(u32 *)(*(u32 *)a4 + 0x20))(a4);
+        ((W8T2)*(u32 *)(*(u32 *)B + 0x80))(B, (u32)M, (u32)V);
+        ext_451890_w8((u32)V, (u32)&M[6], bitsf(0xc289947b));
+        ext_451890_w8((u32)V, (u32)M, bitsf(0xc1971893));
+        ok = true;
+      }
+    }
+  }
+  if (!ok) {
+    V[0] = V[1] = V[2] = 0;
+    ext_4de7a0_w6((u32)M);
+  }
+  u32 vals[6] = {V[0], V[1], V[2], M[6], M[7], M[8]};
+  for (int i = 0; i < 6; i++) {
+    e = w7ent(*(u32 *)(src + 8), i);
+    *(u8 *)(e + 4) = 2;
+    *(u32 *)e = vals[i];
+  }
+}
+PCREG(554f20, GUESS_554f20);
+
+// ---------------------------------------------------------------- 0x60bba0
+// 0x60bba0: thiscall(), void (own frame via __chkstk with 128 vertices of 36 bytes and 128 index words; /GS cookie not reproduced; vertex bytes the exe never writes are left undefined).
+// Only when G[0x1aa3][0x7a] is set (G = [0x70039c]). s = G[0x34] (c1 = [0x678858] when it is <= 0), v = (int)(c1 / s + [0x67a6ac]) is stored as a byte into the ring buffer
+// this[0x1205 + this[0x1285]], the index this[0x1285] advances and wraps at 0x80. Then this vslot 0xd8() / 0xdc() (ints, as floats w, h) -> vslot 0x134(0, 0, w, h); vslot
+// 0x14c(-1, 1, -1, 1, 1, 10, 0); vslot 0x28c(0, 0, 0); dev = this[0x1377], this[0x14f2] = 0, dev vslot 0xc8(0x2f, 0); texture stage setters 0x60ff30 / 0x60feb0 (fastcall(0, 1, 2, 0), and
+// (1, 1, 2, 1) when [0x724a08] > 1); cached render states 0x13 = 5, 0x14 = 6, 0x1b = 1, 0xe = 0, 0x17 = 8 (device [0x724a00] vslot 0xc8) on a cache miss. Index words i = i; four line
+// pieces i = 0..3 (x 0.75 -> 1.0, y = ((double)i + [0x680aa0]) as float * [0x67a288]^2 - c1, color 0xff3f3f4f) and one at y = -0.85 (color 0xff7f7f9f) are drawn with this vslot 0x25c(3, verts, 2,
+// idx, 2); finally 128 vertices (x from [0x684ce4] in steps of [0x6bd564], y from the ring bytes starting at this[0x1285] as byte * [0x67a288] / [0x67cd40] - c1, z 1.0, color 0xff7f3f3f)
+// are drawn with vslot 0x25c(3, verts, 0x80, idx, 0x80).
+extern "C" void THISCALL GUESS_60bba0(u32 self) {
+  u8 Vb[0x1200] __attribute__((aligned(16)));
+  u16 Ib[128];
+  u32 G = *(u32 *)0x70039c;
+  u32 K = w6ld(G + 0x1aa3);
+  if (*(u8 *)(K + 0x7a) == 0) return;
+  float g34 = bitsf(*(u32 *)(G + 0x34));
+  float c1 = *(float *)0x678858;
+  float s = (g34 <= 0.0f) ? c1 : g34;
+  float rr = c1 / s + *(float *)0x67a6ac;
+  s32 v = _mm_cvttss_si32(_mm_set_ss(rr));
+  u32 ri = w6ld(self + 0x1285);
+  *(u8 *)(self + ri + 0x1205) = (u8)v;
+  w6st(self + 0x1285, w6ld(self + 0x1285) + 1);
+  if (w6ld(self + 0x1285) == 0x80) w6st(self + 0x1285, 0);
+  s32 wi = ((W6I0)*(u32 *)(*(u32 *)self + 0xd8))(self);
+  float f1 = (float)wi;
+  s32 hi = ((W6I0)*(u32 *)(*(u32 *)self + 0xdc))(self);
+  float f2 = (float)hi;
+  ((W6T4)*(u32 *)(*(u32 *)self + 0x134))(self, 0, 0, fbits(f1), fbits(f2));
+  ((W6A7)*(u32 *)(*(u32 *)self + 0x14c))(self, 0xbf800000, 0x3f800000, 0xbf800000, 0x3f800000, 0x3f800000, 0x41200000, 0);
+  ((W6T3)*(u32 *)(*(u32 *)self + 0x28c))(self, 0, 0, 0);
+  u32 dev = w6ld(self + 0x1377);
+  w6st(self + 0x14f2, 0);
+  ((W6S3)*(u32 *)(*(u32 *)dev + 0xc8))(dev, 0x2f, 0);
+  ext_60ff30_w6(0, 1, 2, 0);
+  ext_60feb0_w6(0, 1, 2, 0);
+  if (*(u32 *)0x724a08 > 1) {
+    ext_60ff30_w6(1, 1, 2, 1);
+    ext_60feb0_w6(1, 1, 2, 1);
+  }
+  u32 d;
+  if (*(u32 *)0x724928 != 5) { d = *(u32 *)0x724a00; *(u32 *)0x724928 = 5; w6rs(d, 0x13, 5); }
+  if (*(u32 *)0x72492c != 6) { d = *(u32 *)0x724a00; *(u32 *)0x72492c = 6; w6rs(d, 0x14, 6); }
+  if (*(u32 *)0x724934 != 1) { d = *(u32 *)0x724a00; *(u32 *)0x724934 = 1; w6rs(d, 0x1b, 1); }
+  if (*(u32 *)0x72493c != 0) { d = *(u32 *)0x724a00; *(u32 *)0x72493c = 0; w6rs(d, 0xe, 0); }
+  if (*(u32 *)0x724968 != 8) { d = *(u32 *)0x724a00; *(u32 *)0x724968 = 8; w6rs(d, 0x17, 8); }
+  for (u32 i = 0; i < 128; i++) Ib[i] = (u16)i;
+  float s2 = *(float *)0x67a288;
+  u32 vb = (u32)Vb;
+  w6st(vb + 0, 0x3f400000);
+  w6st(vb + 8, 0x3f800000);
+  w6st(vb + 0x24, 0x3f800000);
+  w6st(vb + 0x2c, 0x3f800000);
+  w6st(vb + 0x18, 0xff3f3f4f);
+  w6st(vb + 0x3c, 0xff3f3f4f);
+  for (u32 i = 0; i < 4; i++) {
+    double dd = (double)(s32)i + *(double *)(0x680aa0 + (i >> 31) * 8);
+    float y = (float)dd;
+    y = y * s2;
+    y = y * s2;
+    y = y - *(float *)0x678858;
+    w6st(vb + 4, fbits(y));
+    w6st(vb + 0x28, fbits(y));
+    ((W6A5)*(u32 *)(*(u32 *)self + 0x25c))(self, 3, vb, 2, (u32)Ib, 2);
+  }
+  w6st(vb + 4, 0xbf59999a);
+  w6st(vb + 0x28, 0xbf59999a);
+  w6st(vb + 0x18, 0xff7f7f9f);
+  w6st(vb + 0x3c, 0xff7f7f9f);
+  ((W6A5)*(u32 *)(*(u32 *)self + 0x25c))(self, 3, vb, 2, (u32)Ib, 2);
+  u32 e = w6ld(self + 0x1285);
+  float x = *(float *)0x684ce4;
+  float step = *(float *)0x6bd564;
+  for (u32 i = 0; i < 128; i++) {
+    u32 nx = e + 1;
+    w6st(vb + 36 * i, fbits(x));
+    u8 b = *(u8 *)(self + e + 0x1205);
+    x = x + step;
+    w6st(vb + 36 * i + 8, 0x3f800000);
+    w6st(vb + 36 * i + 0x18, 0xff7f3f3f);
+    float y = ((float)b * s2) / *(float *)0x67cd40;
+    y = y - *(float *)0x678858;
+    w6st(vb + 36 * i + 4, fbits(y));
+    e = (nx != 0x80) ? nx : 0;
+  }
+  ((W6A5)*(u32 *)(*(u32 *)self + 0x25c))(self, 3, vb, 0x80, (u32)Ib, 0x80);
+}
+PCREG(60bba0, GUESS_60bba0);
+
+// ---------------------------------------------------------------- 0x60d1a0
+extern "C" u32 THISCALL ext_60bfc0_w9(u32, u32, u32) __asm__("ext_60bfc0");
+
+// 0x60d1a0: thiscall(P, n, B, color) ret 0x10, void. Debug line 0x259 (slot 0x178, text 0x6bd508) and, at the end, line 0x260 (slot 0x17c); halved color c = (color >> 1) & 0x7f7f7f7f.
+// Vertex buffer object A = this[0x13f2] locked by 0x60ee10(&cnt = n * 4, &voff) -> dst. n quads of 4 vertices (9 dwords each: x y z, 0, 0, 1.0, color, t, 0 and the second pair with
+// the 9th dword 1.0 for vertices 2 and 3): B != 0: P is an array of 0x18-byte records (a b c s t u) and B points to 12 fixed floats, vertex j position = (B[3j] * s + a, B[3j+1] * s + b,
+// B[3j+2] * s + c), t/u texture floats (t for vertices 0 and 3, u for 1 and 2); B == 0: P is an array of 0x38-byte records (12 position floats then t and u). Then A is unlocked
+// (vslot 0x30 when byte A[0x10] and A[0]), the stream/vertex-format caches 0x724970 / 0x7249b0 (dev vslot 0x14c) and 0x7249f8 (dev vslot 0x130) are refreshed and 0x60bfc0(n, voff) draws.
+extern "C" void THISCALL GUESS_60d1a0(u32 self, u32 P, u32 n, u32 B, u32 color) {
+  u32 edi = (color >> 1) & 0x7f7f7f7f;
+  w6dbg(*(u32 *)0x70039c, 0x259, 0x178, 0x6bd508);
+  u32 cnt = n * 4;
+  u32 voff = 0;
+  u32 A = w6ld(self + 0x13f2);
+  u32 dst = ext_60ee10_w7(A, (u32)&cnt, (u32)&voff);
+  if (B != 0) {
+    if (n != 0) {
+      u32 ecx = P + 0xc;
+      u32 e = dst;
+      for (u32 k = n; k != 0; k--) {
+        float s = bitsf(*(u32 *)ecx), t = bitsf(*(u32 *)(ecx + 4)), u = bitsf(*(u32 *)(ecx + 8));
+        float a = bitsf(*(u32 *)(ecx - 0xc)), b = bitsf(*(u32 *)(ecx - 8)), c = bitsf(*(u32 *)(ecx - 4));
+        float tt[4] = {t, u, u, t};
+        for (int j = 0; j < 4; j++) {
+          u32 vb = e + j * 36;
+          w6st(vb + 0, fbits(bitsf(*(u32 *)(B + 12 * j)) * s + a));
+          w6st(vb + 4, fbits(bitsf(*(u32 *)(B + 12 * j + 4)) * s + b));
+          w6st(vb + 8, fbits(bitsf(*(u32 *)(B + 12 * j + 8)) * s + c));
+          w6st(vb + 0xc, 0);
+          w6st(vb + 0x10, 0);
+          w6st(vb + 0x14, 0x3f800000);
+          w6st(vb + 0x18, edi);
+          w6st(vb + 0x1c, fbits(tt[j]));
+          w6st(vb + 0x20, (j == 0 || j == 1) ? 0 : 0x3f800000);
+        }
+        ecx += 0x18;
+        e += 0x90;
+      }
+    }
+  } else if (n != 0) {
+    u32 e = dst;
+    u32 R = P;
+    for (u32 k = n; k != 0; k--) {
+      u32 t = *(u32 *)(R + 0x30), u = *(u32 *)(R + 0x34);
+      u32 tt[4] = {t, u, u, t};
+      for (int j = 0; j < 4; j++) {
+        u32 vb = e + j * 36;
+        w6st(vb + 0, *(u32 *)(R + 12 * j));
+        w6st(vb + 4, *(u32 *)(R + 12 * j + 4));
+        w6st(vb + 8, *(u32 *)(R + 12 * j + 8));
+        w6st(vb + 0xc, 0);
+        w6st(vb + 0x10, 0);
+        w6st(vb + 0x14, 0x3f800000);
+        w6st(vb + 0x18, edi);
+        w6st(vb + 0x1c, tt[j]);
+        w6st(vb + 0x20, (j == 0 || j == 1) ? 0 : 0x3f800000);
+      }
+      R += 0x38;
+      e += 0x90;
+    }
+  }
+  A = w6ld(self + 0x13f2);
+  if (*(u8 *)(A + 0x10) != 0) {
+    u32 o = *(u32 *)A;
+    if (o != 0) {
+      ((W7S1)*(u32 *)(*(u32 *)o + 0x30))(o);
+      *(u8 *)(A + 0x10) = 0;
+    }
+  }
+  u32 ed = *(u32 *)w6ld(self + 0x13f2);
+  if (*(u32 *)0x724970 != ed || *(u32 *)0x7249b0 != 0x24) {
+    u32 d = *(u32 *)0x724a00;
+    *(u32 *)0x724970 = ed;
+    *(u32 *)0x7249b0 = 0x24;
+    ((W6S4)*(u32 *)(*(u32 *)d + 0x14c))(d, 0, ed, 0x24);
+  }
+  if (*(u32 *)0x7249f8 != 0x152) {
+    u32 d = *(u32 *)0x724a00;
+    *(u32 *)0x7249f8 = 0x152;
+    ((W6S2)*(u32 *)(*(u32 *)d + 0x130))(d, 0x152);
+  }
+  ext_60bfc0_w9(self, n, voff);
+  w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x6bd508);
+}
+PCREG(60d1a0, GUESS_60d1a0);
+
+// ---------------------------------------------------------------- 0x61b1e0
+extern "C" u32 THISCALL ext_65bc00_wa(u32, u32, u32, u32, u32, u32, u32) __asm__("ext_65bc00");
+extern "C" u32 FASTCALL ext_616e00_wa(u32, u32, u32, u32) __asm__("ext_616e00");
+
+// 0x61b1e0: thiscall(A, B, p1, p2) ret 0x10, returns al. this[0xc] == 0 or this[4][0x14] == 0: 0. Debug line 0x259 (slot 0x178, text 0x6bde70) and at the end line 0x260 (slot 0x17c).
+// X = A[0xc], Y = A[0x10][8]; Ob / Oe = unaligned dwords at B[0xb9a4] + 0x13fa / 0x13fe, whose [0x30] is created by their vslot 4(0, 0) when zero. src = G[0x1aa3][0x20] + Y[0x14],
+// nv = word Y[0xe], dstp = Oe[0x30] + this[0xc] * 4, mode = Y[0x50]. mode == 1: 0x65bc00(this, dstp, src, n, p1, p2, Y[0x20]) in chunks of 32 vertices (36 bytes each), result 0.
+// Otherwise result 1: t = 0 unless X[0x48] != 0, then (X[0x48] - (float)unsigned(Y[0x48])) / (float)unsigned(Y[0x4c]) (double table add for negative ints [0x680aa0]); i0 = (int)t,
+// i1 = min_unsigned(i0 + 1, mode - 1), f = t - (float)i0; the frames src + i0 * nv * 36 and src + i1 * nv * 36 are blended in chunks of 32 vertices into the static buffer 0x724ff8
+// (dst = (v1 - v0) * f + v0 for the floats at 0, 4, 8, 0xc, 0x10, 0x14, 0x1c, 0x20; the color at 0x18 via 0x616e00(&dst[6], v0 + 0x18, &v1[6], f), exe code), then
+// 0x65bc00(this, dstp, 0x724ff8, n, p1, p2, Y[0x20]); the frame pointers advance by n * 36 per chunk.
+extern "C" u8 THISCALL GUESS_61b1e0(u32 self, u32 A, u32 B, u32 p1, u32 p2) {
+  if (*(u32 *)(self + 0xc) == 0) return 0;
+  if (*(u32 *)(*(u32 *)(self + 4) + 0x14) == 0) return 0;
+  w6dbg(*(u32 *)0x70039c, 0x259, 0x178, 0x6bde70);
+  u32 X = *(u32 *)(A + 0xc);
+  u32 Y = *(u32 *)(*(u32 *)(A + 0x10) + 8);
+  u32 C = *(u32 *)(B + 0xb9a4);
+  u32 Ob = w6ld(C + 0x13fa), Oe = w6ld(C + 0x13fe);
+  if (*(u32 *)(Ob + 0x30) == 0) *(u32 *)(Ob + 0x30) = ((W6T2b)*(u32 *)(*(u32 *)Ob + 4))(Ob, 0, 0);
+  if (*(u32 *)(Oe + 0x30) == 0) *(u32 *)(Oe + 0x30) = ((W6T2b)*(u32 *)(*(u32 *)Oe + 4))(Oe, 0, 0);
+  u32 K = w6ld(*(u32 *)0x70039c + 0x1aa3);
+  u32 mode = *(u32 *)(Y + 0x50);
+  u32 src = *(u32 *)(K + 0x20) + *(u32 *)(Y + 0x14);
+  u32 nv = *(u16 *)(Y + 0xe);
+  u32 dstp = *(u32 *)(Oe + 0x30) + *(u32 *)(self + 0xc) * 4;
+  u8 ret = 0;
+  if (mode == 1) {
+    u32 e = nv, b = src;
+    if (e != 0) {
+      do {
+        u32 n = e > 0x20 ? 0x20 : e;
+        ext_65bc00_wa(self, dstp, b, n, p1, p2, *(u32 *)(Y + 0x20));
+        b += n * 36;
+        e -= n;
+      } while (e != 0);
+    }
+  } else {
+    ret = 1;
+    float t = 0.0f;
+    float xf = bitsf(*(u32 *)(X + 0x48));
+    if (!(xf == 0.0f)) {
+      u32 ya = *(u32 *)(Y + 0x48);
+      float a = (float)((double)(s32)ya + *(double *)(0x680aa0 + (ya >> 31) * 8));
+      t = xf - a;
+      u32 yb = *(u32 *)(Y + 0x4c);
+      float b = (float)((double)(s32)yb + *(double *)(0x680aa0 + (yb >> 31) * 8));
+      t = t / b;
+    }
+    s32 i0 = _mm_cvttss_si32(_mm_set_ss(t));
+    u32 i1 = (u32)i0 + 1;
+    u32 lim = mode - 1;
+    if (!(i1 <= lim)) i1 = lim;
+    float f = t - (float)i0;
+    u32 s0 = src + ((u32)i0 * nv) * 36;
+    u32 s1 = src + (i1 * nv) * 36;
+    u32 e = nv;
+    if (e != 0) {
+      do {
+        u32 n, rem;
+        if (e > 0x20) { n = 0x20; rem = e - 0x20; }
+        else { n = e; rem = 0; }
+        for (u32 k = 0; k < n; k++) {
+          u32 v0 = s0 + 36 * k, v1 = s1 + 36 * k, D = 0x724ff8 + 36 * k;
+          static const u32 offs[6] = {0, 4, 8, 0xc, 0x10, 0x14};
+          for (int q = 0; q < 6; q++) {
+            float a0 = bitsf(*(u32 *)(v0 + offs[q])), a1 = bitsf(*(u32 *)(v1 + offs[q]));
+            *(u32 *)(D + offs[q]) = fbits((a1 - a0) * f + a0);
+          }
+          ext_616e00_wa(D + 0x18, v0 + 0x18, v1 + 0x18, fbits(f));
+          {
+            float a0 = bitsf(*(u32 *)(v0 + 0x1c)), a1 = bitsf(*(u32 *)(v1 + 0x1c));
+            *(u32 *)(D + 0x1c) = fbits((a1 - a0) * f + a0);
+            a0 = bitsf(*(u32 *)(v0 + 0x20)); a1 = bitsf(*(u32 *)(v1 + 0x20));
+            *(u32 *)(D + 0x20) = fbits((a1 - a0) * f + a0);
+          }
+        }
+        ext_65bc00_wa(self, dstp, 0x724ff8, n, p1, p2, *(u32 *)(Y + 0x20));
+        s0 += n * 36;
+        s1 += n * 36;
+        e = rem;
+      } while (e != 0);
+    }
+  }
+  w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x6bde70);
+  return ret;
+}
+PCREG(61b1e0, GUESS_61b1e0);
+
+// ---------------------------------------------------------------- 0x6218c0
+extern "C" u32 ext_620180_wb(u32, u32, u32, u32) __asm__("ext_620180");
+extern "C" u32 ext_6206e0_wb(u32) __asm__("ext_6206e0");
+extern "C" u32 ext_61fd60_wb(u32, u32, u32) __asm__("ext_61fd60");
+extern "C" s32 ext_626e10_wb(s32, u32) __asm__("ext_626e10");
+typedef s32 (*WBTok)(u32, u32, u32, u32);
+typedef s32 (*WBVs2)(u32, u32);
+extern "C" u32 GUESS_6218c0(u32 parser, u32 enc, u32 start, u32 end);
+// append one byte to the growable buffer object buf ([+8] limit, [+0xc] cursor): grows with 0x6206e0 when full, false when that fails
+static bool w9put(u32 buf, u8 c) {
+  if (*(u32 *)(buf + 8) == *(u32 *)(buf + 0xc)) {
+    if (!ext_6206e0_wb(buf)) return false;
+  }
+  *(u8 *)*(u32 *)(buf + 0xc) = c;
+  *(u32 *)(buf + 0xc) += 1;
+  return true;
+}
+static inline u32 w9fail(u32 parser, u32 enc, u32 where, u32 code) {
+  if (enc == *(u32 *)(parser + 0x8c)) *(u32 *)(parser + 0x118) = where;
+  return code;
+}
+
+// 0x6218c0: cdecl(parser, enc, start, end) returns an error / status code (recursive). buf1 = parser + 0x1a8. Loops over the tokens returned by enc vslot 0x14(enc, ptr, end, &next); the
+// handler is chosen through the exe's own byte table 0x621be0[token + 4] and dword table 0x621bbc. Token -4 returns 0; -3 appends '\n' (next = enc[0x44] + ptr); -1: [0x118] = ptr and
+// returns 4 (when enc == parser[0x8c]); 0: [0x118] = next, returns 4; 6 and 9: 0x620180(buf1, enc, ptr, next) (0 returns 1); 7: appends '\n'; 10: r = enc vslot 0x2c(enc, ptr), 0x626e10(r, bytes)
+// gives n bytes that are appended (r < 0 or n == 0: [0x118] = ptr, returns 0xe); 28: entity reference: parser[0x270] == 0 and enc == parser[0x8c] -> [0x118] = ptr, returns 2; else the name is
+// collected into buf2 = parser + 0x22c with 0x620180(buf2, enc, ptr + enc[0x44], next - enc[0x44]) and a terminating 0 byte, looked up with 0x61fd60(parser + 0x1c8, name, 0); missing: 0xb, flag
+// byte [+0x1c] set: 0xc, [+0xc] set: 0xa; otherwise the entity text is parsed recursively with parser[0xe0] as the encoding (result != 0 returns it). Other tokens: [0x118] = ptr, returns 0x17.
+extern "C" u32 GUESS_6218c0(u32 parser, u32 enc, u32 start, u32 end) {
+  u32 next = 0;
+  u32 edi = start;
+  u32 buf1 = parser + 0x1a8;
+  s32 tok = ((WBTok)*(u32 *)(enc + 0x14))(enc, edi, end, (u32)&next);
+  u32 ev = (u32)tok + 4;
+  for (;;) {
+    if (ev > 0x20) break;
+    u32 h = *(u32 *)(0x621bbc + *(u8 *)(0x621be0 + ev) * 4);
+    switch (h) {
+      case 0x621b74: return 0;
+      case 0x621ad1: goto dflt;
+      case 0x621a25:
+        next = *(u32 *)(enc + 0x44) + edi;
+        if (!w9put(buf1, 0xa)) return 1;
+        break;
+      case 0x621b7d: return w9fail(parser, enc, edi, 4);
+      case 0x621b9a: return w9fail(parser, enc, next, 4);
+      case 0x621a00:
+        if (!ext_620180_wb(buf1, enc, edi, next)) return 1;
+        break;
+      case 0x621a30:
+        if (!w9put(buf1, 0xa)) return 1;
+        break;
+      case 0x621a50: {
+        s32 r = ((WBVs2)*(u32 *)(enc + 0x2c))(enc, edi);
+        if (r < 0) return w9fail(parser, enc, edi, 0xe);
+        u8 loc[8];
+        s32 n = ext_626e10_wb(r, (u32)loc);
+        if (n == 0) return w9fail(parser, enc, edi, 0xe);
+        for (s32 i = 0; i < n; i++)
+          if (!w9put(buf1, loc[i])) return 1;
+        break;
+      }
+      case 0x62190e: {
+        if (*(u32 *)(parser + 0x270) == 0 && enc == *(u32 *)(parser + 0x8c)) return w9fail(parser, enc, edi, 2);
+        u32 buf2 = parser + 0x22c;
+        u32 off = *(u32 *)(enc + 0x44);
+        if (!ext_620180_wb(buf2, enc, off + edi, next - off)) return 1;
+        if (*(u32 *)(parser + 0x238) == *(u32 *)(buf2 + 8)) {
+          if (!ext_6206e0_wb(buf2)) return 1;
+        }
+        *(u8 *)*(u32 *)(buf2 + 0xc) = 0;
+        *(u32 *)(buf2 + 0xc) += 1;
+        u32 nm = *(u32 *)(buf2 + 0x10);
+        if (nm == 0) return 1;
+        u32 ent = ext_61fd60_wb(parser + 0x1c8, nm, 0);
+        *(u32 *)(parser + 0x238) = *(u32 *)(parser + 0x23c);
+        if (ent == 0) return w9fail(parser, enc, edi, 0xb);
+        if (*(u8 *)(ent + 0x1c) != 0) return w9fail(parser, enc, edi, 0xc);
+        if (*(u32 *)(ent + 0xc) != 0) return w9fail(parser, enc, edi, 0xa);
+        *(u8 *)(ent + 0x1c) = 1;
+        u32 rr = GUESS_6218c0(parser, *(u32 *)(parser + 0xe0), *(u32 *)(ent + 4), *(u32 *)(ent + 8) + *(u32 *)(ent + 4));
+        *(u8 *)(ent + 0x1c) = 0;
+        if (rr != 0) return rr;
+        break;
+      }
+      default: goto dflt;
+    }
+    edi = next;
+    tok = ((WBTok)*(u32 *)(enc + 0x14))(enc, edi, end, (u32)&next);
+    ev = (u32)tok + 4;
+  }
+dflt:
+  return w9fail(parser, enc, edi, 0x17);
+}
+PCREG(6218c0, GUESS_6218c0);
+
+// ---------------------------------------------------------------- 0x62c270
+extern "C" u32 ext_628ee0_wc(s32) __asm__("ext_628ee0");
+typedef u32 (*WBConv)(u32, u32, u32, u32, u32);
+// the next character as ASCII through enc[0x3c] (utf8 converter into a one byte buffer): -1 when nothing was produced
+static inline s32 w10ch(u32 enc, u32 ptr, u32 end) {
+  u32 from = ptr;
+  s8 c = 0;
+  u32 to = (u32)&c;
+  ((WBConv)*(u32 *)(enc + 0x3c))(enc, (u32)&from, end, (u32)&to, (u32)&c + 1);
+  if (to == (u32)&c) return -1;
+  return (s32)c;
+}
+static inline bool w10sp(s32 c) { return c == 9 || c == 10 || c == 13 || c == 32; }
+
+// 0x62c270: cdecl(enc, ptr, end, namePtr, nameEnd, valPtr, nextTok) returns 1 / 0 (the xmltok pseudo attribute scanner for the XML declaration). ptr == end: *namePtr = 0, returns 1.
+// The first character must be white space (9, 10, 13, 32), else *nextTok = ptr, 0; white space is skipped (ptr += enc[0x44]); end of input there: *namePtr = 0, 1; *namePtr = ptr; the
+// name runs until '=' or white space (isSpace 0x628ee0) or a failed conversion (-1: *nextTok = ptr, 0); *nameEnd = ptr there; after white space the next char must be '='; an empty name
+// returns 0; white space is skipped after '='; the quote (0x22 or 0x27) opens the value: *valPtr = ptr after it, the value consists of [a-zA-Z0-9.-_] up to the same quote
+// (any other character, -1 included: *nextTok = ptr, 0), finally *nextTok = ptr after the closing quote and returns 1.
+extern "C" u32 GUESS_62c270(u32 enc, u32 ptr, u32 end, u32 namePtr, u32 nameEnd, u32 valPtr, u32 nextTok) {
+  u32 esi = ptr;
+
+  if (esi == end) { *(u32 *)namePtr = 0; return 1; }
+  s32 c = w10ch(enc, esi, end);
+  if (!w10sp(c)) { *(u32 *)nextTok = esi; return 0; }
+  do {
+    esi += *(u32 *)(enc + 0x44);
+    c = w10ch(enc, esi, end);
+  } while (w10sp(c));
+  if (esi == end) { *(u32 *)namePtr = 0; return 1; }
+  *(u32 *)namePtr = esi;
+  for (;;) {
+    c = w10ch(enc, esi, end);
+    if (c == -1) { *(u32 *)nextTok = esi; return 0; }
+    if (c == 0x3d) { *(u32 *)nameEnd = esi; break; }
+    if (ext_628ee0_wc(c) != 0) {
+      *(u32 *)nameEnd = esi;
+      do {
+        esi += *(u32 *)(enc + 0x44);
+        c = w10ch(enc, esi, end);
+      } while (w10sp(c));
+      if (c != 0x3d) { *(u32 *)nextTok = esi; return 0; }
+      break;
+    }
+    esi += *(u32 *)(enc + 0x44);
+  }
+  if (esi == *(u32 *)namePtr) { *(u32 *)nextTok = esi; return 0; }
+  esi += *(u32 *)(enc + 0x44);
+  c = w10ch(enc, esi, end);
+  while (w10sp(c)) {
+    esi += *(u32 *)(enc + 0x44);
+    c = w10ch(enc, esi, end);
+  }
+  if (c != 0x22 && c != 0x27) { *(u32 *)nextTok = esi; return 0; }
+
+  esi += *(u32 *)(enc + 0x44);
+  *(u32 *)valPtr = esi;
+  s32 open = (s32)(s8)c;
+  for (;;) {
+    c = w10ch(enc, esi, end);
+    if (c == open) {
+      *(u32 *)nextTok = esi + *(u32 *)(enc + 0x44);
+      return 1;
+    }
+    if (!((c >= 0x61 && c <= 0x7a) || (c >= 0x41 && c <= 0x5a) || (c >= 0x30 && c <= 0x39) || c == 0x2e || c == 0x2d || c == 0x5f)) {
+      *(u32 *)nextTok = esi;
+      return 0;
+    }
+    esi += *(u32 *)(enc + 0x44);
+  }
+
+}
+PCREG(62c270, GUESS_62c270);
+
+// ---------------------------------------------------------------- 0x62a8e0
+extern "C" s32 ext_62c060_wd(u32, u32, u32, u32) __asm__("ext_62c060");
+typedef s32 (*WDPred)(u32, u32);
+// handler address of an exe jump table: dword table dtab, byte index table btab (or direct dword table when btab == 0)
+static inline u32 w11h(u32 dtab, u32 btab, u32 i) { return *(u32 *)(dtab + (btab ? *(u8 *)(btab + i) : i) * 4); }
+
+// 0x62a8e0: cdecl(enc, ptr, end, nextTok) returns -1 (input ends), -2 (partial multi byte character), 0 (error, *nextTok = ptr), 1 (tag end '>': *nextTok = ptr + 1), 3 ("/>": *nextTok = ptr + 1) or the result
+// of 0x62c060 (character reference scanner); the xmltok attribute scanner of an element start tag. The byte types come from enc[0x4c + byte]; the five dispatch tables are the exe's own
+// (read at run time): name characters (types 22, 24 .. 27) advance, multi byte leads (5, 6, 7) check the length and call enc[0x14c / 0x150 / 0x154] (name start, [0x158 / 0x15c / 0x160] name
+// character, [0x164 / 0x168 / 0x16c] value character, non zero = invalid); one colon is allowed in a name; white space after the name and an '=' (type 14), quote (12 / 13) begins the value,
+// '&' calls 0x62c060, '<' and bad bytes fail; after the closing quote white space, '/>' or '>' or the next name start follow.
+extern "C" s32 GUESS_62a8e0(u32 enc, u32 ptr, u32 end, u32 nextTok) {
+  u32 esi = ptr, ebx = end;
+  u32 colon = 0, q = 0, outp = 0;
+  u32 eax, t;
+#define W11BT(p) ((u32) * (u8 *)(enc + 0x4c + *(u8 *)(p)))
+  if (esi == ebx) return -1;
+top:
+  eax = W11BT(esi) - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x62ac14, 0x62ac38, eax)) {
+    case 0x62a928:
+      if ((s32)(ebx - esi) < 2) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x14c))(enc, esi)) goto err;
+      esi += 2;
+      goto abad;
+    case 0x62a952:
+      if ((s32)(ebx - esi) < 3) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x150))(enc, esi)) goto err;
+      esi += 3;
+      goto abad;
+    case 0x62a978:
+      if ((s32)(ebx - esi) < 4) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x154))(enc, esi)) goto err;
+      esi += 4;
+      goto abad;
+    case 0x62a9c3: goto skips;
+    case 0x62a922:
+      esi++;
+      goto abad;
+    case 0x62a990:
+      if (colon) goto err;
+      esi++;
+      colon = 1;
+      if (esi == ebx) return -1;
+      eax = W11BT(esi) - 5;
+      if (eax > 0x18) goto err;
+      switch (w11h(0x62ac54, 0x62ac6c, eax)) {
+        case 0x62ab61:
+          if ((s32)(ebx - esi) < 2) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x158))(enc, esi)) goto err;
+          esi += 2;
+          goto abad;
+        case 0x62ab75:
+          if ((s32)(ebx - esi) < 3) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x15c))(enc, esi)) goto err;
+          esi += 3;
+          goto abad;
+        case 0x62ab89:
+          if ((s32)(ebx - esi) < 4) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x160))(enc, esi)) goto err;
+          esi += 4;
+          goto abad;
+        case 0x62a922:
+          esi++;
+          goto abad;
+        default: goto err;
+      }
+    case 0x62a9f6:
+      goto eq;
+    default: goto err;
+  }
+skips:
+  esi++;
+  if (esi == ebx) return -1;
+  t = W11BT(esi);
+  if (t == 0xe) goto eq;
+  if (t < 9) goto err;
+  if (t <= 0xa) goto skips;
+  if (t == 0x15) goto skips;
+  goto err;
+eq:
+  colon = 0;
+eqloop:
+  esi++;
+  if (esi == ebx) return -1;
+  t = W11BT(esi);
+  q = t;
+  if (t == 0xc || t == 0xd) goto valstart;
+  if (t < 9) goto err;
+  if (t <= 0xa) goto eqloop;
+  if (t == 0x15) goto eqloop;
+  goto err;
+valstart:
+  esi++;
+valnext:
+  outp = esi;
+valloop:
+  if (esi == ebx) return -1;
+  t = W11BT(esi);
+  if (t == q) goto closeq;
+  if (t > 8) goto valstart;
+  switch (w11h(0x62ac88, 0, t)) {
+    case 0x62aae5: {
+      s32 r = ext_62c060_wd(enc, esi + 1, ebx, (u32)&outp);
+      if (r <= 0) {
+        if (r != 0) return r;
+        *(u32 *)nextTok = outp;
+        return 0;
+      }
+      esi = outp;
+      goto valloop;
+    }
+    case 0x62aa3b: goto valstart;
+    case 0x62aa64:
+      if ((s32)(ebx - esi) < 2) return -2;
+      if (((WDPred)*(u32 *)(enc + 0x164))(enc, esi)) goto err;
+      esi += 2;
+      goto valnext;
+    case 0x62aa8e:
+      if ((s32)(ebx - esi) < 3) return -2;
+      if (((WDPred)*(u32 *)(enc + 0x168))(enc, esi)) goto err;
+      esi += 3;
+      goto valnext;
+    case 0x62aab8:
+      if ((s32)(ebx - esi) < 4) return -2;
+      if (((WDPred)*(u32 *)(enc + 0x16c))(enc, esi)) goto err;
+      esi += 4;
+      goto valnext;
+    default: goto err;
+  }
+closeq:
+  esi++;
+  if (esi == ebx) return -1;
+  eax = W11BT(esi) - 9;
+  if (eax > 0xc) goto err;
+  switch (w11h(0x62acac, 0x62acbc, eax)) {
+    case 0x62ab37: goto ws;
+    case 0x62ac00:
+      *(u32 *)nextTok = esi + 1;
+      return 1;
+    case 0x62abde: goto sol;
+    default: goto err;
+  }
+ws:
+  esi++;
+  if (esi == ebx) return -1;
+  eax = W11BT(esi) - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x62accc, 0x62acf0, eax)) {
+    case 0x62ab61:
+      if ((s32)(ebx - esi) < 2) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x158))(enc, esi)) goto err;
+      esi += 2;
+      goto abad;
+    case 0x62ab75:
+      if ((s32)(ebx - esi) < 3) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x15c))(enc, esi)) goto err;
+      esi += 3;
+      goto abad;
+    case 0x62ab89:
+      if ((s32)(ebx - esi) < 4) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x160))(enc, esi)) goto err;
+      esi += 4;
+      goto abad;
+    case 0x62ab37: goto ws;
+    case 0x62ac00:
+      *(u32 *)nextTok = esi + 1;
+      return 1;
+    case 0x62abde: goto sol;
+    case 0x62ab5e:
+      esi++;
+      goto abad;
+    default: goto err;
+  }
+sol:
+  esi++;
+  if (esi == ebx) return -1;
+  if (*(u8 *)esi != 0x3e) goto err;
+  *(u32 *)nextTok = esi + 1;
+  return 3;
+abad:
+  if (esi != ebx) goto top;
+  return -1;
+err:
+  *(u32 *)nextTok = esi;
+  return 0;
+#undef W11BT
+}
+PCREG(62a8e0, GUESS_62a8e0);
+
+// ---------------------------------------------------------------- 0x556030
+extern "C" void FASTCALL ext_4e0be0_we(u32, u32) __asm__("ext_4e0be0");
+
+// 0x556030: stdcall(src) ret 4, void (/GS cookie not reproduced). Reads the float entries 0x5003d0(src[4], i) in the order 2, 1, 0, 5, 4, 3 (each type byte must be 0 or 2, else logged (line 0x104,
+// text 0x69c938) + fatal pointer, execution continues): A = (e0, e1, e2), B = (e3, e4, e5) scaled by 0x3c8efa35 (4e0d00) and A rotated by the euler angles B (0x4e0be0, real exe code).
+// Then A.x, A.y, A.z are written into the entries 0x5003d0(src[8], 0 / 1 / 2) (same type check, the type byte becomes 2 in every case).
+extern "C" void STDCALL GUESS_556030(u32 src) {
+  u32 A[3], B[3];
+  u32 s4 = *(u32 *)(src + 4);
+  u32 e;
+  e = w7ent(s4, 2); A[2] = *(u32 *)e;
+  e = w7ent(s4, 1); A[1] = *(u32 *)e;
+  e = w7ent(s4, 0); A[0] = *(u32 *)e;
+  e = w7ent(s4, 5); B[2] = *(u32 *)e;
+  e = w7ent(s4, 4); B[1] = *(u32 *)e;
+  e = w7ent(s4, 3); B[0] = *(u32 *)e;
+  ext_4e0d00_w6((u32)B, 0x3c8efa35);
+  ext_4e0be0_we((u32)A, (u32)B);
+  u32 o8 = *(u32 *)(src + 8);
+  for (int i = 0; i < 3; i++) {
+    e = w7ent(o8, i);
+    *(u8 *)(e + 4) = 2;
+    *(u32 *)e = A[i];
+  }
+}
+PCREG(556030, GUESS_556030);
+
+// ---------------------------------------------------------------- 0x5563d0
+// 0x5563d0: thiscall(src) ret 4, void (/GS cookie not reproduced). Entries 0x5003d0(src[4], i): 0 -> edi (kind 3 dword, kind 4 object vslot 0x34(), else logged line 0x111 / text 0x69c9b0 + fatal and 0),
+// 1, 2, 3 and 5 (kind 0 or 1, else logged line 0x104 / 0x69c938 + fatal): V1, V2, ID and KEY dwords, 4 (kind 0 or 2): float R. lim = R * R; h = G[0x9b] vslot 0x114(edi, 0, 0x6a57fc, 0x48a) & 0xffff;
+// when this[0x10] is 0 it is set from G[0x9b][0xadc] vslot 0x25c(0x685f44, 0) (0 ends); L = this[0x10] vslot 0x100(0x6a5cf0) (0 ends); P = {0,0,0}; N = G[0x9b] vslot 0x58(ID) vslot 0x84(&P); then
+// for it = L vslot 0x84(&P, R, &cursor (-1), -1) while non-null: when it[0x54][4] == KEY: Q = {0,0,0}, it vslot 0x84(&Q), d = 0x4e0830(&P, &Q) (real exe code) and unless d > lim (NaN passes)
+// it vslot 0x128(h, {V2, V1}, 0).
+extern "C" void THISCALL GUESS_5563d0(u32 self, u32 src) {
+  u32 s4 = *(u32 *)(src + 4);
+  u32 e = ext_5003d0_w6(s4, 0);
+  u32 edi;
+  u8 k = *(u8 *)(e + 4);
+  if (k == 3) edi = *(u32 *)e;
+  else if (k == 4) {
+    u32 o = *(u32 *)e;
+    edi = ((W6B)*(u32 *)(*(u32 *)o + 0x34))(o);
+  } else {
+    w7fatal(0x111, 0x69c9b0);
+    edi = 0;
+  }
+  e = w7ent01(s4, 1); u32 v1 = *(u32 *)e;
+  e = w7ent01(s4, 2); u32 v2 = *(u32 *)e;
+  e = w7ent01(s4, 3); u32 id = *(u32 *)e;
+  e = w7ent(s4, 4); u32 rb = *(u32 *)e;
+  e = w7ent01(s4, 5); u32 key = *(u32 *)e;
+  float r = bitsf(rb);
+  float lim = r * r;
+  u32 H = w6ld(*(u32 *)0x70039c + 0x9b);
+  u32 h = ((W6T4)*(u32 *)(*(u32 *)H + 0x114))(H, edi, 0, 0x6a57fc, 0x48a) & 0xffff;
+  u32 pair[2] = {v2, v1};
+  if (*(u32 *)(self + 0x10) == 0) {
+    u32 S = w6ld(w6ld(*(u32 *)0x70039c + 0x9b) + 0xadc);
+    *(u32 *)(self + 0x10) = ((W6T2b)*(u32 *)(*(u32 *)S + 0x25c))(S, 0x685f44, 0);
+  }
+  u32 C = *(u32 *)(self + 0x10);
+  if (C == 0) return;
+  u32 L = ((W6T1)*(u32 *)(*(u32 *)C + 0x100))(C, 0x6a5cf0);
+  if (L == 0) return;
+  u32 P[3] = {0, 0, 0};
+  u32 H2 = w6ld(*(u32 *)0x70039c + 0x9b);
+  u32 N = ((W6T1)*(u32 *)(*(u32 *)H2 + 0x58))(H2, id);
+  ((W6T1)*(u32 *)(*(u32 *)N + 0x84))(N, (u32)P);
+  u32 cur = 0xffffffff;
+  u32 it = ((W6T4)*(u32 *)(*(u32 *)L + 0x84))(L, (u32)P, rb, (u32)&cur, 0xffffffff);
+  while (it != 0) {
+    if (*(u32 *)(*(u32 *)(it + 0x54) + 4) == key) {
+      u32 Q[3] = {0, 0, 0};
+      ((W6T1)*(u32 *)(*(u32 *)it + 0x84))(it, (u32)Q);
+      float d = ext_4e0830_w7((u32)P, (u32)Q);
+      if (!(d > lim)) ((W6T3)*(u32 *)(*(u32 *)it + 0x128))(it, h, (u32)pair, 0);
+    }
+    it = ((W6T4)*(u32 *)(*(u32 *)L + 0x84))(L, (u32)P, rb, (u32)&cur, 0xffffffff);
+  }
+}
+PCREG(5563d0, GUESS_5563d0);
+
+// ---------------------------------------------------------------- 0x627bb0
+extern "C" s32 ext_626f60_wf(u32, u32, u32, u32) __asm__("ext_626f60");
+extern "C" s32 ext_627420_wf(u32, u32, u32, u32) __asm__("ext_627420");
+extern "C" s32 ext_627520_wf(u32, u32, u32, u32) __asm__("ext_627520");
+extern "C" s32 ext_6277b0_wf(u32, u32, u32, u32) __asm__("ext_6277b0");
+extern "C" s32 ext_6281a0_wf(u32, u32, u32, u32) __asm__("ext_6281a0");
+extern "C" u32 ext_62c640_wf(u32, u32) __asm__("ext_62c640");
+// byte type of the big endian UTF-16 character at p: enc[0x4c + low byte] when the high byte is 0, else the exe's unicode_byte_type (0x62c640)
+static inline u32 w12bt(u32 enc, u32 p) {
+  u32 hi = *(u8 *)p, lo = *(u8 *)(p + 1);
+  return hi == 0 ? (u32) * (u8 *)(enc + 0x4c + lo) : ext_62c640_wf(hi, lo);
+}
+// naming bitmap test (page index table ptab, bitmaps 0x6bf720)
+static inline bool w12bm(u32 ptab, u32 hi, u32 lo) {
+  u32 idx = (lo >> 5) + *(u8 *)(ptab + hi) * 8;
+  return (*(u32 *)(0x6bf720 + idx * 4) >> (lo & 0x1f)) & 1;
+}
+
+// 0x627bb0: cdecl(enc, ptr, end, nextTok) returns -1 (input ends), -2 (partial character), 0 (error, *nextTok = ptr), 2 (start tag without attributes, *nextTok = ptr + 2), 4 ("/>"), or the result of
+// a scanner: the big endian UTF-16 scanLt (the text after '<'): '?' -> 0x6281a0, '!' then '[' -> 0x627420 / '-' -> 0x627520 (else error), '/' -> 0x6277b0, a name start (types 22, 24 or a two byte
+// character found in the name start bitmap) begins a tag name (type table 0x627f10: name characters, one colon (types 23, 25 .. 27, two byte characters in the name character bitmap), white space
+// -> 0x626f60 on the first attribute name start, '>' returns 2, '/' needs '>' and returns 4). Characters cost 2 bytes; the dispatch tables are the exe's own (read at run time).
+extern "C" s32 GUESS_627bb0(u32 enc, u32 ptr, u32 end, u32 nextTok) {
+  u32 edx = ptr, edi = end, colon = 0, eax, t;
+  if (edx == edi) return -1;
+  t = w12bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x627ed0, 0x627ef4, eax)) {
+    case 0x627d22: goto p2;
+    case 0x627d37: goto p3;
+    case 0x627d4c: goto p4;
+    case 0x627e98: return ext_6281a0_wf(enc, edx + 2, edi, nextTok);
+    case 0x627e38: goto excl;
+    case 0x627eae: return ext_6277b0_wf(enc, edx + 2, edi, nextTok);
+    case 0x627c35: goto nmstart;
+    case 0x627c06:
+      if (!w12bm(0x6bfc20, *(u8 *)edx, *(u8 *)(edx + 1))) goto err;
+      goto nmstart;
+    default: goto err;
+  }
+nmstart:
+  edx += 2;
+  colon = 0;
+  if (edx == edi) return -1;
+nameloop:
+  t = w12bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x627f10, 0x627f38, eax)) {
+    case 0x627d22: goto p2;
+    case 0x627d37: goto p3;
+    case 0x627d4c: goto p4;
+    case 0x627d61: goto ws;
+    case 0x627dfa: goto gt;
+    case 0x627e0c: goto sol;
+    case 0x627d0f: goto advance;
+    case 0x627c90:
+      if (colon) goto err;
+      edx += 2;
+      colon = 1;
+      if (edx == edi) return -1;
+      t = w12bt(enc, edx);
+      eax = t - 5;
+      if (eax > 0x18) goto err;
+      switch (w11h(0x627f54, 0x627f6c, eax)) {
+        case 0x627d22: goto p2;
+        case 0x627d37: goto p3;
+        case 0x627d4c: goto p4;
+        case 0x627d0f: goto advance;
+        case 0x627ce3:
+          if (!w12bm(0x6bfc20, *(u8 *)edx, *(u8 *)(edx + 1))) goto err;
+          goto advance;
+        default: goto err;
+      }
+    case 0x627c84:
+      if (!w12bm(0x6bfd20, *(u8 *)edx, *(u8 *)(edx + 1))) goto err;
+      goto advance;
+    default: goto err;
+  }
+advance:
+  edx += 2;
+  if (edx != edi) goto nameloop;
+  return -1;
+ws:
+  edx += 2;
+  if (edx == edi) return -1;
+wsloop:
+  t = w12bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x627f88, 0x627fac, eax)) {
+    case 0x627d22: goto p2;
+    case 0x627d37: goto p3;
+    case 0x627d4c: goto p4;
+    case 0x627da5:
+      edx += 2;
+      if (edx != edi) goto wsloop;
+      return -1;
+    case 0x627dfa: goto gt;
+    case 0x627e0c: goto sol;
+    case 0x627de1: return ext_626f60_wf(enc, edx + 2, edi, nextTok);
+    case 0x627db4:
+      if (!w12bm(0x6bfc20, *(u8 *)edx, *(u8 *)(edx + 1))) goto err;
+      return ext_626f60_wf(enc, edx + 2, edi, nextTok);
+    default: goto err;
+  }
+gt:
+  *(u32 *)nextTok = edx + 2;
+  return 2;
+sol:
+  edx += 2;
+  if (edx == edi) return -1;
+  if (*(u8 *)edx != 0) goto err;
+  if (*(u8 *)(edx + 1) != 0x3e) goto err;
+  *(u32 *)nextTok = edx + 2;
+  return 4;
+excl:
+  edx += 2;
+  if (edx == edi) return -1;
+  t = w12bt(enc, edx);
+  if (t == 0x14) return ext_627420_wf(enc, edx + 2, edi, nextTok);
+  if (t == 0x1b) return ext_627520_wf(enc, edx + 2, edi, nextTok);
+  goto err;
+p2:
+  if ((s32)(edi - edx) >= 2) goto err;
+  return -2;
+p3:
+  if ((s32)(edi - edx) >= 3) goto err;
+  return -2;
+p4:
+  if ((s32)(edi - edx) >= 4) goto err;
+  return -2;
+err:
+  *(u32 *)nextTok = edx;
+  return 0;
+}
+PCREG(627bb0, GUESS_627bb0);
+
+// ---------------------------------------------------------------- 0x629c10
+extern "C" s32 ext_628fc0_wg(u32, u32, u32, u32) __asm__("ext_628fc0");
+extern "C" s32 ext_629480_wg(u32, u32, u32, u32) __asm__("ext_629480");
+extern "C" s32 ext_629580_wg(u32, u32, u32, u32) __asm__("ext_629580");
+extern "C" s32 ext_629810_wg(u32, u32, u32, u32) __asm__("ext_629810");
+extern "C" s32 ext_62a200_wg(u32, u32, u32, u32) __asm__("ext_62a200");
+extern "C" u32 ext_62c640_wg(u32, u32) __asm__("ext_62c640");
+// byte type of the little endian UTF-16 character at p: enc[0x4c + low byte] when the high byte is 0, else the exe's unicode_byte_type (0x62c640)
+static inline u32 w13bt(u32 enc, u32 p) {
+  u32 hi = *(u8 *)(p + 1), lo = *(u8 *)p;
+  return hi == 0 ? (u32) * (u8 *)(enc + 0x4c + lo) : ext_62c640_wg(hi, lo);
+}
+// naming bitmap test (page index table ptab, bitmaps 0x6bf720)
+static inline bool w13bm(u32 ptab, u32 hi, u32 lo) {
+  u32 idx = (lo >> 5) + *(u8 *)(ptab + hi) * 8;
+  return (*(u32 *)(0x6bf720 + idx * 4) >> (lo & 0x1f)) & 1;
+}
+
+// 0x629c10: cdecl(enc, ptr, end, nextTok) returns -1 (input ends), -2 (partial character), 0 (error, *nextTok = ptr), 2 (start tag without attributes, *nextTok = ptr + 2), 4 ("/>"), or the result of
+// a scanner: the little endian UTF-16 scanLt (the text after '<'): '?' -> 0x6281a0, '!' then '[' -> 0x627420 / '-' -> 0x627520 (else error), '/' -> 0x6277b0, a name start (types 22, 24 or a two byte
+// character found in the name start bitmap) begins a tag name (type table 0x629f70: name characters, one colon (types 23, 25 .. 27, two byte characters in the name character bitmap), white space
+// -> 0x626f60 on the first attribute name start, '>' returns 2, '/' needs '>' and returns 4). Characters cost 2 bytes; the dispatch tables are the exe's own (read at run time).
+extern "C" s32 GUESS_629c10(u32 enc, u32 ptr, u32 end, u32 nextTok) {
+  u32 edx = ptr, edi = end, colon = 0, eax, t;
+  if (edx == edi) return -1;
+  t = w13bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x629f30, 0x629f54, eax)) {
+    case 0x629d82: goto p2;
+    case 0x629d97: goto p3;
+    case 0x629dac: goto p4;
+    case 0x629ef8: return ext_62a200_wg(enc, edx + 2, edi, nextTok);
+    case 0x629e98: goto excl;
+    case 0x629f0e: return ext_629810_wg(enc, edx + 2, edi, nextTok);
+    case 0x629c95: goto nmstart;
+    case 0x629c66:
+      if (!w13bm(0x6bfc20, *(u8 *)(edx + 1), *(u8 *)edx)) goto err;
+      goto nmstart;
+    default: goto err;
+  }
+nmstart:
+  edx += 2;
+  colon = 0;
+  if (edx == edi) return -1;
+nameloop:
+  t = w13bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x629f70, 0x629f98, eax)) {
+    case 0x629d82: goto p2;
+    case 0x629d97: goto p3;
+    case 0x629dac: goto p4;
+    case 0x629dc1: goto ws;
+    case 0x629e5a: goto gt;
+    case 0x629e6c: goto sol;
+    case 0x629d6f: goto advance;
+    case 0x629cf0:
+      if (colon) goto err;
+      edx += 2;
+      colon = 1;
+      if (edx == edi) return -1;
+      t = w13bt(enc, edx);
+      eax = t - 5;
+      if (eax > 0x18) goto err;
+      switch (w11h(0x629fb4, 0x629fcc, eax)) {
+        case 0x629d82: goto p2;
+        case 0x629d97: goto p3;
+        case 0x629dac: goto p4;
+        case 0x629d6f: goto advance;
+        case 0x629d43:
+          if (!w13bm(0x6bfc20, *(u8 *)(edx + 1), *(u8 *)edx)) goto err;
+          goto advance;
+        default: goto err;
+      }
+    case 0x629ce4:
+      if (!w13bm(0x6bfd20, *(u8 *)(edx + 1), *(u8 *)edx)) goto err;
+      goto advance;
+    default: goto err;
+  }
+advance:
+  edx += 2;
+  if (edx != edi) goto nameloop;
+  return -1;
+ws:
+  edx += 2;
+  if (edx == edi) return -1;
+wsloop:
+  t = w13bt(enc, edx);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x629fe8, 0x62a00c, eax)) {
+    case 0x629d82: goto p2;
+    case 0x629d97: goto p3;
+    case 0x629dac: goto p4;
+    case 0x629e05:
+      edx += 2;
+      if (edx != edi) goto wsloop;
+      return -1;
+    case 0x629e5a: goto gt;
+    case 0x629e6c: goto sol;
+    case 0x629e41: return ext_628fc0_wg(enc, edx + 2, edi, nextTok);
+    case 0x629e14:
+      if (!w13bm(0x6bfc20, *(u8 *)(edx + 1), *(u8 *)edx)) goto err;
+      return ext_628fc0_wg(enc, edx + 2, edi, nextTok);
+    default: goto err;
+  }
+gt:
+  *(u32 *)nextTok = edx + 2;
+  return 2;
+sol:
+  edx += 2;
+  if (edx == edi) return -1;
+  if (*(u8 *)(edx + 1) != 0) goto err;
+  if (*(u8 *)edx != 0x3e) goto err;
+  *(u32 *)nextTok = edx + 2;
+  return 4;
+excl:
+  edx += 2;
+  if (edx == edi) return -1;
+  t = w13bt(enc, edx);
+  if (t == 0x14) return ext_629480_wg(enc, edx + 2, edi, nextTok);
+  if (t == 0x1b) return ext_629580_wg(enc, edx + 2, edi, nextTok);
+  goto err;
+p2:
+  if ((s32)(edi - edx) >= 2) goto err;
+  return -2;
+p3:
+  if ((s32)(edi - edx) >= 3) goto err;
+  return -2;
+p4:
+  if ((s32)(edi - edx) >= 4) goto err;
+  return -2;
+err:
+  *(u32 *)nextTok = edx;
+  return 0;
+}
+PCREG(629c10, GUESS_629c10);
+
+// ---------------------------------------------------------------- 0x626f60
+extern "C" s32 ext_628630_wh(u32, u32, u32, u32) __asm__("ext_628630");
+// byte type inside attribute values: like w12bt but the high byte switch is the exe's own inlined copy (tables 0x627364 / 0x627374)
+static inline u32 w14vt(u32 enc, u32 p) {
+  u32 hi = *(u8 *)p, lo = *(u8 *)(p + 1);
+  if (hi == 0) return (u32) * (u8 *)(enc + 0x4c + lo);
+  u32 x = hi - 0xd8;
+  if (x > 0x27) return 0x1d;
+  switch (w11h(0x627364, 0x627374, x)) {
+    case 0x627109: return 7;
+    case 0x627110: return 8;
+    case 0x627117: return lo >= 0xfe ? 0 : 0x1d;
+    default: return 0x1d;
+  }
+}
+
+// 0x626f60: cdecl(enc, ptr, end, nextTok): the big endian UTF-16 attribute scanner (scanAtts) of an element start tag; returns -1 (input ends), -2 (partial character), 0 (error, *nextTok = ptr),
+// 1 ('>' after a value: *nextTok = ptr + 2), 3 ("/>": *nextTok = ptr + 2) or the result of 0x628630 (character reference scanner, negative returned, 0 -> *nextTok = outp). Names: name characters
+// (types 22, 24 .. 27 and two byte characters in the name character bitmap) advance, one colon (after it name starts: types 22, 24, bitmap 0x6bfc20), white space then '=' (type 14), quote (12 / 13),
+// the value runs to the same quote ('<', bad types fail, '&' calls 0x628630, 6 / 7 type leads need 3 / 4 bytes), after the closing quote white space, '>' or "/>" or the next name start. The dispatch
+// tables are the exe's own (read at run time).
+extern "C" s32 GUESS_626f60(u32 enc, u32 ptr, u32 end, u32 nextTok) {
+  u32 edi = ptr, esi = end, colon = 0, eax, t, q = 0, outp = 0;
+  if (edi == esi) return -1;
+top:
+  t = w12bt(enc, edi);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x6272f0, 0x627314, eax)) {
+    case 0x6272a9: goto p2;
+    case 0x6272c0: goto p3;
+    case 0x6272d7: goto p4;
+    case 0x627030: goto skips;
+    case 0x627078: goto eq;
+    case 0x62723f: goto advance;
+    case 0x626fcf:
+      if (colon) goto err;
+      edi += 2;
+      colon = 1;
+      if (edi == esi) return -1;
+      t = w12bt(enc, edi);
+      eax = t - 5;
+      if (eax > 0x18) goto err;
+      switch (w11h(0x627330, 0x627348, eax)) {
+        case 0x6272a9: goto p2;
+        case 0x6272c0: goto p3;
+        case 0x6272d7: goto p4;
+        case 0x62723f: goto advance;
+        case 0x62701e:
+          if (!w12bm(0x6bfc20, *(u8 *)edi, *(u8 *)(edi + 1))) goto err;
+          goto advance;
+        default: goto err;
+      }
+    case 0x626fbd:
+      if (!w12bm(0x6bfd20, *(u8 *)edi, *(u8 *)(edi + 1))) goto err;
+      goto advance;
+    default: goto err;
+  }
+advance:
+  edi += 2;
+  if (edi != esi) goto top;
+  return -1;
+skips:
+  edi += 2;
+  if (edi == esi) return -1;
+  t = w12bt(enc, edi);
+  if (t == 0xe) goto eq;
+  if ((s32)t < 9) goto err;
+  if ((s32)t <= 0xa) goto skips;
+  if (t == 0x15) goto skips;
+  goto err;
+eq:
+  colon = 0;
+eqloop:
+  edi += 2;
+  if (edi == esi) return -1;
+  q = w12bt(enc, edi);
+  if (q == 0xc || q == 0xd) goto valadv;
+  if ((s32)q < 9) goto err;
+  if ((s32)q <= 0xa) goto eqloop;
+  if (q == 0x15) goto eqloop;
+  goto err;
+valadv:
+  edi += 2;
+valset:
+  outp = edi;
+valloop:
+  if (edi == esi) return -1;
+  t = w14vt(enc, edi);
+  if (t == q) goto closeq;
+  if (t > 8) goto valadv;
+  switch (w11h(0x62739c, 0, t)) {
+    case 0x62716f: {
+      s32 r = ext_628630_wh(enc, edi + 2, esi, (u32)&outp);
+      if (r <= 0) {
+        if (r != 0) return r;
+        *(u32 *)nextTok = outp;
+        return 0;
+      }
+      edi = outp;
+      goto valloop;
+    }
+    case 0x6270cf: goto valadv;
+    case 0x627136:
+      if ((s32)(esi - edi) < 2) return -2;
+      goto valadv;
+    case 0x627145:
+      if ((s32)(esi - edi) < 3) return -2;
+      edi += 3;
+      goto valset;
+    case 0x62715a:
+      if ((s32)(esi - edi) < 4) return -2;
+      edi += 4;
+      goto valset;
+    default: goto err;
+  }
+closeq:
+  edi += 2;
+  if (edi == esi) return -1;
+  t = w12bt(enc, edi);
+  eax = t - 9;
+  if (eax > 0xc) goto err;
+  switch (w11h(0x6273c0, 0x6273d0, eax)) {
+    case 0x6271d6: goto ws;
+    case 0x627295:
+      *(u32 *)nextTok = edi + 2;
+      return 1;
+    case 0x627267: goto sol;
+    default: goto err;
+  }
+ws:
+  edi += 2;
+  if (edi == esi) return -1;
+  t = w12bt(enc, edi);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x6273e0, 0x627404, eax)) {
+    case 0x6272a9: goto p2;
+    case 0x6272c0: goto p3;
+    case 0x6272d7: goto p4;
+    case 0x6271d6: goto ws;
+    case 0x627295:
+      *(u32 *)nextTok = edi + 2;
+      return 1;
+    case 0x627267: goto sol;
+    case 0x62723f: goto advance;
+    case 0x627212:
+      if (!w12bm(0x6bfc20, *(u8 *)edi, *(u8 *)(edi + 1))) goto err;
+      goto advance;
+    default: goto err;
+  }
+sol:
+  edi += 2;
+  if (edi == esi) return -1;
+  if (*(u8 *)edi != 0) goto err;
+  if (*(u8 *)(edi + 1) != 0x3e) goto err;
+  *(u32 *)nextTok = edi + 2;
+  return 3;
+p2:
+  if ((s32)(esi - edi) >= 2) goto err;
+  return -2;
+p3:
+  if ((s32)(esi - edi) >= 3) goto err;
+  return -2;
+p4:
+  if ((s32)(esi - edi) >= 4) goto err;
+  return -2;
+err:
+  *(u32 *)nextTok = edi;
+  return 0;
+}
+PCREG(626f60, GUESS_626f60);
+
+// ---------------------------------------------------------------- 0x49be80
+extern "C" void FASTCALL ext_4419f0_wi(u32, u32) __asm__("ext_4419f0");
+extern "C" double VECTORCALL ext_634d7c_wi(double) __asm__("ext_634d7c");
+static inline bool w15eq(const u32 *a, const u32 *b) {
+  return bitsf(a[0]) == bitsf(b[0]) && bitsf(a[1]) == bitsf(b[1]) && bitsf(a[2]) == bitsf(b[2]);
+}
+
+// 0x49be80: fastcall(A = ECX, B = EDX, float r, float k, float s, list L) ret 0x10, returns AL. f8sq = r * r. Scale pair from s: when 1.0 > s (constant [0x678858], strict): q = (float)(C / (double)s)
+// (C = double [0x678610]), t = (float)sqrt((double)q) (CRT 0x634d7c), R1 = q / t, F = (float)(C / (double)t); otherwise t = (float)sqrt((double)s), R1 = (float)(C / (double)t), F = s / t. L null: 0.
+// Iterates L (vslot 0x4c(&it) then item = vslot 0x64(&it) until null): item floats at +4 .. +0x24 are three vertices V0 (+4), V1 (+0x10), V2 (+0x1c); an item with two equal vertices (V0 == V1, V1 == V2 or V2 == V0,
+// all components compared as floats) is skipped. Vertices are transformed in place by 0x4419f0(P, A) (3x3 matrix, x87 real exe code) and 0x441940(P, B) (+ B). For each transformed vertex P with
+// m = (P.y * P.y + P.x * P.x) + P.z * P.z: hit when r * r > m and (double)P.z > sqrt((double)((P.y * F)^2 + P.z^2)) * (double)k and (double)P.z > sqrt((double)((P.x * R1)^2 + P.z^2)) * (double)k;
+// any hit returns 1; no hit in any item returns 0.
+extern "C" u8 FASTCALL GUESS_49be80(u32 A, u32 B, float r, float k, float s, u32 L) {
+  float f8sq = r * r;
+  float c1 = *(float *)0x678858;
+  double C = *(double *)0x678610;
+  float R1, F;
+  if (c1 > s) {
+    float q = (float)(C / (double)s);
+    float t = (float)ext_634d7c_wi((double)q);
+    R1 = q / t;
+    F = (float)(C / (double)t);
+  } else {
+    float t = (float)ext_634d7c_wi((double)s);
+    R1 = (float)(C / (double)t);
+    F = s / t;
+  }
+  if (L == 0) return 0;
+  u32 st[4];
+  ((W6T1)*(u32 *)(*(u32 *)L + 0x4c))(L, (u32)st);
+  u32 item = ((W6T1)*(u32 *)(*(u32 *)L + 0x64))(L, (u32)st);
+  while (item != 0) {
+    u32 T[9];
+    for (int i = 0; i < 9; i++) T[i] = *(u32 *)(item + 4 + 4 * i);
+    if (!(w15eq(&T[0], &T[3]) || w15eq(&T[3], &T[6]) || w15eq(&T[6], &T[0]))) {
+      ext_4419f0_wi((u32)&T[0], A);
+      ext_4419f0_wi((u32)&T[3], A);
+      ext_4419f0_wi((u32)&T[6], A);
+      ext_441940_w6((u32)&T[0], B);
+      ext_441940_w6((u32)&T[3], B);
+      ext_441940_w6((u32)&T[6], B);
+      for (int v = 0; v < 3; v++) {
+        float px = bitsf(T[3 * v]), py = bitsf(T[3 * v + 1]), pz = bitsf(T[3 * v + 2]);
+        float m = (py * py + px * px) + pz * pz;
+        bool in = f8sq > m;
+        float pzz = pz * pz;
+        float ya = py * F;
+        float xa = px * R1;
+        float ya2 = ya * ya;
+        ya2 = ya2 + pzz;
+        double sa = ext_634d7c_wi((double)ya2) * (double)k;
+        bool a1 = (double)pz > sa;
+        float xa2 = xa * xa;
+        xa2 = xa2 + pzz;
+        double sb = ext_634d7c_wi((double)xa2) * (double)k;
+        bool a2 = (double)pz > sb;
+        if (in && (a1 && a2)) return 1;
+      }
+    }
+    item = ((W6T1)*(u32 *)(*(u32 *)L + 0x64))(L, (u32)st);
+  }
+  return 0;
+}
+PCREG(49be80, GUESS_49be80);
+
+// ---------------------------------------------------------------- 0x62b450
+extern "C" s32 ext_62a8e0_wj(u32, u32, u32, u32) __asm__("ext_62a8e0");
+extern "C" s32 ext_62ad10_wj(u32, u32, u32, u32) __asm__("ext_62ad10");
+extern "C" s32 ext_62add0_wj(u32, u32, u32, u32) __asm__("ext_62add0");
+extern "C" s32 ext_62b040_wj(u32, u32, u32, u32) __asm__("ext_62b040");
+extern "C" s32 ext_62bb10_wj(u32, u32, u32, u32) __asm__("ext_62bb10");
+
+// 0x62b450: cdecl(enc, ptr, end, nextTok): the single byte scanLt (the text after '<'); returns -1 (input ends), -2 (partial character), 0 (error, *nextTok = ptr), 2 (start tag without attributes:
+// *nextTok = ptr + 1), 4 ("/>": *nextTok = ptr + 1) or a scanner result: '?' (type 15) -> 0x62bb10, '!' then '[' (type 0x14) -> 0x62ad10 / '-' (0x1b) -> 0x62add0 (else error), '/' (17) -> 0x62b040,
+// a name start (types 22, 24 or a lead byte 5 / 6 / 7 accepted by enc[0x158 / 0x15c / 0x160]) begins the tag name; name loop (tables 0x62b844 / 0x62b86c: lead bytes via enc[0x14c / 0x150 / 0x154],
+// one colon, after it name starts via 0x158 / 0x15c / 0x160), white space then a name start calls 0x62a8e0 (attributes), '>' -> 2, '/' needs '>' -> 4. The remaining length drives the partial
+// character checks inside the name loop. The dispatch tables are the exe's own (read at run time).
+extern "C" s32 GUESS_62b450(u32 enc, u32 ptr, u32 end, u32 nextTok) {
+  u32 esi = ptr, rem = 0, colon = 0, eax, t, adv;
+#define W16BT(p) ((u32) * (u8 *)(enc + 0x4c + *(u8 *)(p)))
+  if (esi == end) return -1;
+  t = W16BT(esi);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x62b804, 0x62b828, eax)) {
+    case 0x62b48c: adv = 1; goto nmstart;
+    case 0x62b493:
+      if ((s32)(end - esi) < 2) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x158))(enc, esi)) goto err;
+      adv = 2;
+      goto nmstart;
+    case 0x62b4bc:
+      if ((s32)(end - esi) < 3) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x15c))(enc, esi)) goto err;
+      adv = 3;
+      goto nmstart;
+    case 0x62b4e5:
+      if ((s32)(end - esi) < 4) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x160))(enc, esi)) goto err;
+      adv = 4;
+      goto nmstart;
+    case 0x62b7ca: return ext_62bb10_wj(enc, esi + 1, end, nextTok);
+    case 0x62b782: goto excl;
+    case 0x62b7e0: return ext_62b040_wj(enc, esi + 1, end, nextTok);
+    default: goto err;
+  }
+nmstart:
+  esi += adv;
+  colon = 0;
+  if (esi == end) return -1;
+  rem = end - esi;
+nameloop:
+  t = W16BT(esi);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x62b844, 0x62b86c, eax)) {
+    case 0x62b542:
+      if ((s32)rem < 2) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x14c))(enc, esi)) goto err;
+      esi += 2;
+      rem -= 2;
+      goto aftername;
+    case 0x62b56b:
+      if ((s32)rem < 3) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x150))(enc, esi)) goto err;
+      esi += 3;
+      rem -= 3;
+      goto aftername;
+    case 0x62b594:
+      if ((s32)rem < 4) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x154))(enc, esi)) goto err;
+      esi += 4;
+      rem -= 4;
+      goto aftername;
+    case 0x62b646: goto ws;
+    case 0x62b74d: goto gt;
+    case 0x62b75f: goto sol;
+    case 0x62b5e2:
+      esi++;
+      rem--;
+      goto aftername;
+    case 0x62b5a5:
+      if (colon) goto err;
+      esi++;
+      colon = 1;
+      rem--;
+      if (esi == end) return -1;
+      t = W16BT(esi);
+      eax = t - 5;
+      if (eax > 0x18) goto err;
+      switch (w11h(0x62b888, 0x62b8a0, eax)) {
+        case 0x62b5e6:
+          if ((s32)rem < 2) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x158))(enc, esi)) goto err;
+          esi += 2;
+          rem -= 2;
+          goto aftername;
+        case 0x62b5fa:
+          if ((s32)rem < 3) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x15c))(enc, esi)) goto err;
+          esi += 3;
+          rem -= 3;
+          goto aftername;
+        case 0x62b60e:
+          if ((s32)rem < 4) return -2;
+          if (!((WDPred)*(u32 *)(enc + 0x160))(enc, esi)) goto err;
+          esi += 4;
+          rem -= 4;
+          goto aftername;
+        case 0x62b5e2:
+          esi++;
+          rem--;
+          goto aftername;
+        default: goto err;
+      }
+    default: goto err;
+  }
+aftername:
+  if (esi != end) goto nameloop;
+  return -1;
+ws:
+  esi++;
+  if (esi == end) return -1;
+wsloop:
+  t = W16BT(esi);
+  eax = t - 5;
+  if (eax > 0x18) goto err;
+  switch (w11h(0x62b8bc, 0x62b8e0, eax)) {
+    case 0x62b69b:
+      if ((s32)(end - esi) < 2) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x158))(enc, esi)) goto err;
+      return ext_62a8e0_wj(enc, esi + 2, end, nextTok);
+    case 0x62b6d3:
+      if ((s32)(end - esi) < 3) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x15c))(enc, esi)) goto err;
+      return ext_62a8e0_wj(enc, esi + 3, end, nextTok);
+    case 0x62b70b:
+      if ((s32)(end - esi) < 4) return -2;
+      if (!((WDPred)*(u32 *)(enc + 0x160))(enc, esi)) goto err;
+      return ext_62a8e0_wj(enc, esi + 4, end, nextTok);
+    case 0x62b674:
+      esi++;
+      if (esi != end) goto wsloop;
+      return -1;
+    case 0x62b681: return ext_62a8e0_wj(enc, esi + 1, end, nextTok);
+    case 0x62b74d: goto gt;
+    case 0x62b762: goto sol;
+    default: goto err;
+  }
+gt:
+  *(u32 *)nextTok = esi + 1;
+  return 2;
+sol:
+  esi++;
+  if (esi == end) return -1;
+  if (*(u8 *)esi != 0x3e) goto err;
+  *(u32 *)nextTok = esi + 1;
+  return 4;
+excl:
+  esi++;
+  if (esi == end) return -1;
+  t = W16BT(esi);
+  if ((t & 0xff) == 0x14) return ext_62ad10_wj(enc, esi + 1, end, nextTok);
+  if ((t & 0xff) == 0x1b) return ext_62add0_wj(enc, esi + 1, end, nextTok);
+  goto err;
+err:
+  *(u32 *)nextTok = esi;
+  return 0;
+#undef W16BT
+}
+PCREG(62b450, GUESS_62b450);
+
+// ---------------------------------------------------------------- 0x61c790
+typedef u32 (*WK3)(u32, u32, u32);
+extern "C" u32 GUESS_61c790(u32 parser, u32 enc, u32 isCdata, u32 ptr, u32 end, u32 buf);
+
+// 0x61c790: cdecl(parser, enc, isCdata, ptr, end, buf): appends a normalized attribute value to buf ([+8] limit, [+0xc] cursor, [+0x10] start); returns 0 (done / end token), 1 (out of memory),
+// 4 (input ends: parser[0x118] = ptr or next when enc == parser[0x8c]), 0xb, 0xc, 0xf, 0x10 (entity errors), 0xe (bad character), 0x17 (unexpected token) or a nested result. Tokens come from
+// enc[0x10](enc, ptr, end, &next), dispatched through the exe's own tables (0x61cb18 / 0x61cb3c, token + 4): -4 returns 0; -3 and 7 / 39 white space (-3 sets next = enc[0x44] + ptr first):
+// appends 0x20, except when !isCdata and buf is empty or already ends with 0x20; -1: [0x118] = ptr, 4; 0: [0x118] = next, 4; 6: 0x620180(buf, enc, ptr, next) (0 returns 1); 9 (entity or
+// character reference): al = enc[0x30](enc, ptr + m, next - m) appended when non-zero, else the name is collected into buf2 = parser + 0x244 with 0x620180 and a 0 byte, looked up with
+// 0x61fd60(parser + 0x158, name, 0): missing -> ignored when parser[0x1c0] == 0 else 0xb; busy flag [+0x1c] -> 0xc; [+0x18] -> 0xf; no text [+4] -> 0x10; otherwise the text is processed
+// recursively with enc = parser[0xe0]; 10: r = enc[0x2c](enc, ptr) (negative -> 0xe), 0x20 is squeezed when !isCdata, 0x626e10(r, bytes) gives n bytes appended (0 -> 0xe); any other token: 0x17.
+extern "C" u32 GUESS_61c790(u32 parser, u32 enc, u32 isCdata, u32 ptr, u32 end, u32 buf) {
+  u32 next = 0, edi = ptr;
+  s32 tok = ((WBTok)*(u32 *)(enc + 0x10))(enc, edi, end, (u32)&next);
+  u32 ev = (u32)tok + 4;
+  for (;;) {
+    if (ev > 0x2b) break;
+    u32 h = *(u32 *)(0x61cb18 + *(u8 *)(0x61cb3c + ev) * 4);
+    switch (h) {
+      case 0x61cad0: return 0;
+      case 0x61c881: next = *(u32 *)(enc + 0x44) + edi; goto nl;
+      case 0x61c88c: goto nl;
+      case 0x61caf9: return w9fail(parser, enc, edi, 4);
+      case 0x61cad9: return w9fail(parser, enc, next, 4);
+      case 0x61c85c:
+        if (!ext_620180_wb(buf, enc, edi, next)) return 1;
+        goto cont;
+      case 0x61c8cd: {
+        u32 m = *(u32 *)(enc + 0x44);
+        u8 al = (u8)((WK3) * (u32 *)(enc + 0x30))(enc, m + edi, next - m);
+        if (al) {
+          if (!w9put(buf, al)) return 1;
+          goto cont;
+        }
+        u32 buf2 = parser + 0x244;
+        if (!ext_620180_wb(buf2, enc, m + edi, next - m)) return 1;
+        if (*(u32 *)(parser + 0x250) == *(u32 *)(buf2 + 8)) {
+          if (!ext_6206e0_wb(buf2)) return 1;
+        }
+        *(u8 *)*(u32 *)(buf2 + 0xc) = 0;
+        *(u32 *)(buf2 + 0xc) += 1;
+        u32 nm = *(u32 *)(buf2 + 0x10);
+        if (nm == 0) return 1;
+        u32 ent = ext_61fd60_wb(parser + 0x158, nm, 0);
+        *(u32 *)(parser + 0x250) = *(u32 *)(parser + 0x254);
+        if (ent == 0) {
+          if (*(u32 *)(parser + 0x1c0) == 0) goto cont;
+          return w9fail(parser, enc, edi, 0xb);
+        }
+        if (*(u8 *)(ent + 0x1c) != 0) return w9fail(parser, enc, edi, 0xc);
+        if (*(u32 *)(ent + 0x18) != 0) return w9fail(parser, enc, edi, 0xf);
+        u32 start = *(u32 *)(ent + 4);
+        if (start == 0) return w9fail(parser, enc, edi, 0x10);
+        *(u8 *)(ent + 0x1c) = 1;
+        u32 rr = GUESS_61c790(parser, *(u32 *)(parser + 0xe0), isCdata, start, *(u32 *)(ent + 8) + start, buf);
+        *(u8 *)(ent + 0x1c) = 0;
+        if (rr != 0) return rr;
+        goto cont;
+      }
+      case 0x61c7d0: {
+        s32 r = ((WBVs2) * (u32 *)(enc + 0x2c))(enc, edi);
+        if (r < 0) return w9fail(parser, enc, edi, 0xe);
+        if (isCdata == 0 && r == 0x20) {
+          u32 cur = *(u32 *)(buf + 0xc);
+          if (cur - *(u32 *)(buf + 0x10) == 0) goto cont;
+          if (*(u8 *)(cur - 1) == (u8)r) goto cont;
+        }
+        u8 loc[8];
+        s32 n = ext_626e10_wb(r, (u32)loc);
+        if (n == 0) return w9fail(parser, enc, edi, 0xe);
+        for (s32 i = 0; i < n; i++)
+          if (!w9put(buf, loc[i])) return 1;
+        goto cont;
+      }
+      default: goto dflt;
+    }
+  nl:
+    if (isCdata == 0) {
+      u32 cur = *(u32 *)(buf + 0xc);
+      if (cur - *(u32 *)(buf + 0x10) == 0) goto cont;
+      if (*(u8 *)(cur - 1) == 0x20) goto cont;
+    }
+    if (!w9put(buf, 0x20)) return 1;
+  cont:
+    edi = next;
+    tok = ((WBTok)*(u32 *)(enc + 0x10))(enc, edi, end, (u32)&next);
+    ev = (u32)tok + 4;
+  }
+dflt:
+  return w9fail(parser, enc, edi, 0x17);
+}
+PCREG(61c790, GUESS_61c790);
+
+// ---------------------------------------------------------------- 0x61a060
+extern "C" void FASTCALL ext_4de440_wk(u32, u32, u32) __asm__("ext_4de440");
+extern "C" void FASTCALL ext_441970_wk(u32, u32, u32) __asm__("ext_441970");
+extern "C" void FASTCALL ext_443ef0_wk(u32, u32, u32, u32) __asm__("ext_443ef0");
+extern "C" void THISCALL ext_610070_wk(u32, u32) __asm__("ext_610070");
+extern "C" void THISCALL ext_6107e0_wk(u32, u32) __asm__("ext_6107e0");
+extern "C" void FASTCALL ext_61a6b0_wk(u32, u32) __asm__("ext_61a6b0");
+typedef u32(THISCALL *WKA9)(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);
+
+// 0x61a060: thiscall(A, R) ret 8, void (/GS cookie not reproduced). Nothing when this[0xc] == 0 or X = this[4] + 0xc has X[8] == 0. Debug line 0x259 (text 0x6bde94, slot 0x178) and at the end line 0x260
+// (slot 0x17c; skipped when the frustum test culls... no: the culled path still ends with it, only the early exits above skip it). S = this[4][4][8]; R vslot 0x29c(S[0x20], S[0x38], S[0x44]); T = A[0xc]
+// or D[0xc] or D[8] + 8 (D = A[0x14], later non-zero entries win) is the transform. When neither A[5] nor D[5] has bit 4: M (3x3) = 0x4de440(T, D20 + 0x10), v = 0x441970(T + 0x24, D20 + 0x10) +
+// (D20 + 0x34) (0x441940), D20 = D[0x20]; with P = S[0x10] + G[0x1aa3][0x20] and when [0x680a60] > P[0x10]: two plane tests with dots of (0x441970(P + 0x10 or 0x20, M) and 0x443ef0(v, ..., -P[0x1c] or
+// -P[0x2c])); the second plane test culls (-> end) when its dot is > 0, the first only gates it. Draw setup: 0x610070(R, S[0x54]), R vslot 0x28c(M, v, S[0x58]) (or (T, T + 0x24, S[0x58]) when bit 4);
+// 0x6107e0(R, A[0x28]); state 0x89 reset when R[0x115f] & 2 and [0x724948]; caches 0x7249f8, 0x724970 / 0x7249b0 (V = R[0x13fa] released through vslot 8 when [+0x30]) and 0x7249f0 / 0x7249f4
+// (Q = R[0x140a], vslot 8 when [+0x18]); 0x61a6b0(this[8], X); then by flags S[0x20]: both 0x1100: R vslot 0x29c(f & 0x80000 | 0x40002, 0, 0), vslot 0x2ac(1, S60, S68, S64, S6c, S70, S74, 0, 0),
+// 0x61a6b0, vslot 0x2ac(0 x 9); only 0x1000: vslot 0x29c, vslot 0x2a8(1, S60, S64, 0), 0x61a6b0, vslot 0x2a8(0 x 4); neither: end. Then R vslot 0x2a0(S[4], 0, 1) and 0x29c(0, 0, 0).
+extern "C" void THISCALL GUESS_61a060(u32 self, u32 A, u32 R) {
+  u32 G = *(u32 *)0x70039c;
+  if (*(u32 *)(self + 0xc) == 0) return;
+  u32 X = *(u32 *)(self + 4) + 0xc;
+  if (*(u32 *)(X + 8) == 0) return;
+  w6dbg(G, 0x259, 0x178, 0x6bde94);
+  u32 K20 = *(u32 *)(w6ld(*(u32 *)0x70039c + 0x1aa3) + 0x20);
+  u32 S = *(u32 *)(*(u32 *)(*(u32 *)(self + 4) + 4) + 8);
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, *(u32 *)(S + 0x20), *(u32 *)(S + 0x38), *(u32 *)(S + 0x44));
+  u32 f58 = *(u32 *)(S + 0x58);
+  u32 f54 = *(u32 *)(S + 0x54);
+  u32 D = *(u32 *)(A + 0x14);
+  u32 A28 = *(u32 *)(A + 0x28);
+  u32 D20 = *(u32 *)(D + 0x20);
+  u32 T = *(u32 *)(D + 8) + 8;
+  if (*(u32 *)(D + 0xc) != 0) T = *(u32 *)(D + 0xc);
+  if (*(u32 *)(A + 0xc) != 0) T = *(u32 *)(A + 0xc);
+  u32 M[12];
+  if (!(*(u8 *)(A + 5) & 4) && !(*(u8 *)(D + 5) & 4)) {
+    ext_4de440_wk((u32)M, T, D20 + 0x10);
+    ext_441970_wk((u32)&M[9], T + 0x24, D20 + 0x10);
+    ext_441940_w6((u32)&M[9], D20 + 0x34);
+    u32 P = *(u32 *)(S + 0x10) + K20;
+    if (*(float *)0x680a60 > bitsf(*(u32 *)(P + 0x10))) {
+      u32 W6[3], W5[3];
+      ext_441970_wk((u32)W6, P + 0x10, (u32)M);
+      ext_443ef0_wk((u32)W5, (u32)&M[9], (u32)W6, *(u32 *)(P + 0x1c) ^ *(u32 *)0x67af40);
+      float d1 = (bitsf(W5[0]) * bitsf(W6[0]) + bitsf(W5[1]) * bitsf(W6[1])) + bitsf(W5[2]) * bitsf(W6[2]);
+      if (d1 > 0.0f) {
+        ext_441970_wk((u32)W6, P + 0x20, (u32)M);
+        ext_443ef0_wk((u32)W5, (u32)&M[9], (u32)W6, *(u32 *)(P + 0x2c) ^ *(u32 *)0x67af40);
+        float d2 = (bitsf(W5[0]) * bitsf(W6[0]) + bitsf(W5[1]) * bitsf(W6[1])) + bitsf(W5[2]) * bitsf(W6[2]);
+        if (d2 > 0.0f) goto fin;
+      }
+    }
+    ext_610070_wk(R, f54);
+    ((W6T3)*(u32 *)(*(u32 *)R + 0x28c))(R, (u32)M, (u32)&M[9], f58);
+  } else {
+    ext_610070_wk(R, f54);
+    ((W6T3)*(u32 *)(*(u32 *)R + 0x28c))(R, T, T + 0x24, f58);
+  }
+  ext_6107e0_wk(R, A28);
+  if ((*(u8 *)(R + 0x115f) & 2) && *(u32 *)0x724948 != 0) {
+    u32 d = *(u32 *)0x724a00;
+    *(u32 *)0x724948 = 0;
+    w6rs(d, 0x89, 0);
+  }
+  {
+    u32 Q = w6ld(R + 0x140a);
+    u32 V = w6ld(R + 0x13fa);
+    if (*(u32 *)0x7249f8 != 0x152) {
+      u32 d = *(u32 *)0x724a00;
+      *(u32 *)0x7249f8 = 0x152;
+      ((W6S2)*(u32 *)(*(u32 *)d + 0x130))(d, 0x152);
+    }
+    if (*(u32 *)(V + 0x30) != 0) {
+      ((W6B)*(u32 *)(*(u32 *)V + 8))(V);
+      *(u32 *)(V + 0x30) = 0;
+    }
+    u32 ed = *(u32 *)(V + 0x2c);
+    if (*(u32 *)0x724970 != ed || *(u32 *)0x7249b0 != 0x24) {
+      u32 d = *(u32 *)0x724a00;
+      *(u32 *)0x724970 = ed;
+      *(u32 *)0x7249b0 = 0x24;
+      ((W6S4)*(u32 *)(*(u32 *)d + 0x14c))(d, 0, ed, 0x24);
+    }
+    u32 s0c = *(u32 *)(self + 0xc);
+    if (*(u32 *)(Q + 0x18) != 0) {
+      ((W6B)*(u32 *)(*(u32 *)Q + 8))(Q);
+      *(u32 *)(Q + 0x18) = 0;
+    }
+    u32 qe = *(u32 *)(Q + 0x14);
+    if (*(u32 *)0x7249f0 != qe || *(u32 *)0x7249f4 != s0c) {
+      *(u32 *)0x7249f4 = s0c;
+      u32 d = *(u32 *)0x724a00;
+      *(u32 *)0x7249f0 = qe;
+      ((W6S3)*(u32 *)(*(u32 *)d + 0x154))(d, qe, s0c);
+    }
+  }
+  ext_61a6b0_wk(*(u32 *)(self + 8), X);
+  {
+    u32 fl = *(u32 *)(S + 0x20);
+    if ((fl & 0x1100) == 0x1100) {
+      ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, (fl & 0x80000) | 0x40002, 0, 0);
+      ((WKA9)*(u32 *)(*(u32 *)R + 0x2ac))(R, 1, *(u32 *)(S + 0x60), *(u32 *)(S + 0x68), *(u32 *)(S + 0x64), *(u32 *)(S + 0x6c), *(u32 *)(S + 0x70), *(u32 *)(S + 0x74), 0, 0);
+      ext_61a6b0_wk(*(u32 *)(self + 8), X);
+      ((WKA9)*(u32 *)(*(u32 *)R + 0x2ac))(R, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    } else if (fl & 0x1000) {
+      ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, (fl & 0x80000) | 0x40002, 0, 0);
+      ((W6T4)*(u32 *)(*(u32 *)R + 0x2a8))(R, 1, *(u32 *)(S + 0x60), *(u32 *)(S + 0x64), 0);
+      ext_61a6b0_wk(*(u32 *)(self + 8), X);
+      ((W6T4)*(u32 *)(*(u32 *)R + 0x2a8))(R, 0, 0, 0, 0);
+    } else {
+      goto fin;
+    }
+  }
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x2a0))(R, *(u16 *)(S + 4), 0, 1);
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, 0, 0, 0);
+fin:
+  w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x6bde94);
+}
+PCREG(61a060, GUESS_61a060);
+
+// ---------------------------------------------------------------- 0x401f20
+extern "C" void *ext_634d28_wm(void *, const void *, u32) __asm__("ext_634d28");
+extern "C" u32 ext_634dee_wm(u32, u32) __asm__("ext_634dee");
+
+// 0x401f20: cdecl(v, vb) returns 0 or -1: libvorbis vorbis_synthesis_blockin (overlap add of a decoded block into the DSP state). v: [+4] vi (channels at vi[4], codec setup ci = vi[0x1c] with
+// blocksizes ci[0] / ci[4]), [+8] pcm channel pointer array, [+0x10] pcm_storage, [+0x14] pcm_current, [+0x18] pcm_returned, [+0x20] eofflag, [+0x24] lW, [+0x28] W, [+0x2c] nW, [+0x30] centerW,
+// [+0x38] granulepos (64 bit), [+0x40] sequence (64 bit), [+0x48 .. 0x64] four 64 bit bit counters; vb: [0] pcm array, [+0x1c] W, [+0x2c] eofflag, [+0x30] granulepos, [+0x38] sequence, [+0x58 ..
+// 0x64] four bit counters. Steps: when centerW > bs1 / 2 and pcm_returned > 0x2000 the buffers are shifted down (memmove CRT 0x634d28) by min(centerW - bs1 / 2, pcm_returned); lW = W, nW = -1, W = vb.W; the
+// counters are added (sign extended); a sequence that does not follow resets granulepos to -1; begin / end window positions from bs[lW] / 4 + bs[W] / 4 and the storage is grown with realloc (CRT
+// 0x634dee) to end + bs1 when end > pcm_storage; W other than 0 / 1 returns -1; the window overlaps are added (float add) and copied; pcm_returned = -1 is set to the new center; granulepos is
+// advanced / limited against the block's granulepos, centerW = new center, pcm_current = end, eofflag.
+extern "C" s32 GUESS_401f20(u32 v, u32 vb) {
+  u32 vi = *(u32 *)(v + 4);
+  u32 ci = *(u32 *)(vi + 0x1c);
+  s32 half = *(s32 *)(ci + 4) / 2;
+  s32 centerW = *(s32 *)(v + 0x30);
+  s32 edi = 0;
+  if (centerW > half && *(s32 *)(v + 0x18) > 0x2000) {
+    s32 ret = *(s32 *)(v + 0x18);
+    edi = centerW - half;
+    if (ret < edi) edi = ret;
+    *(s32 *)(v + 0x14) -= edi;
+    *(s32 *)(v + 0x30) -= edi;
+    *(s32 *)(v + 0x18) -= edi;
+    if (edi != 0) {
+      for (s32 j = 0; j < *(s32 *)(vi + 4); j++) {
+        u32 p = *(u32 *)(*(u32 *)(v + 8) + j * 4);
+        ext_634d28_wm((void *)p, (void *)(p + edi * 4), (u32)(*(s32 *)(v + 0x14) << 2));
+      }
+    }
+  }
+  *(u32 *)(v + 0x24) = *(u32 *)(v + 0x28);
+  *(u32 *)(v + 0x2c) = 0xffffffff;
+  *(u32 *)(v + 0x28) = *(u32 *)(vb + 0x1c);
+  {
+    static const u32 off[4] = {0x48, 0x50, 0x58, 0x60};
+    for (int q = 0; q < 4; q++) {
+      s32 add = *(s32 *)(vb + 0x58 + 4 * q);
+      u64 cur = (u64) * (u32 *)(v + off[q]) | ((u64) * (u32 *)(v + off[q] + 4) << 32);
+      cur += (u64)(long long)add;
+      *(u32 *)(v + off[q]) = (u32)cur;
+      *(u32 *)(v + off[q] + 4) = (u32)(cur >> 32);
+    }
+  }
+  {
+    u64 seq = (u64) * (u32 *)(v + 0x40) | ((u64) * (u32 *)(v + 0x44) << 32);
+    seq += 1;
+    u64 vseq = (u64) * (u32 *)(vb + 0x38) | ((u64) * (u32 *)(vb + 0x3c) << 32);
+    if (seq != vseq) {
+      *(u32 *)(v + 0x38) = 0xffffffff;
+      *(u32 *)(v + 0x3c) = 0xffffffff;
+    }
+    *(u32 *)(v + 0x40) = *(u32 *)(vb + 0x38);
+    *(u32 *)(v + 0x44) = *(u32 *)(vb + 0x3c);
+  }
+  s32 W = *(s32 *)(v + 0x28), lW = *(s32 *)(v + 0x24);
+  s32 bsW = *(s32 *)(ci + W * 4);
+  s32 bsl = *(s32 *)(ci + lW * 4);
+  s32 newc = bsl / 4 + bsW / 4 + *(s32 *)(v + 0x30);
+  s32 beginW = newc - bsW / 2;
+  s32 endW = beginW + bsW;
+  if (endW > *(s32 *)(v + 0x10)) {
+    *(s32 *)(v + 0x10) = *(s32 *)(ci + 4) + endW;
+    for (s32 j = 0; j < *(s32 *)(vi + 4); j++) {
+      u32 pa = *(u32 *)(v + 8) + j * 4;
+      *(u32 *)pa = ext_634dee_wm(*(u32 *)pa, (u32)(*(s32 *)(v + 0x10) << 2));
+    }
+  }
+  s32 start, n;
+  if (*(s32 *)(v + 0x28) == 0) {
+    start = 0;
+    n = *(s32 *)ci / 2;
+  } else if (*(s32 *)(v + 0x28) == 1) {
+    s32 bl = *(s32 *)(ci + *(s32 *)(v + 0x24) * 4);
+    start = *(s32 *)(ci + 4) / 4 - bl / 4;
+    n = bl / 2 + start;
+  } else {
+    return -1;
+  }
+  for (s32 j = 0; j < *(s32 *)(vi + 4); j++) {
+    u32 p = *(u32 *)(v + 8) + 0;
+    p = *(u32 *)(*(u32 *)(v + 8) + j * 4) + (u32)(beginW * 4);
+    u32 src = *(u32 *)(*(u32 *)vb + j * 4);
+    s32 i = start;
+    if (i < n) {
+      for (; i < n; i++) {
+        long double a = *(float *)(src + i * 4);
+        *(float *)(p + i * 4) = (float)(a + (long double)*(float *)(p + i * 4));
+      }
+    }
+    for (; i < bsW; i++) *(u32 *)(p + i * 4) = *(u32 *)(src + i * 4);
+  }
+  if (*(s32 *)(v + 0x18) == -1) *(s32 *)(v + 0x18) = newc;
+  {
+    u32 glo = *(u32 *)(v + 0x38), ghi = *(u32 *)(v + 0x3c);
+    u32 blo = *(u32 *)(vb + 0x30), bhi = *(u32 *)(vb + 0x34);
+    if ((glo & ghi) == 0xffffffff) {
+      if ((blo & bhi) == 0xffffffff) {
+        *(u32 *)(v + 0x38) = 0;
+        *(u32 *)(v + 0x3c) = 0;
+      } else {
+        *(u32 *)(v + 0x38) = blo;
+        *(u32 *)(v + 0x3c) = bhi;
+      }
+    } else {
+      s32 d = newc - *(s32 *)(v + 0x30);
+      u64 g = ((u64)ghi << 32) | glo;
+      g += (u64)(long long)d;
+      *(u32 *)(v + 0x38) = (u32)g;
+      *(u32 *)(v + 0x3c) = (u32)(g >> 32);
+      if ((blo & bhi) != 0xffffffff) {
+        glo = *(u32 *)(v + 0x38);
+        ghi = *(u32 *)(v + 0x3c);
+        if (!(glo == blo && ghi == bhi)) {
+          bool setvb;
+          if ((s32)ghi < (s32)bhi) setvb = true;
+          else if ((s32)ghi > (s32)bhi) setvb = false;
+          else setvb = glo <= blo;
+          if (!setvb) {
+            s32 diff = (s32)(glo - blo);
+            if (*(u32 *)(vb + 0x2c) != 0) {
+              newc -= diff;
+            } else if (*(u32 *)(vb + 0x38) == 1 && *(u32 *)(vb + 0x3c) == 0) {
+              s32 nr = *(s32 *)(v + 0x18) + diff;
+              *(s32 *)(v + 0x18) = nr;
+              if (nr > newc) *(s32 *)(v + 0x18) = newc;
+            }
+          }
+          *(u32 *)(v + 0x38) = blo;
+          *(u32 *)(v + 0x3c) = bhi;
+        }
+      }
+    }
+  }
+  *(s32 *)(v + 0x30) = newc;
+  *(s32 *)(v + 0x14) = endW;
+  if (*(u32 *)(vb + 0x2c) != 0) *(u32 *)(v + 0x20) = 1;
+  return 0;
+}
+PCREG(401f20, GUESS_401f20);
+
+// 0x659c40: thiscall(this) void. C = this + 0x1c8 is a container with vslots 4 (non-empty?), 0xc (begin: fills a 3-dword
+// iterator {cur, idx, node}), 0x10 (skip: advances cur in place). Items are walked as blocks {count, ?, next, ?, items at +0x10}.
+// Pass 1: for each item with flag [item+5] & 1: per-item setup via 0x658d30 / 0x658d00, item[0x38][0x54] vslot 0x24c / 0x2c0,
+// 0x63eb90 (float stored at +0x271 of the 0x24c result), the global [0x70039c][0x1aa3][0x18] vslot 0xc8, then 0x646430 / 0x645c30 / 0x647870.
+// Pass 2: items whose 0x24c result passes 0x646040: global vslots 0xc4 / 0xbc, 0x658d30 / 0x658d80 and (when [obj+0x11] != 1)
+// a loop over [obj+0x11]-1 pairs calling 0x4df1e0 / 0x4de480 / 0x4419f0 / 0x441940.
+// Pass 3: per item 0x647790 and 6 unaligned dword copies from the [0x54] object, then this vslot 0xc4(item). End: this vslot 0x10.
+extern "C" u32 THISCALL ext_658d30_wq(u32) __asm__("ext_658d30");
+extern "C" u32 THISCALL ext_658d00_wq(u32) __asm__("ext_658d00");
+extern "C" u32 THISCALL ext_658d80_wq(u32) __asm__("ext_658d80");
+extern "C" float THISCALL ext_63eb90_wq(u32, u32) __asm__("ext_63eb90");
+extern "C" u32 THISCALL ext_646430_wq(u32, u32, u32, u32, u32, u32, u32) __asm__("ext_646430");
+extern "C" u32 THISCALL ext_645c30_wq(u32, u32, u32, u32, u32) __asm__("ext_645c30");
+extern "C" u32 THISCALL ext_647870_wq(u32, u32, u32, u32) __asm__("ext_647870");
+extern "C" u32 THISCALL ext_647790_wq(u32, u32, u32, u32) __asm__("ext_647790");
+extern "C" u8 THISCALL ext_646040_wq(u32) __asm__("ext_646040");
+extern "C" void FASTCALL ext_4df1e0_wq(u32, u32) __asm__("ext_4df1e0");
+extern "C" void FASTCALL ext_4de480_wq(u32, u32) __asm__("ext_4de480");
+extern "C" void FASTCALL ext_4419f0_wq(u32, u32) __asm__("ext_4419f0");
+extern "C" void FASTCALL ext_441940_wq(u32, u32) __asm__("ext_441940");
+typedef u32(THISCALL *Q0)(u32);
+typedef void(THISCALL *Q0v)(u32);
+typedef u32 *(THISCALL *Q1p)(u32, u32 *);
+typedef void(THISCALL *Q1v)(u32, u32 *);
+typedef u32(THISCALL *Q1)(u32, u32);
+static inline u32 qvt(u32 o, u32 off) { return w6ld(w6ld(o) + off); }
+extern "C" void THISCALL GUESS_659c40(u32 self) {
+  u32 C = self + 0x1c8;
+  if (((Q0)qvt(C, 4))(C) != 0) {
+    u32 tmp[3];
+    u32 cur, idx, node;
+    auto begin = [&]() {
+      u32 *r = ((Q1p)qvt(C, 0xc))(C, tmp);
+      cur = r[0];
+      idx = r[1];
+      node = r[2];
+    };
+    auto advance = [&]() {
+      idx++;
+      if (idx == w6ld(node)) {
+        node = w6ld(node + 8);
+        if (node == 0) {
+          cur = 0;
+        } else {
+          idx = 0;
+          cur = node + 0x10;
+        }
+      } else {
+        cur += 4;
+      }
+    };
+    u8 loc[0xae0] __attribute__((aligned(4)));
+    begin();
+    while (cur != 0) {
+      u32 item = w6ld(cur);
+      if (!(*(u8 *)(item + 5) & 1)) {
+        ((Q1v)qvt(C, 0x10))(C, &cur);
+        continue;
+      }
+      u32 b04 = ext_658d30_wq(item);
+      u32 t = w6ld(item + 0x38);
+      u32 af4 = w6ld(t + 0x54);
+      u32 af8 = w6ld(t + 0x6c);
+      u32 b0c = ((Q0)qvt(af4, 0x24c))(af4);
+      float f = ext_63eb90_wq(self, *(u16 *)(w6ld(item + 0x38) + 0x5a));
+      w6st(b0c + 0x271, fbits(f));
+      u32 ebx = ((Q0)qvt(af4, 0x2c0))(af4);
+      u32 g = w6ld(w6ld(w6ld(0x70039c) + 0x1aa3) + 0x18);
+      u32 esi = ((Q1)qvt(g, 0xc8))(g, af8);
+      u32 edi = ext_658d00_wq(item);
+      ext_646430_wq(b0c, ebx, esi, edi, (u32)loc, af4, b04);
+      ext_645c30_wq(b0c, ebx, b04, edi, (u32)loc);
+      ext_647870_wq(b0c, b04, af8, af4);
+      advance();
+    }
+    begin();
+    while (cur != 0) {
+      u32 item = w6ld(cur);
+      u32 b04 = ((Q0)qvt(w6ld(w6ld(item + 0x38) + 0x54), 0x24c))(w6ld(w6ld(item + 0x38) + 0x54));
+      if (ext_646040_wq(b04) & 0xff) {
+        u32 esi = w6ld(w6ld(item + 0x38) + 0x6c);
+        u32 g = w6ld(w6ld(w6ld(0x70039c) + 0x1aa3) + 0x18);
+        u32 b0c = ((Q1)qvt(g, 0xc4))(g, esi);
+        g = w6ld(w6ld(w6ld(0x70039c) + 0x1aa3) + 0x18);
+        ((Q1)qvt(g, 0xbc))(g, esi);
+        u32 b00 = ext_658d30_wq(item);
+        ext_658d80_wq(item);
+        if (w6ld(b04 + 0x11) != 1) {
+          u32 p = b0c + 0xc;
+          u32 ebx = b00;
+          u32 k = 1;
+          do {
+            p += 0x30;
+            ebx += 0x30;
+            u32 e = w6ld(p) * 0x30 + b00;
+            ext_4df1e0_wq(ebx, ebx);
+            ext_4de480_wq(ebx, e);
+            ext_4419f0_wq(ebx + 0x24, e);
+            ext_441940_wq(ebx + 0x24, e + 0x24);
+            k++;
+          } while (k != w6ld(b04 + 0x11));
+        }
+      }
+      advance();
+    }
+    begin();
+    while (cur != 0) {
+      u32 item = w6ld(cur);
+      u32 t = w6ld(item + 0x38);
+      u32 esi = w6ld(t + 0x54);
+      u32 edi = ((Q0)qvt(esi, 0x24c))(esi);
+      u32 r658 = ext_658d30_wq(item);
+      ext_647790_wq(edi, r658, w6ld(w6ld(item + 0x38) + 0x6c), esi);
+      u32 s8 = w6ld(esi + 8);
+      w6st(edi + 0x281, w6ld(s8 + 0x30));
+      w6st(edi + 0x285, w6ld(s8 + 0x34));
+      w6st(edi + 0x289, w6ld(s8 + 0x38));
+      s8 = w6ld(esi + 8);
+      w6st(edi + 0x275, w6ld(s8 + 0x40));
+      w6st(edi + 0x279, w6ld(s8 + 0x44));
+      w6st(edi + 0x27d, w6ld(s8 + 0x48));
+      ((Q1)qvt(self, 0xc4))(self, item);
+      advance();
+    }
+  }
+  ((Q0v)qvt(self, 0x10))(self);
+}
+PCREG(659c40, GUESS_659c40);
+
+// 0x4d6520: thiscall(path, out, outPtr) ret 0xc, returns al (/GS cookie not reproduced; three 0x10004-byte stack buffers A, B, C). Looks up an archive
+// entry by name: A = path with '\\' turned into '/'; pat = strchr(path, '*') (IAT 0x676254). Without pattern, with this[0x6a] != 0 and outPtr == 0: M vslot 8(A, out, &loc)
+// (al) answers directly: false -> 0, true -> file F = this[0x15] vslot 0x10(this[0x11], loc, 0), return 1. Otherwise seeks as 0x4d6c60 (this[0x3c] ? this[0x40] : this[0x2e]) and scans the
+// central directory (vslots 0x1c eof, 0x14 read, 0xc tell): 0x02014b50 = entry (header 0x2a bytes; name length word +0x18 read into B; skipped when its position is in
+// the list this[0x66][0..this[0x62]); with pattern 0x4cc850(B, A) == 0 matches, without pattern strlen(A) == name length and strcmp (IAT 0x676414) == 0 match; a match
+// copies header bytes +2..+0x1c (26 bytes) to out and sets the flag); extra (word +0x1a) and comment (word +0x1c) are read into C; a matched entry stores its position
+// in *outPtr, seeks to dword(+0x26) + name length + 0x1e and calls M vslot 4(A, out, tell) when M != 0, returns 1. 0x06054b50 / 0x52756e65 end with 0; other signatures log
+// through [0x700390] vslot 0x20(0x696924, 0x2b5) / its result vslot 0x2c(0x6969dc) and the fatal pointer. Short reads call the fatal pointer.
+typedef int (*W6strcmp)(const char *, const char *);
+extern "C" u32 FASTCALL ext_4cc850_wr(u32, u32) __asm__("ext_4cc850");
+extern "C" u32 THISCALL GUESS_4d6520(u32 self, u32 path, u32 out, u32 outPtr) {
+  u8 A[0x10004] __attribute__((aligned(16)));
+  u8 B[0x10004] __attribute__((aligned(16)));
+  u8 C[0x10004] __attribute__((aligned(16)));
+  u32 n = 0;
+  while (*(u8 *)(path + n) != 0) {
+    u8 ch = *(u8 *)(path + n);
+    A[n] = (ch == 0x5c) ? 0x2f : ch;
+    n++;
+  }
+  A[n] = 0;
+  char *pat = (*(W6strchr *)0x676254)((const char *)path, 0x2a);
+  u32 M = w6ld(self + 0x6a);
+  if (pat == 0 && M != 0 && outPtr == 0) {
+    u32 loc = 0xffffffffu;
+    u8 ok = (u8)((W6T3)*(u32 *)(*(u32 *)M + 8))(M, (u32)A, out, (u32)&loc);
+    if (!ok) return 0;
+    u32 F = w6ld(self + 0x15);
+    ((W6T3)*(u32 *)(*(u32 *)F + 0x10))(F, w6ld(self + 0x11), loc, 0);
+    return 1;
+  }
+  u32 F = w6ld(self + 0x15);
+  u32 pos0 = (*(u32 *)(self + 0x3c) == 0) ? w6ld(self + 0x2e) : w6ld(self + 0x40);
+  ((W6T3)*(u32 *)(*(u32 *)F + 0x10))(F, w6ld(self + 0x11), pos0, 0);
+  F = w6ld(self + 0x15);
+  if (((W6T1)*(u32 *)(*(u32 *)F + 0x1c))(F, w6ld(self + 0x11)) != 0) return 0;
+  for (;;) {
+    u32 sig = 0;
+    F = w6ld(self + 0x15);
+    w6read(F, (u32)&sig, 4, w6ld(self + 0x11));
+    if (sig == 0x2014b50) {
+      u8 hdr[0x2a];
+      u8 found = 0;
+      F = w6ld(self + 0x15);
+      u32 esi = ((W6T1)*(u32 *)(*(u32 *)F + 0xc))(F, w6ld(self + 0x11));
+      F = w6ld(self + 0x15);
+      w6read(F, (u32)hdr, 0x2a, w6ld(self + 0x11));
+      u16 nameLen = *(u16 *)(hdr + 0x18);
+      if (nameLen != 0) {
+        F = w6ld(self + 0x15);
+        w6read(F, (u32)B, nameLen, w6ld(self + 0x11));
+        B[nameLen] = 0;
+        bool skip = false;
+        u32 cnt = w6ld(self + 0x62);
+        if (cnt != 0) {
+          u32 arr = w6ld(self + 0x66);
+          u32 i = 0;
+          do {
+            if (esi == *(u32 *)(arr + i * 4)) { skip = true; break; }
+            i++;
+          } while (i < cnt);
+        }
+        if (!skip) {
+          bool copy;
+          if (pat != 0) {
+            copy = ext_4cc850_wr((u32)B, (u32)A) == 0;
+          } else {
+            u32 len = 0;
+            while (A[len] != 0) len++;
+            if (len != nameLen) copy = false;
+            else copy = (*(W6strcmp *)0x676414)((const char *)B, (const char *)A) == 0;
+          }
+          if (copy) {
+            __builtin_memcpy((void *)out, hdr + 2, 26);
+            found = 1;
+          }
+        }
+      }
+      u16 extraLen = *(u16 *)(hdr + 0x1a);
+      if (extraLen != 0) {
+        F = w6ld(self + 0x15);
+        w6read(F, (u32)C, extraLen, w6ld(self + 0x11));
+      }
+      u16 commentLen = *(u16 *)(hdr + 0x1c);
+      if (commentLen != 0) {
+        F = w6ld(self + 0x15);
+        w6read(F, (u32)C, commentLen, w6ld(self + 0x11));
+      }
+      if (found) {
+        if (outPtr != 0) w6st(outPtr, esi);
+        u32 off;
+        __builtin_memcpy(&off, hdr + 0x26, 4);
+        F = w6ld(self + 0x15);
+        ((W6T3)*(u32 *)(*(u32 *)F + 0x10))(F, w6ld(self + 0x11), off + nameLen + 0x1e, 0);
+        u32 M2 = w6ld(self + 0x6a);
+        if (M2 != 0) {
+          F = w6ld(self + 0x15);
+          u32 tell = ((W6T1)*(u32 *)(*(u32 *)F + 0xc))(F, w6ld(self + 0x11));
+          ((W6T3)*(u32 *)(*(u32 *)M2 + 4))(M2, (u32)A, out, tell);
+        }
+        return 1;
+      }
+    } else if (sig == 0x6054b50 || sig == 0x52756e65) {
+      return 0;
+    } else {
+      u32 lg = *(u32 *)0x700390;
+      u32 x = ((W6T2b)*(u32 *)(*(u32 *)lg + 0x20))(lg, 0x696924, 0x2b5);
+      ((u32(*)(u32, u32))*(u32 *)(*(u32 *)x + 0x2c))(x, 0x6969dc);
+      w6fatal2();
+    }
+    F = w6ld(self + 0x15);
+    if (((W6T1)*(u32 *)(*(u32 *)F + 0x1c))(F, w6ld(self + 0x11)) != 0) return 0;
+  }
+}
+PCREG(4d6520, GUESS_4d6520);
+
+// 0x619770: thiscall(A, R) ret 8, void (/GS cookie not reproduced). Sibling of 0x61a060 without the debug lines. Nothing when this[0xc] == 0, X = this[4] + 0xc has X[8] == 0 or S[0x20] & 0x800000
+// (S = this[4][4][8]). R vslot 0x29c(S[0x20], S[0x38], S[0x44]); 0x6107e0(R, A[0x28]); T / M / v / frustum tests exactly as in 0x61a060 (draw through 0x610070(R, S[0x54]) and R vslot 0x28c(M, v, S[0x58])
+// or (T, T + 0x24, S[0x58])); 0x6107e0(R, A[0x28]) again; 0x61aaf0(0) when R[0x115f] & 2; cache [0x7249f8] against [0x724b30] (device vslot 0x130), V = R[0x13fa] / V2 = R[0x13fe]
+// released through vslot 8 when [+0x30] and registered with 0x61ab20(0, V[0x2c], 0x24) / 0x61ab20(1, V2[0x2c], 4); Q = R[0x140a] and 0x7249f0 / 0x7249f4 as in 0x61a060; 0x61a6b0(this[8], X); then the flag
+// dependent draw state calls (both 0x1100: vslots 0x29c, 0x2ac, 0x2ac; only 0x1000: 0x29c, 0x2a8, 0x2a8; neither: end) and R vslot 0x2a0(S[4], 0, 1), 0x29c(0, 0, 0).
+extern "C" void FASTCALL ext_61aaf0_wk(u32) __asm__("ext_61aaf0");
+extern "C" void FASTCALL ext_61ab20_wk(u32, u32, u32) __asm__("ext_61ab20");
+extern "C" void THISCALL GUESS_619770(u32 self, u32 A, u32 R) { /*q1*/
+  if (*(u32 *)(self + 0xc) == 0) return; /*q2*/
+  u32 X = *(u32 *)(self + 4) + 0xc; /*q3*/
+  if (*(u32 *)(X + 8) == 0) return; /*q4*/
+  u32 K20 = *(u32 *)(w6ld(*(u32 *)0x70039c + 0x1aa3) + 0x20); /*q5*/
+  u32 S = *(u32 *)(*(u32 *)(*(u32 *)(self + 4) + 4) + 8); /*q6*/
+  if (*(u32 *)(S + 0x20) & 0x800000) return; /*q7*/
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, *(u32 *)(S + 0x20), *(u32 *)(S + 0x38), *(u32 *)(S + 0x44)); /*q8*/
+  u32 f58 = *(u32 *)(S + 0x58); /*q9*/
+  u32 f54 = *(u32 *)(S + 0x54); /*q10*/
+  u32 A28 = *(u32 *)(A + 0x28); /*q11*/
+  ext_6107e0_wk(R, A28); /*q12*/
+  u32 D = *(u32 *)(A + 0x14); /*q13*/
+  u32 D20 = *(u32 *)(D + 0x20); /*q14*/
+  u32 T = *(u32 *)(D + 8) + 8; /*q15*/
+  if (*(u32 *)(D + 0xc) != 0) T = *(u32 *)(D + 0xc); /*q16*/
+  if (*(u32 *)(A + 0xc) != 0) T = *(u32 *)(A + 0xc); /*q17*/
+  u32 M[12]; /*q18*/
+  if (!(*(u8 *)(A + 5) & 4) && !(*(u8 *)(D + 5) & 4)) { /*q19*/
+    ext_4de440_wk((u32)M, T, D20 + 0x10); /*q20*/
+    ext_441970_wk((u32)&M[9], T + 0x24, D20 + 0x10); /*q21*/
+    ext_441940_w6((u32)&M[9], D20 + 0x34); /*q22*/
+    u32 P = *(u32 *)(S + 0x10) + K20; /*q23*/
+    if (*(float *)0x680a60 > bitsf(*(u32 *)(P + 0x10))) { /*q24*/
+      u32 W6[3], W5[3]; /*q25*/
+      ext_441970_wk((u32)W6, P + 0x10, (u32)M); /*q26*/
+      ext_443ef0_wk((u32)W5, (u32)&M[9], (u32)W6, *(u32 *)(P + 0x1c) ^ *(u32 *)0x67af40); /*q27*/
+      float d1 = (bitsf(W5[0]) * bitsf(W6[0]) + bitsf(W5[1]) * bitsf(W6[1])) + bitsf(W5[2]) * bitsf(W6[2]); /*q28*/
+      if (d1 > 0.0f) { /*q29*/
+        ext_441970_wk((u32)W6, P + 0x20, (u32)M); /*q30*/
+        ext_443ef0_wk((u32)W5, (u32)&M[9], (u32)W6, *(u32 *)(P + 0x2c) ^ *(u32 *)0x67af40); /*q31*/
+        float d2 = (bitsf(W5[0]) * bitsf(W6[0]) + bitsf(W5[1]) * bitsf(W6[1])) + bitsf(W5[2]) * bitsf(W6[2]); /*q32*/
+        if (d2 > 0.0f) return; /*q33*/
+      }
+    }
+    ext_610070_wk(R, f54); /*q34*/
+    ((W6T3)*(u32 *)(*(u32 *)R + 0x28c))(R, (u32)M, (u32)&M[9], f58); /*q35*/
+  } else { /*q36*/
+    ext_610070_wk(R, f54); /*q37*/
+    ((W6T3)*(u32 *)(*(u32 *)R + 0x28c))(R, T, T + 0x24, f58); /*q38*/
+  }
+  ext_6107e0_wk(R, A28); /*q39*/
+  if (*(u8 *)(R + 0x115f) & 2) ext_61aaf0_wk(0); /*q40*/
+  { /*q41*/
+    u32 Q = w6ld(R + 0x140a); /*q42*/
+    u32 V = w6ld(R + 0x13fa); /*q43*/
+    u32 V2 = w6ld(R + 0x13fe); /*q44*/
+    u32 ev = *(u32 *)0x724b30; /*q45*/
+    if (*(u32 *)0x7249f8 != ev) { /*q46*/
+      u32 d = *(u32 *)0x724a00; /*q47*/
+      *(u32 *)0x7249f8 = ev; /*q48*/
+      ((W6S2)*(u32 *)(*(u32 *)d + 0x130))(d, ev); /*q49*/
+    }
+    if (*(u32 *)(V + 0x30) != 0) { /*q50*/
+      ((W6B)*(u32 *)(*(u32 *)V + 8))(V); /*q51*/
+      *(u32 *)(V + 0x30) = 0; /*q52*/
+    }
+    ext_61ab20_wk(0, *(u32 *)(V + 0x2c), 0x24); /*q53*/
+    if (*(u32 *)(V2 + 0x30) != 0) { /*q54*/
+      ((W6B)*(u32 *)(*(u32 *)V2 + 8))(V2); /*q55*/
+      *(u32 *)(V2 + 0x30) = 0; /*q56*/
+    }
+    ext_61ab20_wk(1, *(u32 *)(V2 + 0x2c), 4); /*q57*/
+    u32 s0c = *(u32 *)(self + 0xc); /*q58*/
+    if (*(u32 *)(Q + 0x18) != 0) { /*q59*/
+      ((W6B)*(u32 *)(*(u32 *)Q + 8))(Q); /*q60*/
+      *(u32 *)(Q + 0x18) = 0; /*q61*/
+    }
+    u32 qe = *(u32 *)(Q + 0x14); /*q62*/
+    if (*(u32 *)0x7249f0 != qe || *(u32 *)0x7249f4 != s0c) { /*q63*/
+      *(u32 *)0x7249f4 = s0c; /*q64*/
+      u32 d = *(u32 *)0x724a00; /*q65*/
+      *(u32 *)0x7249f0 = qe; /*q66*/
+      ((W6S3)*(u32 *)(*(u32 *)d + 0x154))(d, qe, s0c); /*q67*/
+    }
+  }
+  ext_61a6b0_wk(*(u32 *)(self + 8), X); /*q68*/
+  { /*q69*/
+    u32 fl = *(u32 *)(S + 0x20); /*q70*/
+    if ((fl & 0x1100) == 0x1100) { /*q71*/
+      ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, (fl & 0x80000) | 0x40002, 0, 0); /*q72*/
+      ((WKA9)*(u32 *)(*(u32 *)R + 0x2ac))(R, 1, *(u32 *)(S + 0x60), *(u32 *)(S + 0x68), *(u32 *)(S + 0x64), *(u32 *)(S + 0x6c), *(u32 *)(S + 0x70), *(u32 *)(S + 0x74), 0, 0); /*q73*/
+      ext_61a6b0_wk(*(u32 *)(self + 8), X); /*q74*/
+      ((WKA9)*(u32 *)(*(u32 *)R + 0x2ac))(R, 0, 0, 0, 0, 0, 0, 0, 0, 0); /*q75*/
+    } else if (fl & 0x1000) { /*q76*/
+      ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, (fl & 0x80000) | 0x40002, 0, 0); /*q77*/
+      ((W6T4)*(u32 *)(*(u32 *)R + 0x2a8))(R, 1, *(u32 *)(S + 0x60), *(u32 *)(S + 0x64), 0); /*q78*/
+      ext_61a6b0_wk(*(u32 *)(self + 8), X); /*q79*/
+      ((W6T4)*(u32 *)(*(u32 *)R + 0x2a8))(R, 0, 0, 0, 0); /*q80*/
+    } else { /*q81*/
+      return; /*q82*/
+    }
+  }
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x2a0))(R, *(u16 *)(S + 4), 0, 1); /*q83*/
+  ((W6T3)*(u32 *)(*(u32 *)R + 0x29c))(R, 0, 0, 0); /*q84*/
+}
+PCREG(619770, GUESS_619770);
+
+// 0x6359d0: thiscall(), void (own frame of 0x1b054 bytes via the 0x6336b0 stack probe, /GS cookie not reproduced). Quad / triangle submission for a bounding query.
+// Part 1 (when this[0x6f] != 0): O = G[0x1aa3][0x1c] vslot 0x38(L, F, 2, this+0x29, this+0x1d, this+0x4d, 0x400000, 1, 1, 1) -> n (L = 0x800 object pointers, F = 12 floats
+// D(0..2) B(3..5) A(6..8) C(9..11) in memory order). For each object e = L[i]: P = e[0x54] vslot 0x244() (12 floats) copied to A = P[0..2], B = P[3..5], C = P[6..8], D = P[9..11];
+// 0x4db670(e, &A / &B / &C / &D) (transform by e's matrix chain); triangle (A, B, C) is submitted through 0x6354a0(e, &A, &B, &C) unless A == B, A == C or B == C (float compares,
+// NaN is "not equal"), then triangle (C, D, A) through 0x6354a0(e, &C, &D, &A) unless C == D, C == A or D == A.
+// Part 2: O vslot 0x84(&cnt, buf, 0x19000, this+0x29, this+0x1d, this+0x4d, this[0x6a], 0); this[0x8f] = 0; for each of cnt records {npts, ?, ?, ?, obj at +0x10, ?, points at +0x18}: when obj[0x54] != 0,
+// this[0x70] != 0 and obj[0x54][0x10] has bit 2 at +0x18 the record is skipped; else each point is transformed (0x4419f0(pt, this+0x29), 0x441940(pt, this+0x1d)) and the npts - 2 triangles
+// (p_k, p_k+1, p_k+2) of the strip are submitted with 0x6354a0(obj, p0, p1, p2) (reversed p2, p1, p0 for odd k) unless two of the points are equal. npts of 0 or 1 would loop 2^32 times.
+extern "C" void THISCALL ext_4db670_wm(u32, u32) __asm__("ext_4db670");
+extern "C" void THISCALL ext_6354a0_wm(u32, u32, u32, u32, u32) __asm__("ext_6354a0");
+extern "C" void FASTCALL ext_4419f0_wm(u32, u32) __asm__("ext_4419f0");
+extern "C" void FASTCALL ext_441940_wm2(u32, u32) __asm__("ext_441940");
+typedef u32(THISCALL *WN10)(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, u32);
+typedef u32(THISCALL *WN8)(u32, u32, u32, u32, u32, u32, u32, u32, u32);
+static inline bool wm3eq(u32 a, u32 b) {
+  return bitsf(w6ld(a)) == bitsf(w6ld(b)) && bitsf(w6ld(a + 4)) == bitsf(w6ld(b + 4)) && bitsf(w6ld(a + 8)) == bitsf(w6ld(b + 8));
+}
+extern "C" void THISCALL GUESS_6359d0(u32 self) { /*r1*/
+  if (*(u8 *)(self + 0x6f) != 0) { /*r2*/
+    u32 L[0x800]; /*r3*/
+    u32 F[12]; /*r4*/
+    u32 G = *(u32 *)0x70039c; /*r5*/
+    u32 O = w6ld(w6ld(G + 0x1aa3) + 0x1c); /*r6*/
+    u32 n = ((WN10) * (u32 *)(*(u32 *)O + 0x38))(O, (u32)L, (u32)F, 2, self + 0x29, self + 0x1d, self + 0x4d, 0x400000, 1, 1, 1); /*r7*/
+    u32 D = (u32)&F[0], B = (u32)&F[3], A = (u32)&F[6], C = (u32)&F[9]; /*r8*/
+    for (u32 i = 0; i != n && n != 0; i++) { /*r9*/
+      u32 e = L[i]; /*r10*/
+      u32 q = w6ld(e + 0x54); /*r11*/
+      u32 P = ((W6B) * (u32 *)(*(u32 *)q + 0x244))(q); /*r12*/
+      for (int k = 0; k < 3; k++) { /*r13*/
+        F[6 + k] = w6ld(P + 4 * k); /*r14*/
+        F[3 + k] = w6ld(P + 12 + 4 * k); /*r15*/
+        F[9 + k] = w6ld(P + 24 + 4 * k); /*r16*/
+        F[k] = w6ld(P + 36 + 4 * k); /*r17*/
+      }
+      ext_4db670_wm(e, A); /*r18*/
+      ext_4db670_wm(e, B); /*r19*/
+      ext_4db670_wm(e, C); /*r20*/
+      ext_4db670_wm(e, D); /*r21*/
+      if (!wm3eq(A, B)) { /*r22*/
+        if (!wm3eq(A, C) && !wm3eq(B, C)) ext_6354a0_wm(self, e, A, B, C); /*r23*/
+      }
+      if (!wm3eq(C, D) && !wm3eq(C, A) && !wm3eq(D, A)) ext_6354a0_wm(self, e, C, D, A); /*r24*/
+    }
+  }
+  u8 buf[0x19000] __attribute__((aligned(16))); /*r25*/
+  u32 cnt = 0; /*r26*/
+  { /*r27*/
+    u32 G = *(u32 *)0x70039c; /*r28*/
+    u32 O = w6ld(w6ld(G + 0x1aa3) + 0x1c); /*r29*/
+    ((WN8) * (u32 *)(*(u32 *)O + 0x84))(O, (u32)&cnt, (u32)buf, 0x19000, self + 0x29, self + 0x1d, self + 0x4d, w6ld(self + 0x6a), 0); /*r30*/
+  }
+  w6st(self + 0x8f, 0); /*r31*/
+  u32 rec = (u32)buf; /*r32*/
+  u32 idx = 0; /*r33*/
+  if (cnt != 0) { /*r34*/
+    do { /*r35*/
+      u32 npts = w6ld(rec); /*r36*/
+      u32 obj = w6ld(rec + 0x10); /*r37*/
+      u32 start = rec + 0x18; /*r38*/
+      u32 q54 = w6ld(obj + 0x54); /*r39*/
+      bool special = false; /*r40*/
+      if (q54 != 0 && *(u8 *)(self + 0x70) != 0) { /*r41*/
+        u32 q10 = w6ld(q54 + 0x10); /*r42*/
+        if (q10 != 0 && (*(u8 *)(q10 + 0x18) & 2)) special = true; /*r43*/
+      }
+      if (special) { /*r44*/
+        rec = start + npts * 12; /*r45*/
+      } else {
+        u32 pt = start; /*r46*/
+        for (u32 c = npts; c != 0; c--) { /*r47*/
+          ext_4419f0_wm(pt, self + 0x29); /*r48*/
+          ext_441940_wm2(pt, self + 0x1d); /*r49*/
+          pt += 12; /*r50*/
+        }
+        u32 nm2 = npts - 2; /*r51*/
+        u32 e = start; /*r52*/
+        u32 k = 0; /*r53*/
+        if (nm2 != 0) { /*r54*/
+          do { /*r55*/
+            u32 p0 = e, p1 = e + 12, p2 = e + 24; /*r56*/
+            if (!wm3eq(p0, p1) && !wm3eq(p0, p2) && !wm3eq(p1, p2)) { /*r57*/
+              if (k & 1) ext_6354a0_wm(self, obj, p2, p1, p0); /*r58*/
+              else ext_6354a0_wm(self, obj, p0, p1, p2); /*r59*/
+            }
+            k++; /*r60*/
+            e += 12; /*r61*/
+          } while (k != nm2); /*r62*/
+        }
+        rec = e + 0x18; /*r63*/
+      }
+      idx++; /*r64*/
+    } while (idx != cnt); /*r65*/
+  }
+}
+PCREG(6359d0, GUESS_6359d0);
+
+// 0x61b570: thiscall(a, R, p10, p14) ret 0x10, returns al (/GS-free frame). Nothing (0) when this[0xc] == 0 or this[4][0x14] == 0. Timer helpers 0x441730 / 0x440530 (debug lines 0x259 / 0x260 on the
+// texts 0x6bde70 and 0x6bde7c); aM = a[0xc], S2 = a[0x10][8]; W = R[0xb9a4]: fB1 = byte W[0x1295], fB2 = byte W[0x1296], E = W[0x13fa] (its buffer [E+0x30] is created through
+// E vslot 4(0, 0) when null); src = G[0x1aa3][0x20] + S2[0x14], dst = [E+0x30] + this[0xc] * 0x24, cnt = word S2[0xe], nfr = S2[0x50]. The draw call is
+// 0x65bd20 (fB2) / 0x65bcc0 (fB1) / 0x65bc60 (neither) thiscall(dst, src, n, p10, p14, S2[0x20]). nfr == 1: cnt vertices in chunks of 0x20 are passed straight through; debug line 0x260
+// (slot 0x17c, text 0x6bde70) and return 0. Otherwise (returns 1): t = aM[0x48] == 0 ? 0 : (aM[0x48] - float(u32 S2[0x48])) / float(u32 S2[0x4c]) (unsigned int to double via the 0x680aa0
+// table, then to float); idx = (int)t; frame A = src + idx * cnt * 0x24, frame B = src + min(idx + 1, nfr - 1) (unsigned) * cnt * 0x24; t -= (float)idx. Per chunk of at most 0x20
+// vertices: debug 0x259 (slot 0x178, text 0x6bde84), vertices lerped at 0x724b78 + k * 0x24 (floats at +0 .. +0x14 and +0x1c, +0x20 as (B - A) * t + A, the packed colour at +0x18
+// through 0x616e00(out + 0x18, A + 0x18, B + 0x18, t)), debug 0x260 (slot 0x17c, text 0x6bde84), draw call from 0x724b78, pointers advanced by n * 0x24. Final debug 0x260 (text 0x6bde70).
+extern "C" void THISCALL ext_441730_wr(u32) __asm__("ext_441730");
+extern "C" void THISCALL ext_440530_wr(u32) __asm__("ext_440530");
+extern "C" void FASTCALL ext_616e00_wr(u32, u32, u32, u32) __asm__("ext_616e00");
+extern "C" void THISCALL ext_65bc60_wr(u32, u32, u32, u32, u32, u32, u32) __asm__("ext_65bc60");
+extern "C" void THISCALL ext_65bcc0_wr(u32, u32, u32, u32, u32, u32, u32) __asm__("ext_65bcc0");
+extern "C" void THISCALL ext_65bd20_wr(u32, u32, u32, u32, u32, u32, u32) __asm__("ext_65bd20");
+static inline void wr_draw(u32 self, u32 dst, u32 src, u32 n, u32 p10, u32 p14, u32 s20, u8 fB1, u8 fB2) {
+  if (fB2 != 0) ext_65bd20_wr(self, dst, src, n, p10, p14, s20);
+  else if (fB1 != 0) ext_65bcc0_wr(self, dst, src, n, p10, p14, s20);
+  else ext_65bc60_wr(self, dst, src, n, p10, p14, s20);
+}
+static inline void wr_lerp(u32 o, u32 a, u32 b, float t) {
+  float av = bitsf(w6ld(a));
+  float bv = bitsf(w6ld(b));
+  float r = (bv - av) * t + av;
+  w6st(o, fbits(r));
+}
+extern "C" u32 THISCALL GUESS_61b570(u32 self, u32 a, u32 R, u32 p10, u32 p14) { /*s1*/
+  if (w6ld(self + 0xc) == 0) return 0; /*s2*/
+  if (w6ld(w6ld(self + 4) + 0x14) == 0) return 0; /*s3*/
+  ext_441730_wr(0x6bde70); /*s4*/
+  u32 aM = w6ld(a + 0xc); /*s5*/
+  u32 S2 = w6ld(w6ld(a + 0x10) + 8); /*s6*/
+  u32 W = w6ld(R + 0xb9a4); /*s7*/
+  u8 fB1 = *(u8 *)(W + 0x1295); /*s8*/
+  u32 E = w6ld(W + 0x13fa); /*s9*/
+  u8 fB2 = *(u8 *)(W + 0x1296); /*s10*/
+  ext_441730_wr(0x6bde7c); /*s11*/
+  if (w6ld(E + 0x30) == 0) w6st(E + 0x30, ((W6T2)*(u32 *)(*(u32 *)E + 4))(E, 0, 0)); /*s12*/
+  u32 buf = w6ld(E + 0x30); /*s13*/
+  ext_440530_wr(0x6bde7c); /*s14*/
+  u32 G = *(u32 *)0x70039c; /*s15*/
+  u32 src = w6ld(w6ld(G + 0x1aa3) + 0x20) + w6ld(S2 + 0x14); /*s16*/
+  u32 dst = buf + w6ld(self + 0xc) * 0x24; /*s17*/
+  u32 cnt = *(u16 *)(S2 + 0xe); /*s18*/
+  u32 nfr = w6ld(S2 + 0x50); /*s19*/
+  if (nfr == 1) { /*s20*/
+    u32 rem = cnt; /*s21*/
+    if (rem != 0) { /*s22*/
+      do { /*s23*/
+        u32 n = rem > 0x20 ? 0x20 : rem; /*s24*/
+        rem -= n; /*s25*/
+        wr_draw(self, dst, src, n, p10, p14, w6ld(S2 + 0x20), fB1, fB2); /*s26*/
+        src += n * 0x24; /*s27*/
+        dst += n * 0x24; /*s28*/
+      } while (rem != 0); /*s29*/
+    }
+    w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x6bde70); /*s30*/
+    return 0; /*s31*/
+  }
+  float t = 0.0f; /*s32*/
+  float a48 = bitsf(w6ld(aM + 0x48)); /*s33*/
+  if (!(a48 == 0.0f)) { /*s34*/
+    u32 i48 = w6ld(S2 + 0x48); /*s35*/
+    u32 i4c = w6ld(S2 + 0x4c); /*s36*/
+    double d1 = (double)(s32)i48 + *(double *)(0x680aa0 + (i48 >> 31) * 8); /*s37*/
+    t = a48; /*s38*/
+    t = t - (float)d1; /*s39*/
+    double d2 = (double)(s32)i4c + *(double *)(0x680aa0 + (i4c >> 31) * 8); /*s40*/
+    t = t / (float)d2; /*s41*/
+  }
+  s32 idx = _mm_cvttss_si32(_mm_set_ss(t)); /*s42*/
+  u32 e1 = nfr - 1; /*s43*/
+  u32 c1 = (u32)idx + 1; /*s44*/
+  u32 sel = (c1 <= e1) ? c1 : e1; /*s45*/
+  float fi = (float)idx; /*s46*/
+  t = t - fi; /*s47*/
+  u32 fa = src + (u32)idx * cnt * 0x24; /*s48*/
+  u32 fb = src + sel * cnt * 0x24; /*s49*/
+  u32 rem = cnt; /*s50*/
+  while (rem != 0) { /*s51*/
+    u32 n = rem > 0x20 ? 0x20 : rem; /*s52*/
+    rem -= n; /*s53*/
+    w6dbg(G, 0x259, 0x178, 0x6bde84); /*s54*/
+    for (u32 k = 0; k < n; k++) { /*s55*/
+      u32 av = fa + k * 0x24, bv = fb + k * 0x24, ov = 0x724b78 + k * 0x24; /*s56*/
+      wr_lerp(ov, av, bv, t); /*s57*/
+      wr_lerp(ov + 4, av + 4, bv + 4, t); /*s58*/
+      wr_lerp(ov + 8, av + 8, bv + 8, t); /*s59*/
+      wr_lerp(ov + 0xc, av + 0xc, bv + 0xc, t); /*s60*/
+      wr_lerp(ov + 0x10, av + 0x10, bv + 0x10, t); /*s61*/
+      wr_lerp(ov + 0x14, av + 0x14, bv + 0x14, t); /*s62*/
+      ext_616e00_wr(ov + 0x18, av + 0x18, bv + 0x18, fbits(t)); /*s63*/
+      wr_lerp(ov + 0x1c, av + 0x1c, bv + 0x1c, t); /*s64*/
+      wr_lerp(ov + 0x20, av + 0x20, bv + 0x20, t); /*s65*/
+    }
+    w6dbg(G, 0x260, 0x17c, 0x6bde84); /*s66*/
+    wr_draw(self, dst, 0x724b78, n, p10, p14, w6ld(S2 + 0x20), fB1, fB2); /*s67*/
+    fa += n * 0x24; /*s68*/
+    fb += n * 0x24; /*s69*/
+    dst += n * 0x24; /*s70*/
+  }
+  w6dbg(*(u32 *)0x70039c, 0x260, 0x17c, 0x6bde70); /*s71*/
+  return 1; /*s72*/
+}
+PCREG(61b570, GUESS_61b570);
+
+// 0x5f3430: cdecl(), void. o = [0x7003a4]; when non-null tail-jumps to o vslot 0x4c with ecx = o (thiscall, no stack arguments forwarded in the tests).
+extern "C" void GUESS_5f3430() {
+  u32 o = *(u32 *)0x7003a4; /*u1*/
+  if (o != 0) { /*u2*/
+    ((W6B)*(u32 *)(*(u32 *)o + 0x4c))(o); /*u3*/
+  }
+}
+PCREG(5f3430, GUESS_5f3430);
+
+// 0x406090: cdecl(book, a, b, n), returns 0 or -1 (libvorbis vorbis_book_decodev_add shape). dim = book[0]; while the running index i < n: entry = 0x405f20(book, b) (-1 returns -1); t = book[3] + dim * entry floats
+// (dim * entry wraps in 32 bits); dim > 8: a[i++] += t[j] for j < dim (re-reading book[0] each step); dim in 1..8: the same through an unrolled jump table at 0x4061c0 (dim - 1 above 7, i.e. dim <= 0, adds nothing and
+// would never end, so the spec keeps dim >= 1). n <= 0 returns 0 at once. The additions are x87 (float + float in extended precision, stored as float).
+extern "C" s32 ext_405f20_wo(u32, u32) __asm__("ext_405f20");
+static inline void wo_add(u32 ai, u32 tj) {
+  float r = (float)((long double)bitsf(w6ld(tj)) + (long double)bitsf(w6ld(ai)));
+  w6st(ai, fbits(r));
+}
+extern "C" s32 GUESS_406090(u32 book, u32 a, u32 b, s32 n) {
+  s32 dim = *(s32 *)book; /*v1*/
+  s32 i = 0; /*v2*/
+  if (n <= 0) return 0; /*v3*/
+  do { /*v4*/
+    s32 e = ext_405f20_wo(book, b); /*v5*/
+    if (e == -1) return -1; /*v6*/
+    u32 t = w6ld(book + 0xc) + (u32)(dim * e) * 4; /*v7*/
+    if (dim > 8) { /*v8*/
+      for (s32 j = 0; j < *(s32 *)book; j++) { /*v9*/
+        wo_add(a + (u32)i * 4, t + (u32)j * 4); /*v10*/
+        i++; /*v11*/
+      }
+    } else { /*v12*/
+      u32 cases = (u32)(dim - 1); /*v13*/
+      if (cases <= 7) { /*v14*/
+        for (u32 j = 0; j <= cases; j++) { /*v15*/
+          wo_add(a + (u32)i * 4, t + j * 4); /*v16*/
+          i++; /*v17*/
+        }
+      }
+    }
+  } while (i < n); /*v18*/
+  return 0; /*v19*/
+}
+PCREG(406090, GUESS_406090);

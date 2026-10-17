@@ -1484,6 +1484,9 @@ def g61dcd0h(c):
     if r.random() < 0.7:
         for k, off in enumerate((0x1b4, 0x1b8, 0x1bc)):
             e.w32(esi + off, r.randrange(100 * (k + 1), 100 * (k + 1) + 90))
+    for off in (0x134, 0x138, 0x13c, 0x144, 0x148):
+        if r.random() < 0.4:
+            e.w32(esi + off, 0)
     for off in (0x140, 0x130):
         if r.random() < 0.25:
             e.w32(esi + off, 0)
