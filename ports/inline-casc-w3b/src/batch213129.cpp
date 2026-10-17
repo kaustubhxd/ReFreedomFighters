@@ -110,7 +110,7 @@ extern "C" u32 STDCALL fn_57b0d0(u32 id, u32 b) {
         if ((mask & edx) == 0) nb = b;
         b = nb;
         edx += edx;
-        if (edx == 1) break;
+        if (edx == 0) break;
       }
       u8 *P = (u8 *)(*(V0 *)(vt(eng()) + 0x190))(eng());
       fmt_i(rd32u(vt(P) + 0x198), rd32u(P), (u32)P, (u32)buf, 0x6aa328, n);
