@@ -1,5 +1,5 @@
 // batch310.cpp - ZPlayer::CreateMovementGuide() (area 43, 2026-10-12). 0x4829e0, thiscall (this = ECX), no arguments, ret 0.
-// GameCube reference (name map, medium). Body: p = new(0x3bf) (exe __builtin_new, cdecl); if p != 0: ZMovementGuide(p, this, 5)
+// GC 8015401c (name map, medium). Body: p = new(0x3bf) (exe __builtin_new, cdecl); if p != 0: ZMovementGuide(p, this, 5)
 // (exe ctor 0x4877a0, thiscall with two stack arguments). The exe also installs and removes an SEH frame on fs:[0]
 // around this; the net effect on the TEB word is nothing, and the port does not reproduce the frame (no exception path).
 #include "ff.h"

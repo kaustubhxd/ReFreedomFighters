@@ -11,7 +11,7 @@ extern "C" void THISCALL ext_4d39a0(void *com, const char *k, const char *v);  /
 extern "C" void THISCALL ext_4d3ab0(void *com, const char *k, u32 v);          // CSharedCom::SetVal(int)
 extern "C" void THISCALL ext_4d2330(void *com);                               // CCom::~CCom (no GC name)
 
-// ZLNKOBJ::EndMatBoneMotion(int bone, bool handOver) [high, GameCube reference]. thiscall ret 8.
+// ZLNKOBJ::EndMatBoneMotion(int bone, bool handOver) [high, GC 80181c98]. thiscall ret 8.
 // Stops the bone anim on one bone. Bone definitions (vt 0x2cc, 0x30 bytes each): +0xc next bone in the chain,
 // +0x2f type (3 = no hand-over). With handOver (and byte +0x70 clear), the first later bone in the chain that runs a
 // different ZBoneAnim gets the matching clip for this bone (anim file vt 0x30(its clip, vt 0x2bc(bone))) through

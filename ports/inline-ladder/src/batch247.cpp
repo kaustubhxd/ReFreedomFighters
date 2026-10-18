@@ -20,7 +20,7 @@ extern "C" void *THISCALL ext_41e680(void *p);                            // Con
 
 static const char *const kFile = (const char *)0x6ac6d0;   // "..\..\freedomfighter\FFBackground\ZFFHero.cpp"
 
-// 0x595570 ZFFHERO::UpdateDefaultAction(CAction *a) [GameCube reference-area, high], thiscall, ret 4.
+// 0x595570 ZFFHERO::UpdateDefaultAction(CAction *a) [GC 80078d5c-area, high], thiscall, ret 4.
 // Nothing when a equals the current default action (+0x688) and the default name is empty (a == 0) or equal
 // (case-insensitive, _stricmp) to a's name (+0x7a). Otherwise: CCom teardown/ctor with the "CUI" list (db slot 0x138, its
 // slot 0x88); if the current name is non-empty, SetVal("strActionName", name, 0xc), REMOVEACTION message (db slot 0x114)

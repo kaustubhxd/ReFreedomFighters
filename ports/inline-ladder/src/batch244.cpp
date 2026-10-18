@@ -5,7 +5,7 @@
 
 extern "C" void THISCALL ext_4dc630(void *geom, u32 set, u32 clear);   // ZBaseGeom::SetControl (batch 225 family)
 
-// 0x58b930 ZFFHERO::AddToTargetList() [GameCube reference, high], thiscall, no args.
+// 0x58b930 ZFFHERO::AddToTargetList() [GC 800848f4, high], thiscall, no args.
 // The engine list "TargetListEnemy" (database +0xadc slot 0x25c finds it by name); when missing it is made as a ZLIST
 // (slot 0x294 with name, "ZLIST", 0, 1), its slot 0x154 runs, SetControl(list geom, 0x800000, 0) and its slot 0x124(1, 0, 0, 0).
 // Then the list's slot 0x218(hero) adds the hero (every call, whether found or made).

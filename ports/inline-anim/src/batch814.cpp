@@ -18,7 +18,7 @@ static void warnNoAnim(void *self, const char *name, u32 line) {
   ext_4cbec0(str);
 }
 
-// ZLNKOBJ::ActivateAnim(const char* name, int n) [medium, GameCube reference; string group]: GetAnim (vt 0x21c), warn when
+// ZLNKOBJ::ActivateAnim(const char* name, int n) [medium, GC 80184bf8; string group]: GetAnim (vt 0x21c), warn when
 // missing (line 0x5a0), then vt 0x230(hdr, n) (the AnimHeader overload) even with a null header.
 static u32 THISCALL ActivateAnimByName(void *self, const char *name, u32 n) {
   void *hdr = vcall<void *>(self, 0x21c, name);
@@ -27,7 +27,7 @@ static u32 THISCALL ActivateAnimByName(void *self, const char *name, u32 n) {
 }
 PCREG(461120, ActivateAnimByName);
 
-// ZLNKOBJ::ActivateAnimSegment(const char* name, int n, float a, float b) [medium, GameCube reference]: same lookup and
+// ZLNKOBJ::ActivateAnimSegment(const char* name, int n, float a, float b) [medium, GC 80184920]: same lookup and
 // warning (line 0x575), then vt 0x228(hdr, n, a, b, 1.0).
 static u32 THISCALL ActivateAnimSegmentByName(void *self, const char *name, u32 n, float a, float b) {
   void *hdr = vcall<void *>(self, 0x21c, name);

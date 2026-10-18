@@ -76,7 +76,7 @@ None of this is hard to regenerate if you own the game: run the decoders on your
 
 ## Project type
 
-A work-in-progress decompilation of Freedom Fighters (2003) for PC: verified C++ ports of 12,332 functions from the
+A work-in-progress decompilation of Freedom Fighters (2003) for PC: verified C++ ports of 12,703 functions from the
 executable (see "Verified C++ ports"), plus the tools and format documentation used to get there. It is not yet a complete
 source tree that builds into a full executable: the remaining functions are still being decompiled and verified.
 
@@ -110,14 +110,14 @@ in the game itself.
 
 ## Verified C++ ports
 
-`ports/` holds C++ ports of 12,332 functions from the PC executable, each checked against the original code by running
+`ports/` holds C++ ports of 12,703 functions from the PC executable, each checked against the original code by running
 both on random inputs and comparing results, memory writes and faults. `RESULTS.tsv` lists every verified address with
 its name and folder. Counting rule: a function counts only when both seed 1 and seed 2 ran 1000 cases each, with status
-exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (269 verified functions are held back for that reason);
+exact and zero faulting cases. Batch files that mixed verified and unverified functions are not in this copy (51 verified functions are held back for that reason);
 thunks, SEH funclets and functions whose specs hook a callee by address are not separated out in this copy.
 
-### Verification status (17 October 2026)
+### Verification status (18 October 2026)
 
-The local project has 12,769 functions with retained two-seed results; 12,332 have publishable source here. Another 269 verified functions are held back in mixed batches, and 170 have no matching source file in the export. The browser port links 841 verified functions.
+The local project has 12,929 functions with retained two-seed results; 12,703 have publishable source here. Another 51 verified functions are held back in mixed batches, and 175 have no matching source file in the export. The browser port links 841 verified functions.
 
 A checker bug mapped the emulated thread environment block at address zero, which could hide null-pointer faults. A corrected shared harness was rolled out on 16 October 2026 and 6,293 of the verified functions that could be re-run were checked again: 6,090 are still exact with no faulting cases. The rest, 243 rows, are on a re-verify list (faulting cases, mismatches on null pointers, or stale builds) and still count in these totals until they are fixed; about 2,300 verified functions could not be re-run. Separately, the original game most likely runs its x87 floating-point code at 24-bit precision, while these ports were verified at 53-bit; a re-check of the x87 ports at 24-bit is pending.

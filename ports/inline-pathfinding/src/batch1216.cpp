@@ -22,7 +22,7 @@ extern "C" void THISCALL ext_52c000(void *self, u32 flag);
 #define PF_FILE ((const char *)0x6a0f54)
 
 // 0x52b170 ZPathfinder3::FindPathInternal(float* goal, float* start, float maxF, bool, bool, CFindPathContext*,
-// CHelpers*) [map high; GameCube reference; zpathfinder3.cpp lines 0x236f / 0x2383]. thiscall, ret 0x1c. Both ends are
+// CHelpers*) [map high; GC 80191878; zpathfinder3.cpp lines 0x236f / 0x2383]. thiscall, ret 0x1c. Both ends are
 // raised by +0x20, then FindPath3 runs on the packed octree with the context's embedded 3-context (+0x51). Returns
 // the path list, or 0 while the search is paused / on errors (corrupt data, debug switch 0x701b4d, unpacked data).
 static void *THISCALL findPathInternal(u8 *self, float *a, float *b, float maxF, u32 f1, u32 f2, u8 *ctx,
@@ -67,7 +67,7 @@ static bool THISCALL queuePush(u8 *q, const u8 *req) {
 }
 PCREG(52a700, queuePush);
 
-// 0x52b430 CPathRequestQueue::Load(ZLoadGame*) [map high; GameCube reference]. thiscall, ret 4, true. Capacity, head and
+// 0x52b430 CPathRequestQueue::Load(ZLoadGame*) [map high; GC 80191af8]. thiscall, ret 4, true. Capacity, head and
 // tail (ZLoadGame +0x48), the entry block (+0x18), then the search state of every entry is cleared.
 static bool THISCALL queueLoad(u8 *q, void *lg) {
   vcall<void>(lg, 0x48, q + 4);
@@ -104,7 +104,7 @@ static inline u8 *queueNext(u8 *q) {
 }
 
 // 0x52c270 ZPathfinder3::RequestPathOld(unsigned int actor, const float* from, const float* to, bool, float radius,
-// bool, bool) [map high; GameCube reference; zpathfinder3.cpp lines 0x263e..0x2693]. thiscall, ret 0x1c.
+// bool, bool) [map high; GC 801937f0; zpathfinder3.cpp lines 0x263e..0x2693]. thiscall, ret 0x1c.
 // First tries a straight line (ends raised by +0x20 + 30): when free, the path goes to the actor at once (message
 // table +0x54 finds the actor; its +0x54 object gets vtable +0x128 (message id, response, 0)), the actor's queued
 // requests are cancelled (actor id 0), and the result is -1. Else the actor's queued request is updated in place, or a

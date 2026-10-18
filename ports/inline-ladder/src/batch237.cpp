@@ -15,7 +15,7 @@ static inline u16 regMsg(const char *msg, u32 line) {
   return (u16)vcall<u32>((void *)db, 0x114, msg, 0u, kFileH, line);
 }
 
-// 0x471b50 ZLNKWHANDS constructor [GameCube reference, high], thiscall, ret 0xc, returns this. Base ZCTRLIKLNKOBJ constructor,
+// 0x471b50 ZLNKWHANDS constructor [GC 80187f54, high], thiscall, ret 0xc, returns this. Base ZCTRLIKLNKOBJ constructor,
 // vtable 0x6890a4, two ZTARGETs (+0x26a, +0x2eb), a third ZTARGET (+0x353) and the defaults below. Then the message ids:
 // the hand inventory messages (+0x34d left, +0x3b5 right), and the global ids 0x6ff9a0 (PUSHBUTTON), 0x6ff9a4 (DROPITEM),
 // 0x6ff9a8 (USEITEM), 0x6ff9ac (PICKUPITEM), 0x6ff9b0 (CANPICKUPITEM), 0x6ff9b4 (ENTERITEMRANGE), 0x6ff9b8 (LEAVEITEMRANGE),

@@ -8,7 +8,7 @@ typedef void(THISCALL *vcallVU)(void *self, u32 a);
 
 extern "C" u8 *THISCALL ext_5003d0(void *block, u32 i);   // parameter accessor (batch 1503)
 
-// 0x51e840 ZHeliIf::Fire(OpaqueCallParameters_t&) (GameCube reference by list position); thiscall, ret 4 (tail jump):
+// 0x51e840 ZHeliIf::Fire(OpaqueCallParameters_t&) (GC 801d19f8 by list position); thiscall, ret 4 (tail jump):
 // heli->slot 0x39c(param 0 != 0).
 static void THISCALL fire(u8 *self, u8 *par) {
   u32 v = *(u32 *)ext_5003d0(*(void **)(par + 4), 0);
@@ -17,7 +17,7 @@ static void THISCALL fire(u8 *self, u8 *par) {
 }
 PCREG(51e840, fire);
 
-// 0x51eb50 ZHeliIf::SetTarget(OpaqueCallParameters_t&) (GameCube reference by list position); thiscall, ret 4:
+// 0x51eb50 ZHeliIf::SetTarget(OpaqueCallParameters_t&) (GC 801d1aa0 by list position); thiscall, ret 4:
 // heli->slot 0x398(param 0).
 static void THISCALL setTarget(u8 *self, u8 *par) {
   u32 ref = *(u32 *)ext_5003d0(*(void **)(par + 4), 0);

@@ -90,7 +90,7 @@ def g4ef880(c):
     nch = r.choice([0, 1, 2, 3, 5, 8, 12, 14])
     alphabet = [ord(ch) for ch in 'abcdeXYZ019'] + [0x20, 0x20, 0x0a, 0x0d, 0x09, 0x0b, 0x0c, 0x10, 0x1f, 0x21, 0x7e, 0xe9]
     text = bytes(r.choice(alphabet) for _ in range(nch)) + b'\0'
-    buf = em.alloc(0x28 * 20 + 0x40, 4)
+    buf = rnd(c, 0x28 * 20 + 0x40)   # stale bytes in the quad buffer: a store of 0 must be visible
     failalloc = r.random() < 0.1
     Y = obj(c, 0x40, {0x2c: pystub(c, 1, ret=lambda emu, k: 0 if failalloc else buf, pop=4, this=True, side=lg('y2c', 1)),
                       0x12c: pystub(c, 2, ret=lambda emu, k: r.getrandbits(32), pop=8, this=True, side=lambda emu, k: emu.calllog.append(('y12c', emu.arg32(0), emu.arg32(1), bytes(emu.rbytes(emu.arg32(0) - 0x24, 0x28)))))})

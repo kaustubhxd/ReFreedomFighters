@@ -37,7 +37,7 @@ static inline u8 *opaque(u8 *p) {
   return p;
 }
 
-// 0x52e320 ZPFOctreeIterator_packed::ElementMove(const short*) [map high; GameCube reference]. thiscall, ret 4, u16 (AX).
+// 0x52e320 ZPFOctreeIterator_packed::ElementMove(const short*) [map high; GC 80195e20]. thiscall, ret 4, u16 (AX).
 // Moves the element position by d (x, z, y). If the move leaves the current leaf (x>>3, z>>3 or y changes), it climbs
 // one node per significant bit of the difference from the leaf's parent node and descends again along the new
 // position's bits. Then the element value of the new position is read; 0 (blocked) or no leaf data clears the id.
@@ -74,7 +74,7 @@ static u32 THISCALL elementMove(u8 *it, const s16 *d) {
 }
 PCREG(52e320, elementMove);
 
-// 0x531070 ZPFOctreeIterator_packed::NodeMove(const short*) [map high; GameCube reference]. thiscall, ret 4, u16 (AX).
+// 0x531070 ZPFOctreeIterator_packed::NodeMove(const short*) [map high; GC 80196084]. thiscall, ret 4, u16 (AX).
 // Same walk for nodes on level +0x12: the node position is the element position shifted by (levels - level + 2) in
 // x/z and (levels - level - 1) in y; the move is d in nodes, and the element position then advances by d * step.
 // Start node: kind 1 = parent of the current component node, kind 2 = parent node of the current area; any other

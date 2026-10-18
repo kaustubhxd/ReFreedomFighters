@@ -37,7 +37,7 @@ static inline void stamp(u8 *self) {   // +0x5dd = engine tick count (the exe sk
 }
 
 // 0x5e5f90, ZFFHeroMovementGuide::Move(const float *mat, const float *pos, float *matOut, float *posOut, float *delta)
-// [GameCube reference, medium; vtable slot 5], thiscall, ret 0x14. State +0x579: 0/1 = mounting (from the bottom / from the top,
+// [GC 80092cc4, medium; vtable slot 5], thiscall, ret 0x14. State +0x579: 0/1 = mounting (from the bottom / from the top,
 // set by WantControl), 2/3 = mount step (bottom / top), 4 = climbing off at the top, 5 = climbing off at the bottom,
 // 6 = on the ladder. Timing from the stamp +0x5dd. Positions: +0x554 the bottom grab point, +0x560 the top point,
 // +0x56c a direction (with -62 for the step-off offset), +0x57d/+0x5ad matrices, +0x5a1 the start and +0x5d1 the target

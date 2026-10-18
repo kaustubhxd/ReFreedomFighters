@@ -6,7 +6,7 @@
 #define U32(p, off) (*(u32 *)((u8 *)(p) + (off)))
 #define F32(p, off) (*(float *)((u8 *)(p) + (off)))
 
-// 0x591bb0 ZFFHERO::GetFocalPoint(float *out) [GameCube reference, medium], thiscall, ret 4.
+// 0x591bb0 ZFFHERO::GetFocalPoint(float *out) [GC 80084a00, medium], thiscall, ret 4.
 // 1. slot 0x438() true: out is not written; slot 0x390(slot 0x3a8(buf, out)) (returns).
 // 2. Target height (the camera focus point's y offset) from the input word +0x417 and slot 0x4d0():
 //    flag 0x400 set: 165 or 155 when bits 0-1 are set (slot 0x4d0 true -> 165), else 130 or 120 (slot 0x4d0 true -> 130);

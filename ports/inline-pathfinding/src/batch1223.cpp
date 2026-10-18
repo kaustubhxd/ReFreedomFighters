@@ -1,4 +1,4 @@
-// batch1223.cpp - pathfinding tree: ZPFOctree_packed::SerializeData(char* blob, int mode, bool) [map high; GameCube reference;
+// batch1223.cpp - pathfinding tree: ZPFOctree_packed::SerializeData(char* blob, int mode, bool) [map high; GC 8019b5c0;
 // zpfoctreepacked.cpp lines 0x9ac..0x9ae]. thiscall (octree), ret 0xc, returns the number of blob bytes used.
 //
 // Blob layout (after the 4-byte format word that goes to +0x48): u16 A (+0x2a) and u16 B (+0x52); B entries of 0x16

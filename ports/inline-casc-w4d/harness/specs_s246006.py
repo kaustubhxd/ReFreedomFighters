@@ -5769,3 +5769,858 @@ def g406090(c):
 
 
 S(0x406090, 'GUESS FUN_406090', 'cdecl', None, ret='eax', gen=g406090, note='batch246006')
+
+
+def g40ba60(c):
+    import math
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+    st = {'z': 0}
+
+    def floor_side(emu, k):
+        sp = emu.reg('esp')
+        x = struct.unpack('<d', bytes(emu.rbytes(sp + 4, 8)))[0]
+        emu.calllog.append(('floor', struct.pack('<d', x)))
+        try:
+            st['z'] = math.floor(x)
+        except (OverflowError, ValueError):
+            st['z'] = 0
+    hook_rec(c, 0x634dca, 0, pop=0, side=floor_side)
+
+    def ftol_ret(emu, k):
+        z = st['z']
+        try:
+            return int(z) & 0xffffffff
+        except (OverflowError, ValueError):
+            return 0x80000000
+    hook_rec(c, 0x634dfa, 0, pop=0, ret=ftol_ret)
+    fits = r.choice([0, 1, 2, 3, 4, 6, -1])
+    rnd(c, 0x60)
+    nrec = max(fits, 1)
+    A = rnd(c, 0x30 * nrec + 0x20)
+    x0 = r.choice([0, 1, 4, 8, 16, 100])
+    x1 = x0 + r.choice([1, 8, 64, 500, 1000])
+    for i in range(nrec):
+        ub(A + 0x30 * i, x0 if i == 0 else r.randrange(0, 2000))
+        ub(A + 0x30 * i + 4, x1 if i == nrec - 1 else r.randrange(0, 2000))
+        for off in (8, 0xc, 0x10, 0x14, 0x18, 0x1c, 0x20):
+            mode = r.random()
+            if mode < 0.8:
+                ub(A + 0x30 * i + off, r.randrange(0, 400))
+            elif mode < 0.9:
+                ub(A + 0x30 * i + off, r.randrange(0, 1 << 32))
+            else:
+                ub(A + 0x30 * i + off, 0)
+        ub(A + 0x30 * i + 0x24, r.choice([0, 1, 1, 5, 0x100]))
+    y0 = r.choice([-1, 0, 5, 100, 500, 1000, 5000, -7, 0x7fffffff])
+    y1 = r.choice([-1, 0, 5, 100, 500, 1000, 5000, -7, 0x7fffffff])
+    if r.random() < 0.3:
+        # two-point fit: the line passes exactly through both points, so the clamps see the given values
+        fits = 0
+        x0 = r.choice([0, 1, 4, 16])
+        x1 = x0 + r.choice([1, 2, 8, 64])
+        ub(A, x0)
+        ub(A + 4, x1)
+        ub(A - 0x2c, x1)
+        y0 = r.choice([0x3fe, 0x3ff, 0x400, 0x401, 0, 1, 5])
+        y1 = r.choice([0x3fe, 0x3ff, 0x400, 0x401, 0, 1, 5])
+    PY0 = em.alloc(8, 4)
+    PY1 = em.alloc(8, 4)
+    ub(PY0, y0)
+    ub(PY1, y1)
+    return [A, fits, PY0, PY1]
+
+
+S(0x40ba60, 'GUESS FUN_40ba60', 'cdecl', None, ret='eax', gen=g40ba60, note='batch246006')
+
+
+def g40b7b0(c):
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+    pk = lambda *v: b''.join(struct.pack('<f', x) for x in v)
+    n = r.choice([0, 3, 8, 20, 33, 40])
+    x0 = r.choice([0, 0, 1, 5, 12])
+    x1 = x0 + r.choice([-2, 0, 1, 4, 10, 25, 60])
+    LEN = 64
+    atten = r.choice([0.0, 0.0, 1.0, -1.0, 2.5])
+    fl = []
+    md = []
+    for i in range(LEN):
+        f = r.choice([-140.0, -139.7, -100.0, -50.0, -20.0, 0.0, 10.0, 100.0, 200.0, -139.7])
+        fl.append(f)
+        q = r.random()
+        if q < 0.3:
+            m = f - atten
+        elif q < 0.5:
+            m = f - atten + r.choice([0.5, -0.5])
+        elif q < 0.9:
+            m = r.choice([-140.0, -100.0, -50.0, 0.0, 10.0, 100.0, 200.0])
+        else:
+            m = r.choice([float('nan'), float('inf'), -float('inf')])
+        md.append(m)
+    if r.random() < 0.03:
+        fl[r.randrange(0, LEN)] = float('nan')
+    FLR = rnd(c, 4 * LEN + 16)
+    MD = rnd(c, 4 * LEN + 16)
+    em.wbytes(FLR, pk(*fl))
+    em.wbytes(MD, pk(*md))
+    A = rnd(c, 0x40)
+    INFO = rnd(c, 0x480)
+    ub(INFO + 0x454, r.choice([0, 1, 2, 5, 100]))
+    ub(INFO + 0x458, r.choice([1, 1, 2, 5]))
+    ub(INFO + 0x45c, r.choice([0, 1, 3, 10, 0xffffffff, 1000]))
+    em.wbytes(INFO + 0x460, pk(atten))
+    ub(INFO + 0x464, r.choice([0, 1, 4, 100, 5]))
+
+    def quant(emu, k):
+        p = emu.arg32(0)
+        v = struct.unpack('<f', bytes(emu.rbytes(p, 4)))[0]
+        try:
+            i = int(v * 7.3142857 + 1023.5)
+        except (OverflowError, ValueError):
+            i = -0x80000000
+        if i > 0x3ff:
+            return 0x3ff
+        if i < 0:
+            return 0
+        return i
+    hook_rec(c, 0x40ba30, 1, ret=quant, pop=0, side=lambda emu, k: emu.calllog.append(('quant', emu.arg32(0) - FLR)))
+    return [FLR, MD, x0, x1, A, n, INFO]
+
+
+S(0x40b7b0, 'GUESS FUN_40b7b0', 'cdecl', None, ret='eax', gen=g40b7b0, note='batch246006')
+
+
+def g40bc80(c):
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+    pk = lambda *v: b''.join(struct.pack('<f', x) for x in v)
+    x0 = r.choice([0, 0, 1, 4, 10])
+    x1 = x0 + r.choice([1, 2, 3, 6, 15, 30])
+    y0 = r.choice([0, 5, 100, 500, 1023, 700, 20])
+    y1 = r.choice([0, 5, 100, 500, 1023, 400, 1000])
+    LEN = 64
+    atten = r.choice([0.0, 0.0, 1.0, -1.0])
+    off1 = r.choice([0.0, 1.0, 3.0, 10.0, 0.5])
+    off2 = r.choice([0.0, 1.0, 3.0, 10.0, 0.5])
+    limit = r.choice([0.0, 1.0, 5.0, 50.0, 1e6, 0.25])
+    noise_mode = r.choice([0, 1, 2, 3])
+    mask = []
+    mdct = []
+    for i in range(LEN):
+        t = (i - x0) / float(max(x1 - x0, 1))
+        yl = y0 + (y1 - y0) * t
+        if noise_mode == 0:
+            yy = yl
+        elif noise_mode == 1:
+            yy = yl + r.choice([-3, -1, 0, 0, 1, 2, 4])
+        elif noise_mode == 2:
+            yy = yl + r.choice([-30, -8, 0, 8, 30])
+        else:
+            yy = r.choice([0, 1, 100, 500, 1000, yl])
+        m = (yy - 1023.5) / 7.3142857
+        mask.append(m)
+        q = r.random()
+        if q < 0.55:
+            md = m - atten
+        elif q < 0.7:
+            md = m - atten + r.choice([0.5, -0.5])
+        elif q < 0.97:
+            md = r.choice([-140.0, -100.0, 0.0, 10.0, m + 3, m - 3])
+        else:
+            md = float('nan')
+        mdct.append(md)
+    if r.random() < 0.03:
+        mask[r.randrange(0, LEN)] = float('nan')
+    MASK = rnd(c, 4 * LEN + 16)
+    MD = rnd(c, 4 * LEN + 16)
+    em.wbytes(MASK, pk(*mask))
+    em.wbytes(MD, pk(*mdct))
+    # tuned mode: the points follow the Bresenham line within +-D, the limit sits at the mean error (+-0.5) or at D*D/count
+    if r.random() < 0.4:
+        D = r.choice([1, 2, 3, 4])
+        D2 = r.choice([1, 2, 3, 4])
+        x0 = r.choice([0, 1, 3])
+        x1 = x0 + r.choice([5, 6, 9, 14])
+        y0 = r.choice([10, 100, 500, 900])
+        y1 = r.choice([10, 100, 500, 900, y0])
+        atten = 0.0
+        off1 = float(D)
+        off2 = float(D2)
+        dy_ = y1 - y0
+        adx_ = x1 - x0
+        ady_ = abs(dy_)
+        base_ = int(dy_ / adx_)
+        sy_ = base_ + 1 if dy_ >= 0 else base_ - 1
+        adyp_ = ady_ - abs(base_ * adx_)
+        ys = [y0]
+        yy_ = y0
+        err_ = 0
+        for i_ in range(x0 + 1, x1):
+            err_ += adyp_
+            if err_ >= adx_:
+                err_ -= adx_
+                yy_ += sy_
+            else:
+                yy_ += base_
+            ys.append(yy_)
+        mask = [0.0] * LEN
+        mdct = [0.0] * LEN
+        vals = []
+        for k_, y_ in enumerate(ys):
+            dd = r.randrange(-D2, D + 1)
+            if r.random() < 0.15:
+                dd = r.choice([-D2, D])
+            m_ = (y_ + dd + 0.3 - 1023.5) / 7.3142857
+            m_ = struct.unpack('<f', struct.pack('<f', m_))[0]
+            mask[x0 + k_] = m_
+            mdct[x0 + k_] = m_ + 1.0
+            vals.append(int(m_ * 7.3142857 + 1023.5))
+        cnt_ = 1
+        e2_ = (y0 - vals[0]) ** 2
+        for k_ in range(1, len(ys)):
+            if vals[k_] != 0:
+                cnt_ += 1
+                e2_ += (ys[k_] - vals[k_]) ** 2
+        mean_ = e2_ // cnt_
+        cands = [float(mean_), mean_ - 0.5, mean_ + 0.5, float(mean_ - 1), D * D / float(cnt_), D2 * D2 / float(cnt_), D * D / float(cnt_) - 0.25, D * D / float(cnt_) + 0.25, D2 * D2 / float(cnt_) - 0.25, D2 * D2 / float(cnt_) + 0.25]
+        limit = r.choice([x for x in cands if x >= 0] or [0.0])
+        limit = struct.unpack('<f', struct.pack('<f', limit))[0]
+        em.wbytes(MASK, pk(*mask))
+        em.wbytes(MD, pk(*mdct))
+    INFO = rnd(c, 0x480)
+    if r.random() < 0.04:
+        off1 = float('nan')
+    if r.random() < 0.04:
+        off2 = float('nan')
+    em.wbytes(INFO + 0x448, pk(off1))
+    em.wbytes(INFO + 0x44c, pk(off2))
+    em.wbytes(INFO + 0x450, pk(limit))
+    em.wbytes(INFO + 0x460, pk(atten))
+
+    def quant(emu, k):
+        p = emu.arg32(0)
+        v = struct.unpack('<f', bytes(emu.rbytes(p, 4)))[0]
+        try:
+            i = int(v * 7.3142857 + 1023.5)
+        except (OverflowError, ValueError):
+            i = -0x80000000
+        if i > 0x3ff:
+            return 0x3ff
+        if i < 0:
+            return 0
+        return i
+    hook_rec(c, 0x40ba30, 1, ret=quant, pop=0, side=lambda emu, k: emu.calllog.append(('quant', emu.arg32(0) - MASK)))
+    return [x0, x1, y0, y1, MASK, MD, INFO]
+
+
+S(0x40bc80, 'GUESS FUN_40bc80', 'cdecl', None, ret='eax', gen=g40bc80, note='batch246006')
+
+
+def g65b550(c):
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    pk = lambda *v: b''.join(struct.pack('<f', x) for x in v)
+
+    def FV():
+        q = r.random()
+        if q < 0.9:
+            return r.choice([0.0, 1.0, -1.0, 0.5, 2.0, 4.0, -0.5, 10.0, 0.25, 3.0])
+        return r.choice([float('inf'), 1e30, -2.0])
+    n = r.choice([1, 2, 4, 5, 8, 12, 16, 29, 32])
+    D0 = 0x812a40
+    # lane table: 0x680 + 0x80 bytes, 16 byte aligned, each component 0x80 bytes (32 lanes)
+    for off in (0x0, 0x80, 0x100, 0x180, 0x200, 0x280, 0x380, 0x400, 0x480, 0x500, 0x580, 0x600):
+        em.wbytes(D0 + off, pk(*[FV() for _ in range(32)]))
+    # normalised-ish normals sometimes
+    cnt = r.choice([0, 1, 1, 2, 3, 4])
+    BASE = em.alloc(0x240 * max(cnt, 1) + 0x20, 16)
+    for k in range(max(cnt, 1)):
+        rb = BASE + 0x240 * k
+        for off in range(0, 0x1a0, 0x10):
+            em.wbytes(rb + off, pk(*([FV()] * 4 if r.random() < 0.7 else [FV() for _ in range(4)])))
+        em.w32(rb + 0x1a0, r.choice([0, 1, 2, 3, 3, 4, 7, 0, 1, 2]))
+        em.wbytes(rb + 0x1a4, bytes([r.choice([0, 1, 1, 2, 3])]))
+    flags = r.choice([0, 0, 0x2000, 0x2000, 0x1000000, 0x1002000, 0x4, 0xfffff])
+    return [r.getrandbits(32), n, BASE, cnt, flags]
+
+
+S(0x65b550, 'GUESS FUN_65b550', 'stdcall', None, ret=None, gen=g65b550, note='batch246006')
+
+
+def g432cf0(c):
+    import math
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+
+    def cs(emu, a, n=80):
+        return emu.rbytes(a, n).split(b'\0')[0]
+    THIS = rnd(c, 0x400)
+    TVT = rnd(c, 0x100)
+    em.w32(THIS, TVT)
+    SO = THIS + 0x84
+    SOVT = rnd(c, 0x100)
+    em.w32(SO, SOVT)
+    # global G and path holder
+    G = rnd(c, 0x600)
+    em.w32(0x70039c, G)
+    em.wbytes(G + 0x6b, bytes([r.choice([0, 0, 0, 0, 1, 5])]))
+    path = rnd(c, 0x20)
+    em.wbytes(path, bytes([0x41 + r.randrange(0, 20) for _ in range(8)]) + b'\0')
+    if r.random() < 0.1:
+        em.wbytes(path, b'\0')
+    ub(G + 0x4a3, path)
+    # logger
+    LO = rnd(c, 0x10)
+    LVT = rnd(c, 0x100)
+    em.w32(LO, LVT)
+    em.w32(0x700390, LO)
+    XO = rnd(c, 0x10)
+    XVT = rnd(c, 0x100)
+    em.w32(XO, XVT)
+    em.w32(LVT + 0x20, pystub(c, 2, ret=XO, pop=8, this=True, side=lambda emu, k: emu.calllog.append(('l20', emu.arg32(0), emu.arg32(1)))))
+
+    def x2c(emu, k):
+        f = emu.arg32(1)
+        extra = cs(emu, emu.arg32(2)).hex() if f in (0x67a168, 0x67a180) else None
+        emu.calllog.append(('x2c', f, extra))
+    em.w32(XVT + 0x2c, pystub(c, 2, ret=0, pop=0, side=x2c))
+    # allocator, free, directory helper, ceil thunk
+    BUF = rnd(c, 0x2800)
+    hook_rec(c, 0x41e290, 1, ret=BUF, pop=0)
+    hook_rec(c, 0x634273, 2, ret=0, pop=0, side=lambda emu, k: emu.calllog.append(('free', emu.arg32(0) - BUF, emu.arg32(1))))
+    hook_rec(c, 0x420ae0, 0, ret=0, pop=0, this=True, side=lambda emu, k: emu.calllog.append(('mk', cs(emu, emu.reg('ecx')).hex())))
+
+    def ceil_st0(emu, k):
+        d = struct.unpack('<d', struct.pack('<II', emu.arg32(0), emu.arg32(1)))[0]
+        emu.calllog.append(('ceil', struct.pack('<d', d)))
+        try:
+            return float(math.ceil(d))
+        except (OverflowError, ValueError):
+            return 0.0
+    hook_rec(c, 0x634da6, 2, ret=0, pop=0, st0=ceil_st0)
+
+    def fmt_h(emu, res_):
+        buf, f = emu.arg32(0), emu.arg32(1)
+        fs = cs(emu, f).decode('latin1')
+        out = ''
+        ai = 2
+        i = 0
+        args = []
+        while i < len(fs):
+            if fs[i] == '%' and i + 1 < len(fs) and fs[i + 1] == 's':
+                sv = cs(emu, emu.arg32(ai)).decode('latin1')
+                args.append(sv)
+                out += sv
+                ai += 1
+                i += 2
+            else:
+                out += fs[i]
+                i += 1
+        data = out.encode('latin1')
+        emu.wbytes(buf, data + b'\0')
+        emu.calllog.append(('fmt', fs, args, buf - BUF if BUF <= buf < BUF + 0x2800 else buf))
+        emu.ret(eax=len(data), argbytes=0)
+    c.emu.hook(0x42ac56, fmt_h)
+    # item names / strings
+    def mkstr(n, pad=0):
+        a = em.alloc(n + 4, 4)
+        em.wbytes(a, bytes([0x61 + r.randrange(0, 20) for _ in range(n)]) + b'\0')
+        return a
+    nit = r.choice([0, 1, 1, 2, 3])
+    items = []
+    for i in range(nit):
+        it = rnd(c, 0xc0)
+        ub(it, mkstr(r.choice([0, 1, 5, 12, 17, 18, 19, 20, 25])))
+        for k in range(4):
+            ub(it + 0x80 + 4 * k, r.choice([0xffffffff, 0xffffffff, 3, 7, 0x1f]))
+        ub(it + 0xa1, r.randrange(0, 9))
+        ub(it + 0xa7, mkstr(r.choice([3, 6])) if r.random() < 0.4 else 0)
+        ub(it + 0xab, mkstr(r.choice([3, 6])) if r.random() < 0.4 else 0)
+        items.append(it)
+    seqn = [0]
+
+    def s64(emu, k):
+        i = seqn[0]
+        seqn[0] += 1
+        return items[i] if i < len(items) else 0
+    em.w32(SOVT + 0x4c, pystub(c, 1, ret=0, pop=4, this=True, stackmark=(0,)))
+    em.w32(SOVT + 0x64, pystub(c, 1, ret=s64, pop=4, this=True, stackmark=(0,), side=lambda emu, k: emu.calllog.append(('s64', k))))
+    names = {}
+
+    def keyname(emu, k):
+        v = emu.arg32(0)
+        if v not in names:
+            names[v] = mkstr(r.choice([2, 8, 14, 19, 20, 21, 25]))
+        return names[v]
+    em.w32(TVT + 4, pystub(c, 1, ret=keyname, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('t4', emu.arg32(0)))))
+    devs = {}
+
+    def devname(emu, k):
+        v = emu.arg32(0)
+        if v not in devs:
+            devs[v] = mkstr(r.choice([3, 9]))
+        return devs[v]
+    em.w32(TVT + 8, pystub(c, 1, ret=devname, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('t8', emu.arg32(0)))))
+    # file system object
+    H = rnd(c, 0x10)
+    HVT = rnd(c, 0x100)
+    em.w32(H, HVT)
+    em.w32(0x700394, H)
+    em.w32(HVT + 0x14, pystub(c, 1, ret=lambda emu, k: r.choice([0x5000, 0x5000, 0]), pop=4, this=True, side=lambda emu, k: emu.calllog.append(('h14', cs(emu, emu.arg32(0)).hex()))))
+    em.w32(HVT + 0x38, pystub(c, 3, ret=0, pop=12, this=True,
+                              side=lambda emu, k: emu.calllog.append(('h38', emu.arg32(0), emu.arg32(2), emu.rbytes(emu.arg32(1), min(emu.arg32(2), 0x2700)).hex()))))
+    em.w32(HVT + 0x1c, pystub(c, 1, ret=0, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('h1c', emu.arg32(0)))))
+    return [THIS]
+
+
+S(0x432cf0, 'GUESS FUN_432cf0', 'thiscall', None, ret='al', gen=g432cf0, note='batch246006')
+
+
+def g494bb0(c):
+    import struct
+    from unicorn.x86_const import UC_X86_REG_EDX
+    clear_hooks(c)
+    seh_chain(c, c.rng.choice([0, 1, 2]))
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+    pf = lambda x: struct.unpack('<I', struct.pack('<f', x))[0]
+    names = {}
+    last_tmp = [0]
+    st = lambda emu: emu.r32(emu.r32(pe_emu.TEB) + 8)
+
+    def mkstr(n):
+        a = em.alloc(n + 4, 4)
+        em.wbytes(a, bytes([0x61 + r.randrange(0, 20) for _ in range(n)]) + b'\0')
+        return a
+
+    def cs(emu, a):
+        return emu.rbytes(a, 40).split(b'\0')[0].hex()
+    THIS = rnd(c, 0xc00)
+    names[THIS] = 'T'
+    TVT = rnd(c, 0x100)
+    em.w32(THIS, TVT)
+    C = THIS + 0xcc
+    CVT = rnd(c, 0x40)
+    em.w32(C, CVT)
+    em.wbytes(THIS + 0xbb0, bytes([r.choice([0, 0, 1])]))
+    # database / globals
+    DB = rnd(c, 0x40)
+    DBVT = rnd(c, 0x200)
+    em.w32(DB, DBVT)
+    em.w32(0x70038c, DB)
+    G = rnd(c, 0x200)
+    GVT = rnd(c, 0x200)
+    em.w32(G, GVT)
+    em.w32(0x70039c, G)
+    gtime = r.choice([1000, 5000])
+    ub(G + 0x40, gtime)
+    ub(G + 0x3c, r.choice([7, 8]))
+    ub(0x6ffa84, r.choice([7, 8, 9]))
+    em.wbytes(0x6ffa94, struct.pack('<f', r.choice([3.0, 3.0, 4.0, 4.0, 0.0, 5.0, float('nan')])))
+    GM = rnd(c, 0x40)
+    GMVT = rnd(c, 0x100)
+    em.w32(GM, GMVT)
+    ub(G + 0x9b, GM)
+    LO = rnd(c, 0x40)
+    LVT = rnd(c, 0x100)
+    em.w32(LO, LVT)
+    em.w32(0x700390, LO)
+    XO = rnd(c, 0x10)
+    XVT = rnd(c, 0x200)
+    em.w32(XO, XVT)
+    P = rnd(c, 0x20)
+    PVT = rnd(c, 0x40)
+    em.w32(P, PVT)
+    ub(LO + 0xc, P if r.random() < 0.8 else 0)
+    # entries and owners
+    ents = {}
+    ownkeys = {}
+
+    def mk_owner():
+        ov = rnd(c, 0x40)
+        OVT = rnd(c, 0x200)
+        em.w32(ov, OVT)
+        ub(ov + 4, mkstr(r.choice([3, 7])) if r.random() < 0.7 else 0)
+        eo = rnd(c, 0x60)
+        ub(eo + 0x3c, 0x800000 if r.random() < 0.85 else 0x1)
+        em.w32(ov + 8, eo)
+        pd = rnd(c, 0x10)
+        em.w32(ov + 0xc, pd)
+        ub(ov + 0x14, 0)
+        q = rnd(c, 0x40)
+        ub(q + 0x10, r.choice([0, 5, 5, 5]))
+        em.w32(ov + 0x10, q)   # objv[0x10] == 0 (error 1) falls into a null dereference in the original: not generated
+        names[ov] = 'O%d' % len(names)
+        em.w32(OVT + 0x160, pystub(c, 0, ret=0, pop=0, this=True, side=lambda emu, k, ov=ov: emu.calllog.append(('o160', names[ov]))))
+        em.w32(OVT + 0x164, pystub(c, 0, ret=0, pop=0, this=True, side=lambda emu, k, ov=ov: emu.calllog.append(('o164', names[ov]))))
+        sv = rnd(c, 0x10)
+        ub(sv, mkstr(r.choice([3, 6])))
+        em.w32(OVT + 0x1d8, pystub(c, 2, ret=sv, pop=8, this=True, stackmark=(0,), side=lambda emu, k, ov=ov: (last_tmp.__setitem__(0, emu.arg32(0)), emu.calllog.append(('o1d8', names[ov], emu.arg32(1))))))
+        return ov
+    nn = r.choice([0, 1, 2, 2, 3, 4])
+    nodes = []
+    for i in range(nn):
+        nd = rnd(c, 0x20)
+        nid = 100 + i * 7
+        ub(nd, nid)
+        nodes.append(nd)
+        if r.random() < 0.8:
+            e = rnd(c, 0x80) + 4 if False else (rnd(c, 0x80) + 4)
+            ub(e - 4, r.choice([0, 0x1234]))
+            em.wbytes(e + 0xc, struct.pack('<f', r.choice([0.0, 0.5, 1.0, 2.25, 0.0003, 0.0007, 0.00123])))
+            ub(e + 0x10, r.choice([10, 100, 4000, 6000, gtime, gtime, gtime + 1, gtime - 1]))
+            ub(e + 0x14, r.choice([0, 0x100, 0x100, 1]))
+            key = 50 + i
+            ub(e + 0x1c, key if r.random() < 0.65 else 0)
+            ov = mk_owner() if r.random() < 0.7 else 0
+            if r.random() < 0.5:
+                ub(e + 0x30, ov)
+            else:
+                ub(e + 0x30, 0)
+                ownkeys[key] = ov
+            ub(e + 0x34, r.choice([0, 0, 0]))
+            EVT = rnd(c, 0x200)
+            em.w32(e, EVT)
+            names[e] = 'E%d' % i
+            em.w32(EVT + 0x5c, pystub(c, 3, ret=0, pop=12, this=True, side=lambda emu, k, e=e: emu.calllog.append(('e5c', names[e], emu.arg32(0), emu.arg32(1), emu.arg32(2)))))
+            sname = mkstr(5)
+            em.w32(EVT + 0x14, pystub(c, 0, ret=sname, pop=0, this=True, side=lambda emu, k, e=e: emu.calllog.append(('e14', names[e]))))
+            ents[nid] = e
+    for i, nd in enumerate(nodes):
+        em.w32(nd + 0x10, nodes[i + 1] if i + 1 < len(nodes) else 0)
+    ub(THIS + 0xad0, nodes[0] if nodes else 0)
+    ub(THIS + 0xad8, len(nodes))
+    # vtable slots
+    seq = [1] * r.choice([1, 2, 3]) + [0]
+    sn = [0]
+
+    def c8(emu, k):
+        i = sn[0]
+        sn[0] += 1
+        return seq[i] if i < len(seq) else 0
+    em.w32(CVT + 8, pystub(c, 0, ret=c8, pop=0, this=True, side=lambda emu, k: emu.calllog.append(('c8', k))))
+    em.w32(CVT + 0, pystub(c, 2, ret=0, pop=8, this=True, stackmark=(0,), side=lambda emu, k: emu.calllog.append(('c0', emu.arg32(0) - THIS if THIS <= emu.arg32(0) < THIS + 0xc00 else emu.arg32(0), emu.arg32(1)))))
+    em.w32(TVT + 4, pystub(c, 0, ret=lambda emu, k: r.choice([0, 0] + list(ents.values()) + [0x4444]), pop=0, this=True))
+    em.w32(DBVT + 0xcc, pystub(c, 1, ret=lambda emu, k: ents.get(emu.arg32(0), 0), pop=4, this=True, side=lambda emu, k: emu.calllog.append(('db_cc', emu.arg32(0)))))
+    em.w32(DBVT + 0x20, pystub(c, 1, ret=lambda emu, k: r.choice([0, 0, 1]), pop=4, this=True))
+    em.w32(DBVT + 0xac, pystub(c, 1, ret=0, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('db_ac', k))))
+    FP = pystub(c, 0, ret=lambda emu, k: 0x5151, pop=0, this=True, side=lambda emu, k: emu.calllog.append(('dbfp', emu.reg('ecx') == 0)))
+    ub(DB + 8, FP if r.random() < 0.6 else 0)
+    ents_l = sorted(ents.values()) or [0x20000000]
+    ub(DB + 0xc, ents_l[0] - r.choice([0, 0x10, 0x4000]))
+    ub(DB + 0x10, ents_l[-1] + r.choice([0x10, 0x4000, 0]))
+    em.w32(GMVT + 0x58, pystub(c, 1, ret=lambda emu, k: ownkeys.get(emu.arg32(0), 0), pop=4, this=True, side=lambda emu, k: emu.calllog.append(('gm58', emu.arg32(0)))))
+    em.w32(GMVT + 0x4c, pystub(c, 1, ret=lambda emu, k: r.getrandbits(32), pop=4, this=True, side=lambda emu, k: emu.calllog.append(('gm4c', names.get(emu.arg32(0), emu.arg32(0))))))
+
+    def g1c8(emu, k):
+        emu.calllog.append(('g1c8', emu.arg32(0), emu.arg32(1)))
+        emu.mu.reg_write(UC_X86_REG_EDX, r.choice([0, 0, 1, 5]))
+    em.w32(GVT + 0x1c8, pystub(c, 2, ret=lambda emu, k: r.choice([100, 2000, 0xfffffff0, 7]), pop=8, this=True, side=g1c8))
+    O1 = rnd(c, 0x10)
+    O1VT = rnd(c, 0x200)
+    em.w32(O1, O1VT)
+    em.w32(GVT + 0x190, pystub(c, 0, ret=O1, pop=0, this=True, side=lambda emu, k: emu.calllog.append(('g190', k))))
+    em.w32(O1VT + 0x184, pystub(c, 4, ret=0, pop=0, side=lambda emu, k: emu.calllog.append(('o184', emu.arg32(0) - O1, emu.arg32(1), emu.arg32(2), cs(emu, emu.arg32(3))))))
+    em.w32(LVT + 0x20, pystub(c, 2, ret=XO, pop=8, this=True, side=lambda emu, k: emu.calllog.append(('l20', emu.arg32(0), emu.arg32(1)))))
+
+    def x2c(emu, k):
+        f = emu.arg32(1)
+        emu.calllog.append(('x2c', f, cs(emu, emu.arg32(2)), names.get(emu.arg32(3), emu.arg32(3)) if f == 0x68e058 else None, st(emu)))
+    em.w32(XVT + 0x2c, pystub(c, 3, ret=0, pop=0, side=x2c))
+    PREC = rnd(c, 0x40)
+    em.w32(PVT + 4, pystub(c, 1, ret=lambda emu, k: PREC + 4, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('p4', emu.arg32(0)))))
+    em.wbytes(PREC, bytes(r.getrandbits(8) for _ in range(0x30)))
+    # hooks on callees
+    def remove_h(emu, k):
+        node = emu.arg32(0)
+        head = emu.r32(THIS + 0xad0)
+        if head == node:
+            emu.w32(THIS + 0xad0, emu.r32(node + 0x10))
+        else:
+            p = head
+            while p and emu.r32(p + 0x10) != node:
+                p = emu.r32(p + 0x10)
+            if p:
+                emu.w32(p + 0x10, emu.r32(node + 0x10))
+        emu.w32(THIS + 0xad8, emu.r32(THIS + 0xad8) - 1)
+        emu.calllog.append(('rm', emu.reg('ecx') - THIS, emu.r32(node)))
+    hook_rec(c, 0x493b80, 1, ret=0, pop=4, this=True, side=remove_h)
+    hook_rec(c, 0x494ac0, 1, ret=0, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('a4ac0', emu.reg('ecx'), cs(emu, emu.arg32(0)))))
+    hook_rec(c, 0x4cbec0, 0, ret=0, pop=0, this='mark', stackmark=(), side=lambda emu, k: emu.calllog.append(('dtor', k, emu.reg('ecx') == last_tmp[0], st(emu))))
+    em.w32(0x7003b0, pystub(c, 0, ret=0, pop=0, side=lambda emu, k: emu.calllog.append(('fatal',))))
+    return [THIS]
+
+
+S(0x494bb0, 'GUESS FUN_494bb0', 'thiscall', None, ret=None, gen=g494bb0, note='batch246006')
+
+
+def g617400(c):
+    import struct
+    from unicorn.x86_const import UC_X86_REG_EDX
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    ub = lambda a, v: em.wbytes(a, (v & 0xffffffff).to_bytes(4, 'little'))
+    pk = lambda *v: b''.join(struct.pack('<f', x) for x in v)
+    names = {}
+
+    def FV():
+        q = r.random()
+        if q < 0.92:
+            return r.choice([0.0, 1.0, -1.0, 0.5, 2.0, -0.5, 3.0, 0.25, 10.0])
+        return r.choice([float('inf'), 1e30])
+    F = r.choice([0, 1, 1])
+    nv = r.choice([1, 2, 3, 5, 8])
+    # this / S / T / a
+    THIS = rnd(c, 0x20)
+    P4 = rnd(c, 0x20)
+    Zo = rnd(c, 0x20)
+    S = rnd(c, 0xc0)
+    ub(THIS + 4, P4)
+    ub(P4 + 4, Zo)
+    ub(Zo + 8, S)
+    SV = em.alloc(0x40 * nv + 0x80, 16)
+    for i in range(nv):
+        base = SV + 0x40 * i
+        em.wbytes(base, pk(*[FV() for _ in range(4)]))
+        em.wbytes(base + 0x10, pk(*[FV() for _ in range(4)]))
+        wts = r.choice([(0.5, 0.25, 0.125, 0.125), (1.0, 0.0, 0.0, 0.0), (0.25, 0.25, 0.25, 0.25), (0.75, 0.25, 0.0, 0.0), (0.5, 0.5, 0.0, 0.0), (0.1, 0.2, 0.3, 0.4)])
+        em.wbytes(base + 0x20, pk(*wts, ))
+        nb = r.choice([1, 2, 3, 4])
+        em.wbytes(base + 0x3c, bytes([r.randrange(0, 20) for _ in range(4)]))
+        em.wbytes(base + 0x30, pk(FV(), FV()))
+        em.wbytes(base + 0x38, pk(FV()))
+        if F and r.random() < 0.3:
+            pass
+    ub(P4 + 0xc, SV)
+    A = rnd(c, 0x40)
+    Q = rnd(c, 0x20)
+    T = rnd(c, 0x60)
+    ub(A + 0x14, Q)
+    ub(Q + 8, T)
+    ub(A + 0x20, r.getrandbits(32))
+    ub(A + 0x24, r.getrandbits(32))
+    ub(A + 0x28, r.getrandbits(32))
+    Tb = em.alloc(0x2000, 16)
+    ub(T + 0x48, Tb)
+    al = r.choice([1, 2])
+    em.wbytes(T + 0x3f, bytes([al]))
+    X = Tb + 0x90 + 0x30 * al
+    # data blob K20
+    BLOB = em.alloc(0x4000, 16)
+    K = rnd(c, 0x40)
+    ub(K + 0x20, BLOB)
+    G = rnd(c, 0x1b00)
+    em.w32(0x70039c, G)
+    ub(G + 0x1aa3, K)
+    for off in range(0, 0x1000, 4):
+        em.wbytes(X + off, pk(FV())) if False else None
+    em.wbytes(X, pk(*[FV() for _ in range(700)]))
+    # runs: exactly 312 dwords in 1 to 3 runs
+    cuts = sorted(r.sample(range(1, 312), r.choice([0, 1, 2])))
+    parts = [b - a for a, b in zip([0] + cuts, cuts + [312])]
+    nruns = len(parts)
+    for i, n in enumerate(parts):
+        ub(BLOB + 0x1000 + 8 * i, n)
+        ub(BLOB + 0x1000 + 8 * i + 4, r.randrange(0, 60))
+    ub(S + 0x98, nruns)
+    ub(S + 0x9c, 0x1000)
+    ub(S + 0x14, 0x100)
+    em.wbytes(S + 0xe, struct.pack('<H', nv))
+    # scalar vertices (0x34 bytes each) for F == 0
+    for i in range(nv):
+        vb = BLOB + 0x100 + 0x34 * i
+        wts = r.choice([(0.5, 0.25, 0.125), (0.0, 0.5, 0.25), (0.5, 0.0, 0.25), (0.5, 0.25, 0.0), (0.25, 0.25, 0.25), (0.7, 0.2, 0.3), (1.0, 0.0, 0.0)])
+        em.wbytes(vb, pk(FV(), FV(), FV()) + pk(*wts))
+        em.wbytes(vb + 0x18, bytes([r.randrange(0, 20) for _ in range(4)]))
+        em.wbytes(vb + 0x1c, pk(FV(), FV(), FV(), FV(), FV(), FV()))
+    # index table
+    nrun_i = r.choice([0, 1, 2, 3])
+    ip = BLOB + 0x1800
+    S3c = 0x1800
+    ub(S + 0x3c, S3c)
+    em.wbytes(ip, struct.pack('<H', nrun_i))
+    cur = ip + 2
+    for i in range(nrun_i):
+        ln = r.choice([0, 3, 6, 18, 33])
+        em.wbytes(cur, struct.pack('<H', ln))
+        em.wbytes(cur + 2, b''.join(struct.pack('<H', r.randrange(0, 0x10000)) for _ in range(ln)))
+        cur += 2 + 2 * ln
+    for off in (0x20, 0x38, 0x44):
+        ub(S + off, r.getrandbits(32))
+    # renderer / lock objects
+    Rr = rnd(c, 0x1400)
+    names[Rr] = 'R'
+    RVT = rnd(c, 0x400)
+    em.w32(Rr, RVT)
+    em.wbytes(Rr + 0x1296, bytes([F]))
+    em.wbytes(Rr + 0x115f, bytes([r.choice([0, 2, 2, 3])]))
+    em.w32(RVT + 0x29c, pystub(c, 3, ret=0, pop=12, this=True, side=lambda emu, k: emu.calllog.append(('r29c', [emu.arg32(i) for i in range(3)]))))
+    Do = rnd(c, 0x20)
+    DVT = rnd(c, 0x200)
+    em.w32(Do, DVT)
+    ub(Rr + 0x1377, Do)
+    em.w32(DVT + 0x11c, pystub(c, 6, ret=0, pop=0x18, side=lambda emu, k: emu.calllog.append(('d11c', [emu.arg32(i) for i in range(1, 6)]))))
+    # V (vertex lock manager) and B (index lock manager)
+    Vo = rnd(c, 0x40)
+    VL = rnd(c, 0x20)
+    VLVT = rnd(c, 0x100)
+    em.w32(VL, VLVT)
+    em.w32(Vo, VL)
+    ub(Vo + 4, nv + r.choice([0, 1, 20]))
+    ub(Vo + 8, r.choice([0, 3, 10]))
+    em.wbytes(Vo + 0x10, bytes([r.choice([0, 1])]))
+    em.wbytes(Vo + 0x11, bytes([r.choice([0, 1])]))
+    ub(Vo + 0xc, 0)
+    ub(Rr + 0x13f2, Vo)
+    DST = em.alloc(0x24 * (nv + 40) + 0x40, 16)
+
+    def vlock(emu, k):
+        off = emu.arg32(1)
+        emu.w32(emu.arg32(3), DST + off)
+        emu.calllog.append(('vlock', off, emu.arg32(2), emu.arg32(4)))
+    em.w32(VLVT + 0x2c, pystub(c, 5, ret=lambda emu, k: 0, pop=0x14, stackmark=(3,), side=vlock))
+    em.w32(VLVT + 0x30, pystub(c, 1, ret=0, pop=4, side=lambda emu, k: emu.calllog.append(('vunlock', k))))
+    Bo = rnd(c, 0x40)
+    BL = rnd(c, 0x20)
+    BLVT = rnd(c, 0x100)
+    em.w32(BL, BLVT)
+    em.w32(Bo, BL)
+    ub(Bo + 4, 40 + r.choice([0, 10]))
+    ub(Bo + 8, r.choice([0, 5, 20]))
+    em.wbytes(Bo + 0xc, bytes([r.choice([0, 1])]))
+    em.wbytes(Bo + 0xd, bytes([r.choice([0, 1])]))
+    ub(Rr + 0x13f6, Bo)
+    IDXB = em.alloc(0x400, 4)
+
+    def block(emu, k):
+        off = emu.arg32(1)
+        emu.w32(emu.arg32(3), IDXB + (off & 0xff))
+        emu.calllog.append(('block', off, emu.arg32(2), emu.arg32(4)))
+    em.w32(BLVT + 0x2c, pystub(c, 5, ret=lambda emu, k: 0, pop=0x14, stackmark=(3,), side=block))
+    em.w32(BLVT + 0x30, pystub(c, 1, ret=0, pop=4, side=lambda emu, k: emu.calllog.append(('bunlock', k))))
+    # device and caches
+    DV = rnd(c, 0x20)
+    DVV = rnd(c, 0x400)
+    em.w32(DV, DVV)
+    em.w32(0x724a00, DV)
+    em.w32(DVV + 0xc8, pystub(c, 3, ret=0, pop=12, side=lambda emu, k: emu.calllog.append(('dc8', emu.arg32(1), emu.arg32(2)))))
+    em.w32(DVV + 0x130, pystub(c, 2, ret=0, pop=8, side=lambda emu, k: emu.calllog.append(('d130', emu.arg32(1)))))
+    em.w32(DVV + 0x14c, pystub(c, 4, ret=0, pop=16, side=lambda emu, k: emu.calllog.append(('d14c', [emu.arg32(i) for i in range(1, 4)]))))
+    em.w32(DVV + 0x154, pystub(c, 3, ret=0, pop=12, side=lambda emu, k: emu.calllog.append(('d154', [emu.arg32(i) for i in range(1, 3)]))))
+    em.w32(0x724948, r.choice([0, 1, 5]))
+    em.w32(0x7249f8, r.choice([0x152, 0x152, 0x151]))
+    em.w32(0x724970, r.choice([em.r32(Vo), 0x1234]))
+    em.w32(0x7249b0, r.choice([0x24, 0x24, 0x23]))
+    em.w32(0x7249f0, r.choice([em.r32(Bo), 0x99]))
+    em.w32(0x7249f4, r.choice([0, 0, 3]))
+    # debug timers
+    flt = [0.0, 1.0, 2.0, -1.0]
+    em.wbytes(G + 0x9c7, struct.pack('<f', r.choice(flt)))
+    em.wbytes(G + 0x9c3, struct.pack('<f', r.choice(flt)))
+    GVT = rnd(c, 0x200)
+    em.w32(G, GVT)
+
+    def s1c8(emu, k):
+        emu.calllog.append(('g1c8', emu.arg32(0), emu.arg32(1)))
+        emu.mu.reg_write(UC_X86_REG_EDX, r.getrandbits(32))
+    em.w32(GVT + 0x1c8, pystub(c, 2, ret=lambda emu, k: r.getrandbits(32), pop=8, this=True, side=s1c8))
+    for slot in (0x178, 0x17c):
+        em.w32(GVT + slot, pystub(c, 3, ret=0, pop=12, this=True,
+                                  side=lambda emu, k, slot=slot: emu.calllog.append(('dbg', slot, emu.arg32(0), emu.arg32(1), emu.arg32(2)))))
+    # hooks
+    for addr in (0x610f20, 0x610e20, 0x6107e0, 0x611710):
+        hook_rec(c, addr, 1, ret=0, pop=4, this=True, side=lambda emu, k, addr=addr: emu.calllog.append(('h%x' % addr, emu.arg32(0))))
+
+    def mcpy(emu, k):
+        d, s_, n = emu.arg32(0), emu.arg32(1), emu.arg32(2)
+        emu.wbytes(d, emu.rbytes(s_, n))
+        emu.calllog.append(('memcpy', s_ - Tb, n))
+    hook_rec(c, 0x634d22, 3, ret=lambda emu, k: emu.arg32(0), pop=0, stackmark=(0,), side=mcpy)
+    return [THIS, A, Rr]
+
+
+S(0x617400, 'GUESS FUN_617400', 'thiscall', None, ret=None, gen=g617400, note='batch246006')
+
+
+def g636de0(c):
+    import struct
+    clear_hooks(c)
+    r = c.rng
+    em = c.emu
+    m = r.choice([0, 1])
+    stride = r.choice([4, 4, 8, 16])
+    a0 = r.choice([0, 0, 4])
+    a1 = r.choice([0, 0, 1])
+    rows = a1 + 4
+    npx = stride * rows + a0 + 8
+    PB = em.alloc(4 * npx + 16, 16)
+    OB = em.alloc(4 * npx + 16, 16)
+    q = r.random()
+    base = r.randrange(0, 1 << 24)
+    cols = [r.getrandbits(24) for _ in range(3)]
+
+    mode_ = r.choice([0, 0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 6])
+    uni_alpha = r.random() < 0.6
+    ua = r.choice([0xff, 0xff, 0x00, 0x7f, 0x80])
+    gbase = r.getrandbits(24)
+
+    def px(i):
+        mode = mode_
+        if mode == 0:
+            col = cols[0]
+        elif mode == 1:
+            col = cols[r.randrange(0, 2)]
+        elif mode == 2:
+            col = (r.getrandbits(8) << 16) | (r.getrandbits(8) << 8) | r.getrandbits(8)
+        elif mode == 3:
+            g = (i * 17) & 0xff
+            col = (g << 16) | (((i * 5) & 0xff) << 8) | ((255 - g) & 0xff)
+        elif mode == 4:
+            col = (r.randrange(0, 4) * 60 << 16) | (r.randrange(0, 4) * 60 << 8) | r.randrange(0, 4) * 60
+        elif mode == 5:
+            # green dominant: green over the full range, red / blue close to a base
+            rb = (gbase >> 16) & 0xff
+            bb = gbase & 0xff
+            col = (min(255, rb + r.randrange(0, 12)) << 16) | (r.getrandbits(8) << 8) | min(255, bb + r.randrange(0, 12))
+        else:
+            # saturated: values near the top, some exactly 255, green dominant half of the time
+            top = lambda: r.choice([255, 255, 252, 248, 240, 200, 128])
+            if gbase & 1:
+                col = ((200 + r.randrange(0, 8)) << 16) | (top() << 8) | (200 + r.randrange(0, 8))
+            else:
+                col = (top() << 16) | (top() << 8) | top()
+        if uni_alpha:
+            al = ua
+        else:
+            al = r.choice([0xff, 0xff, 0xff, 0x00, 0x7f, 0x80]) if r.random() < 0.7 else 0xff
+        return struct.pack('<I', (al << 24) | col)
+    data = bytearray(r.getrandbits(8) for _ in range(4 * npx))
+    for row in range(4):
+        for col in range(4):
+            i = (a1 + row) * stride + a0 + col
+            data[4 * i:4 * i + 4] = px(row * 4 + col)
+    em.wbytes(PB, bytes(data))
+    em.wbytes(OB, bytes(r.getrandbits(8) for _ in range(4 * npx)))
+    A4 = em.alloc(16, 4)
+    em.wbytes(A4, bytes(r.getrandbits(8) for _ in range(8)))
+    return [m, stride, a0, a1, PB, OB, A4]
+
+
+S(0x636de0, 'GUESS FUN_636de0', 'fastcall', None, ret='eax', gen=g636de0, note='batch246006', max_insns=40000000)

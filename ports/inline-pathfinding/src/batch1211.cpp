@@ -155,7 +155,7 @@ static int THISCALL iterNearestCell(u8 *it, u16 *out, float *p, u8 *flag) {
 }
 PCREG(530bf0, iterNearestCell);
 
-// 0x52e0a0 ZPFOctree_packed::CheckLine(float* a, float* b, bool snapY) [map medium; GameCube reference]. thiscall, ret 0xc,
+// 0x52e0a0 ZPFOctree_packed::CheckLine(float* a, float* b, bool snapY) [map medium; GC 801951c8]. thiscall, ret 0xc,
 // bool. Both points go to their nearest walkable cell (fails when none); with snapY both points' y is moved to the top
 // of that cell (cell y + 1, world space); then the cell line check.
 static bool THISCALL worldLineCheck(u8 *self, float *a, float *b, u32 snap) {

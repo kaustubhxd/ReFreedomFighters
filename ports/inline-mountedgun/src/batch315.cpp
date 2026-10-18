@@ -23,7 +23,7 @@ static inline u8 *eng() { return G(u8 *, 0x70039c); }
 static inline s32 clockTicks() { return *(s32 *)(eng() + 0x40); }
 #define MOS_FILE ((const char *)0x69e4bc)   // "..\\..\\code\\engine\\shared\\vehicles\\moveonspline.cpp"
 
-// 0x512db0 AimControl::GetAimAtTargetPoint(float *out) (GameCube reference by order of the GetAimPoint branches; inferred);
+// 0x512db0 AimControl::GetAimAtTargetPoint(float *out) (GC 801de4dc by order of the GetAimPoint branches; inferred);
 // thiscall, ret 4. With a target: out = the target's point number slot3a8() (slot 0x398(index, out)); else (0,0,0).
 // Then the owner's slot 0x84(out).
 static void THISCALL getAimAtTargetPoint(u8 *self, float *out) {
@@ -42,7 +42,7 @@ static void THISCALL getAimAtTargetPoint(u8 *self, float *out) {
 }
 PCREG(512db0, getAimAtTargetPoint);
 
-// 0x512be0 AimControl::GetAimAroundPoint(float *out) (GameCube reference; inferred); thiscall, ret 4. out = owner slot
+// 0x512be0 AimControl::GetAimAroundPoint(float *out) (GC 801de1e0; inferred); thiscall, ret 4. out = owner slot
 // 0x84 of (0,0,0), then x and z each move by random * 100 (engine slot 0x1c4, a signed random in ST0; lines 0x545,
 // 0x546). The point is kept as the last point (+0x24) and +0x14 = now (seconds).
 static void THISCALL getAimAroundPoint(u8 *self, float *out) {
@@ -62,7 +62,7 @@ static void THISCALL getAimAroundPoint(u8 *self, float *out) {
 }
 PCREG(512be0, getAimAroundPoint);
 
-// 0x512ca0 AimControl::GetAimAtLastPosPoint(float *out) (GameCube reference; inferred); thiscall, ret 4. When the refresh
+// 0x512ca0 AimControl::GetAimAtLastPosPoint(float *out) (GC 801de308; inferred); thiscall, ret 4. When the refresh
 // time (+0x14) has passed: the returned point (+0x18) becomes the last point (+0x24); the last point is refreshed
 // from a random body point of the target (slot 0x3b4 when random < 0.5, else 0x3b8; random from slot 0x1c0, line
 // 0x556), or (0,0,0) with no target, pushed through the owner's slot 0x84; the next refresh is now + the global
@@ -96,7 +96,7 @@ static void THISCALL getAimAtLastPosPoint(u8 *self, float *out) {
 }
 PCREG(512ca0, getAimAtLastPosPoint);
 
-// 0x512e10 AimControl::GetAimPoint(float *out) (GameCube reference by size and shape; the namemap's ZPmv::UpdateAimPos
+// 0x512e10 AimControl::GetAimPoint(float *out) (GC 801de150 by size and shape; the namemap's ZPmv::UpdateAimPos
 // [medium] is the GC caller's name); thiscall, ret 4. Nothing without an owner (+4). Before +0xc seconds: aim around;
 // before +0x10: aim at the last position; after: aim at the target. (Tail calls in the original.)
 static void THISCALL getAimPoint(u8 *self, float *out) {

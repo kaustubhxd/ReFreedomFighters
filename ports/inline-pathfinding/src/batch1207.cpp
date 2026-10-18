@@ -47,7 +47,7 @@ PCREG(530a40, aStarIndex);
 #define DIRS ((const s16 *)0x6e9004)
 
 // 0x531b40 ZPFOctree_packed::VisitNeighbor(unsigned short from, ZPFOctreeIterator_packed*, PFDirection, float,
-// const unsigned short*) [map high; GameCube reference]. thiscall, ret 0x14. Direction 10 = special links (VisitNeighbor-
+// const unsigned short*) [map high; GC 8019a1b8]. thiscall, ret 0x14. Direction 10 = special links (VisitNeighbor-
 // SpecialThin), 11 = the iterator's current id, else a step along DIRS (element or node move by iterator kind).
 // Returns 0 when blocked, 0xffff when the A* array is full, else 1. The cost argument is not used on PC: every step
 // costs 1.0001; the neighbour is relaxed only when its f is more than 0.1 above the new value.
@@ -77,7 +77,7 @@ static u32 THISCALL visitNeighbor(u8 *self, u32 from, u8 *it, u32 dir, float, co
 }
 PCREG(531b40, visitNeighbor);
 
-// 0x531a50 ZPFOctree_packed::TryLine(float* a, float* b, CHelpers*) [map high; GameCube reference]. thiscall, ret 0xc.
+// 0x531a50 ZPFOctree_packed::TryLine(float* a, float* b, CHelpers*) [map high; GC 80195424]. thiscall, ret 0xc.
 // When the straight line a -> b is free (CheckLine with the flag 1), returns a new two-point CChkPntLst (a, b) with
 // its total length at +4; else NULL. AddPoint copies each point into `a`, so a ends up equal to b (as in the exe).
 // The exe's SEH frame only guards the constructor (exception unwinding); there is nothing to port from it.

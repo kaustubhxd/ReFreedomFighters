@@ -9,7 +9,7 @@
 
 typedef void(THISCALL *addframe_t)(void *, void *, void *, float, float, u32);
 
-// ZLNKOBJ::SetDualFrame(AnimHeader* a, float ta, AnimHeader* b, float tb, float wb, float blend) [high, GameCube reference].
+// ZLNKOBJ::SetDualFrame(AnimHeader* a, float ta, AnimHeader* b, float tb, float wb, float blend) [high, GC 80183568].
 // Two layers: clip a at fraction ta with flag 4 (paired), then clip b at fraction tb as its second clip; in
 // GetBonesFrames b's "blend" field (wb) becomes the second-clip weight. blend goes into a's blend-in time.
 static void THISCALL SetDualFrame(void *self, void *a, float ta, void *b, float tb, float wb, float blend) {
@@ -24,7 +24,7 @@ static void THISCALL SetDualFrame(void *self, void *a, float ta, void *b, float 
 }
 PCREG(464650, SetDualFrame);
 
-// ZBoneModifyBase::Update(ZLNKOBJ* obj, float* mat, float* pos) [high, GameCube reference]. thiscall ret 0xc, bool in AL.
+// ZBoneModifyBase::Update(ZLNKOBJ* obj, float* mat, float* pos) [high, GC 80220ce0]. thiscall ret 0xc, bool in AL.
 // Once per engine frame (frame number [0x70039c]+0x3c kept at +9; a second call logs "Update twice in same frame",
 // line 0xa8). dt = (clock - last clock at +5) / 1024. Only does work while a ragdoll (+0x291) is active: identity
 // mat, zero pos, and unless byte +0x295, CRagdoll2::Move(mat, pos, dt); when Move returns false the ragdoll is done:
@@ -68,7 +68,7 @@ static bool THISCALL Update(u8 *self, void *obj, float *mat, float *pos) {
 }
 PCREG(647610, Update);
 
-// ZActor::GetCurrentUBAnim(ZItem* right, ZItem*) const [high, GameCube reference]; see docs/36 section 5 for the field
+// ZActor::GetCurrentUBAnim(ZItem* right, ZItem*) const [high, GC 8017a880]; see docs/36 section 5 for the field
 // meanings (HBM names, inference). Returns the hold-rifle clip (+0x74f) only for weapon types 2, 4, 5, 6.
 extern "C" bool THISCALL ext_466cd0(void *aim);   // aim target "enabled" byte (mov al, [ecx])
 static void *THISCALL ZActor_GetCurrentUBAnim(u8 *self, void *item, void *) {
@@ -85,7 +85,7 @@ static void *THISCALL ZActor_GetCurrentUBAnim(u8 *self, void *item, void *) {
 }
 PCREG(478b70, ZActor_GetCurrentUBAnim);
 
-// ZFFActor::GetCurrentUBAnim(ZItem*, ZItem*) const [medium, GameCube reference]: with bit 0 of byte +0x7a6 (close combat,
+// ZFFActor::GetCurrentUBAnim(ZItem*, ZItem*) const [medium, GC 80070334]: with bit 0 of byte +0x7a6 (close combat,
 // inference from the clip name) the clip is this->vt[0x21c]("UB_CC_Stand") (GetAnim by name), else ZActor's.
 extern "C" void *THISCALL ext_478b70(void *self, void *a, void *b);
 static void *THISCALL ZFFActor_GetCurrentUBAnim(u8 *self, void *a, void *b) {
@@ -94,7 +94,7 @@ static void *THISCALL ZFFActor_GetCurrentUBAnim(u8 *self, void *a, void *b) {
 }
 PCREG(59fd00, ZFFActor_GetCurrentUBAnim);
 
-// ZFFHERO::GetFFItemType() [high, GameCube reference]. Cached item type at +0x654 for the held item (+0x658 = last item).
+// ZFFHERO::GetFFItemType() [high, GC 8007f564]. Cached item type at +0x654 for the held item (+0x658 = last item).
 // Flag 0x2000000 in +0x417 forces type 9; vt[0x438]() true forces 0. The type comes from the inventory info list
 // at +0x95b (ZFFInventoryInfoList::GetFFItemType, 0x5aeff0).
 extern "C" u32 THISCALL ext_5aeff0(void *list, void *item);
@@ -119,7 +119,7 @@ static u32 THISCALL GetFFItemType(u8 *self) {
 }
 PCREG(591b20, GetFFItemType);
 
-// ZFFHERO::GetCurrentUBAnim() [high, GameCube reference]: the hero's upper-body clip by held weapon. Weapon type from
+// ZFFHERO::GetCurrentUBAnim() [high, GC 80082e78]: the hero's upper-body clip by held weapon. Weapon type from
 // item->vt[0x350]()->vt[0x330]() (template -> weapon type; HBM WEAPONTYPE names, inference: 0 pistol, 1 revolver,
 // 2 SMG, 3 MG, 4 rifle, 5 pump gun, 6 shotgun):
 //   0, 1 -> +0x79c;  2..6 -> +0x790 if flag 0x400 in +0x417, else +0x794 if flag 2, else +0x78c;

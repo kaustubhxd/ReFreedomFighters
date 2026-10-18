@@ -17,7 +17,7 @@ static double ci_fmod(double x, double y) {
   return neg ? -a : a;
 }
 
-// 0x59dfd0 ZFFActor::CanBreakHitAnim() (GameCube reference): true when no hit anim is recorded (+0x90f == 0) or the
+// 0x59dfd0 ZFFActor::CanBreakHitAnim() (GC 800713c0): true when no hit anim is recorded (+0x90f == 0) or the
 // current animation (this->+0x1c->+0x14, a ZBoneAnim) is not that hit anim (its id +0x48 differs). Otherwise false
 // while fmod(time +0x4 - start +0x30, loop length +0xc) < 18. ZBoneAnim times are in frames at the clip's own rate
 // (GC ZLNKOBJ::UpdateAnimationsAndGroundLink: t = (now - start) * speed * header fps), so 18 means 18 clip frames.

@@ -10,7 +10,7 @@ extern "C" void THISCALL ext_4db7c0(void *geom, float *out);           // ZBaseG
 extern "C" void THISCALL ext_4dce50(void *geom, float radius);         // ZBaseGeom::SetRadius(float)
 extern "C" void THISCALL ext_4dd060(void *geom, const float *size);    // ZBaseGeom::SetSize (clamps to 2^-13)
 
-// ZLNKOBJ::CalcCenSize() [high, GameCube reference]. thiscall, no args. m = max of the three sizes (max with the first one
+// ZLNKOBJ::CalcCenSize() [high, GC 801800e8]. thiscall, no args. m = max of the three sizes (max with the first one
 // taken as x, then y, then z); the size becomes (m, m, m) and the radius sqrt(3 m^2) + 1.
 static void THISCALL CalcCenSize(u8 *self) {
   ext_43df70(self);

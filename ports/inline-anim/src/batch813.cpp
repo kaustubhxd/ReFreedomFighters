@@ -12,7 +12,7 @@ static double crtFmod(double a, double b) {
   return r;
 }
 
-// ZLNKOBJ::StartAnim(ZBoneAnim* ba, int flags) [high, GameCube reference]. thiscall ret 8, bool = some bone took the clip.
+// ZLNKOBJ::StartAnim(ZBoneAnim* ba, int flags) [high, GC 80184dc4]. thiscall ret 8, bool = some bone took the clip.
 // AnimHeader fields used: +0x5c/+0x6c (start fraction num/den, frames per second?), +0x60/+0x64 first/last frame,
 // +0x70..+0x78 copied to ba+0x38..+0x40, +0x7c clip flags (bit 0 -> flag 4 with call flag 0x10, bit 1 -> 8 (sync to
 // root), bit 3 -> 0x200, bit 4 -> 0x800, negative -> random-ish start fraction +0x5c/+0x6c unless call flag 2).
@@ -82,7 +82,7 @@ static bool THISCALL StartAnim(u8 *self, u8 *ba, u32 flags) {
 }
 PCREG(464760, StartAnim);
 
-// ZLNKOBJ::StopAllAnims(bool keepLooping) [high, GameCube reference]: vt 0x274 first; every bone with a running bone anim
+// ZLNKOBJ::StopAllAnims(bool keepLooping) [high, GC 80184674]: vt 0x274 first; every bone with a running bone anim
 // gets its frame back from the ZBoneAnim (+4) and is ended (vt 0x340(i, 0)); every pooled ZBoneAnim is destroyed
 // (callbacks fired) and removed. With keepLooping, clips whose header flags +0x7c have 0x30 are left alone.
 extern "C" void THISCALL ext_462510(void *ba, u32 fire);   // ZBoneAnim::Destroy (batch 811)

@@ -476,7 +476,7 @@ extern "C" u32 THISCALL lifted_4ef880(u32 ecx_in) {
   X0[2] = F2U((float)(s32)X0[2]);  // @121_4ef880
   X0[3] = F2U((float)(s32)X0[3]);  // @122_4ef880
   { u32 v = (u32)((u32)(0)); __builtin_memcpy((void *)(u32)(EBP - 40024), &v, sizeof v); }  // @123_4ef880
-  eax = (u32)(s32)(s8)(({ u8 v; __builtin_memcpy(&v, (void *)(u32)(eax + 21), sizeof v); (u32)v; }));  // @124_4ef880
+  eax = (u32)(s32)(s8)(({ u8 v; __builtin_memcpy(&v, (void *)(u32)(eax + 17), sizeof v); (u32)v; }));  // @124_4ef880
   { u32 v = (u32)((u32)(0)); __builtin_memcpy((void *)(u32)(EBP - 40008), &v, sizeof v); }  // @125_4ef880
   X1[0] = eax; X1[1] = X1[2] = X1[3] = 0;  // @126_4ef880
   X1[0] = F2U((float)(s32)X1[0]);  // @127_4ef880

@@ -5,7 +5,7 @@
 
 extern "C" bool THISCALL ext_462d10(void *self, const void *geom, float *mat, float *pos);   // ZLNKOBJ::GetAttachedGeomMatPos
 
-// 0x591980 ZFFHERO::GetAttachedGeomMatPos(const ZBaseGeom *g, float *mat, float *pos) const [GameCube reference, high], thiscall,
+// 0x591980 ZFFHERO::GetAttachedGeomMatPos(const ZBaseGeom *g, float *mat, float *pos) const [GC 80082d8c, high], thiscall,
 // ret 0xc, returns AL. If byte +0x67f is zero: the base ZLNKOBJ version (same arguments, tail). Otherwise:
 // obj = db slot 0x58(member(eng+0x190f) slot 0xb4(0)); obj slot 0x80(mat, pos); the hero's own slot 0x94(mat, pos); returns true.
 static bool THISCALL heroGetAttachedGeomMatPos(u8 *self, const void *g, float *mat, float *pos) {

@@ -45,7 +45,7 @@ static void FASTCALL QuatSlerp(const float *p, const float *q, float t, float *o
 }
 PCREG(4dfb10, QuatSlerp);
 
-// qpul(float* out, const float* a, const float* b, float t) [medium, GameCube reference]. __fastcall (out ECX, a EDX), ret 8.
+// qpul(float* out, const float* a, const float* b, float t) [medium, GC 80285c44]. __fastcall (out ECX, a EDX), ret 8.
 // Quaternion blend: dot(a, b) > 0.9 -> per-component lerp a + (b - a) t; otherwise a is flipped to the
 // hemisphere of b (when |b - a|^2 > |b + a|^2) and QuatSlerp(a', b, t, out) is used.
 static void FASTCALL qpul(float *out, const float *a, const float *b, float t) {
@@ -80,7 +80,7 @@ static void FASTCALL qpul(float *out, const float *a, const float *b, float t) {
 PCREG(4df040, qpul);
 
 // ZBoneModifyBase::DepackBone(ZBoneQuat* out, ZBlendBone* bb, ZAnimFileBase* file, const ZActiveBone* ab)
-// [high, GameCube reference]. thiscall (this unused), ret 0x10.
+// [high, GC 802234c8]. thiscall (this unused), ret 0x10.
 //   ZBoneQuat:   +0 quat[4], +0x24 pos[3]                     (stride 0x30)
 //   ZBlendBone:  +0 quat[4], +0x10 pos[3], +0x1c last anim, +0x20 start time (int, 1/1024 s ticks) (stride 0x24)
 //   ZActiveBone: +0 anim, +4 frame, +8 blend-in time, +0xc 2nd anim, +0x10 2nd weight, +0x14 2nd frame,

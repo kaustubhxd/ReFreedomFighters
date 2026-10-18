@@ -7,7 +7,7 @@ extern "C" void THISCALL ext_4de7a0(void *mat);   // mreset (identity matrix), E
 
 static inline bool isItem(u32 obj) { return (u8)vcall<u32>((void *)obj, 0x1e0, 0x1007d1u) != 0; }
 
-// 0x58c150 ZFFHERO::CalcObjectsMatPos(CAction *a, float *mat, float *pos) [GameCube reference, high], thiscall, ret 0xc, returns AL.
+// 0x58c150 ZFFHERO::CalcObjectsMatPos(CAction *a, float *mat, float *pos) [GC 80078434, high], thiscall, ret 0xc, returns AL.
 // obj = a+0x44. An item-class object: obj slot 0x2e0(mat, pos) and slot 0x98(mat, pos); true.
 // Else o = obj slot 0x20: if o and isItem(o) (o = obj slot 0x20 again): o2 = obj slot 0x20; o2 slot 0x2e0 and 0x98 with
 // (mat, pos); return o2 != 0.

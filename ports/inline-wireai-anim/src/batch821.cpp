@@ -6,15 +6,15 @@
 #define F32(p, o) (*(u32 *)((u8 *)(p) + (o)))
 #define FP(p, o) (*(void **)((u8 *)(p) + (o)))
 
-// ZMovementBase::FindBestAnim(const char*) const [medium, GameCube reference]: a tail jump into the owner's virtual 0x35c.
+// ZMovementBase::FindBestAnim(const char*) const [medium, GC 8014bc78]: a tail jump into the owner's virtual 0x35c.
 static void *THISCALL FindBestAnim(u8 *self, const char *name) { return vcall<void *>(FP(self, 4), 0x35c, name); }
 PCREG(488490, FindBestAnim);
 
-// ZMovementBase::GetSettingsFromAnim(ZAnimDefs*) const [medium, GameCube reference]: tail jump into vt 0x5e4.
+// ZMovementBase::GetSettingsFromAnim(ZAnimDefs*) const [medium, GC 8014bcb0]: tail jump into vt 0x5e4.
 static void *THISCALL GetSettingsFromAnim(u8 *self, void *defs) { return vcall<void *>(FP(self, 4), 0x5e4, defs); }
 PCREG(489330, GetSettingsFromAnim);
 
-// ZMovementBase::CalcNewSpeed(const float* a, const float* b, float* out1, float* out2) [medium, GameCube reference].
+// ZMovementBase::CalcNewSpeed(const float* a, const float* b, float* out1, float* out2) [medium, GC 8014bc50].
 // Base version: both outputs cleared (the movement classes override it).
 static void THISCALL CalcNewSpeed(void *, const float *, const float *, float *o1, float *o2) {
   for (int i = 0; i < 3; i++) { ((u32 *)o2)[i] = 0; ((u32 *)o1)[i] = 0; }
@@ -22,7 +22,7 @@ static void THISCALL CalcNewSpeed(void *, const float *, const float *, float *o
 PCREG(487c30, CalcNewSpeed);
 
 // ZMovementBase::CheckMovingSphereCollision(ZSphereImpact*, const float* from, const float* to, float* hit,
-// float* normal, float* dist) const [medium, GameCube reference]. The owner's flag +0x5ff must be set (else false). The
+// float* normal, float* dist) const [medium, GC 8014b830]. The owner's flag +0x5ff must be set (else false). The
 // owner's box offsets (+0x42d, +0x431, +0x435) go to the collision box (+0x54..+0x5c) and the box's moving-sphere test
 // runs with the owner's extent at +0x439 and the owner's byte at +0x1c. Argument 2 and 4 are not used.
 extern "C" u32 THISCALL ext_4ea390(void *box, u32 imp, u32 a2, u32 a4, void *pos, u32 a5, u32 flag);   // ZCollisionBox::MovingSphereCollision

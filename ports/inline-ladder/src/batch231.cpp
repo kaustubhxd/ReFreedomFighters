@@ -9,9 +9,9 @@ extern "C" void *THISCALL ext_4db3b0(void *geom);                    // ZBaseGeo
 extern "C" void THISCALL ext_581b60(void *coli, float *n);           // COLI hit-triangle normal (no GC name)
 extern "C" void FASTCALL ext_4de040(float *m, const float *dir, const float *up);   // createmat
 extern "C" void THISCALL ext_4e09b0(float *v);                       // vneg
-extern "C" void THISCALL ext_4664a0(void *self, float f);            // ZIKLNKOBJ::EmitFootDustParticle(float) [GameCube reference, high]
+extern "C" void THISCALL ext_4664a0(void *self, float f);            // ZIKLNKOBJ::EmitFootDustParticle(float) [GC 8017e418, high]
 
-// 0x591480 ZFFHERO::EmitFootDustParticle(float) [GameCube reference, high], thiscall, ret 4 (the float is only passed to the base version).
+// 0x591480 ZFFHERO::EmitFootDustParticle(float) [GC 80086020, high], thiscall, ret 4 (the float is only passed to the base version).
 // Only while running/sprinting flags (0xc000000 of the input word +0x417). The dust emitter: database slot 0x160(0xb6)
 // gives a resource whose +0x18 geom ref resolves (slot 0x58) to the emitter; it must have flag 0x100000 at +0x23 of its
 // class info (+0xc) (assert). Start point: local (rx, 200, rz) with rx, rz = engine random * 50 - 25 (x87) and rz

@@ -10,7 +10,7 @@ extern "C" void THISCALL ext_4db7c0(void *geom, float *size);      // ZBaseGeom:
 #define ZACTOR_FILE ((const char *)0x68a7c4)                     // engine\geomsextend\zactor.cpp
 #define PATH_MSG G(u16, 0x6ffa28)                                  // message id sent when a path is finished
 
-// 0x4798d0 ZActor::OnPathFinished(unsigned int arg) [map high; GameCube reference; vtable slot 396]. thiscall, ret 4.
+// 0x4798d0 ZActor::OnPathFinished(unsigned int arg) [map high; GC 80179c70; vtable slot 396]. thiscall, ret 4.
 // Unless a request is still in flight (+0x691 > 0), the path-finished message (PATH_MSG, arg, 0) goes to the actor's
 // own message handler (vtable +0x128); the saved response is cleared and the found flag reset.
 static void THISCALL actorOnPathFinished(u8 *self, u32 arg) {
@@ -21,7 +21,7 @@ static void THISCALL actorOnPathFinished(u8 *self, u32 arg) {
 }
 PCREG(4798d0, actorOnPathFinished);
 
-// 0x47bff0 ZActor::SetPathfinderLinks(unsigned int box, bool on) [map high; GameCube reference; zactor.cpp lines 0x4b9 / 0x4bf].
+// 0x47bff0 ZActor::SetPathfinderLinks(unsigned int box, bool on) [map high; GC 80173360; zactor.cpp lines 0x4b9 / 0x4bf].
 // thiscall, ret 8. The actor's pathfinder (vtable +0x5d0) must exist (warning otherwise); the box is the geom named by
 // the message-table reference `box` (+0x58), its size (ZBaseGeom::GetSize) and world position (geom vtable +0x80, a
 // matrix and a point), then the pathfinder switches the special links there (vtable +0x21c).

@@ -68,7 +68,7 @@ static u8 THISCALL clampAndNormAimDir(const u8 *self, float *v, u8 alt) {
 }
 PCREG(5c88c0, clampAndNormAimDir);
 
-// 0x5c8750 (no GC match; inferred CanAimWeaponAt(const float*) const, GameCube reference, which the map leaves unmatched):
+// 0x5c8750 (no GC match; inferred CanAimWeaponAt(const float*) const, GC 800e3a2c, which the map leaves unmatched):
 // thiscall, ret 4, al. p goes through the gun geom's slot 0x8c (in place on a copy), the base object's position
 // (GetPos of its +8 geom) is subtracted, and the result is 1 when ClampAndNormAimDir(dir, alt=1) does not clamp.
 static u8 THISCALL canAimAtPoint(u8 *self, const float *p) {

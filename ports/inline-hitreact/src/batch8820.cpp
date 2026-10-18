@@ -14,7 +14,7 @@ extern "C" float FASTCALL ext_465470(float *v);                                 
 
 typedef u8 *(THISCALL *vP0)(void *self);
 
-// 0x462d80 ZLNKOBJ::GetBoneFromPoint(const float* p) const (GameCube reference), returns a bone index (0 when none is picked).
+// 0x462d80 ZLNKOBJ::GetBoneFromPoint(const float* p) const (GC 80181974), returns a bone index (0 when none is picked).
 // pose = 0x463010 (this); table = own slot 0x2cc (48-byte records: centre +0, half extents +0x10). Bones 2 .. (+0x20 count, tested for
 // equality): w = pose[i] * centre + pose[i].pos (+0x24); q = p - w; q = pose[i]^T q; inside the box (each half > |q_k|) -> best = 0 and
 // pick = i; then (the same bone, or any other) when best >= |q|^2 (0x465470) -> best = |q|^2, pick = i. Initial best = float at 0x67cd44.

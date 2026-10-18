@@ -3,7 +3,7 @@
 
 extern "C" int THISCALL ext_530e80(void *oct, u16 *out, const u16 *pos, u32 ry, u32 rxz, float weight);
 
-// 0x52e4f0 ZPFOctree_packed::EnableSpecialLinks(unsigned short* at, short* half, bool on) [map low; GameCube reference].
+// 0x52e4f0 ZPFOctree_packed::EnableSpecialLinks(unsigned short* at, short* half, bool on) [map low; GC 8019a804].
 // thiscall, ret 0xc, returns the number of links switched. +0x86 u16 link count, +0x88 links (start / end cell),
 // +0x8c actions (2 u16 per link). A link is switched when either end lies in the box at +- half (inclusive, cells):
 // on clears bit 15 of both actions, off sets it (isActionAllowed then refuses the link).
@@ -33,7 +33,7 @@ static int THISCALL octEnableSpecialLinks(u8 *self, const u16 *at, const s16 *ha
 }
 PCREG(52e4f0, octEnableSpecialLinks);
 
-// 0x52e670 ZPFOctree_packed::FindNearestPoint(float* p, float ry, float rxz, float weight) [map low; GameCube reference].
+// 0x52e670 ZPFOctree_packed::FindNearestPoint(float* p, float ry, float rxz, float weight) [map low; GC 80197670].
 // thiscall, ret 0x10, bool. p to cells, nearest walkable cell below (see 0x530e80; the two radii are truncated to 16
 // bits), then p becomes that cell's corner in world space, except that x (z) keeps p's value (as wx - (wx - px),
 // float) when the cell is in p's own column.

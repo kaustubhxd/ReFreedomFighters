@@ -14,7 +14,7 @@
 
 typedef bool(THISCALL *animcb_t)(void *owner, void *ba, float key, float now, u32 flags);
 
-// ZBoneAnim::Create(ZLNKOBJ* owner, const char* name) [low map confidence, GameCube reference; body fits]. The name is the
+// ZBoneAnim::Create(ZLNKOBJ* owner, const char* name) [low map confidence, GC 8017f5f0; body fits]. The name is the
 // AnimHeader itself (ActivateAnimSegment passes the header; the clip name is its first field).
 static void THISCALL ZBoneAnim_Create(u8 *ba, void *owner, const char *name) {
   F32(ba, 0x14) = 0; F32(ba, 0) = 0; F32(ba, 4) = 0; F32(ba, 8) = 0;
@@ -32,7 +32,7 @@ static void THISCALL ZBoneAnim_Create(u8 *ba, void *owner, const char *name) {
 }
 PCREG(462460, ZBoneAnim_Create);
 
-// ZBoneAnim::AddCallBack(float time, callback, unsigned flags) [high, GameCube reference]. thiscall ret 0xc.
+// ZBoneAnim::AddCallBack(float time, callback, unsigned flags) [high, GC 8017f9f4]. thiscall ret 0xc.
 extern "C" void *ext_41e290(u32 size);                           // operator new (cdecl)
 extern "C" void *THISCALL ext_4ccad0(void *p, u32 a, u32 b);     // LINKSORTREFTAB::LINKSORTREFTAB
 static void THISCALL ZBoneAnim_AddCallBack(u8 *ba, float time, u32 cb, u32 flags) {
@@ -47,7 +47,7 @@ static void THISCALL ZBoneAnim_AddCallBack(u8 *ba, float time, u32 cb, u32 flags
 }
 PCREG(4614d0, ZBoneAnim_AddCallBack);
 
-// ZBoneAnim::Destroy(bool fire) [medium, GameCube reference]: with fire, every pending callback is called with (key, -1, 0);
+// ZBoneAnim::Destroy(bool fire) [medium, GC 8017fb34]: with fire, every pending callback is called with (key, -1, 0);
 // then the list is deleted (vt 0, deleting destructor). List vtable: 0x4c begin(it), 0x64 next(it) -> node,
 // 0x9c key(node) (x87 float), 0x44 remove current(it), 0xa0 reinsert(node, key), 0x14 count.
 static void THISCALL ZBoneAnim_Destroy(u8 *ba, u8 fire) {
@@ -67,7 +67,7 @@ static void THISCALL ZBoneAnim_Destroy(u8 *ba, u8 fire) {
 }
 PCREG(462510, ZBoneAnim_Destroy);
 
-// ZBoneAnim::UpdateCallBacks(float now) [medium, GameCube reference]: fires, in time order, every callback whose key is
+// ZBoneAnim::UpdateCallBacks(float now) [medium, GC 8017fc9c]: fires, in time order, every callback whose key is
 // <= now (once per distinct now). A callback that returns false is reported to the assert hook at [0x7003b0]
 // (int3 when none) and re-queued one clip length later (key = frame count +0xc + now). An empty list is deleted.
 static void THISCALL ZBoneAnim_UpdateCallBacks(u8 *ba, float now) {

@@ -79,7 +79,7 @@ static inline void endSlice(u8 *ctx) {
 #define LAST_ERROR G(u32, 0x701b60)   // 0xffff when the coarse search failed
 
 // 0x52e830 ZPFOctree_packed::FindPath3(float* goal, float* start, float maxF, bool noGoalEnd, bool noStartEnd,
-// CFindPath3Context_packed*, CHelpers*) [map high; GameCube reference; source zpfoctreepacked.cpp lines 0x46e / 0x46f].
+// CFindPath3Context_packed*, CHelpers*) [map high; GC 801968ec; source zpfoctreepacked.cpp lines 0x46e / 0x46f].
 // thiscall, ret 0x1c. Returns a new CChkPntLst (path from the goal end back to the start, world points at the cell
 // centres raised 30 units, link points with +15 for climbs), or NULL (no path, paused by time slicing, or the last
 // straight piece to the start hits collision).

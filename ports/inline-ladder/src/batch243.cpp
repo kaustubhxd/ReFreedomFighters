@@ -3,7 +3,7 @@
 
 #define U32(p, off) (*(u32 *)((u8 *)(p) + (off)))
 
-// 0x592350 GetSpawnpointListFromTeam(int team) [GameCube reference, high], stdcall, ret 4, returns the list handle (EAX).
+// 0x592350 GetSpawnpointListFromTeam(int team) [GC 80084f44, high], stdcall, ret 4, returns the list handle (EAX).
 // team 3..6 pick the spawn-point list name SpawnPointList, SpawnPointList2, SpawnPointList3, SpawnPointList4. The
 // database object (engine +0x9b) slot 0x138 gives the list manager; its slot 0x88(name, &out) fills out with the list.
 // Other teams return 0.

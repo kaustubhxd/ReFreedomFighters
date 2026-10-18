@@ -12,7 +12,7 @@ extern "C" void THISCALL ext_488bc0(void *self);                           // ZM
 extern "C" u32 THISCALL ext_489350(void *self, void *lg);                  // ZMovementBase::Load
 extern "C" u32 THISCALL ext_489d00(void *self, void *sg);                  // ZMovementBase::Save
 
-// 0x5e1040 ZFFHeroMovementGuide::ZFFHeroMovementGuide(ZFFHERO *hero, unsigned flags) [GameCube reference, medium], thiscall,
+// 0x5e1040 ZFFHeroMovementGuide::ZFFHeroMovementGuide(ZFFHERO *hero, unsigned flags) [GC 800921e0, medium], thiscall,
 // ret 8, returns this. Base constructor, then vtable 0x6b79d0, stamp +0x5dd = 0, phase +0x5e1 = -1.0, list +0x54c = 0,
 // byte +0x578 = 0, ladder +0x550 = 0. The object is 0x5fd bytes (the size the destructor frees).
 static void *THISCALL guideCtor(u8 *self, void *hero, u32 flags) {
@@ -27,7 +27,7 @@ static void *THISCALL guideCtor(u8 *self, void *hero, u32 flags) {
 }
 PCREG(5e1040, guideCtor);
 
-// 0x5e1450 ZFFHeroMovementGuide scalar deleting destructor [GameCube reference ~ZFFHeroMovementGuide, medium; vtable slot 1],
+// 0x5e1450 ZFFHeroMovementGuide scalar deleting destructor [GC 8009223c ~ZFFHeroMovementGuide, medium; vtable slot 1],
 // thiscall, one stack arg (flags), ret 4, returns this. Resets the vtable, destroys the four ZMovementBaseMove-like
 // members at +0x523, +0x4ab, +0x3eb, +0x3d3 (reverse declaration order), runs the base destructor 0x4878d0, and frees
 // 0x5fd bytes when bit 0 of flags is set.
@@ -44,7 +44,7 @@ static void *THISCALL guideDtor(u8 *self, u32 flags) {
 }
 PCREG(5e1450, guideDtor);
 
-// 0x5e4600 ZFFHeroMovementGuide::GetAnims() [GameCube reference, medium; vtable slot 8], thiscall, no args. Base GetAnims,
+// 0x5e4600 ZFFHeroMovementGuide::GetAnims() [GC 8009230c, medium; vtable slot 8], thiscall, no args. Base GetAnims,
 // then +0x5e5 = own slot 0x58("Climb_Ladder") (the string at 0x68d410: find the animation), then slot 0x54(&+0x5e5).
 static void THISCALL guideGetAnims(u8 *self) {
   ext_488bc0(self);
@@ -53,7 +53,7 @@ static void THISCALL guideGetAnims(u8 *self) {
 }
 PCREG(5e4600, guideGetAnims);
 
-// 0x5e5bc0 ZFFHeroMovementGuide::Load(ZLoadGame *lg) [GameCube reference, medium; vtable slot 14], thiscall, ret 4, AL = 1.
+// 0x5e5bc0 ZFFHeroMovementGuide::Load(ZLoadGame *lg) [GC 80092378, medium; vtable slot 14], thiscall, ret 4, AL = 1.
 // Base Load; then the saved ladder-list handle is read with lg's slot 0x40 and turned back into the object with the
 // engine's geom table ([engine+0x9b] slot 0x58), stored at +0x54c.
 static bool THISCALL guideLoad(u8 *self, void *lg) {
@@ -65,7 +65,7 @@ static bool THISCALL guideLoad(u8 *self, void *lg) {
 }
 PCREG(5e5bc0, guideLoad);
 
-// 0x5e7150 ZFFHeroMovementGuide::Save(ZSaveGame *sg) [GameCube reference, medium; vtable slot 13], thiscall, ret 4, AL = 1.
+// 0x5e7150 ZFFHeroMovementGuide::Save(ZSaveGame *sg) [GC 800923b8, medium; vtable slot 13], thiscall, ret 4, AL = 1.
 // Base Save, then sg's slot 0x64(+0x54c) writes the ladder list.
 static bool THISCALL guideSave(u8 *self, void *sg) {
   ext_489d00(self, sg);

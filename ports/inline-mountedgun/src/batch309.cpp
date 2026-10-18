@@ -9,7 +9,7 @@ extern "C" void THISCALL ext_4878d0(void *self);                 // movement bas
 extern "C" void ext_634273(void *p, u32 size);                   // sized operator delete (cdecl)
 extern "C" void THISCALL ext_5e3e90(void *self);                 // ZFFHeroMovementBaseMove::GetAnims
 
-// 0x5e1110 ZFFHeroMovementMachinegun::ZFFHeroMovementMachinegun(ZFFHERO *hero, unsigned int id) (GameCube reference; no PC map
+// 0x5e1110 ZFFHeroMovementMachinegun::ZFFHeroMovementMachinegun(ZFFHERO *hero, unsigned int id) (GC 8008f130; no PC map
 // entry; only caller ZFFHERO::CreateMovements). thiscall, ret 8, returns this. Base constructor, vtable 0x6b7820, and
 // clears the mode's own fields: byte +0x54c, dwords +0x54d, +0x551, +0x58d (object size 0x591, from the delete below).
 static u8 *THISCALL ctor(u8 *self, u32 hero, u32 id) {

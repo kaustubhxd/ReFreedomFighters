@@ -13,7 +13,7 @@ extern "C" void THISCALL ext_461d60(void *self);                                
 static inline void *db229() { return (void *)U32(G(u32, 0x70039c), 0x9b); }
 static const char *const kFileIk = (const char *)0x685ee0;   // "..\..\code\engine\geomsextend\ziklnkobj.cpp"
 
-// 0x4654b0 ZIKLNKOBJ::ZIKLNKOBJ(ZGEOMCLASSINFO*, const char*, ZBaseGeom*) [GameCube reference, high], ret 0xc, returns this.
+// 0x4654b0 ZIKLNKOBJ::ZIKLNKOBJ(ZGEOMCLASSINFO*, const char*, ZBaseGeom*) [GC 8017c428, high], ret 0xc, returns this.
 // Base ZLNKOBJ, vtable 0x685ac4, ZTARGET::Clear on +0x16d, then defaults (eye height +0x1ca = 160.0, IK flags 0,
 // ragdoll-off byte +0x13a = 1) and the message ids ObjectVisibleAdd (+0x161), ObjectVisibleRemove (+0x163) and
 // CutSequence_End (+0x167) (database slot 0x114, lines 0x115..0x117). The SEH frame is constructor cleanup only.
@@ -47,7 +47,7 @@ static void *THISCALL ikCtor(u8 *self, u32 ci, u32 name, u32 parent) {
 }
 PCREG(4654b0, ikCtor);
 
-// 0x466040 ZIKLNKOBJ::ClassInit() [GameCube reference, high]:
+// 0x466040 ZIKLNKOBJ::ClassInit() [GC 8017d998, high]:
 // 1. SetControl(g, 0, 0x2001d) on each geom of the chain from own slot 0x20's +8 (next: slot 0x20 object slot 0x50).
 // 2. ZLNKOBJ::ClassInit.
 // 3. With a sound manager ([engine+0x1a9f]): +0x147 and +0x14b = its slot 0x5c("default"), +0x14f = slot 0x5c("shoe")

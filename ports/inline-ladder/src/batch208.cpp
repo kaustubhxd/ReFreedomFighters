@@ -18,7 +18,7 @@ extern "C" void *THISCALL ext_5df7c0(void *o, u32 id, void *hero, void *anims); 
 
 static inline u32 hand(u8 *self) { return vcall<u32>(self, 0x4f8); }   // slot 0x4f8: the hand holding the item (GetHand)
 
-// 0x590820, ZFFHERO::CreateLnkAction(unsigned id) [GameCube reference, high], vtable slot 0x3ec (index 251), thiscall, ret 4,
+// 0x590820, ZFFHERO::CreateLnkAction(unsigned id) [GC 8007f640, high], vtable slot 0x3ec (index 251), thiscall, ret 4,
 // returns the new action or 0. A jump table on id - 4 (0..0x19). Each case calls operator new and, when that gives
 // memory, the action's constructor (RTTI-named, batch 206) with fields of the hero as animations:
 //   4 PickupItem (0x14 bytes; the hand), 0x11 Throw (0x22; +0x780, +0x784), 0x12 SwingBat (0x10; +0x788),

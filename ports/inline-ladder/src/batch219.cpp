@@ -13,7 +13,7 @@ static inline void playMelee(void *hero, u32 anim) {
   ext_4614d0(ba, 7.0f, 0x465710, 0);
 }
 
-// 0x5e0410 ZFFActionSwingBat::Execute() [GameCube reference, medium ("*Swing*")], slot 2, AL = 1. +8 hero, +0xc animation.
+// 0x5e0410 ZFFActionSwingBat::Execute() [GC 800878d4, medium ("*Swing*")], slot 2, AL = 1. +8 hero, +0xc animation.
 // Plays the swing, then the hero's "*Swing*" sound: hero slot 0x578("*Swing*") gives a name, the sound manager
 // ([engine+0x1a9f], its vtable read first) slot 0x60 turns it into an id, ZIKLNKOBJ::PlaySound plays it and the
 // database (slot 0x60) gives the sound object. On it: +0x78 = 0.16, +0x88 = 100.0, and a random pitch/offset:
@@ -42,7 +42,7 @@ static bool THISCALL swingBatExecute(u8 *self) {
 }
 PCREG(5e0410, swingBatExecute);
 
-// 0x5e05a0 ZFFActionUseKnife::Execute() [GameCube reference, medium], slot 2, AL. +8 hero, +0xc the knife animation set
+// 0x5e05a0 ZFFActionUseKnife::Execute() [GC 800885ec, medium], slot 2, AL. +8 hero, +0xc the knife animation set
 // (a pointer to the hero's +0x77c; its first word is the stab animation). With an animation: plays it as SwingBat does
 // and returns true; without: tail-calls its own CallBack (slot 0xc).
 static u32 THISCALL useKnifeExecute(u8 *self) {

@@ -10,13 +10,13 @@
 
 static inline void *defs() { return FP(FP(G(void *, 0x70039c), 0x1aa3), 0x18); }
 
-// ZLNKOBJ::SetAnimFile / SetExAnimFile(ZAnimFilePack*, ZDeltaBone*) [high, GameCube reference / 80180ce8].
+// ZLNKOBJ::SetAnimFile / SetExAnimFile(ZAnimFilePack*, ZDeltaBone*) [high, GC 80180cdc / 80180ce8].
 static void THISCALL SetAnimFile(void *self, void *f, void *d) { FP(self, 0x64) = d; FP(self, 0x5c) = f; }
 PCREG(4643e0, SetAnimFile);
 static void THISCALL SetExAnimFile(void *self, void *f, void *d) { FP(self, 0x68) = d; FP(self, 0x60) = f; }
 PCREG(4646f0, SetExAnimFile);
 
-// ZLNKOBJ::GetBoneDefinitions / GetOrigLocalBones() const [high, GameCube reference / 80183ab0].
+// ZLNKOBJ::GetBoneDefinitions / GetOrigLocalBones() const [high, GC 80183a68 / 80183ab0].
 static void *THISCALL GetBoneDefinitions(void *self) {
   u32 id = F32(FP(self, 8), 0x6c);
   return vcall<void *>(defs(), 0xc4, id);
@@ -28,7 +28,7 @@ static void *THISCALL GetOrigLocalBones(void *self) {
 }
 PCREG(463300, GetOrigLocalBones);
 
-// ZLNKOBJ::GetBoneControl(int) const [high, GameCube reference]: the running ZBoneAnim's +0x14, or 0.
+// ZLNKOBJ::GetBoneControl(int) const [high, GC 80181bf0]: the running ZBoneAnim's +0x14, or 0.
 static void *THISCALL GetBoneControl(void *self, s32 i) {
   u8 *b = (u8 *)FP(self, 0x1c) + i * 0x18;
   void *ba = FP(b, 0x14);
@@ -37,14 +37,14 @@ static void *THISCALL GetBoneControl(void *self, s32 i) {
 }
 PCREG(462d30, GetBoneControl);
 
-// ZLNKOBJ::GetBoneName(int) const [high, GameCube reference]: SBoneDefinition array (vt 0x2cc), 0x30 bytes each, name +0x1c.
+// ZLNKOBJ::GetBoneName(int) const [high, GC 80181b70]: SBoneDefinition array (vt 0x2cc), 0x30 bytes each, name +0x1c.
 static const char *THISCALL GetBoneName(void *self, s32 i) {
   if (i < 0) return 0;
   return vcall<const char *>(self, 0x2cc) + i * 0x30 + 0x1c;
 }
 PCREG(462f50, GetBoneName);
 
-// ZLNKOBJ::GetBoneNrFromId(unsigned char) const [high, GameCube reference]: -1 for id 0 or unmapped (0xff).
+// ZLNKOBJ::GetBoneNrFromId(unsigned char) const [high, GC 80181afc]: -1 for id 0 or unmapped (0xff).
 static s32 THISCALL GetBoneNrFromId(void *self, u8 id) {
   if (!id) return -1;
   u32 gid = F32(FP(self, 8), 0x6c);
@@ -54,7 +54,7 @@ static s32 THISCALL GetBoneNrFromId(void *self, u8 id) {
 }
 PCREG(462f80, GetBoneNrFromId);
 
-// ZLNKOBJ::ActivateAnimOnce(const char*, int) [high, GameCube reference]: start the clip by name (vt 0x22c) unless it is
+// ZLNKOBJ::ActivateAnimOnce(const char*, int) [high, GC 80184d48]: start the clip by name (vt 0x22c) unless it is
 // already the active one (vt 0x23c CheckActiveAnim(name, 0)); 0 if it was.
 static u32 THISCALL ActivateAnimOnce(void *self, const char *name, u32 n) {
   if (vcall<bool>(self, 0x23c, name, 0)) return 0;
@@ -62,7 +62,7 @@ static u32 THISCALL ActivateAnimOnce(void *self, const char *name, u32 n) {
 }
 PCREG(461210, ActivateAnimOnce);
 
-// ZLNKOBJ::GetAnim(const char*) const [high, GameCube reference]: the extra anim file (+0x60) is searched first, then the
+// ZLNKOBJ::GetAnim(const char*) const [high, GC 80180c4c]: the extra anim file (+0x60) is searched first, then the
 // main one (+0x5c); no main file -> 0. File vt 0x18 = GetAnim(name).
 static void *THISCALL GetAnim(void *self, const char *name) {
   if (!FP(self, 0x5c)) return 0;

@@ -8,7 +8,7 @@ extern "C" void THISCALL ext_466d90(void *self);                    // ZIKLNKOBJ
 extern "C" void THISCALL ext_466040(void *self);                    // ZIKLNKOBJ::ClassInit (batch 229)
 extern "C" u32 THISCALL ext_465870(void *self, u32 id);             // ZIKLNKOBJ::BoneAnimIdToCallBack (batch 222)
 
-// 0x472fd0 ZLNKWHANDS::ClassInit2() [GameCube reference, high; vtable slot 0x158], thiscall, plain ret: the base ClassInit2,
+// 0x472fd0 ZLNKWHANDS::ClassInit2() [GC 80188270, high; vtable slot 0x158], thiscall, plain ret: the base ClassInit2,
 // then the hands' inventory list is looked up by name "Inventory" (own slot 0x104) and stored at +0x2e3.
 static void THISCALL handsClassInit2(u8 *self) {
   ext_465fd0(self);
@@ -16,7 +16,7 @@ static void THISCALL handsClassInit2(u8 *self) {
 }
 PCREG(472fd0, handsClassInit2);
 
-// 0x474710 ZLNKWHANDS::Load2() [GameCube reference, high], thiscall, plain ret: the base Load2, then the same "Inventory" lookup.
+// 0x474710 ZLNKWHANDS::Load2() [GC 80188670, high], thiscall, plain ret: the base Load2, then the same "Inventory" lookup.
 static void THISCALL handsLoad2(u8 *self) {
   ext_466d90(self);
   U32(self, 0x2e3) = vcall<u32>(self, 0x104, (const char *)0x689770);

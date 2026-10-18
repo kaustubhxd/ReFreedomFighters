@@ -1,4 +1,4 @@
-// batch8825.cpp - wire-hit-parts (2026-10-15): ZCollisionBox::GetStrips (0x4ea300, GameCube reference by structure, name [low]).
+// batch8825.cpp - wire-hit-parts (2026-10-15): ZCollisionBox::GetStrips (0x4ea300, GC 8021a090 by structure, name [low]).
 #include "ff.h"
 
 typedef u8 (THISCALL *vGetStrips)(void *self, u32 *count, u32 buf, u32 size, float *mat, float *pos, float *half, u32 mask, u32 tree);

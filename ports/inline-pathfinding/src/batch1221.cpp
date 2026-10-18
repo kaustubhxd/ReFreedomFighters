@@ -42,7 +42,7 @@ __attribute__((noinline)) static void addDoorGeoms(u8 *self) {
   }
 }
 
-// 0x52ac10 ZPathfinder3::CopyDataBlock(DBLK*) [map high; GameCube reference; zpathfinder3.cpp lines 0x25ab / 0x2601].
+// 0x52ac10 ZPathfinder3::CopyDataBlock(DBLK*) [map high; GC 801932a0; zpathfinder3.cpp lines 0x25ab / 0x2601].
 // thiscall, ret 4.
 static void THISCALL copyDataBlock(u8 *self, u8 *dblk) {
   u32 tmp178 = vcall<u32>(G(void *, 0x70038c), 0x48, 0xff00);

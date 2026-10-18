@@ -1,4 +1,4 @@
-// batch1227.cpp - pathfinding tree: ZPathfinderControl::CopyData(ZEventBase* src) [map high; GameCube reference; vtable slot 4].
+// batch1227.cpp - pathfinding tree: ZPathfinderControl::CopyData(ZEventBase* src) [map high; GC 802d03ac; vtable slot 4].
 // thiscall, ret 4. Copies the four event fields (+0x4c, +0x4e, +0x50 as u16, +0x52 as u8) from the event, replaces the
 // owned REFTAB at +0x48 with a new REFTAB(2, 0) (0x1c bytes) and adds every ref of the event's REFTAB to it.
 // The old REFTAB is deleted first (vtable slot 0, flag 1). The exe's SEH frame is not reproduced.

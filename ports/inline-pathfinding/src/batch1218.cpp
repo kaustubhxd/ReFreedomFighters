@@ -38,14 +38,14 @@ static inline u8 *crossQuads(u8 *list, int count, float *a, float *b, float *t, 
   return hit;
 }
 
-// 0x52a850 ZPathfinder3::CheckLineAgainstAdditionalDoors(float*, float*, float&) [map high; GameCube reference]. thiscall,
+// 0x52a850 ZPathfinder3::CheckLineAgainstAdditionalDoors(float*, float*, float&) [map high; GC 80191e64]. thiscall,
 // ret 0xc. Best t starts at 10.0, so crossings beyond the segment end (t up to 10) count too.
 static u8 *THISCALL checkLineDoors(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x42), *(int *)(self + 0x3e), a, b, t, 10.0f);
 }
 PCREG(52a850, checkLineDoors);
 
-// 0x52a970 ZPathfinder3::CheckLineAgainstGates(float*, float*, float&) [map high; GameCube reference]. Same over the gates,
+// 0x52a970 ZPathfinder3::CheckLineAgainstGates(float*, float*, float&) [map high; GC 80191fa8]. Same over the gates,
 // best t starts at 1.0 (within the segment only).
 static u8 *THISCALL checkLineGates(u8 *self, float *a, float *b, float *t) {
   return crossQuads(*(u8 **)(self + 0x3a), *(int *)(self + 0x36), a, b, t, 1.0f);
@@ -59,7 +59,7 @@ static inline void freeList(u8 *lst) {
   ext_634273(lst, 0x18);
 }
 
-// 0x52b4e0 ZPathfinder3::PostProcessPath(CChkPntLst*) [map high; GameCube reference; zpathfinder3.cpp line 0x24bb].
+// 0x52b4e0 ZPathfinder3::PostProcessPath(CChkPntLst*) [map high; GC 8019293c; zpathfinder3.cpp line 0x24bb].
 // thiscall, ret 4. A path whose last segment crosses a gate (a "DynamicsEnabled gate") is dropped (NULL). Otherwise
 // every segment, raised 50 units, is tested against the additional doors; for each crossing (t in [0, 1], up to 5 per
 // segment) a point is inserted just behind the door (t + 0.0001) with the door's +0x30 value in the point's int slot,

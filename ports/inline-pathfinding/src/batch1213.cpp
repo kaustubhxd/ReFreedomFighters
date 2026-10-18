@@ -80,7 +80,7 @@ PCREG(530940, cellComponent);
 #define ASTAR(o, i) (*(u8 **)((o) + 0x98) + (u32)(u16)(i) * 0x15)
 
 // 0x530130 ZPFOctree_packed::FindPathCoarse(unsigned short* from, unsigned short* to, float maxF, int level, int mode,
-// CHelpers*) [map high; GameCube reference; source zpfoctreepacked.cpp line 0x4ed]. thiscall, ret 0x18, AX: 1 found,
+// CHelpers*) [map high; GC 80197794; source zpfoctreepacked.cpp line 0x4ed]. thiscall, ret 0x18, AX: 1 found,
 // 0 not found / no component, 0xffff A* full or f above maxF (maxF 0 = no limit).
 // A* over the nodes of `level` (cells rounded down to the level's node size, heuristic = Manhattan cells), each node
 // split into components. Expansion order: x+, x-, z+, z-, y+, y- (directions 2, 3, 0, 1, 4, 5), then special links.

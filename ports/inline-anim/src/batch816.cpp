@@ -38,7 +38,7 @@ static u32 THISCALL UnpackBits(u8 *self, u32 off, s32 i) {
 }
 PCREG(4e5de0, UnpackBits);
 
-// ZAnimFilePack::GetFramePosQuat(ZBoneAnim-data* ba, bool loop, float* pos, float* quat, float t) [medium, GameCube reference].
+// ZAnimFilePack::GetFramePosQuat(ZBoneAnim-data* ba, bool loop, float* pos, float* quat, float t) [medium, GC 8028d6a4].
 // thiscall ret 0x14. Bone anim (ba): +4 const position index, +6 const rotation index, +8 frame count (u16),
 // +0xa flags (u16), +0xc rotation keys offset, +0x10/+0x14 rotation key-index / key-frame tables, +0x18 position keys
 // offset, +0x1c/+0x20 position key-index / key-frame tables. Pack: +0x14 rotation key base, +0x18 position key base,

@@ -79,7 +79,7 @@ static inline bool queuePeek(u8 *q, u8 *out) {
   return true;
 }
 
-// 0x52c000 ZPathfinder3::ProcessQueue(bool) [map high; GameCube reference]. thiscall, ret 4. With the flag the time slice is
+// 0x52c000 ZPathfinder3::ProcessQueue(bool) [map high; GC 80190948]. thiscall, ret 4. With the flag the time slice is
 // switched on for the call (and restored after). Step 0: begin the frame's slice and take the first request whose
 // actor is still set (cancelled requests have actor 0 and are dropped); step 1: restart the slice and answer it
 // (RespondToRequest), keeping it while that search is paused.
@@ -124,7 +124,7 @@ out:
 }
 PCREG(52c000, processQueue);
 
-// 0x52c6e0 ZPathfinder3::RespondToRequest(SPathRequest*, CRespondToRequestContext*) [map high; GameCube reference;
+// 0x52c6e0 ZPathfinder3::RespondToRequest(SPathRequest*, CRespondToRequestContext*) [map high; GC 801912bc;
 // zpathfinder3.cpp lines 0x2313..0x235f]. thiscall, ret 8. Searches from the actor's current position (when the
 // actor's +0x54 object is a 0x200074 class, vtable +0x1e0 / +0x630) or the request's start, to the request's goal,
 // with the radius as the f limit. While the search is paused nothing else happens. A found path is post-processed;

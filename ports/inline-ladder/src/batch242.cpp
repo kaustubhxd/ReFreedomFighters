@@ -8,7 +8,7 @@ extern "C" float FASTCALL ext_4e0870(const float *a, const float *b);           
 extern "C" void FASTCALL ext_43e920(float *dst, const float *src, const float *a);    // PSVECSubtract
 extern "C" long double THISCALL ext_58b9c0(void *hero, float amount, u32 ref, u32 b); // ZFFHERO::AdjustHitPoints (ST0)
 
-// 0x5935a0 ZFFHERO::OnMoveNotifyLargeObj(ZMoveNotify *m) [GameCube reference, high], thiscall, ret 4.
+// 0x5935a0 ZFFHERO::OnMoveNotifyLargeObj(ZMoveNotify *m) [GC 8007eaf0, high], thiscall, ret 4.
 // Only when m+5 (a speed) is above 50.0. d = vdist(m+0x69, m+0x39) / frame time; a speed below 300 counts as 0.
 // The object's damage: amount = -(speed * m+5) / 0x689060, applied through AdjustHitPoints(amount, ref(m+1), db)
 // (GUESS: the third argument is the ECX value left by the database call; the port passes the database pointer,

@@ -1,4 +1,4 @@
-// batch9008.cpp - wire-ai thread (2026-10-13): CRagdoll2::HandleCalcMatsMsg 0x6421a0 (GameCube reference HandleCalcMatsMsg__9CRagdoll2FP5ZBone,
+// batch9008.cpp - wire-ai thread (2026-10-13): CRagdoll2::HandleCalcMatsMsg 0x6421a0 (GC 8021fb08 HandleCalcMatsMsg__9CRagdoll2FP5ZBone,
 // name medium), the ragdoll's pose read-out: the particles -> the bone frames the body is drawn with. Called by ZBoneModifyBase::Update
 // 0x647610 when a ragdoll ends and by ZBoneModifyBase::UpdateGlobalIK 0x647790 every frame.
 #include "ff.h"

@@ -10,7 +10,7 @@
 #define AS_PREV(p) (*(u16 *)((p) + 0x10))
 #define AS_NEXT(p) (*(u16 *)((p) + 0x12))
 
-// 0x52d250 ZPFOctree_packed::AddToPrioQueue(unsigned short head, unsigned short node) [map high; GameCube reference].
+// 0x52d250 ZPFOctree_packed::AddToPrioQueue(unsigned short head, unsigned short node) [map high; GC 8019af6c].
 // thiscall, ret 8. Sorted doubly linked open list.
 //  - node already linked (next != 0): unlink it, then walk forward from its old next and insert it in front of the
 //    first entry whose f is <= node.f (a decrease-key moves it towards the head that way only when f fell).
@@ -78,7 +78,7 @@ static inline void fillArea(u8 *self, u8 kind, u16 id, s32 level, int *lo) {
 }
 
 // 0x52d380 ZPFOctreeElementFuncGetAreaInfo_packed::Apply(ZPFOctree_packed*, int&, int, int*, int*, int, unsigned short)
-// [map medium; GameCube reference, vtable slot 0]. thiscall, ret 0x1c. Only for a non-zero element.
+// [map medium; GC 80195ca0, vtable slot 0]. thiscall, ret 0x1c. Only for a non-zero element.
 static int THISCALL elemGetAreaInfo(u8 *self, u8 *oct, int *elem, int, int *lo, int *, int depth, u32 id) {
   s32 level = (s32)(*(u32 *)(oct + 0x38) - (u32)depth - 1u);
   if (level != *(s32 *)(self + 8) || *elem == 0) return 0;
@@ -88,7 +88,7 @@ static int THISCALL elemGetAreaInfo(u8 *self, u8 *oct, int *elem, int, int *lo, 
 PCREG(52d380, elemGetAreaInfo);
 
 // 0x52d4a0 ZPFOctreeLeafFuncGetAreaInfo_packed::Apply(ZPFOctree_packed*, unsigned short&, int*, int*, int)
-// [map medium; GameCube reference]. thiscall, ret 0x14.
+// [map medium; GC 80195c14]. thiscall, ret 0x14.
 static int THISCALL leafGetAreaInfo(u8 *self, u8 *oct, u16 *id, int *lo, int *, int depth) {
   s32 level = (s32)(*(u32 *)(oct + 0x38) - (u32)depth - 1u);
   if (level != *(s32 *)(self + 8)) return 0;
@@ -97,7 +97,7 @@ static int THISCALL leafGetAreaInfo(u8 *self, u8 *oct, u16 *id, int *lo, int *, 
 }
 PCREG(52d4a0, leafGetAreaInfo);
 
-// 0x52d510 ZPFOctreeNodeFuncGetAreaInfo_packed::Apply(...) [map medium; GameCube reference]. Same as the leaf one, kind 1.
+// 0x52d510 ZPFOctreeNodeFuncGetAreaInfo_packed::Apply(...) [map medium; GC 8019589c]. Same as the leaf one, kind 1.
 static int THISCALL nodeGetAreaInfo(u8 *self, u8 *oct, u16 *id, int *lo, int *, int depth) {
   s32 level = (s32)(*(u32 *)(oct + 0x38) - (u32)depth - 1u);
   if (level != *(s32 *)(self + 8)) return 0;

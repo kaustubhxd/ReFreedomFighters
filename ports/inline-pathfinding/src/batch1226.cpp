@@ -1,4 +1,4 @@
-// batch1226.cpp - pathfinding tree: ZPathfinderControl scalar deleting destructor [map high; GameCube reference; vtable
+// batch1226.cpp - pathfinding tree: ZPathfinderControl scalar deleting destructor [map high; GC 802d026c; vtable
 // slot 0; source zpathfinder control, lines not in the exe's assert table]. thiscall, ret 4, returns this.
 // The owned list at +0x48 is released (deleting destructor, flag 1); the object is unregistered from the message table
 // (vtable +0x34); the delete flag: bit 0 frees (through the delete hook 0x7003b0; bit 2 means "in an array", no free).

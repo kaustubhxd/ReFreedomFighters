@@ -168,7 +168,7 @@ static inline u32 climbTry(u8 *self, u8 *ctx, s16 dx, s16 dz, s16 dy) {
 }
 
 // 0x52f2b0 ZPFOctree_packed::FindPath(unsigned short* from, unsigned short* to, float maxF, int mode,
-// CFindPathTwoContext_packed*, CHelpers*) [map low (floats demoted it); GameCube reference; source zpfoctreepacked.cpp line
+// CFindPathTwoContext_packed*, CHelpers*) [map low (floats demoted it); GC 801982d0; source zpfoctreepacked.cpp line
 // 0x628]. thiscall, ret 0x18, AX: the goal's A* index (path found, walked back through ctx+0x51), 0 = not found or
 // paused (time slice used up), 0xffff = A* full or f above maxF.
 // Fine A* on elements: per node the four level steps (+z, -z, +x, -x; when blocked, the same step one cell up, then

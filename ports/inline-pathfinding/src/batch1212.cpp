@@ -31,7 +31,7 @@ static inline int adiff(u16 a, u16 b) {
   return d < 0 ? -d : d;
 }
 
-// 0x531e70 ZPFOctree_packed::VisitNeighborFloodFillCoarseSplit(...) [map medium; GameCube reference]. thiscall, ret 0x38,
+// 0x531e70 ZPFOctree_packed::VisitNeighborFloodFillCoarseSplit(...) [map medium; GC 80199dac]. thiscall, ret 0x38,
 // returns 1. For every component (1..a) of the neighbour node: test the connectivity bit between the current
 // component and it (flag: bit in the source node's set at rec.sub + (k-1)*b + ofs - 1; else in the neighbour's set at
 // (rec.sub-1)*a + k + ofs - 1), and relax A* slot idx-1+k with cost 1 (or the Manhattan step with the heuristic on:
@@ -87,7 +87,7 @@ static inline u8 *sizeRec(u8 *self, int level, u16 id) {
 }
 
 // 0x531c40 ZPFOctree_packed::VisitNeighborFloodFillCoarse(unsigned short from, int level, ZPFOctreeIterator_packed*,
-// PFDirection, const unsigned short* goal) [map high; GameCube reference]. thiscall, ret 0x14: 0 blocked, 0xffff A* full,
+// PFDirection, const unsigned short* goal) [map high; GC 80199a14]. thiscall, ret 0x14: 0 blocked, 0xffff A* full,
 // else Split's result. Direction 10 = special links, 11 = stay; the direction picks which face's connectivity bits are
 // used (0/1: face size +1, 2/3: none, 4/5: faces +1 and +2 with weight 0.125; even = from the source node's set).
 static u32 THISCALL floodCoarse(u8 *self, u32 from, int level, u8 *it, u32 dir, const u16 *x) {
@@ -124,7 +124,7 @@ static u32 THISCALL floodCoarse(u8 *self, u32 from, int level, u8 *it, u32 dir, 
 PCREG(531c40, floodCoarse);
 
 // 0x5320b0 ZPFOctree_packed::VisitNeighborSpecialFloodFillCoarse(unsigned short from, int level,
-// ZPFOctreeIterator_packed*, const unsigned short* goal) [map high; GameCube reference]. thiscall, ret 0x10, AX = 1 or
+// ZPFOctreeIterator_packed*, const unsigned short* goal) [map high; GC 8019a9b4]. thiscall, ret 0x10, AX = 1 or
 // 0xffff (A* full). Coarse version of the link step: the link refs of the current node's cell whose component byte
 // (+0) is the current sub-slot; the far end is reached by moving a copy of the iterator by the ref's node delta (+2/+4
 // /+6, in nodes of this level); slot = A* slot + ref +1 - 1; cost as in Split; action check by the link number at +8.

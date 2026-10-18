@@ -9,7 +9,7 @@
 extern "C" void FASTCALL ext_4de7a0(float *m);                     // mreset
 extern "C" void FASTCALL ext_4df1e0(float *m, const float *q);     // quattomat
 
-// ZLNKOBJ::StartMatBoneMotion(AnimHeader*, int animId, int bone, ZBoneAnim* ba) [high, GameCube reference]. thiscall
+// ZLNKOBJ::StartMatBoneMotion(AnimHeader*, int animId, int bone, ZBoneAnim* ba) [high, GC 80181f84]. thiscall
 // ret 0x10, bool. The AnimHeader argument is not used in the PC build. A bone whose running ZBoneAnim has flag 0x800
 // refuses a new one with flag 0x400 (priority). Otherwise the old motion is ended (vt 0x340), and the bone table
 // entry gets: extra = ba's delta bones (+0x10) + bone * 0x1c (or 0), flag bit 0, ZBoneAnim, anim id. For the root
@@ -43,7 +43,7 @@ static bool THISCALL StartMatBoneMotion(u8 *self, void *, u32 animId, s32 bone, 
 }
 PCREG(464bd0, StartMatBoneMotion);
 
-// ZLNKOBJ::ActivateAnimSegment(AnimHeader* hdr, int flags, float a, float b, float c) [high, GameCube reference].
+// ZLNKOBJ::ActivateAnimSegment(AnimHeader* hdr, int flags, float a, float b, float c) [high, GC 80184a4c].
 // Makes the ZBoneAnim pool on first use (+0x18: LINKREFTAB(8, 0x1e) in a 0x28-byte block), takes a ZBoneAnim from
 // it (vt 4), ZBoneAnim::Create(this, hdr), segment +0x30 = a, +0x34 = b, clip +0x70, +0x28 = c, +0x2c = 0, delta
 // bones +0x10 = vt[0x288](hdr). Flag bit 0: vt[0x34c](ba, flags) must accept it, else it goes back to the pool

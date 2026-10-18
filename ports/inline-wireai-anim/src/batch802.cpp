@@ -13,7 +13,7 @@ static double crtFmod(double a, double b) {
   return r;
 }
 
-// ZBoneModifyBase::GetBoneAnims(ZLNKOBJ* obj, ZActiveBone* ab) [low map confidence, GameCube reference; the body fits the
+// ZBoneModifyBase::GetBoneAnims(ZLNKOBJ* obj, ZActiveBone* ab) [low map confidence, GC 80223314; the body fits the
 // name: it fills one ZActiveBone per bone from the object's per-bone animation table]. thiscall, ret 8.
 //   obj+0x1c -> per-bone table, 0x18 bytes per bone: +0 frame (float, used when the bone is not running),
 //               +4 flags (bits 0..1 = bone anim running), +0xc extra offset ptr, +0x10 anim id, +0x14 ZBoneAnim*.

@@ -5,7 +5,7 @@
 
 extern "C" long double FASTCALL ext_44c840(float *v);   // vnorm (old length in ST0)
 
-// 0x467d00 ZIKLNKOBJ::UpdateFacing() [GameCube reference, high]. With flag 0x200000 in +0x136 and a facing target geom ref
+// 0x467d00 ZIKLNKOBJ::UpdateFacing() [GC 8017d498, high]. With flag 0x200000 in +0x136 and a facing target geom ref
 // +0x1a6 that resolves (database slot 0x58): unless own slot 0x324(0) is true and slot 0x320(0) lacks bit 0x200 (the
 // actor is busy with something else, inference), take the target's origin (slot 0x84) into the actor's local space
 // (own slot 0x8c), flatten (y = 0) and normalise (vnorm). With z' = -z and x' = -x of that direction:

@@ -1,4 +1,4 @@
-// batch8828.cpp - wire-hit-parts run 9 (2026-10-16): ZBoneAnim::AddCallBackAlways 0x461570 (GameCube reference).
+// batch8828.cpp - wire-hit-parts run 9 (2026-10-16): ZBoneAnim::AddCallBackAlways 0x461570 (GC 8017fa94).
 #include "ff.h"
 
 #define VT(o, off) ((*(void ***)(o))[(off) / 4])

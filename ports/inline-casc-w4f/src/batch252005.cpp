@@ -209,7 +209,7 @@ extern "C" u32 THISCALL lifted_44dc90(u32 ecx_in, u32 a0, u32 a1, u32 a2, u32 a3
   FS[0] = ((long double(THISCALL *)(u32, u32, u32))(eax))(ecx, (u32)(6818324), (u32)(147));  // @157_44dc90
   ecx = edx = 0;  // @158_44dc90
   FS[1] = LDF((u32)(6791816));  // @159_44dc90
-  eax = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(edi + 21), sizeof v); (u32)v; });  // @160_44dc90
+  eax = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(edi + 20), sizeof v); (u32)v; });  // @160_44dc90
   FS[0] = (FS[0] * FS[1]);  // @161_44dc90
   FS[0] = (FS[0] + FS[1]);  // @162_44dc90
   STF((u32)((EBP - 312) + 28), FS[0]);  // @163_44dc90

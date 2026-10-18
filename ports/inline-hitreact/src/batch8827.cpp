@@ -8,7 +8,7 @@ typedef void(THISCALL *vVU)(void *self, u32 a);
 typedef u16(THISCALL *vReg)(void *self, const char *name, u32 z, const char *file, u32 line);
 typedef void(THISCALL *vCmd)(void *self, u32 msg, u32 data, u32 z);
 
-// 0x5eaf80 ZFFActorActionCloseCombat::CallBack() (GameCube reference), the end-of-clip callback: attacker (+8) slot 0x704(0); the message id of
+// 0x5eaf80 ZFFActorActionCloseCombat::CallBack() (GC 8007554c), the end-of-clip callback: attacker (+8) slot 0x704(0); the message id of
 // "CloseCombatFinished" from the render manager ([0x70039c] + 0x9b) slot 0x114 (RegisterZMsg(name, 0, ZFFActorActions.cpp, 0x82)); the attacker
 // gets it through slot 0x128(id, 0, 0) (the slot is read from the vtable the attacker had before the 0x114 call). Returns false.
 static u8 THISCALL ccCallBack(u8 *self) {

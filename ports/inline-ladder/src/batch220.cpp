@@ -10,7 +10,7 @@ extern "C" long double FASTCALL ext_44c840(float *v);                          /
 
 static inline void *db220() { return (void *)U32(G(u32, 0x70039c), 0x9b); }
 
-// 0x5dfaa0 ZFFActionSwingBat::CallBack() [GameCube reference, high; slot 3], AL = 0. +8 hero.
+// 0x5dfaa0 ZFFActionSwingBat::CallBack() [GC 80087a50, high; slot 3], AL = 0. +8 hero.
 // At the hit frame: hero slot 0x80(mat, pos) gives the hero's matrix and position; fwd = -(first row). The cone is
 // cos(2.35619449...) (the double at 0x6b7518, 135 degrees). Walk the engine list "TrackLinkObjects" (database +0xadc
 // slot 0x25c; iterator at +0x18, slots 0x4c begin / 0x5c next): for each object (database slot 0x58) that passes
@@ -82,7 +82,7 @@ static inline bool meleeHit(u8 *self, u32 line) {
 static bool THISCALL swingBatCallBack(u8 *self) { return meleeHit(self, 0x268); }
 PCREG(5dfaa0, swingBatCallBack);
 
-// 0x5dfea0 ZFFActionUseKnife::CallBack() [GameCube reference, medium; slot 3] (batch 221): the same machine code as
+// 0x5dfea0 ZFFActionUseKnife::CallBack() [GC 800886a0, medium; slot 3] (batch 221): the same machine code as
 // SwingBat::CallBack except the source line 0x406 given with the DamageInfo message registration. Same range (170),
 // cone (135 degrees) and damage (40): the knife hits exactly like the bat.
 static bool THISCALL useKnifeCallBack(u8 *self) { return meleeHit(self, 0x406); }

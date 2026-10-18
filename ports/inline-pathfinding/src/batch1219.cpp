@@ -12,7 +12,7 @@ static inline u32 mulOverflow(u32 n, u32 size) {
   return b >> 32 ? 0xffffffffu : (u32)b;
 }
 
-// 0x52b9d0 ZPathfinder3::ProcessAdditionalDoors() [map high; GameCube reference]. thiscall.
+// 0x52b9d0 ZPathfinder3::ProcessAdditionalDoors() [map high; GC 80192110]. thiscall.
 // Gates: every collision item (manager at sysi+0x9b +0xadc: first item +8, next = vtable +0x50) whose +0x54 object is
 // a 0x200015-class object with "dynamics enabled" (+0x5b) adds one gate: the object's four corners (vtable +0x244, 12
 // floats) transformed to world (vtable +0x84 on each). The gate count at +0x36 is only ever increased.

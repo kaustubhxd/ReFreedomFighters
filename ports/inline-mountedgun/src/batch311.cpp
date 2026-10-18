@@ -60,7 +60,7 @@ static inline void setFloat(u8 *p, float f) {
 typedef void(THISCALL *vcallVU)(void *self, u32 a);
 typedef void(THISCALL *vcallVUU)(void *self, u32 a, u32 b);
 
-// 0x553690 CFFTools_if::FireMachineGun(OpaqueCallParameters_t&) (GameCube reference; position in the native list); thiscall,
+// 0x553690 CFFTools_if::FireMachineGun(OpaqueCallParameters_t&) (GC 80135f80; position in the native list); thiscall,
 // ret 4. In: shots (int, type-checked), nest. A GetItemWeapon id is registered (line 0x104, unused), then the nest is
 // asked for its gun (GetItemWeapon, line 0x105). With shots > 0 (signed): gun slot 0x2d0(0, 0), slot 0x360(shots),
 // slot 0x358(1), slot 0x2d0(3, 0) (inferred: reset, burst length, trigger, fire state 3, as in the tank's
@@ -84,7 +84,7 @@ static void THISCALL fireMachineGun(void *self, u8 *par) {
 }
 PCREG(553690, fireMachineGun);
 
-// 0x555f20 CFFTools_if::MGCanFireAt(OpaqueCallParameters_t&) (GameCube reference); thiscall, ret 4. In: nest, target (raw).
+// 0x555f20 CFFTools_if::MGCanFireAt(OpaqueCallParameters_t&) (GC 80137300); thiscall, ret 4. In: nest, target (raw).
 // Out 0 (int) = 1 when the nest's CanAimWeaponRef (line 0x19a) keeps the target (target inside the narrow arc).
 static void THISCALL mgCanFireAt(void *self, u8 *par) {
   (void)self;

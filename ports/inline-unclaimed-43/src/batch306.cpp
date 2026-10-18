@@ -1,5 +1,5 @@
 // batch306.cpp - ZGEOM::ActivateEvents() (area 43, 2026-10-12). 0x45c6a0, thiscall (this = ECX), no stack args, ret 0.
-// GameCube reference (name map, high). Frame: a 4-byte count at ebp-0xc, written by the vtable calls below.
+// GC 8015a218 (name map, high). Frame: a 4-byte count at ebp-0xc, written by the vtable calls below.
 // Steps: if ZBaseGeom::ChkEvents(this+8) is false, return. E = this+0x10, X = E+8; if X == 0 return.
 // cnt via X slot 0x4c; v = X slot 0x5c(&cnt); if cnt == 0 return. Loop while cnt != 0:
 //   r = g2 slot 0xcc(v) (g2 at 0x70038c); if r == 0: X' slot 0x44(&cnt), else this slot 0x11c(r, r+8);

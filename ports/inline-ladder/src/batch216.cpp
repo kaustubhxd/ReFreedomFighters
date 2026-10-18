@@ -25,7 +25,7 @@ static u32 playOrCallBack(u8 *self) {
   return vcall<u32>(self, 0xc);
 }
 
-// 0x5e02e0 ZFFActionGetBack::Execute() [GameCube reference, medium; slot 2], AL: touches the back item (its slot 0x2e8), then
+// 0x5e02e0 ZFFActionGetBack::Execute() [GC 8008847c, medium; slot 2], AL: touches the back item (its slot 0x2e8), then
 // plays the animation (or calls back at once).
 static u32 THISCALL getBackExecute(u8 *self) {
   void *item = ext_591f00((void *)U32(self, 8));
@@ -34,7 +34,7 @@ static u32 THISCALL getBackExecute(u8 *self) {
 }
 PCREG(5e02e0, getBackExecute);
 
-// 0x5df970 ZFFActionGetBack::CallBack() [GameCube reference, medium; slot 3], AL = 0: 0x467410 on hand+4 (hero, 0,
+// 0x5df970 ZFFActionGetBack::CallBack() [GC 8008853c, medium; slot 3], AL = 0: 0x467410 on hand+4 (hero, 0,
 // {0, 0, 0, -1} by value), DetachItemBack, then hand slot 8(hero, ref(item)) puts the item in the hand.
 static bool THISCALL getBackCallBack(u8 *self) {
   Quad q = {0, 0, 0, 0xffffffffu};
@@ -46,7 +46,7 @@ static bool THISCALL getBackCallBack(u8 *self) {
 }
 PCREG(5df970, getBackCallBack);
 
-// 0x5e03c0 ZFFActionPutBack::Execute() [GameCube reference, medium; slot 2], AL: the hand's item (hand slot 0x10), its slot
+// 0x5e03c0 ZFFActionPutBack::Execute() [GC 8008829c, medium; slot 2], AL: the hand's item (hand slot 0x10), its slot
 // 0x2e8, then as GetBack.
 static u32 THISCALL putBackExecute(u8 *self) {
   void *item = vcall<void *>((void *)U32(self, 0xc), 0x10);
@@ -55,7 +55,7 @@ static u32 THISCALL putBackExecute(u8 *self) {
 }
 PCREG(5e03c0, putBackExecute);
 
-// 0x5df9f0 ZFFActionPutBack::CallBack() [GameCube reference, medium; slot 3], AL = 0: item = hand slot 0x10; GeomToRef(item)
+// 0x5df9f0 ZFFActionPutBack::CallBack() [GC 80088370, medium; slot 3], AL = 0: item = hand slot 0x10; GeomToRef(item)
 // (result unused); 0x467410 on hand+4 as in GetBack; hand slot 8(hero, 0) empties the hand. If the hero already has
 // an item on the back, item slot 0x2d0(1, 0) (drops it, inference), else AttachItemBack(item).
 static bool THISCALL putBackCallBack(u8 *self) {

@@ -12,7 +12,7 @@ static inline u8 *g2() { return (u8 *)G(u32, 0x70038c); }   // the global object
 // Item-class test: vtable slot 0x1e0 with the class id 0x1007d1 (the same test the hand code uses).
 static inline bool isItem(u32 obj) { return (u8)vcall<u32>((void *)obj, 0x1e0, 0x1007d1u) != 0; }
 
-// 0x593af0 ZFFHERO::OperateObject(CAction *a) [GameCube reference, high], thiscall (this = the hero), ret 4.
+// 0x593af0 ZFFHERO::OperateObject(CAction *a) [GC 80078d5c, high], thiscall (this = the hero), ret 4.
 // step = a+0x48, obj = a+0x44.
 //   0: if isItem(obj): hero slot 0x4e4(obj). Else x = obj slot 0x20; if isItem(x): hero slot 0x4e4(obj slot 0x20).
 //      Else the global G2 slot 0xcc(a+0x106).

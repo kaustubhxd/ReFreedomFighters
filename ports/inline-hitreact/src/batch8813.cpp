@@ -42,7 +42,7 @@ static void FASTCALL minDistance(float *A, float *B, float wA, float wB, float m
 }
 PCREG(543680, minDistance);
 
-// 0x4de440 mmmul(float* out, const float* a, const float* b) (GameCube reference), fastcall + 1 stack arg, ret 4: the rows of out from vmmul of
+// 0x4de440 mmmul(float* out, const float* a, const float* b) (GC 802861a8), fastcall + 1 stack arg, ret 4: the rows of out from vmmul of
 // the rows of a with b, row 2 first, then row 1, then row 0.
 static void FASTCALL mmmul(float *out, const float *a, const float *b) {
   ext_441970(out + 6, a + 6, b);
