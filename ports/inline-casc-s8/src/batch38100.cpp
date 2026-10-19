@@ -3,7 +3,7 @@
 #define P(p,o) (*(u8 **)((u8 *)(p)+(o)))
 extern "C" void FASTCALL ext_4e6a80(u8 *arr,u32 lo,u32 hi);
 extern "C" u32 THISCALL ext_49c980(u8 *self,u8 *arr,u32 id);
-extern "C" void THISCALL ext_49c6d0(u8 *out,u32 lo,u8 *start,u32 count);
+extern "C" u8 *FASTCALL ext_49c6d0(u8 *dst,u8 *x,u32 n1,u8 *b,u32 n2);   // INTEGRATION FIX: fastcall merge(dst,x,n1,b,n2); was declared thiscall(out,lo,start,count)
 extern "C" u8 THISCALL ext_49cbb0(u8 *self,u32 id,u8 *o,u32 flag);
 extern "C" void THISCALL ext_49ccc0(u8 *self,u32 id,u8 *o,u32 flag);
 extern "C" u32 THISCALL ext_49c310(u8 *self,u32 id,u8 *arr,u32 count);
@@ -23,7 +23,7 @@ static void THISCALL fn49b730(u8 *s,u32 n,u8 *target) {
   u32 packed=ext_49c980(s,P(s,0x39),id);
   u32 lo=packed&0xffff, count=packed>>16;
   if(count>1) ext_4e6a80(P(s,0x39),lo,lo+count-1);
-  ext_49c6d0(P(s,0x3d),lo,P(s,0x39)+lo*4,count);
+  ext_49c6d0(P(s,0x3d),P(s,0x39),lo,P(s,0x39)+lo*4,count);
   u8 *cur=P(s,0x3d), *old=P(s,0x35);
   u32 endoff=(lo+count)*4;
   while((u32)cur<(u32)(P(s,0x3d)+endoff)) {

@@ -18,18 +18,18 @@ static u32 THISCALL unnamed4d2f20(u8 *self, u32 s, u32 n) {
     n = len + 1;
   }
   u8 *o = self + 0x4008;
-  u32 local;
-  ((arg1_fn)(*(u32 *)(*(u32 *)o + 0x4c)))((void *)o, &local);
-  u32 node = ((arg1r_fn)(*(u32 *)(*(u32 *)o + 0x5c)))((void *)o, &local);
-  if (local == 0)
+  u32 local[3];
+  ((arg1_fn)(*(u32 *)(*(u32 *)o + 0x4c)))((void *)o, local);
+  u32 node = ((arg1r_fn)(*(u32 *)(*(u32 *)o + 0x5c)))((void *)o, local);
+  if (local[0] == 0)
     return 0;
   for (;;) {
     if (*(u32 *)node == n) {
       if (((cmp_fn)G(u32, 0x67640c))(s, node + 0xc, n) == 0)
         return node;
     }
-    node = ((arg1r_fn)(*(u32 *)(*(u32 *)o + 0x5c)))((void *)o, &local);
-    if (local == 0)
+    node = ((arg1r_fn)(*(u32 *)(*(u32 *)o + 0x5c)))((void *)o, local);
+    if (local[0] == 0)
       return 0;
   }
 }

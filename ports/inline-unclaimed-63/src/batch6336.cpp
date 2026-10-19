@@ -13,9 +13,9 @@ typedef void (*printf_fn)(u32, u32, u32, double);
 static void THISCALL unnamed4cea50(u8 *self) {
   if (self == 0)
     return;
-  u32 local;   // not initialised: the original does not store to it before the calls
-  ((call1v_fn)(*(u32 *)(*(u32 *)self + 0x4c)))((void *)self, &local);
-  u32 v = ((call1r_fn)(*(u32 *)(*(u32 *)self + 0x64)))((void *)self, &local);
+  u32 local[3];   // 12-byte hash iterator (4cf100 writes +0,+4,+8)
+  ((call1v_fn)(*(u32 *)(*(u32 *)self + 0x4c)))((void *)self, local);
+  u32 v = ((call1r_fn)(*(u32 *)(*(u32 *)self + 0x64)))((void *)self, local);
   if (v == 0)
     return;
   do {
@@ -24,7 +24,7 @@ static void THISCALL unnamed4cea50(u8 *self) {
     u32 lg = G(u32, 0x700390);
     u32 l = ((log20_fn)(*(u32 *)(*(u32 *)lg + 0x20)))((void *)lg, 0x695b7cu, 0x523u);
     ((printf_fn)(*(u32 *)(*(u32 *)l + 0x2c)))(l, 0x695cacu, *(u32 *)v, (double)f);
-    v = ((call1r_fn)(*(u32 *)(*(u32 *)self + 0x64)))((void *)self, &local);
+    v = ((call1r_fn)(*(u32 *)(*(u32 *)self + 0x64)))((void *)self, local);
   } while (v != 0);
 }
 PCREG(4cea50, unnamed4cea50);
