@@ -15,11 +15,22 @@
   .chip[aria-pressed="false"] { opacity:.4; } .dot { width:10px; height:10px; display:inline-block; }
   .mapbox { position:relative; } .mapcv { display:block; cursor:crosshair; max-width:100%; }
   .maptip { position:absolute; display:none; pointer-events:none; background:var(--panel); border:1px solid var(--frame); padding:7px 9px; font-size:12px; max-width:260px; z-index:3; word-break:break-all; }
+  .rungs { list-style:none; padding:0; margin:8px 0; columns:2 340px; } .rungs li { padding:2px 0; } .rungs span { display:inline-block; width:1.4em; font-weight:700; }
+  .hist { border-collapse:collapse; font-size:12px; } .hist th,.hist td { border-bottom:1px solid var(--frame); padding:3px 14px 3px 0; text-align:left; } .hist th { color:var(--muted); font-weight:400; }
 </style></head><body><main>
 <h1>Freedom Fighters (2003, PC): reverse-engineering progress</h1>
 <p class="sub">Functions verified exact against the original executable by differential testing, and functions running as that code in a browser port. <a href="https://github.com/kaustubhxd/ReFreedomFighters">source</a></p>
 <div class="stats" id="stats"></div>
 <div class="mapbox" id="mapbox"></div>
+<section id="bp" hidden>
+<h2>Browser port of the original game code (WebAssembly)</h2>
+<p class="sub">The verified code is compiled to WebAssembly and run in a browser with stand-ins for Windows and Direct3D. This is separate from the counters above. <b>Nothing is playable yet.</b> It needs your own copy of the game.</p>
+<div class="stats" id="bpstats"></div>
+<ul class="rungs" id="bprungs"></ul>
+<h2>History (numbers only)</h2>
+<table class="hist" id="bphist"></table>
+<p class="fine" id="bpnote"></p>
+</section>
 <p class="fine">Not affiliated with IO Interactive or Eidos. No game data is included: this page holds addresses, sizes and verification states only.</p>
 <script type="module">
 import { mountMap } from "./menu/progress-map.mjs";
@@ -28,4 +39,20 @@ document.getElementById("stats").innerHTML =
   `<div><b>${w(f.decompiledBytes, f.totalBytes)}%</b><span>decompiled, by code size (${n(f.decompiled)} of ${n(f.total)} functions)</span><div class="bar"><i style="width:${w(f.decompiledBytes, f.totalBytes)}%"></i></div></div>` +
   `<div><b>${w(f.portedBytes, f.totalBytes)}%</b><span>ported into the browser game (${n(f.ported)} functions)</span><div class="bar"><i style="width:${w(f.portedBytes, f.totalBytes)}%"></i></div></div><div><span>updated ${p.updated}</span></div>`;
 mountMap(document.getElementById("mapbox"), new URL("./menu/map-data-public.json", location.href));
+try {
+  const r = await fetch("./menu/browser-port-public.json");
+  if (r.ok) {
+    const d = await r.json(), l = d.latest, $ = (id) => document.getElementById(id);
+    const mark = { PASS: ["✓", "#3fb950"], FAIL: ["✗", "#f85149"], MANUAL: ["?", "#d29922"], NA: ["-", "#8b949e"] };
+    $("bpstats").innerHTML =
+      `<div><b>${l.ladderPassed} of ${l.ladderAuto}</b><span>automated checkpoints passed</span><div class="bar"><i style="width:${w(l.ladderPassed, l.ladderAuto)}%"></i></div></div>` +
+      `<div><b>${l.coveragePercent}%</b><span>of the functions the original runs at start-up also run here</span><div class="bar"><i style="width:${l.coveragePercent}%"></i></div></div>` +
+      `<div><span>build ${l.build}, measured ${l.date}</span></div>`;
+    $("bprungs").innerHTML = l.rungs.map((g) => { const [s, c] = mark[g.status] || mark.NA; return `<li><span style="color:${c}">${s}</span> ${g.label}</li>`; }).join("");
+    $("bphist").innerHTML = "<tr><th>measured</th><th>build</th><th>checkpoints</th><th>coverage</th><th>frames before stop</th></tr>" +
+      d.history.map((h) => `<tr><td>${h.date}</td><td>${h.build}</td><td>${h.ladderPassed}/${h.ladderAuto}</td><td>${h.coveragePercent ?? "-"}%</td><td>${h.presentsAtStop ?? "-"}</td></tr>`).join("");
+    $("bpnote").textContent = "Method: each build is run headless from a fixed start and compared with the original running in an emulator. Checkpoints marked ? need a human. Coverage counts which functions run, not whether their results match. The first-divergence index (" + l.divergencePercent + "% of the original's start-up trace) has not moved across builds, so it is not used as a progress figure. Older rows were measured without the browser, so they are only roughly comparable. Pixel-exactness with the original is not claimed.";
+    $("bp").hidden = false;
+  }
+} catch (e) { /* section stays hidden when the data file is absent */ }
 </script></main></body></html>

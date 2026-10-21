@@ -1,0 +1,172 @@
+{
+ "generated": "2026-10-21 03:28 UTC",
+ "latest": {
+  "date": "2026-10-21 03:28 UTC",
+  "build": "1570ccf2",
+  "kind": "baseline",
+  "ladderPassed": 6,
+  "ladderAuto": 12,
+  "coveragePercent": 99.1,
+  "divergencePercent": 7.79,
+  "presentsAtStop": 6828,
+  "rungs": [
+   {
+    "n": 1,
+    "label": "Game code starts (WinMain reached)",
+    "status": "PASS"
+   },
+   {
+    "n": 2,
+    "label": "Game window created",
+    "status": "PASS"
+   },
+   {
+    "n": 3,
+    "label": "Graphics device created",
+    "status": "PASS"
+   },
+   {
+    "n": 4,
+    "label": "First frame presented",
+    "status": "PASS"
+   },
+   {
+    "n": 5,
+    "label": "Intro frames with real pixels",
+    "status": "PASS"
+   },
+   {
+    "n": 6,
+    "label": "Title logo frame",
+    "status": "FAIL"
+   },
+   {
+    "n": 7,
+    "label": "Legal screen shown (manual check)",
+    "status": "MANUAL"
+   },
+   {
+    "n": 8,
+    "label": "Loading screen drawn",
+    "status": "FAIL"
+   },
+   {
+    "n": 9,
+    "label": "Intro to loader to startup hand-off",
+    "status": "PASS"
+   },
+   {
+    "n": 10,
+    "label": "Main menu drawn",
+    "status": "FAIL"
+   },
+   {
+    "n": 11,
+    "label": "Menu responds to input (manual check)",
+    "status": "MANUAL"
+   },
+   {
+    "n": 12,
+    "label": "First level loads",
+    "status": "FAIL"
+   },
+   {
+    "n": 13,
+    "label": "Level draws",
+    "status": "FAIL"
+   },
+   {
+    "n": 14,
+    "label": "Player input moves the hero (manual check)",
+    "status": "MANUAL"
+   },
+   {
+    "n": 15,
+    "label": "5 minutes without a crash",
+    "status": "FAIL"
+   }
+  ]
+ },
+ "history": [
+  {
+   "date": "2026-10-20 20:40 UTC",
+   "build": "f3204ffb",
+   "kind": "baseline",
+   "ladderPassed": 7,
+   "ladderAuto": 12,
+   "coveragePercent": 98,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 153
+  },
+  {
+   "date": "2026-10-20 20:41 UTC",
+   "build": "9b0aca67",
+   "kind": "history",
+   "ladderPassed": 5,
+   "ladderAuto": 12,
+   "coveragePercent": 62.1,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 10
+  },
+  {
+   "date": "2026-10-20 20:41 UTC",
+   "build": "8d565030",
+   "kind": "history",
+   "ladderPassed": 5,
+   "ladderAuto": 12,
+   "coveragePercent": 69.7,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 10
+  },
+  {
+   "date": "2026-10-20 20:41 UTC",
+   "build": "bb1d7503",
+   "kind": "history",
+   "ladderPassed": 5,
+   "ladderAuto": 12,
+   "coveragePercent": 69.6,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 10
+  },
+  {
+   "date": "2026-10-20 20:43 UTC",
+   "build": "937b0f13",
+   "kind": "history",
+   "ladderPassed": 5,
+   "ladderAuto": 12,
+   "coveragePercent": 97.6,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 9226
+  },
+  {
+   "date": "2026-10-20 20:45 UTC",
+   "build": "9d3c235e",
+   "kind": "history",
+   "ladderPassed": 6,
+   "ladderAuto": 12,
+   "coveragePercent": 97.9,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 13000
+  },
+  {
+   "date": "2026-10-20 20:46 UTC",
+   "build": "03806697",
+   "kind": "history",
+   "ladderPassed": 6,
+   "ladderAuto": 12,
+   "coveragePercent": 98,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 153
+  },
+  {
+   "date": "2026-10-21 03:28 UTC",
+   "build": "1570ccf2",
+   "kind": "baseline",
+   "ladderPassed": 6,
+   "ladderAuto": 12,
+   "coveragePercent": 99.1,
+   "divergencePercent": 7.79,
+   "presentsAtStop": 6828
+  }
+ ]
+}
