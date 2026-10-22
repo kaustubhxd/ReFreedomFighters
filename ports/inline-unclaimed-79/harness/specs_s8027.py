@@ -1,5 +1,5 @@
 """specs_s8027.py - unclaimed core row 0x481800 (docs/20-unclaimed-79.md). Each function gets its own random object.
-The vtable callees are stubbed and logged; the sub-object slot 0x114 pops 24 (branch 2) or 20 (branch 1) bytes, chosen per run."""
+The vtable callees are stubbed and logged; the sub-object slot 0x114 pops 16 bytes (four arguments); slots 0x128 and 0x130 take three arguments."""
 from pilot import S
 import os, sys
 for _d in ("..", "../.."):
@@ -40,13 +40,13 @@ def _g(c):
         return h
     rnd = lambda: c.rng.getrandbits(32)
     b_obj = _obj(c, 0x40)
-    bvt = c.emu.fake_vtable("VtB81", 0x180, {0x128: mk("b slot 128", 1, 4, rnd)})
+    bvt = c.emu.fake_vtable("VtB81", 0x180, {0x128: mk("b slot 128", 3, 12, rnd)})
     c.emu.w32(b_obj, bvt)
     b_ret = b_obj if (branch2 and c.rng.random() < 0.7) else 0
     sub = _obj(c, 0x40)
     subvt = c.emu.fake_vtable("VtSub81", 0x180, {
         0x58: mk("sub slot 58", 1, 4, lambda: b_ret),
-        0x114: mk("sub slot 114", 6 if branch2 else 5, 24 if branch2 else 20, rnd),
+        0x114: mk("sub slot 114", 4, 16, rnd),
         0x4c: mk("sub slot 4c", 1, 4, rnd),
     })
     c.emu.w32(sub, subvt)
@@ -55,7 +55,7 @@ def _g(c):
     c.emu.w32(0x70039c, sysobj)
     selfvt = c.emu.fake_vtable("VtSelf81", 0x180, {
         0x514: mk("self slot 514", 0, 0, lambda: r514),
-        0x130: mk("self slot 130", 2, 8, lambda: 0),
+        0x130: mk("self slot 130", 3, 12, lambda: 0),
         0x598: mk("self slot 598", 1, 4, lambda: 0),
     })
     c.emu.w32(self_, selfvt)

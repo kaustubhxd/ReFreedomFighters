@@ -44,11 +44,11 @@ def _g5a0da0(c):
     r = c.rng
     e = c.emu
     hook_rec(c, 0x5a01e0, 0, this=True)
-    t = obj(c, 0x40, {0x114: pystub(c, 5, ret=r.getrandbits(32), this=True)}, nslots=0x118 // 4)
+    t = obj(c, 0x40, {0x114: pystub(c, 4, ret=r.getrandbits(32), this=True)}, nslots=0x118 // 4)
     sysobj(c, table_slots=None)
     e.w32(e.r32(0x70039c) + 0x9b, t)
     vt = e.alloc(0x140, 4)
-    e.w32(vt + 0x130, pystub(c, 2, this=True))
+    e.w32(vt + 0x130, pystub(c, 3, this=True))     # (this, ax, p): 0x114 pops four, the pushed p is the third argument here
     me = rnd(c, 0xb00)
     e.w32(me, vt)
     n = r.choice([0, 0, 1, 2, 3, 7, 0x10, 0x20, r.randrange(0, 0x20)])

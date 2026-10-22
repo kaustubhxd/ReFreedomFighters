@@ -15,7 +15,7 @@ static u8 THISCALL throw19(u8*t){
  float span=(float)(s32)(A19(u32,item,0x64)-A19(u32,item,0x60));ext_461570(anim,span,0x465710u,0);
  float wait=G(float,0x6b80ec)/(float)A19(s32,item,0x6c);wait=wait*G(float,0x67862c);s32 delay=_mm_cvttss_si32(_mm_set_ss(wait));
  u8*s=G(u8*,0x70039c);A19(float,t,0x10)=(float)(s32)(A19(u32,s,0x40)-(u32)delay)*G(float,0x6785e4);
- u32 id=vcall<u32>(A19(void*,s,0x9b),0x114,0x6a5694u,0u,0x6b80b4u,0xd8u,0u,0u);
- vcall<void>(A19(void*,t,8),0x128,(u32)(u16)id);return 1;
+ u32 id=vcall<u32>(A19(void*,s,0x9b),0x114,0x6a5694u,0u,0x6b80b4u,0xd8u);   // 4 args: the two `push 0` made earlier stay on the stack
+ vcall<void>(A19(void*,t,8),0x128,(u32)(u16)id,0u,0u);return 1;   // ... and are the last two args of slot 0x128
 }
 PCREG(5eb380,throw19);

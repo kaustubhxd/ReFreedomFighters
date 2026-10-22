@@ -1,8 +1,8 @@
 """specs_s1021.py - area 81, batch 1021: ZFFHeroMovementCloseCombat::FrameUpdate (0x5e2020). The CRT sqrt at 0x634d7c is hooked by a sqrtsd stub (exe side;
 the port uses __builtin_sqrt). The fastcall helper 0x43e920 writes a random vector to its ecx. The helpers 0x4e09e0 and 0x4de040 are counting stubs. The
-render manager (sys+0x9b): slot 0x58 returns R (or null), slot 0x4c returns a random word, slot 0x114 (six arguments, the fifth a stack address) returns a
+render manager (sys+0x9b): slot 0x58 returns R (or null), slot 0x4c returns a random word, slot 0x114 (four arguments) returns a
 word. R: slot 0x80 writes the two out vectors (stack addresses, from random source vectors), slot 0x578 and slot 0x7c (O, returned by R's slot 0x20) are
-counting stubs, slot 0x674 returns two different random ints in turn (so T1 and T2 can differ), slot 0x128 counts; R+0xc points to a kind object whose dword at +0x23 selects the hook or the 0x2007f9 path;
+counting stubs, slot 0x674 returns two different random ints in turn (so T1 and T2 can differ), slot 0x128 counts its three arguments (ax, a stack address, 0); R+0xc points to a kind object whose dword at +0x23 selects the hook or the 0x2007f9 path;
 R+0x7ff is a random float. The hero object H (this+0x36d) has slot 0x80 (writes two vectors) and is passed to rm's slot 0x4c. The debug object (0x700390)
 returns a channel whose slot 0x2c is a cdecl stub taking a double. The hook global 0x7003b0 is a counting stub."""
 import os, sys, struct
@@ -53,12 +53,12 @@ def g(c):
                        0x578: _stub(c, 2, skip=(0, 1)),
                        0x20: _stub(c, 0, ret=O),
                        0x674: ss.seqr(c, 0, [rnd.randint(-100, 100) & 0xffffffff, rnd.randint(-100, 100) & 0xffffffff]),
-                       0x128: _stub(c, 1)})
+                       0x128: _stub(c, 3, skip=(1,))})
     c.emu.w32(R + 0xc, K_hook)
     c.emu.w32(R + 0x7ff, rf(c, -200, 200))
     rm = obj(c, 0x40, {0x58: _stub(c, 1, ret=R if rnd.random() < 0.8 else 0),
                        0x4c: _stub(c, 1, ret=r32(c)),
-                       0x114: _stub(c, 6, skip=(4,), ret=r32(c))})
+                       0x114: _stub(c, 4, ret=r32(c))})
     sysobj = c.emu.alloc(0x2000, 4)
     c.emu.w32(0x70039c, sysobj)
     c.emu.w32(sysobj + 0x40, rnd.randint(0, 6000))

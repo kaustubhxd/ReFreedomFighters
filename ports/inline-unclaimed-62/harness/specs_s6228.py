@@ -1,7 +1,7 @@
 """specs_s6228.py - unclaimed-62 claim 21 (larger, 115 instructions): 0x502cc0 (thiscall, one argument). The array at arg+4 has ten 8-byte
 elements; element 1's tag is 3, 4 (its dword is an object whose slot 0x34 returns a value) or another value (the error path with the reporter and
-assert hook). The message table's slot 0x114 (five arguments, the last a pointer to eight words, peeked) returns a word; this+0xc's slot 0x12c
-(two words) is logged. No faulting cases."""
+assert hook). The message table's slot 0x114 (four arguments) returns a word; this+0xc's slot 0x12c (three words, the last a pointer to eight
+words, peeked: the push made before the 0x114 call) is logged. No faulting cases."""
 import os, sys
 for _d in ('..', '../..'):
     _p = os.path.join(os.path.dirname(os.path.abspath(__file__)), _d, 'shared-harness')
@@ -59,12 +59,12 @@ def _x(c):
     e.w32(x + 4, arr)
     self_ = rnd(c, 0x100)
     o = rnd(c, 0x40)
-    e.w32(o, vtable(c, 'r12c', 0x200, argwords={0x12c: 2}))
+    e.w32(o, vtable(c, 'r12c', 0x200, argwords={0x12c: 3}, opts={0x12c: {'peek': {2: 32}}}))
     e.w32(self_ + 0xc, o)
     wret = r.getrandbits(16)
     msg = e.alloc(0xb00)
     e.w32(msg, vtable(c, 'msg114', 0x80, impl={0x114: lambda em, a: wret},
-                      argwords={0x114: 5}, opts={0x114: {'peek': {4: 32}}}))
+                      argwords={0x114: 4}))
     eng = e.alloc(0xa0)
     e.w32(eng + 0x9b, msg)
     e.w32(0x70039c, eng)

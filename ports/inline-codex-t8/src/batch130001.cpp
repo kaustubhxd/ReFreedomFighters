@@ -28,5 +28,6 @@ static u32 THISCALL fn4b1570(u8*s,u32 key,u32 unused){if((u16)key!=G(u16,s+0x48)
  u32 a[9],b[3],it[3];ext_4db6c0(o,a,b);void*t=s+0x4a;vcall<void>(t,0x4c,it);u32 val=vcall<u32>(t,0x5c,it);while(it[0]){void*ch=vcall<void*>(G(void*,G(u8*,0x70039c)+0x9b),0x58,val);if(ch)vcall<void>(ch,0x7c,a,b);else logmsg(0xed7,0x6926b0);val=vcall<u32>(t,0x5c,it);}return 0;}
 PCREG(4b1570,fn4b1570);
 static u32 THISCALL fn4b5500(u8*s,u32 key){void*tab=G(void*,G(u8*,0x70039c)+0x9b);void*base=vcall<void*>(tab,0x54,key);u8*owner=G(u8*,s+0x12a);if(!owner)return 0;void*t=G(void*,owner+0x18);u32 it[3];if(t){vcall<void>(t,0x4c,it);u32 val=vcall<u32>(t,0x5c,it);while(it[0]){void*o=vcall<void*>(G(void*,G(u8*,0x70039c)+0x9b),0x54,val);if(o){u8*b=ext_4dc110(o);u8*a=ext_4dc110(base);if(cmp(a,b)==0)return val;}val=vcall<u32>(t,0x5c,it);}}
- u32 out=key;u32 h=vcall<u32>(G(void*,G(u8*,0x70039c)+0x9b),0x114,0x692114u,0u,0x691edcu,0x2b6u,&out);vcall<void>(G(void*,s+0x44),0x130,owner,h&0xffff);return out==key?0:out;}
+ u32 out=key;u32 h=vcall<u32>(G(void*,G(u8*,0x70039c)+0x9b),0x114,0x692114u,0u,0x691edcu,0x2b6u);   // 4 args: the push of &out stays on the stack
+ vcall<void>(G(void*,s+0x44),0x130,owner,h&0xffff,&out);return out==key?0:out;}   // ... and is the last arg of slot 0x130
 PCREG(4b5500,fn4b5500);

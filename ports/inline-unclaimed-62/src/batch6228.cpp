@@ -44,7 +44,7 @@ static void THISCALL fn502cc0(u8 *self, u8 *x) {
   float f = (float)(s32)rd32u(ext_5003d0(arr, 9));
   __builtin_memcpy(&v[7], &f, 4);
   u8 *msg = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-  u32 w = vcall<u32>(msg, 0x114, edi, (u32)0, (u32)0x69ca10, (u32)0x13b, (void *)v) & 0xffff;
-  vcall<void>(rdp(self + 0xc), 0x12c, v0, w);
+  u32 w = vcall<u32>(msg, 0x114, edi, (u32)0, (u32)0x69ca10, (u32)0x13b) & 0xffff;   // 4 args: the push of &v stays on the stack
+  vcall<void>(rdp(self + 0xc), 0x12c, v0, w, (void *)v);   // ... and is the last arg of slot 0x12c
 }
 PCREG(502cc0, fn502cc0);

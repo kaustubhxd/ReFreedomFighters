@@ -8,7 +8,7 @@ extern "C" u32 THISCALL ext_4e5e60(void *stream);         // thiscall, plain ret
 static inline void wr32u(u8 *p, u32 v) { p[0] = v; p[1] = v >> 8; p[2] = v >> 16; p[3] = v >> 24; }
 
 // 0x5c92a0, thiscall, no args: [this+0x80] = 0; s = engine table slot 0x58([this+0x70]); y = s->slot0x2f4(); 0x5c9330(this, 0); [this+0x44]->slot0x288(s, 0, 1);
-// v = engine table slot 0x114(0x6a4e60, 0, 0x6b49b8, 0x1a6, 0, 0) (six stack args); y->slot0x128((u16)v).
+// v = engine table slot 0x114(0x6a4e60, 0, 0x6b49b8, 0x1a6) (pops FOUR arguments; the two `push 0` before it stay); y->slot0x128((u16)v, 0, 0).
 static void THISCALL fn5c92a0(u8 *self) {
   u32 x = *(u32 *)(self + 0x70);
   *(u32 *)(self + 0x80) = 0;
@@ -18,8 +18,8 @@ static void THISCALL fn5c92a0(u8 *self) {
   ext_5c9330(self, 0);
   vcall<void>(*(u8 **)(self + 0x44), 0x288, (u32)s, 0u, 1u);
   tbl = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-  u32 v = vcall<u32>(tbl, 0x114, 0x6a4e60u, 0u, 0x6b49b8u, 0x1a6u, 0u, 0u);
-  vcall<void>(y, 0x128, (u32)(u16)v);
+  u32 v = vcall<u32>(tbl, 0x114, 0x6a4e60u, 0u, 0x6b49b8u, 0x1a6u);
+  vcall<void>(y, 0x128, (u32)(u16)v, 0u, 0u);
 }
 PCREG(5c92a0, fn5c92a0);
 

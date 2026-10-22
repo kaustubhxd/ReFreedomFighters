@@ -49,9 +49,9 @@ static u32 THISCALL fn5c55a0(u8 *self) {
     vcall<u32, u8 *, u32, u32>(m, 0x130, m, *(u16 *)(self + 0x14c), 0);  // @5c55a0_c
     u8 *m2 = *(u8 **)(self + 0x44);
     u8 *vt = *(u8 **)m2;
-    u32 ax = vcall<u32, u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6ab71c, 0, 0x6b4204, 0x57, 0) & 0xffff;  // @5c55a0_d
-    typedef u32 (THISCALL *F)(u8 *, u8 *, u32);
-    (*(F *)(vt + 0x130))(m2, m2, ax);  // @5c55a0_e
+    u32 ax = vcall<u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6ab71c, 0, 0x6b4204, 0x57) & 0xffff;  // @5c55a0_d: 4 args; the push 0 before it is the 3rd arg of 0x130
+    typedef u32 (THISCALL *F)(u8 *, u8 *, u32, u32);
+    (*(F *)(vt + 0x130))(m2, m2, ax, 0);  // @5c55a0_e
   }
   return vcall<u32, u32, u32>(self, 0x68, 0x10, 0);  // @5c55a0_f
 }

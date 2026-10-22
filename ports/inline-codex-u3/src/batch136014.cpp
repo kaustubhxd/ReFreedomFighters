@@ -9,7 +9,7 @@ static void THISCALL fn502ba0(u8*s,u8*arg){
   typedef void(*Assert)();G(Assert,0x7003b0)();
  }
  u32 values[4];for(u32 i=0;i<4;i++)values[i]=*(u32*)ext_5003d0(list,i+2);
- void*target=*(void**)(s+0xc);u32 result=vcall<u32>(*(void**)(G(u8*,0x70039c)+0x9b),0x114,resource,0u,0x69ca10u,0x127u,values);
- vcall<void>(target,0x12c,id,result&0xffffu);
+ void*target=*(void**)(s+0xc);u32 result=vcall<u32>(*(void**)(G(u8*,0x70039c)+0x9b),0x114,resource,0u,0x69ca10u,0x127u);   // 4 args: the push of &values stays on the stack
+ vcall<void>(target,0x12c,id,result&0xffffu,values);   // ... and is the last arg of slot 0x12c
 }
 PCREG(502ba0,fn502ba0);

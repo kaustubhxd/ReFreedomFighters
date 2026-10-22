@@ -15,14 +15,14 @@ def _g5f0380(c, HELP):
         em.w32(em.arg32(1), r.getrandbits(32))
 
     def w8(em, k):
-        em.w32(em.arg32(4), 0 if r.random() < 0.4 else r.getrandbits(32) | 1)
+        em.w32(em.arg32(2), 0 if r.random() < 0.4 else r.getrandbits(32) | 1)     # the third argument of slot 0x12c is &l8
     x = obj(c, 0x20, {0x88: pystub(c, 2, this=True, side=w4, deref={1: 1})}, nslots=0x8c // 4)
     tbl = obj(c, 0x20, {0x138: pystub(c, 0, ret=x, this=True),
-                        0x114: pystub(c, 5, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xabcd0000 | r.getrandbits(16)]), this=True, side=w8, deref={4: 1})}, nslots=0x118 // 4)
+                        0x114: pystub(c, 4, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xabcd0000 | r.getrandbits(16)]), this=True)}, nslots=0x118 // 4)
     so = rnd(c, 0xa0)
     c.emu.w32(so + 0x9b, tbl)
     c.emu.w32(0x70039c, so)
-    tgt = obj(c, 0x700, {0x12c: pystub(c, 2, this=True)}, nslots=0x130 // 4)
+    tgt = obj(c, 0x700, {0x12c: pystub(c, 3, this=True, side=w8, deref={2: 1})}, nslots=0x130 // 4)     # (l4, w, &l8): 0x114 pops four, &l8 is the third argument here
     c.emu.w32(tgt + 0x684, r.getrandbits(32))
     me = rnd(c, 0x20)
     c.emu.w32(me + 4, tgt)

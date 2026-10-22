@@ -99,8 +99,8 @@ PCREG(4c4fc0, fn4c4fc0);
 
 extern "C" void ext_634273(u32 a, u32 b);   // cdecl
 
-// 0x4ca820, thiscall() plain ret (this = s): t = s[0x44]; s[0x48] (byte) -> t = t->slot 0x20(). name = s[0x49] (unaligned): name and *name != 0: o = sys[0x9b]->slot 0x138(); x = sys[0x9b]->slot 0x4c(t, 2); o->slot 0x60(name, x).
-// else: o->slot 0x60(s[0x44][4], x). Then name = s[0x49]; name -> ext_634273(name, 1). s->slot 0x58().
+// 0x4ca820, thiscall() plain ret (this = s): t = s[0x44]; s[0x48] (byte) -> t = t->slot 0x20(). name = s[0x49] (unaligned): name and *name != 0: o = sys[0x9b]->slot 0x138(); x = sys[0x9b]->slot 0x4c(t); o->slot 0x60(name, x, 2).
+// else: o->slot 0x60(s[0x44][4], x, 2). Then name = s[0x49]; name -> ext_634273(name, 1). s->slot 0x58().
 static void THISCALL fn4ca820(u8 *s) {
   u8 *t = *(u8 **)(s + 0x44);
   if (s[0x48]) t = (*(v0o_t **)t)[0x20 / 4](t);
@@ -109,15 +109,16 @@ static void THISCALL fn4ca820(u8 *s) {
     u8 *tab = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
     u8 *o = (*(v0o_t **)tab)[0x138 / 4](tab);
     tab = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-    u8 *x = (*(v2o_t **)tab)[0x4c / 4](tab, (u32)t, 2);
-    (*(v2_t **)o)[0x60 / 4](o, rd(s + 0x49), (u32)x);
+    // slot 0x4c pops ONE argument (t); the `push 2` before it stays on the stack and is the last argument of slot 0x60(name, x, 2)
+    u8 *x = (*(v1o_t **)tab)[0x4c / 4](tab, (u32)t);
+    (*(v3_t **)o)[0x60 / 4](o, rd(s + 0x49), (u32)x, 2);
   } else {
     u8 *tab = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
     u8 *o = (*(v0o_t **)tab)[0x138 / 4](tab);
     u32 a = rd(*(u8 **)(s + 0x44) + 4);
     tab = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-    u8 *x = (*(v2o_t **)tab)[0x4c / 4](tab, (u32)t, 2);
-    (*(v2_t **)o)[0x60 / 4](o, a, (u32)x);
+    u8 *x = (*(v1o_t **)tab)[0x4c / 4](tab, (u32)t);
+    (*(v3_t **)o)[0x60 / 4](o, a, (u32)x, 2);
   }
   u32 n = rd(s + 0x49);
   if (n) ext_634273(n, 1);

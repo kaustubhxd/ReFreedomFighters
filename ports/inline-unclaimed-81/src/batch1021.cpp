@@ -112,8 +112,8 @@ static void THISCALL heroCloseCombatFrameUpdate(u8 *self) {
   else
     T1 = vcall<u32>(R, 0x674);
   D(fr, 0x10) = T1;
-  u16 ax = (u16)vcall<u32>(rm2, 0x114, 0x69eaacu, 0u, 0x6b7a5cu, 0x668u, (u32)(fr + 0x20), 0u);
-  vcall<void>(R, 0x128, (u32)ax);
+  u16 ax = (u16)vcall<u32>(rm2, 0x114, 0x69eaacu, 0u, 0x6b7a5cu, 0x668u);   // slot 0x114 pops four; the two earlier pushes (&fr[0x20], 0) are the last arguments of slot 0x128
+  vcall<void>(R, 0x128, (u32)ax, (u32)(fr + 0x20), 0u);
   u32 T2;
   if (ecSlot != 0)
     T2 = (u32)(int)*(float *)(R + 0x7ff);

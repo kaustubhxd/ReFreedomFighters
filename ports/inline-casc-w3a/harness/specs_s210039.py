@@ -47,10 +47,10 @@ def g5d5b40(c):
     def side(emu, kk):
         emu.w32(emu.arg32(1), c.rng.getrandbits(32))
     g = obj(c, 0x40, {0x88: pystub(c, 2, ret=_r(c), this=True, deref={1: 1}, side=side)}, nslots=0x40)
-    mg = obj(c, 0x40, {0x138: pystub(c, 0, ret=g, this=True), 0x114: pystub(c, 5, ret=_r(c), this=True)}, nslots=0x60)
+    mg = obj(c, 0x40, {0x138: pystub(c, 0, ret=g, this=True), 0x114: pystub(c, 4, ret=_r(c), this=True)}, nslots=0x60)
     eng = rnd(c, 0x100); _ub(c, eng + 0x9b, mg)
     c.emu.w32(0x70039c, eng)
-    t = obj(c, 0x60, {0x110: pystub(c, 2, ret=_r(c), this=True), 0x12c: pystub(c, 2, ret=_r(c), this=True)}, nslots=0x50)
+    t = obj(c, 0x60, {0x110: pystub(c, 2, ret=_r(c), this=True), 0x12c: pystub(c, 3, ret=_r(c), this=True)}, nslots=0x50)
     c.emu.wbytes(t + 0x31, bytes([c.rng.choice([0, 1, 1])]))
     _ub(c, t + 0x2d, c.rng.choice([0, 1, 2, 5]))
     _ub(c, t + 0x25, 0 if c.rng.random() < 0.3 else obj(c, 0x40, {0x2c: pystub(c, 0, ret=_r(c), this=True)}, nslots=0x20))

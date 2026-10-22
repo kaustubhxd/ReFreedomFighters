@@ -1,7 +1,7 @@
 // batch1138.cpp - collision thread, batch 1138 (hard-row lane, mid-size row, name GUESS): 0x55c5b0. Reads list entries of the
 // argument's list at [arg+4] (indices 2, 1, 0 through 0x5003d0) and branches on the type field [list+8] and on byte 4 of entry
 // 1. Logger path (other types): the log stream from 0x700390 slot 0x20 and its slot 0x2c (cdecl), then the hook at 0x7003b0.
-// Ends with the render manager's slot 0x114 (five arguments; the fifth points at a local dword) and slot 0x134 of [this+0x1c].
+// Ends with the render manager's slot 0x114 (four arguments) and slot 0x134 of [this+0x1c] (three arguments; the third points at a local dword).
 // The stack frame is not reproduced (the exe's frame has no exception handler here).
 #include "ff.h"
 
@@ -51,7 +51,7 @@ static void THISCALL run55c5b0(u8 *self, u8 *arg) {
   u8 *e0 = (u8 *)ext_5003d0(L, 0);
   void *O = *(void **)(self + 0x1c);
   void *rm = *(void **)(G(u8 *, 0x70039c) + 0x9b);
-  u16 w = (u16)vcall<u32>(rm, 0x114, ebx, 0u, 0x6a5eb0u, 0x29au, (u32)&V);
-  vcall<void>(O, 0x134, *(u32 *)e0, (u32)w);
+  u16 w = (u16)vcall<u32>(rm, 0x114, ebx, 0u, 0x6a5eb0u, 0x29au);   // slot 0x114 pops four; the pushed &V is the third argument of slot 0x134
+  vcall<void>(O, 0x134, *(u32 *)e0, (u32)w, (u32)&V);
 }
 PCREG(55c5b0, run55c5b0);

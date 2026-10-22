@@ -12,10 +12,11 @@ static void THISCALL bind_configs(u8* me){
   table=*(void**)(G(u8*,0x70039c)+0x9b);
   void* child=*(void**)(me+0x44);u8* savedvt=*(u8**)child;
   u32 handle=vcall<u32>(table,0x4c,child);
-  u32 id=vcall<u32>(table,0x114,0x6b5a80,0,0x6b5b68,enabled?0x27:0x2d,handle);
+  // slot 0x114 pops FOUR arguments (name, 0, file, line); the handle pushed before it stays on the stack and is the third argument of slot 0x12c
+  u32 id=vcall<u32>(table,0x114,0x6b5a80,0,0x6b5b68,enabled?0x27:0x2d);
   child=*(void**)(me+0x44);
-  typedef void(THISCALL *Fn)(void*,u32,u32);
-  (*(Fn*)(savedvt+0x12c))(child,value,(u32)(u16)id);
+  typedef void(THISCALL *Fn)(void*,u32,u32,u32);
+  (*(Fn*)(savedvt+0x12c))(child,value,(u32)(u16)id,handle);
  }
  ext_633654(0);
 }

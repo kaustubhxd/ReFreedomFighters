@@ -14,7 +14,7 @@ def g_fu(c):
     hero = rnd(c, 0x900)
     c.emu.w32(hero + 0x852, rnd(c, 16))
     mgr = rnd(c, 0xb00)
-    mvt = obj(c, 0x140, {0x114: stub(c, 5, this=True, ret=0x71), 0x138: stub(c, 0, this=True, ret=reg),
+    mvt = obj(c, 0x140, {0x114: stub(c, 4, this=True, ret=0x71), 0x138: stub(c, 0, this=True, ret=reg),
                          0x58: stub(c, 1, this=True, ret=hero)})
     c.emu.w32(mgr, c.emu.r32(mvt))
     # ResourceCollection at [mgr+0xae4]: its vtable slot 0 = GetResource(name, res) (cdecl-free, thiscall, 2 args)
@@ -34,7 +34,7 @@ def g_fu(c):
     c.emu.w8(ct + 0x5e, c.rng.choice([0, 1, 1]))
     c.emu.w32(ct + 0x5f, c.rng.getrandbits(20))
     c.emu.w32(ct + 0x6f, c.rng.getrandbits(32))
-    c.emu.w32(ct + 0x44, obj(c, 0x20, {0x12c: stub(c, 2, this=True)}))
+    c.emu.w32(ct + 0x44, obj(c, 0x20, {0x12c: stub(c, 3, this=True)}))
     return [ct]
 
 

@@ -60,13 +60,18 @@ def _g574bc0(c):
 
     def w4(em, k):
         em.w32(em.arg32(1), r.getrandbits(32))
+
+    def scribble(em, k):    # a real callee scribbles over its dead argument slots: a caller that reads one of them instead of storing its own argument must fail
+        sp = em.reg('esp')
+        for i in range(4):
+            em.w32(sp + 4 + 4 * i, 0xdead0001 + i)
     x = obj(c, 0x20, {0x88: pystub(c, 2, this=True, side=w4, deref={1: 1})}, nslots=0x8c // 4)
     tbl = obj(c, 0x20, {0x138: pystub(c, 0, ret=x, this=True),
-                        0x114: pystub(c, 5, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xabcd0000 | r.getrandbits(16)]), this=True)}, nslots=0x118 // 4)
+                        0x114: pystub(c, 4, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xabcd0000 | r.getrandbits(16)]), this=True, side=scribble)}, nslots=0x118 // 4)
     so = rnd(c, 0xa0)
     e.w32(so + 0x9b, tbl)
     e.w32(0x70039c, so)
-    tgt = obj(c, 0x20, {0x12c: pystub(c, 2, this=True)}, nslots=0x130 // 4)
+    tgt = obj(c, 0x20, {0x12c: pystub(c, 3, this=True)}, nslots=0x130 // 4)     # (l, w, 0): the pending push 0 of the original is its third argument
     me = rnd(c, 0x60)
     e.w32(me + 0x44, tgt)
     return [me]

@@ -53,9 +53,9 @@ static u32 THISCALL fn5d5b40(u8 *self, u32 a, u32 b, u32 c, u32 d) {
     u32 local = 0;
     vcall<u32, u32, u32 *>(g, 0x88, 0x6b588c, &local);  // @5d5b40_j
     u8 *vt = *(u8 **)self;
-    u32 ax = vcall<u32, u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6b587c, 0, 0x6b583c, 0x98, 0) & 0xffff;  // @5d5b40_k
-    typedef u32 (THISCALL *F)(u8 *, u32, u32);
-    (*(F *)(vt + 0x12c))(self, local, ax);  // @5d5b40_l
+    u32 ax = vcall<u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6b587c, 0, 0x6b583c, 0x98) & 0xffff;  // @5d5b40_k: 4 args; the push 0 before it is the 3rd arg of 0x12c
+    typedef u32 (THISCALL *F)(u8 *, u32, u32, u32);
+    (*(F *)(vt + 0x12c))(self, local, ax, 0);  // @5d5b40_l
   }
   __builtin_memcpy(self + 0x32, &x, 4);  // @5d5b40_m
   return 0;

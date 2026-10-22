@@ -42,13 +42,13 @@ def g5c55a0(c):
 
     def h130(emu, r_):
         k = n130[0]; n130[0] += 1
-        a = [emu.arg32(0), emu.arg32(1)] + ([emu.arg32(2)] if k == 0 else [])
+        a = [emu.arg32(0), emu.arg32(1), emu.arg32(2)]
         emu.calllog.append(('s130', k, emu.reg('ecx'), tuple(a)))
-        emu.ret(eax=0x5eed0000 + k, argbytes=12 if k == 0 else 8)
+        emu.ret(eax=0x5eed0000 + k, argbytes=12)
     m = obj(c, 0x40, {0x130: c.emu.stub_fn('slot130', h130)}, nslots=0x50)
     hook_rec(c, 0x5c5620, 0, ret=c.rng.choice([0, 1, 5]), this=True)
     hook_rec(c, 0x5c5810, 0, ret=_r(c), this=True)
-    _eng(c, obj(c, 0x40, {0x114: pystub(c, 5, ret=_r(c), this=True)}, nslots=0x60))
+    _eng(c, obj(c, 0x40, {0x114: pystub(c, 4, ret=_r(c), this=True)}, nslots=0x60))
     tt = obj(c, 0x160, {0x68: pystub(c, 2, ret=_r(c), this=True)}, nslots=0x20)
     c.emu.w32(tt + 0x44, m)
     c.emu.wbytes(tt + 0x14c, (_r(c) & 0xffff).to_bytes(2, 'little'))

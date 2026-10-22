@@ -27,8 +27,8 @@ def g5c2ec0(c):
 
 def g5f0cd0(c):
     clear_hooks(c)
-    s = obj(c, 0x40, {0x130: pystub(c, 2, ret=_r(c), this=True)}, nslots=0x50)
-    _eng(c, obj(c, 0x40, {0x58: pystub(c, 1, ret=s, this=True), 0x114: pystub(c, 5, ret=_r(c), this=True, deref={4: 1})}, nslots=0x60))
+    s = obj(c, 0x40, {0x130: pystub(c, 3, ret=_r(c), this=True, deref={2: 1})}, nslots=0x50)
+    _eng(c, obj(c, 0x40, {0x58: pystub(c, 1, ret=s, this=True), 0x114: pystub(c, 4, ret=_r(c), this=True)}, nslots=0x60))
     return [rnd(c, 0x40), _r(c)]
 
 

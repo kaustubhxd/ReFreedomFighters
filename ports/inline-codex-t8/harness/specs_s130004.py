@@ -39,8 +39,8 @@ def script(c):
   if kind==4:val=obj(c,0x20,{0x34:pystub(c,0,this=True,ret=r.getrandbits(32))})
   e.w32(a,val);e.w8(a+4,kind);entries.append(a)
  hook_rec(c,0x5003d0,1,this=True,ret=lambda em,k:entries[em.arg32(0)])
- sysobj(c,table_slots={0x114:pystub(c,5,this=True,ret=r.getrandbits(32),deref={4:5})})
- s=rnd(c,0x20);p=rnd(c,0x10);e.w32(s+0xc,obj(c,0x20,{0x12c:pystub(c,2,this=True,ret=r.getrandbits(32))}));e.w32(p+4,rnd(c,0x20));return [s,p]
+ sysobj(c,table_slots={0x114:pystub(c,4,this=True,ret=r.getrandbits(32))})
+ s=rnd(c,0x20);p=rnd(c,0x10);e.w32(s+0xc,obj(c,0x20,{0x12c:pystub(c,3,this=True,ret=r.getrandbits(32),deref={2:5})}));e.w32(p+4,rnd(c,0x20));return [s,p]
 
 def inherited(c):
  clear_hooks(c);r=c.rng;e=c.emu;compare(c);logger(c,3);e.w32(0x7003b0,pystub(c,0,ret=r.getrandbits(32)))
