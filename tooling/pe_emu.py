@@ -42,6 +42,7 @@ HEAP_SIZE = 0x01000000
 STUB_BASE = 0x7e000000      # import stubs, fake vtable slots, trampolines; never real code
 STUB_SIZE = 0x00100000
 SCRATCH = STUB_BASE + STUB_SIZE - 0x100   # float return slot etc. (inside the stub page range)
+TEB = 0                     # the fake TEB is mapped at address 0 (FS base 0); recruits_util.seh_chain writes fs:[0] here
 
 
 class F(float):
