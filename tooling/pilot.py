@@ -248,7 +248,7 @@ def const(v):
 
 
 class Spec:
-    def __init__(self, addr, name, abi, args, ret=None, setup=None, n=None, note='', abi_mine=None,
+    def __init__(self, addr, name, abi, args=None, ret=None, setup=None, n=None, note='', abi_mine=None,
                  status_override=None, tries=1, gen=None, nan_heap=False, heap_mask=None, max_insns=2000000, stack_arg_bytes=4, reg_values=False):
         self.nan_heap = nan_heap                 # True only where a heap word is a float the spec marks as such
         self.heap_mask = heap_mask               # fn(ctx) -> [(abs_addr, nbytes)]: heap words not compared (see HOWTO)
