@@ -282,12 +282,12 @@ def g476100(c):
     c.emu.w32(vt + 0x168, pystub(c, 2, ret=R, this=True, stackmark=(1,), side=mk(1)))
     c.emu.w32(this, vt)
     c.emu.wbytes(0x6ff9a8, r.getrandbits(16).to_bytes(2, 'little'))
-    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(2))
-    hook_rec(c, 0x4ccba0, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(3))
-    hook_rec(c, 0x4cd540, 1, ret=r.getrandbits(32), pop=4, this='mark', side=mk(4))
-    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this=False, stackmark=(1,), side=mk(5))
-    hook_rec(c, 0x4ccf60, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(6))
-    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(7))
+    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(2), clobber=True)
+    hook_rec(c, 0x4ccba0, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(3), clobber=True)
+    hook_rec(c, 0x4cd540, 1, ret=r.getrandbits(32), pop=4, this='mark', side=mk(4), clobber=True)
+    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this='mark', stackmark=(1,), side=mk(5), clobber=True)
+    hook_rec(c, 0x4ccf60, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(6), clobber=True)
+    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(7), clobber=True)
     return [this, r.choice([0, rnd(c, 0x20)]), r.getrandbits(32)]
 
 

@@ -46,17 +46,17 @@ def g473a70(c):
         else: emu.calllog.append(('L', emu.rbytes(a, 16).hex()))
         FO[0] += 1
         _s(emu, k)
-    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2280)
+    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2280, clobber=True)
     def side_4d3ab0(emu, k, _s=mkside(2)):
         _s(emu, k)
-    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this=False, side=side_4d3ab0)
+    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this='mark', side=side_4d3ab0, clobber=True)
     def side_4d2330(emu, k, _s=mkside(4)):
         a = emu.reg('ecx') if True else emu.arg32(0)
         if FO[0] == 0: emu.wbytes(a, bytes(r.getrandbits(8) for _ in range(0x30)))
         else: emu.calllog.append(('L', emu.rbytes(a, 16).hex()))
         FO[0] += 1
         _s(emu, k)
-    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2330)
+    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2330, clobber=True)
     return [O[('this',)], r.getrandbits(32)]
 
 
@@ -94,17 +94,17 @@ def g474f60(c):
         else: emu.calllog.append(('L', emu.rbytes(a, 16).hex()))
         FO[0] += 1
         _s(emu, k)
-    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2280)
+    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2280, clobber=True)
     def side_4d3ab0(emu, k, _s=mkside(2)):
         _s(emu, k)
-    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this=False, side=side_4d3ab0)
+    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this='mark', side=side_4d3ab0, clobber=True)
     def side_4d2330(emu, k, _s=mkside(4)):
         a = emu.reg('ecx') if True else emu.arg32(0)
         if FO[0] == 0: emu.wbytes(a, bytes(r.getrandbits(8) for _ in range(0x30)))
         else: emu.calllog.append(('L', emu.rbytes(a, 16).hex()))
         FO[0] += 1
         _s(emu, k)
-    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2330)
+    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=side_4d2330, clobber=True)
     return [O[('this',)], r.getrandbits(32)]
 
 

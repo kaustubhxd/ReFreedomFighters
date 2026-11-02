@@ -2,7 +2,7 @@
 #include "ff.h"
 
 extern "C" u8 *THISCALL ext_4acf30(u8 *self, u32 id);       // ret 4
-extern "C" void STDCALL ext_4dc630(u32 a, u32 b);           // ret 8
+extern "C" void THISCALL ext_4dc630(u8 *rec, u32 a, u32 b);  // thiscall: ECX = the object record, two stack arguments (ret 8)
 
 #define D32(p, o) (*(u32 *)((u8 *)(p) + (o)))
 typedef u32 (THISCALL *tab3_t)(u8 *, u32, u32, u32);
@@ -22,7 +22,7 @@ static void THISCALL fn4ad3a0(u8 *self, u8 *list) {
     if (o) {
       u8 *rec = *(u8 **)(o + 8);
       if (!((D32(rec, 0x3c) >> 10) & 1)) {
-        ext_4dc630(0x800000, 0);
+        ext_4dc630(rec, 0x800000, 0);
         vcall<void>(o, 0x158);
         u8 *tab = *(u8 **)(*(u8 **)0x70039c + 0x9b);
         u32 m = (*(tab3_t *)(*(u8 **)tab + 0x4c))(tab, D32(self, 0x44), 0, 0);

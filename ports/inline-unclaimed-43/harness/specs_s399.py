@@ -15,13 +15,22 @@ def _nostack(x):
 SHARED = {'N': 0, 'data': b''}
 
 
+def _clob(em):
+    # the CRT imports are callees: they do not preserve ECX / EDX, so a caller that reuses them without setting them up must fail
+    from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_EDX
+    em.mu.reg_write(UC_X86_REG_ECX, 0x20000010)
+    em.mu.reg_write(UC_X86_REG_EDX, 0x20000020)
+
+
 def _setup(c):
     def ftell(em, rr):
         em.ret(eax=SHARED['N'], argbytes=0)
+        _clob(em)
 
     def rewind(em, rr):
         em.calllog.append(('rewind', 0, 0, (em.arg32(0),)))
         em.ret(eax=0, argbytes=0)
+        _clob(em)
 
     def fread(em, rr):
         buf, size, count = em.arg32(0), em.arg32(1), em.arg32(2)
@@ -29,16 +38,18 @@ def _setup(c):
         em.mu.mem_write(buf, SHARED['data'][:n])
         em.calllog.append(('fread', 0, 0, (size, count)))
         em.ret(eax=count if size else 0, argbytes=0)
+        _clob(em)
 
     def fclose(em, rr):
         em.calllog.append(('fclose', 0, 0, (em.arg32(0),)))
         em.ret(eax=0, argbytes=0)
+        _clob(em)
 
     c.emu.stub_import('ftell', ftell)
     c.emu.stub_import('rewind', rewind)
     c.emu.stub_import('fread', fread)
     c.emu.stub_import('fclose', fclose)
-    c.emu.hook(0x42ad40, lambda em, r: (em.calllog.append(('parse42ad40', 0, 0, (em.arg32(0), em.arg32(1), _nostack(em.arg32(2)), em.mu.mem_read(em.arg32(2) + 0x3fff, 1)[0]))),
+    c.emu.hook(0x42ad40, lambda em, r: (em.calllog.append(('parse42ad40', em.reg('ecx'), em.reg('edx'), (em.arg32(0), em.arg32(1), _nostack(em.arg32(2)), em.mu.mem_read(em.arg32(2) + 0x3fff, 1)[0]))),
                                         em.ret(eax=0, argbytes=12)))
 
 

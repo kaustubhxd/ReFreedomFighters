@@ -7,7 +7,7 @@ extern "C" u32 FASTCALL ext_58aa40_fastcall2(u32, u32) __asm__("ext_58aa40");
 extern "C" u32 FASTCALL ext_58aaf0_fastcall2(u32, u32) __asm__("ext_58aaf0");
 extern "C" u32 STDCALL ext_4947c0_stdcall1(u32) __asm__("ext_4947c0");
 extern "C" u32 STDCALL ext_573ba0_stdcall1(u32) __asm__("ext_573ba0");
-extern "C" u32 STDCALL ext_574af0_stdcall5(u32, u32, u32, u32, u32) __asm__("ext_574af0");
+extern "C" u32 THISCALL ext_574af0_thiscall6(u32, u32, u32, u32, u32, u32) __asm__("ext_574af0");   // thiscall: ECX = the object, five stack args (ret 20)
 extern "C" u32 STDCALL ext_610100_stdcall1(u32) __asm__("ext_610100");
 extern "C" u32 THISCALL ext_484d20_thiscall2(u32, u32) __asm__("ext_484d20");
 extern "C" u32 THISCALL ext_4cc1d0_thiscall1(u32) __asm__("ext_4cc1d0");
@@ -704,7 +704,7 @@ extern "C" u32 THISCALL lifted_576e50(u32 ecx_in) {
   ecx = edi;  // @161_576e50
   PV[10] = (u32)(eax);  // @162_576e50
   PV[11] = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(EBP - 360), sizeof v); (u32)v; });  // @163_576e50
-  eax = ext_574af0_stdcall5(PV[11], PV[10], PV[9], (u32)(1), PV[8]);  // @164_576e50
+  eax = ext_574af0_thiscall6(ecx, PV[11], PV[10], PV[9], (u32)(1), PV[8]);  // @164_576e50
   ecx = edx = 0;  // @165_576e50
   L57703c:;
   ebx = (ebx + 1);  // @167_576e50
@@ -864,7 +864,7 @@ extern "C" u32 THISCALL lifted_576e50(u32 ecx_in) {
   PV[19] = (u32)(ecx);  // @321_576e50
   PV[20] = (u32)(eax);  // @322_576e50
   ecx = edi;  // @323_576e50
-  eax = ext_574af0_stdcall5(PV[20], PV[19], (u32)(0), (u32)(1), (u32)(0));  // @324_576e50
+  eax = ext_574af0_thiscall6(ecx, PV[20], PV[19], (u32)(0), (u32)(1), (u32)(0));  // @324_576e50
   ecx = edx = 0;  // @325_576e50
   ebx = (ebx + 1);  // @326_576e50
   FL[3] = ebx;  // @327_576e50
@@ -919,7 +919,7 @@ extern "C" u32 THISCALL lifted_576e50(u32 ecx_in) {
   eax = (u32)(EBP - 36);  // @376_576e50
   ecx = edi;  // @377_576e50
   PV[25] = (u32)(eax);  // @378_576e50
-  eax = ext_574af0_stdcall5((u32)(13), PV[25], (u32)(0), (u32)(1), (u32)(0));  // @379_576e50
+  eax = ext_574af0_thiscall6(ecx, (u32)(13), PV[25], (u32)(0), (u32)(1), (u32)(0));  // @379_576e50
   ecx = edx = 0;  // @380_576e50
   L5772a5:;
   esi = (esi + 1);  // @382_576e50
