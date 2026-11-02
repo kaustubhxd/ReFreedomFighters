@@ -85,7 +85,7 @@ def _g4e5de0(c):
 
 S(0x497610, 'GUESS scaled slot index', 'thiscall', None, ret='eax', gen=_g497610b, note='batch34084')
 S(0x52d510, 'GUESS write record kind 1', 'thiscall', None, ret='al', gen=_rec(5, 5, 'b'), note='batch34084')
-S(0x52d380, 'GUESS write record kind 3', 'thiscall', None, ret='al', gen=_rec(7, 5, 'c'), note='batch34084')
+S(0x52d380, 'GUESS write record kind 3', 'thiscall', None, ret='eax', gen=_rec(7, 5, 'c'), note='batch34084')
 S(0x64b0b0, 'GUESS refresh flags from entries', 'thiscall', None, ret=None, gen=_g64b0b0, note='batch34084')
 S(0x62df30, 'GUESS event filter J', 'cdecl', None, ret='eax', gen=_g62df30, note='batch34084')
 S(0x4e5de0, 'GUESS read bit field', 'thiscall', None, ret='eax', gen=_g4e5de0, note='batch34084')

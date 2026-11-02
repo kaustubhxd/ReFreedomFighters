@@ -37,7 +37,7 @@ static bool THISCALL fn52d510(u8 *self, u8 *a, u16 *b, u16 *c, u32 d, u32 e) {
 PCREG(52d510, fn52d510);
 
 // 0x52d380, thiscall(a, b, x2, d, x4, g, h) ret 0x1c, bool: k = [a+0x38] - g - 1 must equal [this+8] and [b] must be non-zero. Then o = [this+4]: byte [o+0xa] = 3, word [o] = low word of h, byte [o+9] = k, words [o+2], [o+4], [o+6] = words at d+0, d+4, d+8.
-static bool THISCALL fn52d380(u8 *self, u8 *a, u32 *b, u32 x2, u8 *d, u32 x4, u32 g, u32 h) {
+static u32 THISCALL fn52d380(u8 *self, u8 *a, u32 *b, u32 x2, u8 *d, u32 x4, u32 g, u32 h) {
   (void)x2; (void)x4;
   u32 k = *(u32 *)(a + 0x38) - g - 1;
   if (k != *(u32 *)(self + 8)) return false;

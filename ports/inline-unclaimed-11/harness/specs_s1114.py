@@ -25,7 +25,7 @@ def _slot(c):
     return [o, c.rng.randint(-128, 127) & 0xff, c.rng.getrandbits(32)]
 
 
-S(0x4d5120, 'IOFSMemoryAccess_t::nativeEof (high) thiscall', 'thiscall', None, ret='al', gen=_eof,
+S(0x4d5120, 'IOFSMemoryAccess_t::nativeEof (high) thiscall', 'thiscall', None, ret='eax', gen=_eof,
   note='unclaimed-11 batch 15 (slice 10)')
 S(0x58a660, 'GUESS byte-indexed dword slot store at +0x2c2d thiscall', 'thiscall', None, ret=None, gen=_slot,
   note='unclaimed-11 batch 15 (slice 10)')
