@@ -26,13 +26,14 @@ void THISCALL fn_64fae0(void *this_ptr) {
 }
 PCREG(64fae0, fn_64fae0);
 
-// 0x445c50: 7 insns, 25 bytes, cdecl: conditional read with global pointer chain
-void fn_445c50(void *this_ptr) {
-  void *eax = *(void **)((u8 *)this_ptr + 0x18);
+// 0x445c50 (ZCAMERA::CurrentRoom): 7 insns, 25 bytes, thiscall, plain ret, returns EAX: [this+0x18] if nonzero, else [[[0x70039c] + 0x9b] + 0xadc]
+u32 THISCALL fn_445c50(void *this_ptr) {
+  u32 eax = *(u32 *)((u8 *)this_ptr + 0x18);
   if (eax == 0) {
-    eax = *(void **)0x70039c;
-    eax = *(void **)((u8 *)eax + 0x9b);
-    eax = *(void **)((u8 *)eax + 0xadc);
+    eax = *(u32 *)0x70039c;
+    eax = *(u32 *)(eax + 0x9b);
+    eax = *(u32 *)(eax + 0xadc);
   }
+  return eax;
 }
 PCREG(445c50, fn_445c50);
