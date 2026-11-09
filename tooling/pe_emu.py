@@ -26,7 +26,8 @@ from unicorn import (Uc, UcError, UC_ARCH_X86, UC_MODE_32, UC_HOOK_CODE, UC_HOOK
 from unicorn.x86_const import (UC_X86_REG_EAX, UC_X86_REG_EBX, UC_X86_REG_ECX, UC_X86_REG_EDX,
                                UC_X86_REG_ESI, UC_X86_REG_EDI, UC_X86_REG_EBP, UC_X86_REG_ESP,
                                UC_X86_REG_EIP, UC_X86_REG_FPSW, UC_X86_REG_XMM0, UC_X86_REG_XMM1,
-                               UC_X86_REG_XMM2)
+                               UC_X86_REG_XMM2, UC_X86_REG_GDTR, UC_X86_REG_FS,
+                               UC_X86_REG_SS, UC_X86_REG_DS, UC_X86_REG_ES)
 
 DEFAULT_ROOT = os.environ.get('FF_RE_ROOT') or '/mnt/user-data/uploads/freedom-fighters-re'
 DEFAULT_EXE = os.path.join(DEFAULT_ROOT, 'bin', 'Freedom.Exe.orig')
@@ -41,7 +42,14 @@ HEAP_BASE = 0x20000000
 HEAP_SIZE = 0x01000000
 STUB_BASE = 0x7e000000      # import stubs, fake vtable slots, trampolines; never real code
 STUB_SIZE = 0x00100000
+TEB = 0x7f000000            # fake thread block: fs:[0] = TEB+0 (SEH list head), +4/+8 stack limits, +0x18 self
+GDT = 0x7f100000
 SCRATCH = STUB_BASE + STUB_SIZE - 0x100   # float return slot etc. (inside the stub page range)
+
+
+def _gdt_desc(base, limit, access, flags):
+    d = (limit & 0xffff) | (base & 0xffffff) << 16 | access << 40 | ((limit >> 16) & 0xf) << 48 | flags << 52 | (base >> 24) << 56
+    return struct.pack('<Q', d)
 
 
 class F(float):
@@ -96,12 +104,18 @@ class PEEmu:
         self.mu.mem_map(STACK_TOP - STACK_SIZE, STACK_SIZE, UC_PROT_ALL)
         self.mu.mem_map(HEAP_BASE, HEAP_SIZE, UC_PROT_ALL)
         self.mu.mem_map(STUB_BASE, STUB_SIZE, UC_PROT_ALL)
-        # Trial copy only (decomp-pilot/trial-level1): a fake TEB at 0, so fs:[0] reads work.
-        # FS base is 0 in this flat model, so fs:[x] is address x. Exception list = -1, stack limits, self.
-        # Page 0 is now mapped, so a NULL dereference no longer faults in this trial copy.
-        self.mu.mem_map(0, 0x1000, UC_PROT_ALL)
-        self.mu.mem_write(0, struct.pack('<IIII', 0xffffffff, STACK_TOP, STACK_TOP - STACK_SIZE, 0))
-        self.mu.mem_write(0x18, struct.pack('<I', 0))
+        # Fake TEB for fs:[x] (SEH frames). FF used to map it at address 0, which made NULL dereferences succeed and let
+        # page-0 writes leak from one case into the next (2026-10-15). The TEB now has its own page and FS is a GDT segment
+        # based on it; page 0 stays unmapped, so a NULL access faults again.
+        self.mu.mem_map(TEB, 0x1000, UC_PROT_ALL)
+        self.mu.mem_map(GDT, 0x1000, UC_PROT_ALL)
+        gdt = b'\0' * 8 + _gdt_desc(0, 0xfffff, 0x9a, 0xc) + _gdt_desc(0, 0xfffff, 0x92, 0xc) + _gdt_desc(TEB, 0xfff, 0x92, 0x4)
+        self.mu.mem_write(GDT, gdt)
+        self.mu.reg_write(UC_X86_REG_GDTR, (0, GDT, len(gdt) - 1, 0))
+        for r in (UC_X86_REG_SS, UC_X86_REG_DS, UC_X86_REG_ES):
+            self.mu.reg_write(r, 2 << 3)      # flat 32-bit data (without this, SS loses its 32-bit flag and ESP wraps to 16 bits)
+        self.mu.reg_write(UC_X86_REG_FS, 3 << 3)
+        self.reset_teb()
         self._stub_next = STUB_BASE + 0x1000
         self.stubs = {}          # addr -> (name, handler or None)
         self.hooks = {}          # real-code addr -> handler(emu, result) for callee stubs
@@ -245,6 +259,12 @@ class PEEmu:
         self.reset_heap()
         self.reset_stubs()
         self.reset_image()
+        self.reset_teb()
+
+    def reset_teb(self):
+        self.mu.mem_write(TEB, b'\0' * 0x1000)
+        self.mu.mem_write(TEB, struct.pack('<IIII', 0xffffffff, STACK_TOP, STACK_TOP - STACK_SIZE, 0))
+        self.mu.mem_write(TEB + 0x18, struct.pack('<I', TEB))
 
     def reset_heap(self):
         used = self._heap_next - HEAP_BASE
