@@ -947,10 +947,10 @@ def g4627d0(c):
     c.emu.w32(tv + 0x344, pystub(c, 2, ret=R, this=True, side=mk(7)))
     c.emu.w32(tv + 0x34c, pystub(c, 2, ret=R, this=True, side=mk(8)))
     c.emu.w32(this, tv)
-    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(9))
-    hook_rec(c, 0x4d39a0, 2, ret=r.getrandbits(32), pop=8, this=False, side=mk(10))
-    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this=False, side=mk(11))
-    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(12))
+    hook_rec(c, 0x4d2280, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(9), clobber=True)
+    hook_rec(c, 0x4d39a0, 2, ret=r.getrandbits(32), pop=8, this='mark', side=mk(10), clobber=True)
+    hook_rec(c, 0x4d3ab0, 2, ret=r.getrandbits(32), pop=8, this='mark', side=mk(11), clobber=True)
+    hook_rec(c, 0x4d2330, 0, ret=r.getrandbits(32), pop=0, this='mark', side=mk(12), clobber=True)
     return [this, r.randrange(0, N), r.choice([0, 1, 1])]
 
 

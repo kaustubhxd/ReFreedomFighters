@@ -11,7 +11,7 @@ def gen(c):
     flags = r.choice([0, 1, 4, 5, 3, 7, 0xffffffff])
     hook_rec(c, 0x634273, 2, pop=0)
     hook_rec(c, 0x43de70, 0, this=True, pop=0)
-    hook_rec(c, 0x45c510, 0, this=True, pop=0)
+    hook_rec(c, 0x45c510, 1, pop=0)       # cdecl, one stack argument (the object); ECX is not an input
     hook_rec(c, 0x4690b0, 2, pop=0)
     return [self, flags]
 

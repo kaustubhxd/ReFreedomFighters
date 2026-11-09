@@ -1,6 +1,6 @@
 // batch228005.cpp - Sonnet-w2, mechanically lifted ports (lift.py) with automatically generated specs (autospec.py).
 #include "ff.h"
-extern "C" u32 STDCALL ext_475820_stdcall2(u32, u32) __asm__("ext_475820");
+extern "C" u32 THISCALL ext_475820_thiscall3(u32, u32, u32) __asm__("ext_475820");   // thiscall: ECX = the object, two stack args (ret 8)
 extern "C" u32 THISCALL ext_476f50_thiscall4(u32, u32, u32, u32) __asm__("ext_476f50");
 extern "C" u32 THISCALL ext_4d8330_thiscall4(u32, u32, u32, u32) __asm__("ext_4d8330");
 extern "C" u32 THISCALL ext_5eade0_thiscall6(u32, u32, u32, u32, u32, u32) __asm__("ext_5eade0");
@@ -125,15 +125,15 @@ extern "C" u32 THISCALL lifted_59d580(u32 ecx_in, u32 a0, u32 a1, u32 a2) {
   ecx = esi;  // @104_59d580
   { u8 v = (u8)((ebx & 0xff)); __builtin_memcpy((void *)(u32)(esi + 1951), &v, sizeof v); }  // @105_59d580
   { u32 v = (u32)(ebx); __builtin_memcpy((void *)(u32)(esi + 2332), &v, sizeof v); }  // @106_59d580
-  eax = ext_475820_stdcall2((u32)(1), (u32)((u32)(1065353216)));  // @107_59d580
+  eax = ext_475820_thiscall3(ecx, (u32)(1), (u32)((u32)(1065353216)));  // @107_59d580
   ecx = edx = 0;  // @108_59d580
   PV[17] = (u32)(ecx);  // @109_59d580
   ecx = esi;  // @110_59d580
-  eax = ext_475820_stdcall2((u32)(2), (u32)((u32)(1084227584)));  // @111_59d580
+  eax = ext_475820_thiscall3(ecx, (u32)(2), (u32)((u32)(1084227584)));  // @111_59d580
   ecx = edx = 0;  // @112_59d580
   PV[18] = (u32)(ecx);  // @113_59d580
   ecx = esi;  // @114_59d580
-  eax = ext_475820_stdcall2((u32)(3), (u32)((u32)(1084227584)));  // @115_59d580
+  eax = ext_475820_thiscall3(ecx, (u32)(3), (u32)((u32)(1084227584)));  // @115_59d580
   ecx = edx = 0;  // @116_59d580
   eax = ext_41e290_cdecl1((u32)(264));  // @117_59d580
   ecx = edx = 0;  // @118_59d580

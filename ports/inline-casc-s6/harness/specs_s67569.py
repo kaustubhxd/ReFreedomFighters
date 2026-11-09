@@ -1,6 +1,6 @@
 """specs_s67569.py - cascade s6 batch 67569 (0x4ad3a0, thiscall(list) ret 4, no return value). The list (null sometimes) has slots 0x14 (0 args, bool), 0x4c (writes the first iterator) and 0x5c (returns the next
 id, writes the following iterator; stack-marked); 0x4acf30 (hook) maps ids to objects (record at +8 with flags +0x3c, slots 0x158 / 0x2f0 / 0x2d0 / 0x2e8 / helper slot 0x300) or 0; this[0x44] has slot 0x548;
-the table (sys[0x9b]) slot 0x4c is a custom 3-arg stub; 0x4dc630 (stdcall 2 args) is a hook."""
+the table (sys[0x9b]) slot 0x4c is a custom 3-arg stub; 0x4dc630 (thiscall, ECX = the record, 2 args) is a hook."""
 from pilot import S
 from recruits_util import rnd, obj, sysobj, clear_hooks, hook_rec, pystub
 
@@ -28,7 +28,7 @@ def _g4ad3a0(c):
         _w(c, o + 8, rec)
         objs.append(o)
     hook_rec(c, 0x4acf30, 1, this=True, ret=lambda em, k: r.choice(objs + [0]))
-    hook_rec(c, 0x4dc630, 2)
+    hook_rec(c, 0x4dc630, 2, this=True)     # thiscall: ECX = the record
     ids = [0x100 + i for i in range(r.choice([0, 1, 2, 3, 4]))]
     its = [1] * len(ids) + [0]
 

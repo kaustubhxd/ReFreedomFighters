@@ -48,19 +48,19 @@ def g59d580(c):
     c.emu.w32(O[('load', ('glob', 7340956), 0)] + 0x1a4, pystub(c, 1, ret=lambda emu, k: r.getrandbits(32), this=True, side=mkside(24)))
     def side_476f50(emu, k, _s=mkside(0)):
         _s(emu, k)
-    hook_rec(c, 0x476f50, 3, ret=r.getrandbits(32), pop=12, this=True, side=side_476f50)
+    hook_rec(c, 0x476f50, 3, ret=r.getrandbits(32), pop=12, this=True, side=side_476f50, clobber=True)
     def side_5eade0(emu, k, _s=mkside(1)):
         _s(emu, k)
-    hook_rec(c, 0x5eade0, 5, ret=r.getrandbits(32), pop=20, this=True, side=side_5eade0)
+    hook_rec(c, 0x5eade0, 5, ret=r.getrandbits(32), pop=20, this=True, side=side_5eade0, clobber=True)
     def side_475820(emu, k, _s=mkside(11)):
         _s(emu, k)
-    hook_rec(c, 0x475820, 2, ret=r.getrandbits(32), pop=8, this=False, side=side_475820)
+    hook_rec(c, 0x475820, 2, ret=r.getrandbits(32), pop=8, this='mark', side=side_475820, clobber=True)
     def side_41e290(emu, k, _s=mkside(14)):
         _s(emu, k)
-    hook_rec(c, 0x41e290, 1, ret=lambda emu, k: (0 if r.random() < 0.3 else r.getrandbits(32)), pop=0, this=False, side=side_41e290)
+    hook_rec(c, 0x41e290, 1, ret=lambda emu, k: (0 if r.random() < 0.3 else r.getrandbits(32)), pop=0, this=False, side=side_41e290, clobber=True)
     def side_4d8330(emu, k, _s=mkside(15)):
         _s(emu, k)
-    hook_rec(c, 0x4d8330, 3, ret=r.getrandbits(32), pop=12, this=True, side=side_4d8330)
+    hook_rec(c, 0x4d8330, 3, ret=r.getrandbits(32), pop=12, this=True, side=side_4d8330, clobber=True)
     return [O[('this',)], r.getrandbits(32), r.getrandbits(32), r.getrandbits(32)]
 
 

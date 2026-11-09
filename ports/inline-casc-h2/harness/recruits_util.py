@@ -10,6 +10,7 @@ Callee stand-ins used here, all identical in the original and the port run:
                              real code again.
 """
 import struct
+from unicorn.x86_const import UC_X86_REG_ECX, UC_X86_REG_EDX
 import pe_emu
 
 HEAP_LO = pe_emu.HEAP_BASE
@@ -100,7 +101,7 @@ def obj(c, size, slots, nslots=None):
     return o
 
 
-def _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark=()):
+def _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark=(), clobber=False):
     """Python recorder handler: one row of recorded args per call (8 rows, the last row is reused)."""
     deref = deref or {}
     # deref value d > 0: d dwords; d < 0: -d bytes (padded to whole dwords with zeros)
@@ -146,23 +147,26 @@ def _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark=()
         e = ret(emu, k) if callable(ret) else ret
         f = st0(emu, k) if callable(st0) else st0
         emu.ret(eax=e, argbytes=4 * nargs if pop is None else pop, st0=f)
+        if clobber:   # a real callee does not preserve ECX / EDX: a caller that reuses them without setting them up must fail here
+            emu.mu.reg_write(UC_X86_REG_ECX, HEAP_LO + 0x10 + 4 * (k & 0xff))   # inside the heap range, so `this` records as is
+            emu.mu.reg_write(UC_X86_REG_EDX, HEAP_LO + 0x20 + 4 * (k & 0xff))
     return h, rec
 
 
-def hook_rec(c, addr, nargs, ret=0, pop=None, this=False, nullflag=(), deref=None, side=None, st0=None, stackmark=()):
+def hook_rec(c, addr, nargs, ret=0, pop=None, this=False, nullflag=(), deref=None, side=None, st0=None, stackmark=(), clobber=False):
     """Replace the exe function at addr by a recorder (Python hook). Records ECX too when this=True.
     nullflag: arg indices recorded only as 0/1 (output pointers into the caller's stack). deref: {arg index: dword
     count} records the pointed-to dwords instead of the pointer. ret: value or callable(emu, call_no).
     side(emu, call_no): extra effect before returning. st0: float (or callable) returned on the x87 stack."""
-    h, rec = _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark)
+    h, rec = _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark, clobber)
     c.emu.hook(addr, h)
     _HOOKED.add(addr)
     return rec
 
 
-def pystub(c, nargs, ret=0, pop=None, this=False, nullflag=(), deref=None, side=None, st0=None, stackmark=()):
+def pystub(c, nargs, ret=0, pop=None, this=False, nullflag=(), deref=None, side=None, st0=None, stackmark=(), clobber=False):
     """Same recorder as hook_rec, as a code address for a vtable slot (thiscall/stdcall, callee pops)."""
-    h, rec = _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark)
+    h, rec = _recorder(c, nargs, ret, pop, this, nullflag, deref, side, st0, stackmark, clobber)
     return c.emu.stub_fn('recorder', h)
 
 

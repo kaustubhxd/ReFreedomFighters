@@ -89,7 +89,7 @@ def g576e50(c):
         struct.pack_into('<I', blk, 256, n); blk[260] = r.choice([0, 1])
         emu.wbytes(a, bytes(blk))
         emu.calllog.append(('dee0', emu.reg('ecx'), bytes(blk).hex()))
-    hook_rec(c, 0x5adee0, 2, ret=R, pop=8, this=True, stackmark=(0,), side=h5adee0)
+    hook_rec(c, 0x5adee0, 2, ret=R, pop=8, this=True, stackmark=(0,), side=h5adee0, clobber=True)
     wpick = {}
     def h573ba0(emu, k):
         pass
@@ -97,10 +97,10 @@ def g576e50(c):
         i = emu.arg32(0)
         if i not in wpick: wpick[i] = r.choice([0, 1, 2, 2])
         return wpick[i]
-    hook_rec(c, 0x573ba0, 1, ret=r573ba0, pop=4, this=False, side=lambda emu, k: emu.calllog.append(('b3ba0', emu.arg32(0))))
+    hook_rec(c, 0x573ba0, 1, ret=r573ba0, pop=4, this=False, side=lambda emu, k: emu.calllog.append(('b3ba0', emu.arg32(0))), clobber=True)
     def r5761c0(emu, k):
         return r.choice([0, Ws[0], Ws[1], Ws[2], Ws[2]])
-    hook_rec(c, 0x5761c0, 1, ret=r5761c0, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('b61c0', emu.reg('ecx'), emu.arg32(0))))
+    hook_rec(c, 0x5761c0, 1, ret=r5761c0, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('b61c0', emu.reg('ecx'), emu.arg32(0))), clobber=True)
     def v132(emu, k):
         a = emu.arg32(0)
         pre = bytes(emu.rbytes(a, 12)).hex()
@@ -125,7 +125,7 @@ def g576e50(c):
     def h574af0(emu, k):
         a = emu.arg32(1)
         emu.calllog.append(('af0', emu.arg32(0), bytes(emu.rbytes(a, 12)).hex() if a else None, emu.arg32(2), emu.arg32(3), emu.arg32(4)))
-    hook_rec(c, 0x574af0, 5, ret=R, pop=20, this=False, stackmark=(1,), side=h574af0)
+    hook_rec(c, 0x574af0, 5, ret=R, pop=20, this='mark', stackmark=(1,), side=h574af0, clobber=True)
     # [this+456]: list with next-iteration slot +80, nodes with [node+84] -> item (name at +4)
     Lst = rnd(c, 0x40); VL = rnd(c, 0x100); em.w32(Lst, VL); em.w32(THIS + 456, Lst)
     nodes = []
@@ -143,16 +143,16 @@ def g576e50(c):
     def h4db500(emu, k):
         a = emu.arg32(0); emu.wbytes(a, struct.pack('<3I', FB(), FB(), FB()))
         emu.calllog.append(('d500', emu.reg('ecx'), bytes(emu.rbytes(a, 12)).hex()))
-    hook_rec(c, 0x4db500, 1, ret=R, pop=4, this=True, stackmark=(0,), side=h4db500)
+    hook_rec(c, 0x4db500, 1, ret=R, pop=4, this=True, stackmark=(0,), side=h4db500, clobber=True)
     S2 = mkobj(); S3 = mkobj(); em.w32(S3 + 8, rnd(c, 0x20))
     def r591d30(emu, k): return S2
-    hook_rec(c, 0x591d30, 1, ret=r591d30, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('d30', emu.reg('ecx'), emu.arg32(0))))
+    hook_rec(c, 0x591d30, 1, ret=r591d30, pop=4, this=True, side=lambda emu, k: emu.calllog.append(('d30', emu.reg('ecx'), emu.arg32(0))), clobber=True)
     em.w32(VO + 32, pystub(c, 0, ret=S3, this=True))
     def h4db2c0(emu, k):
         a = emu.arg32(1); emu.wbytes(a, struct.pack('<3I', FB(), FB(), FB()))
         emu.calllog.append(('d2c0', emu.reg('ecx'), emu.arg32(0) if False else bytes(emu.rbytes(emu.arg32(0), 12)).hex(), bytes(emu.rbytes(a, 12)).hex()))
-    hook_rec(c, 0x4db2c0, 2, ret=R, pop=8, this=True, stackmark=(0, 1), side=h4db2c0)
-    hook_rec(c, 0x59ffc0, 0, ret=lambda emu, k: r.choice([0, 1, 4, 5, 9, 0xffffffff]), pop=0, this=True, side=lambda emu, k: emu.calllog.append(('f', emu.reg('ecx'))))
+    hook_rec(c, 0x4db2c0, 2, ret=R, pop=8, this=True, stackmark=(0, 1), side=h4db2c0, clobber=True)
+    hook_rec(c, 0x59ffc0, 0, ret=lambda emu, k: r.choice([0, 1, 4, 5, 9, 0xffffffff]), pop=0, this=True, side=lambda emu, k: emu.calllog.append(('f', emu.reg('ecx'))), clobber=True)
     return [THIS]
 
 

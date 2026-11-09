@@ -13,8 +13,8 @@ extern "C" u32 FASTCALL ext_5fed20_fastcall6(u32, u32, u32, u32, u32, u32) __asm
 extern "C" u32 STDCALL ext_4309b0_stdcall1(u32) __asm__("ext_4309b0");
 extern "C" u32 STDCALL ext_4c4f10_stdcall3(u32, u32, u32) __asm__("ext_4c4f10");
 extern "C" u32 STDCALL ext_4d06a0_stdcall1(u32) __asm__("ext_4d06a0");
-extern "C" u32 STDCALL ext_4d39a0_stdcall2(u32, u32) __asm__("ext_4d39a0");
-extern "C" u32 STDCALL ext_4d3ab0_stdcall2(u32, u32) __asm__("ext_4d3ab0");
+extern "C" u32 THISCALL ext_4d39a0_thiscall3(u32, u32, u32) __asm__("ext_4d39a0");   // thiscall: ECX = the object, two stack args (ret 8)
+extern "C" u32 THISCALL ext_4d3ab0_thiscall3(u32, u32, u32) __asm__("ext_4d3ab0");   // thiscall: ECX = the object, two stack args (ret 8)
 extern "C" u32 STDCALL ext_54f870_stdcall2(u32, u32) __asm__("ext_54f870");
 extern "C" u32 THISCALL ext_54f870_thiscall2(u32, u32, u32) __asm__("ext_54f870");
 extern "C" u32 STDCALL ext_5c6370_stdcall2(u32, u32) __asm__("ext_5c6370");
@@ -2019,11 +2019,11 @@ extern "C" u32 THISCALL lifted_4627d0(u32 ecx_in, u32 a0, u32 a1) {
   reg.state = (s32)((u32)(0));  // @99_4627d0
   PV[7] = (u32)(edi);  // @100_4627d0
   ecx = (u32)(EBP - 16596);  // @101_4627d0
-  eax = ext_4d39a0_stdcall2((u32)(6838552), PV[7]);  // @102_4627d0
+  eax = ext_4d39a0_thiscall3(ecx, (u32)(6838552), PV[7]);  // @102_4627d0
   ecx = edx = 0;  // @103_4627d0
   PV[8] = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(ebx + 72), sizeof v); (u32)v; });  // @104_4627d0
   ecx = (u32)(EBP - 16596);  // @105_4627d0
-  eax = ext_4d3ab0_stdcall2((u32)(6838564), PV[8]);  // @106_4627d0
+  eax = ext_4d3ab0_thiscall3(ecx, (u32)(6838564), PV[8]);  // @106_4627d0
   ecx = edx = 0;  // @107_4627d0
   eax = ({ u32 v; __builtin_memcpy(&v, (void *)(u32)(esi + 8), sizeof v); (u32)v; });  // @108_4627d0
   FL[2] = (({ u32 v; __builtin_memcpy(&v, (void *)(u32)(eax + 60), sizeof v); (u32)v; }) & (u32)(8388608));  // @109_4627d0

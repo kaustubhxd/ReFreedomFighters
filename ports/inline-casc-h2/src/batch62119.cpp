@@ -1,7 +1,7 @@
 #include "ff.h"
 extern "C" void ext_634273(u32 value, u32 flag);
 extern "C" void THISCALL ext_43de70(u8 *self);
-extern "C" void THISCALL ext_45c510(u8 *self);
+extern "C" void ext_45c510(u8 *self);          // cdecl: the pointer is a stack argument (add esp,4 after), ECX is not used
 extern "C" void ext_4690b0(u32 flags, u32 self);
 static u8 * THISCALL fn5d57c0(u8 *self, u32 flags) {
   G(u32, self) = 0x6b5610;
