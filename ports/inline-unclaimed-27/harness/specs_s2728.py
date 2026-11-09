@@ -1,6 +1,6 @@
 """specs_s2728.py - unclaimed-27 batch 28 (gap band, SEH-cookie family): FUN_5819a0, FUN_581a10, FUN_581a80 (GUESS, thiscall, no
 arguments, returns eax). The global 0x70039c is a fresh object whose +0x9b is an engine object E; E+8 is a sub-object S whose vtable
-slot +0x44 (no args) is a STUB returning a pointer P (about two thirds nonzero). The callees 0x581200, 0x5812c0 and 0x581410 are HOOKED
+slot +0x44 (one stack argument, popped by the slot: the caller's this) is a STUB returning a pointer P (about two thirds nonzero). The callees 0x581200, 0x5812c0 and 0x581410 are HOOKED
 (stubs, NOT verified): each counts calls and records its this. The exe's SEH frame is not reproduced; the port sets esi to the exe's
 cookie value (see the batch file). Each function gets its own S()."""
 from pilot import S
@@ -21,7 +21,9 @@ def _chain(c, hook_addr, rec):
     c.emu.hook(hook_addr, h)
     p = _rnd(c, 0x100) if c.rng.random() < 0.67 else 0
     svt = c.emu.alloc(0x100, 4)
-    code = b'\xb8' + (p & 0xffffffff).to_bytes(4, 'little') + b'\xc3'   # mov eax, p; ret
+    # the real slot takes the caller's this as a stack argument and pops it (ret 4); it stores the argument at rec+8
+    code = (b'\x8b\x4c\x24\x04' + b'\x89\x0d' + ((rec + 8) & 0xffffffff).to_bytes(4, 'little') +   # mov ecx,[esp+4]; mov [rec+8],ecx
+            b'\xb8' + (p & 0xffffffff).to_bytes(4, 'little') + b'\xc2\x04\x00')                   # mov eax, p; ret 4
     st = c.emu.alloc(len(code) + 16, 16)
     c.emu.wbytes(st, code)
     c.emu.w32(svt + 0x44, st)
