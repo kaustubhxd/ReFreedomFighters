@@ -45,9 +45,9 @@ static void THISCALL divPair2(u8 *self, float *out, float *out2) {
 }
 PCREG(446280, divPair2);
 
-// 0x46eef0, thiscall (ret 4, returns AL): copies three dwords from this+0xaa, +0xae, +0xb2 into out[0..2] as raw bits,
+// 0x46eef0, thiscall (ret 4, returns 0/1 zero-extended in EAX): copies three dwords from this+0xaa, +0xae, +0xb2 into out[0..2] as raw bits,
 // then returns 1 unless all three are equal to 0.0 (ordered compare; a NaN counts as not zero). Name unknown.
-static u8 THISCALL copy3Check(u8 *self, float *out) {
+static u32 THISCALL copy3Check(u8 *self, float *out) {
   *(u32 *)out = *(u32 *)(self + 0xaa);
   *(u32 *)(out + 1) = *(u32 *)(self + 0xae);
   *(u32 *)(out + 2) = *(u32 *)(self + 0xb2);

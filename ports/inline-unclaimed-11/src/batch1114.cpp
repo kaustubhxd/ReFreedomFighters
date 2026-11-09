@@ -3,7 +3,7 @@
 
 // 0x4d5120, IOFSMemoryAccess_t::nativeEof(ImpNativeFd_t*) (high). The name map's argument is not read by the body;
 // the result is (signed this+8 >= signed this+0xc).
-static bool THISCALL ioFsNativeEof(u8 *self, void *fd) { return (s32)*(u32 *)(self + 8) >= (s32)*(u32 *)(self + 0xc); }
+static u32 THISCALL ioFsNativeEof(u8 *self, void *fd) { return (s32)*(u32 *)(self + 8) >= (s32)*(u32 *)(self + 0xc); }
 PCREG(4d5120, ioFsNativeEof);
 
 // 0x58a660, GUESS (no name match): the byte argument, sign-extended, indexes a dword slot at this+0x2c2d.

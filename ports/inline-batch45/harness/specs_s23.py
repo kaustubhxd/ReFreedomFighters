@@ -61,5 +61,5 @@ def _copy(c):
     return [obj, out]
 
 
-S(0x46eef0, 'copy3Check (unknown) thiscall', 'thiscall', None, ret='al', gen=_copy,
+S(0x46eef0, 'copy3Check (unknown) thiscall', 'thiscall', None, ret='eax', gen=_copy,
   note='batch23; copies three dwords as raw bits, returns 1 unless all three are 0.0')
