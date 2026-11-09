@@ -1,9 +1,9 @@
 #include "ff.h"
 
 // 0x565a30: 4 insns, 9 bytes, frame setup + tail-jump to 0x57f350
-void fn_565a30() {
-  typedef void (*fn_type)();
-  ((fn_type)(void *)0x57f350)();
+void STDCALL fn_565a30(u32 arg) {   // the callee 0x57f350 (-> 0x610100) is `ret 4`: it pops the CALLER's argument, so the real signature is stdcall(1 word)
+  typedef void(STDCALL * fn_type)(u32);
+  [[clang::musttail]] return ((fn_type)(void *)0x57f350)(arg);   // musttail: stays `jmp` even with -fno-optimize-sibling-calls
 }
 PCREG(565a30, fn_565a30);
 
