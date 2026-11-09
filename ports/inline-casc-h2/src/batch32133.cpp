@@ -45,7 +45,7 @@ static void THISCALL fn4f8510(u8 *self, u32 flag) {
       if ((u8)flag) vcall<void>(self, 0x358);
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4f8510, fn4f8510);
 

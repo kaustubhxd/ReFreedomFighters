@@ -22,7 +22,7 @@ static void THISCALL fn466640(u8 *self, u32 a) {
   ext_4e09b0(tmp);
   ext_4de040(obj, tmp, 0);
   vcall<void>(self, 0x370, (u32)obj, (u32)v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(466640, fn466640);
 

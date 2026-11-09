@@ -12,7 +12,7 @@ static bool THISCALL fn5d5c20(u8 *self, u32 a, u8 *b) {
   vcall<void>(self, 0x80, (u32)A, (u32)B);
   vcall<void>(b, 0x94, (u32)A, (u32)B);
   vcall<void>(self, 0xdc, a, (u32)b, (u32)A, (u32)B);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return false;
 }
 PCREG(5d5c20, fn5d5c20);

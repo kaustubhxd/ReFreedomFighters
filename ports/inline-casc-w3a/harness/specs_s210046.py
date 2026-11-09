@@ -36,7 +36,7 @@ def g4af500(c):
 
     def fill(emu, k):
         p = emu.arg32(0)
-        vals = [c.rng.getrandbits(32) for _ in range(4)]
+        vals = [c.rng.getrandbits(32) for _ in range(3)]
         for i, v in enumerate(vals): emu.w32(p + 4 * i, v)
         emu.calllog.append(('loc', tuple(vals)))
     hook_rec(c, 0x4daf90, 1, ret=_r(c), this=True, stackmark=(0,), side=fill)

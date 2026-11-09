@@ -26,7 +26,7 @@ static void THISCALL fn463da0(u8 *self, float a, float b) {
   u8 *m2 = self + 0x48;
   if (L > b && ib == ia) {
     ext_463a30(self, m1, m2, rem);
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return;
   }
   if (b >= L) {
@@ -39,7 +39,7 @@ static void THISCALL fn463da0(u8 *self, float a, float b) {
     }
     ext_463a30(self, m1, m2, t);
     vcall<void>(self, 0x340, 0, 1);
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return;
   }
   ext_463a30(self, m1, m2, step);
@@ -58,6 +58,6 @@ static void THISCALL fn463da0(u8 *self, float a, float b) {
     } while (--n);
   }
   ext_463a30(self, m1, m2, rem);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(463da0, fn463da0);

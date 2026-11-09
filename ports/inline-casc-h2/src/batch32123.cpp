@@ -25,7 +25,7 @@ static void THISCALL fn45ab60(u8 *self, float *p, u32 q) {
   float y = *(float *)(o + 0x44);
   v[1] = (y + v[1]) / (y + y);
   vcall<void>(self, 0x214, (u32)v, q);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(45ab60, fn45ab60);
 
@@ -61,6 +61,6 @@ static void THISCALL fn501ee0(u8 *self, u8 *p) {
   ext_4deb20(tmp, *(float *)r, buf1[6], buf1[7], buf1[8]);
   ext_4de4f0(buf1, tmp);
   vcall<void>(*(void **)(self + 0xc), 0x7c, (u32)buf1, (u32)v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(501ee0, fn501ee0);

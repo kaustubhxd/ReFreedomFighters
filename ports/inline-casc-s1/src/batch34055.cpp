@@ -23,7 +23,7 @@ static u32 fn420ea0(u8 *a) {
   const u8 *k = (const u8 *)0x677a60;
   for (int i = 0; i < 10; i++) e[i] = k[i];
   ext_4cbe80(a, buf);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return (u32)a;
 }
 PCREG(420ea0, fn420ea0);

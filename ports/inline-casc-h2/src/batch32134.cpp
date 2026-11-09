@@ -28,7 +28,7 @@ static u32 THISCALL fn5ddde0(u8 *self, u32 a, u32 unused) {
       ext_5de090(s, buf);
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return 0;
 }
 PCREG(5ddde0, fn5ddde0);
@@ -66,7 +66,7 @@ PCREG(4609f0, fn4609f0);
 // if x is not ordered-equal to 0.0f: c = [[0x70039c]+0x190f]; if c: slot 0x184 of c with (x, 0xff7f0000, 0xff7f0000) }.
 static float THISCALL fn4945c0(u8 *self, u32 idx, u32 unused, float f) {
   if (idx == 6) {
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 0.0f;
   }
   float T[7];
@@ -83,7 +83,7 @@ static float THISCALL fn4945c0(u8 *self, u32 idx, u32 unused, float f) {
     }
   }
   float r = rdf(self + 0xbc5);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(4945c0, fn4945c0);

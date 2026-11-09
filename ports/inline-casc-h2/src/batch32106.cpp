@@ -54,7 +54,7 @@ static void THISCALL fn610ea0(u8 *self, float a, float b, float c, float d) {
   blk[4] = 0;
   blk[5] = 0x3f800000;
   (*(s2_t *)(*(u8 **)o + 0xa0))(o, (u32)blk);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(610ea0, fn610ea0);
 

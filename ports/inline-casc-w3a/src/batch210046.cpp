@@ -18,7 +18,7 @@ static void THISCALL fn508560(u8 *self, u8 *a) {
     m = *(u8 **)(self + 0x18);
     vcall<u32, void *, void *>(m, 0x578, buf34, buf10);  // @508560_f
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(508560, fn508560);
 
@@ -44,6 +44,6 @@ static void THISCALL fn4af500(u8 *self, u8 *a) {
     call = true;
   }
   if (call && (u16)cx != 0) vcall<u32, u32>(self, 0x84, cx);  // @4af500_k
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4af500, fn4af500);

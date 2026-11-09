@@ -24,6 +24,6 @@ static void THISCALL fn5ae680(u8 *self) {
   }
   if (self[3] != 0x52) ext_5b1150(self + 0x4b8, 0x6b08c0, 0);
   ext_5ae710(self, 0);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5ae680, fn5ae680);

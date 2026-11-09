@@ -2,7 +2,7 @@
 extern "C" void THISCALL ext_460af0(void*,float*,float*,float);
 extern "C" float FASTCALL ext_4e0030(void*,void*);
 extern "C" void FASTCALL ext_446ee0(void*,void*,void*);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static float THISCALL sample_angle(u8* me,float a,float b){
  float result=0.0f;
  u8* map=*(u8**)(me+0x4b);
@@ -16,7 +16,7 @@ static float THISCALL sample_angle(u8* me,float a,float b){
   ext_446ee0(cross,first,second);
   if(0.0f>cross[1])result=bitsf(fbits(result)^G(u32,0x67af40));
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
  return result;
 }
 PCREG(522f60,sample_angle);

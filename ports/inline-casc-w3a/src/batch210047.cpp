@@ -33,7 +33,7 @@ static void fn630bb0(u16 *tree, int maxcode, const u16 *blcount) {
     res >>= 1;
     tree[n * 2] = (u16)res;  // @630bb0_f
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(630bb0, fn630bb0);
 
@@ -56,7 +56,7 @@ static void THISCALL fn5124d0(u8 *self) {
     vcall<u32>((u8 *)r, 0x28);  // @5124d0_i
   }
   vcall<u32>(self, 0x2e4);  // @5124d0_j
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5124d0, fn5124d0);
 
@@ -67,6 +67,6 @@ static void THISCALL fn5ab230(u8 *self, u32 a) {
   (*(F *)(*(u8 **)o + 0x198))(o, loc, 0x6784f4, a);  // @5ab230_b
   ext_5ac940(*(u8 **)(self + 0x648), loc);  // @5ab230_c
   ext_5acac0(*(u8 **)(self + 0x648), 1);  // @5ab230_d
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5ab230, fn5ab230);

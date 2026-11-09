@@ -50,6 +50,6 @@ static void THISCALL fn5a5ca0(u8 *self) {
   v[1] = m;
   v[2] = m;
   ext_4dd060(o, v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5a5ca0, fn5a5ca0);

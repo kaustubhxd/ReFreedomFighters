@@ -13,7 +13,7 @@ extern "C" void FASTCALL ext_633654(u32 cookie);                                
 // Then the unaligned pointer this[0x7b]: when set and its word +2 is nonzero, for i from 0 (until the re-read word equals i) bl |= (*(obj at p + 0x404 + 4*i)) slot 0x2e8(a, b, c, d, e, f, g).
 static u8 THISCALL fn4427c0(u8 *self, u32 a, u32 b, u8 *c, u8 *d, u32 e, u32 f, u32 g) {
   if ((*(u32 *)(*(u8 **)(self + 8) + 0x3c) >> 10) & 1) {
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 0;
   }
   u8 bl = 0;
@@ -54,7 +54,7 @@ static u8 THISCALL fn4427c0(u8 *self, u32 a, u32 b, u8 *c, u8 *d, u32 e, u32 f, 
       } while (i != *(u16 *)(*(u8 **)(self + 0x7b) + 2));
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return bl;
 }
 PCREG(4427c0, fn4427c0);

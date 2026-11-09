@@ -66,7 +66,7 @@ static bool THISCALL fn57dfb0(u8 *self, u32 a, u32 b) {
     u8 *o = vcall<u8 *>(tbl, 0x58, b);
     ext_4db500(*(u8 **)(o + 8), v);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return false;
 }
 PCREG(57dfb0, fn57dfb0);

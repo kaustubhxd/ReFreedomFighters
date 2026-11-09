@@ -50,6 +50,6 @@ static void THISCALL fn480120(u8 *self, u8 *A, u8 *B, u32 c, u8 *d) {
     }
   }
 done:
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(480120, fn480120);

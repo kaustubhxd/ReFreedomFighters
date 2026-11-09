@@ -63,6 +63,6 @@ static void THISCALL fn65be00(u8 *self) {
       }
     } while (cur);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(65be00, fn65be00);

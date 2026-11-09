@@ -16,7 +16,7 @@ static void THISCALL fn562af0(u8 *self, u32 n) {
   s[3] = (char)((u8)n - (u8)(q * 10) + 0x40);
   s[4] = 0;
   ext_562b50(self, s);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(562af0, fn562af0);
 

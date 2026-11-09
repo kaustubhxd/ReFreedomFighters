@@ -68,7 +68,7 @@ static s32 THISCALL fn5ab970(u8 *self) {
     ext_4db7c0(*(u8 **)(*(u8 **)(p + 8) + 8), v);
     res = _mm_cvttss_si32(_mm_mul_ss(_mm_set_ss(v[1]), _mm_set_ss(G(float, 0x680a60))));
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return res;
 }
 PCREG(5ab970, fn5ab970);

@@ -2,7 +2,7 @@
 extern "C" void THISCALL ext_4de7a0(void*);
 extern "C" void* THISCALL ext_5003d0(void*,u32);
 extern "C" u32 THISCALL ext_5002f0(void*,u32);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static u32 THISCALL classify_up(u8* me,u8* arg){
  u8* actor=*(u8**)(me+0x1c);u32 mode=0;
  if(!vcall<u8>(*(void**)(actor+0x6c),0x34)){
@@ -16,6 +16,6 @@ static u32 THISCALL classify_up(u8* me,u8* arg){
   mode=dot>0.0f?2:1;
  }
  u32 result=ext_5002f0(ext_5003d0(*(void**)(arg+8),0),mode);
- ext_633654(0);return result;
+ ext_633654(G(u32, 0x6f5630));return result;
 }
 PCREG(5588e0,classify_up);

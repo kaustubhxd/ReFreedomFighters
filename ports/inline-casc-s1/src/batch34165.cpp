@@ -32,7 +32,7 @@ static void THISCALL fn4616c0(u8 *self) {
   float rf = _mm_cvtss_f32(_mm_add_ss(_mm_set_ss((float)r), _mm_set_ss(G(float, 0x678858))));
   ext_4dce50(*(u8 **)(self + 8), __builtin_bit_cast(u32, rf));
   ext_4dd060(*(u8 **)(self + 8), v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4616c0, fn4616c0);
 
@@ -51,7 +51,7 @@ static void THISCALL fn5157d0(u8 *self) {
   float r = (float)((double)t2 + (double)m);
   ext_523470(*(u8 **)(self + 0x5c), (u32)(self + 0x28f), loc, __builtin_bit_cast(u32, r));
   ext_4de040(self + 0x26b, loc, 0);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5157d0, fn5157d0);
 

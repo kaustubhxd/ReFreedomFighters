@@ -18,7 +18,7 @@ static u32 THISCALL fn462040(u8 *self, u8 *s) {
   *(u32 *)(self + 0x5c) = vcall<u32>(self, 0x2f4, (u32)buf1, (u32)(self + 0x64));
   *(u32 *)(self + 0x60) = vcall<u32>(self, 0x2f4, (u32)buf2, (u32)(self + 0x68));
   u32 r = ext_4e1b30(s);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(462040, fn462040);

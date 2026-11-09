@@ -44,6 +44,6 @@ static void THISCALL fn5b9780(u8 *self) {
     __builtin_memcpy(&local[3], &v[2], 4);
     vcall<void>(*(void **)(self + 0x44), 0x128, (u32)*(u16 *)(self + 0x60), (u32)local, 0u);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5b9780, fn5b9780);

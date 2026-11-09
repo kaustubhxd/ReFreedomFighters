@@ -19,7 +19,7 @@ static void THISCALL fn654940(u8 *self, u8 *src, u32 *p1, u32 *p2) {
   u32 h = G(s1_t, 0x676244)(rd32(self + 0x137));
   h = G(s1_t, 0x676244)(h);
   G(s4_t, 0x67621c)(h, 0x7e4, (u32)buf, 0);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(654940, fn654940);
 

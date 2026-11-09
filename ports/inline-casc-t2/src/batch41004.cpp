@@ -29,6 +29,6 @@ static void THISCALL fn51f930(u8 *self) {
   }
   vcall<void>(self, 0x90, (u32)edi);
   wr32(self + 0x167c, 0);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(51f930, fn51f930);

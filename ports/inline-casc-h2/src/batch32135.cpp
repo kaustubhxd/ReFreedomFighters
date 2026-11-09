@@ -53,7 +53,7 @@ PCREG(60f0b0, fn60f0b0);
 // r = slot 0x37c of o with (a, f1, f2, &b34, &b10, 50.0f, -130.0f); returns r != 0 (al).
 static u32 THISCALL fn504ac0(u8 *self, u32 a, float f1, float f2) {
   if (a == 0) {
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 0;
   }
   u32 b34[9];
@@ -61,7 +61,7 @@ static u32 THISCALL fn504ac0(u8 *self, u32 a, float f1, float f2) {
   vcall<void>(*(void **)(self + 0x14), 0x80, (u32)b34, (u32)b10);
   u32 r = vcall<u32>(*(void **)(self + 0x14), 0x37c, a, f1, f2, (u32)b34, (u32)b10, 50.0f, -130.0f);
   u32 ret = (u8)r != 0;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return ret;
 }
 PCREG(504ac0, fn504ac0);

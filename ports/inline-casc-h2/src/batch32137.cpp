@@ -33,7 +33,7 @@ static void THISCALL fn5034f0(u8 *self, u8 *p) {
   v[2] = *(float *)x2;
   ext_4de040(mat, v, 0);
   vcall<void>(*(void **)(self + 0xc), 0x7c, (u32)mat, (u32)b);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5034f0, fn5034f0);
 

@@ -60,7 +60,7 @@ static s32 FASTCALL fn4e1c90(u8 *out, u8 *P, u8 *N, u8 *verts, s32 n) {
       idx = nidx;
     } while (idx != total);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return count;
 }
 PCREG(4e1c90, fn4e1c90);

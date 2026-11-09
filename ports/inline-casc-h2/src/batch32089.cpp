@@ -30,7 +30,7 @@ static void fn52a2c0() {
   u8 local[0xa0];
   ext_52a370(local, 0, 0, 0);
   ext_52a600(local);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(52a2c0, fn52a2c0);
 

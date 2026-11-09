@@ -18,7 +18,7 @@ static void THISCALL fn5d86d0(u8 *self) {
   float x = v[0] - *(float *)(G(u8 *, 0x70039c) + 0x48) * *(float *)(self + 0x48);
   v[0] = x;
   vcall<void>(*(void **)(self + 0x44), 0x70, (u32)v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5d86d0, fn5d86d0);
 

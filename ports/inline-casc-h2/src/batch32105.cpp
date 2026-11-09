@@ -44,6 +44,6 @@ static void THISCALL fn47fea0(u8 *self) {
   ext_4dd060(*(u8 **)(self + 8), fv);
   ext_4dce50(*(u8 **)(self + 8), *(float *)(self + 0x1c));
   ext_4dc600(*(u8 **)(self + 8), zero);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(47fea0, fn47fea0);

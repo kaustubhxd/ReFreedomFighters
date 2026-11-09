@@ -4,7 +4,7 @@ extern "C" u32 THISCALL ext_4e5e60(void*);
 extern "C" void THISCALL ext_4e0d00(float*,float);
 extern "C" void THISCALL ext_4e0d80(float*,float);
 extern "C" void THISCALL ext_4db2a0(void*,float*);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 extern "C" double VECTORCALL ext_634d7c(double);
 static void THISCALL load_rotation(u8* me,void* src) {
  for(int i=0;i<3;i++)*(float*)(me+0x4c+4*i)=ext_4e5e80(src);
@@ -30,6 +30,6 @@ static void THISCALL load_rotation(u8* me,void* src) {
   if(G(double,0x678610)>abs)out=(float)ext_634d7c((double)(G(float,0x678858)-f*f));
   *(float*)(me+0x6b+4*i)=out;
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4c9330,load_rotation);

@@ -21,7 +21,7 @@ static u8 THISCALL fn4fbd50(u8 *self) {
       r = (t != 0);
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(4fbd50, fn4fbd50);

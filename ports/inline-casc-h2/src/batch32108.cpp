@@ -24,7 +24,7 @@ static void THISCALL fn453090(u8 *self) {
   for (int i = 0; i < 3; i++)
     if (k > v[i]) *(u32 *)&v[i] = 0x39000000;
   ext_4dd060(o, v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(453090, fn453090);
 

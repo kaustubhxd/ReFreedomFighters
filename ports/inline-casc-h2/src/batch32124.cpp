@@ -15,7 +15,7 @@ static u8 *THISCALL fn43ed70(u8 *self, float *v, u32 a, u32 b, u32 c) {
   ext_4dc630(*(u8 **)(r + 8), 0, 3);
   vcall<void>(r, 0x224, 1u);
   ext_4690b0(*(u8 **)(r + 8));
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(43ed70, fn43ed70);

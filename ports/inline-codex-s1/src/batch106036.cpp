@@ -3,7 +3,7 @@ extern "C" u8* THISCALL ext_5003d0(void*,u32);
 extern "C" long double STDCALL ext_4dda90(float,float);
 extern "C" void THISCALL ext_4db6c0(void*,void*,void*);
 extern "C" u32 THISCALL ext_500360(void*,float);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static u32 THISCALL angle_difference(u8* me,u8* event){
  u8* cell=ext_5003d0(*(void**)(event+4),0);
  if(cell[4]!=0 && cell[4]!=1){
@@ -23,6 +23,6 @@ static u32 THISCALL angle_difference(u8* me,u8* event){
   if(0.0f>result){result=result+G(float,0x690990);G(float,0x700f74)=result;}
  }
  u32 ret=ext_500360(ext_5003d0(*(void**)(event+8),0),result);
- ext_633654(0);return ret;
+ ext_633654(G(u32, 0x6f5630));return ret;
 }
 PCREG(500ee0,angle_difference);

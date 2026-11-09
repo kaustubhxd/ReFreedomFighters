@@ -18,12 +18,12 @@ static u8 THISCALL fn43f730(u8 *self, float *p, float r) {
   u32 L[3];
   ext_43e920(V, (float *)(self + 0x24), p);
   if (outside(V[0], *(float *)(self + 0x18) - r) || outside(V[1], *(float *)(self + 0x1c) - r) || outside(V[2], *(float *)(self + 0x20) - r)) {
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 0;
   }
   u8 *it = *(u8 **)(self + 0x44);
   if (!it) {
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 1;
   }
   vcall<void>(it, 0x4c, (u32)L);
@@ -36,7 +36,7 @@ static u8 THISCALL fn43f730(u8 *self, float *p, float r) {
       ext_43e920(V, p, (float *)(m + 0x24));
       ext_441a60(V, *(u8 **)(o + 8));
       if (vcall<u8>(o, 0x180, (u32)V, r)) {
-        ext_633654(0);
+        ext_633654(G(u32, 0x6f5630));
         return 1;
       }
     } else {
@@ -44,7 +44,7 @@ static u8 THISCALL fn43f730(u8 *self, float *p, float r) {
     }
     key = vcall<u32>(*(u8 **)(self + 0x44), 0x5c, (u32)L);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return 0;
 }
 PCREG(43f730, fn43f730);

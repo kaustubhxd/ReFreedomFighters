@@ -62,6 +62,6 @@ static void THISCALL fn526880(u8 *self) {
   }
   fill(self + 0x82a, *(s32 *)(self + 0x8c), 0x163, handle, f18, f1c, f20, f24, v);
   fill(self + 0xd86, *(s32 *)(self + 0x90), 0x133, handle, f18, f1c, f20, f24, v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(526880, fn526880);

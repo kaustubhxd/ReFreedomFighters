@@ -6,7 +6,7 @@ extern "C" void FASTCALL ext_4de420(void*,void*);
 extern "C" void FASTCALL ext_4de480(void*,void*);
 extern "C" void FASTCALL ext_4419f0(void*,void*);
 extern "C" void FASTCALL ext_43e960(void*,void*);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static void log_missing(u32 line,u32 text) {
  void* logger=G(void*,0x700390);
  void* sink=vcall<void*>(logger,0x20,0x69db34,line);
@@ -33,6 +33,6 @@ static void STDCALL transform_link(u8* args) {
   if(!dst){log_missing(0x1b7,0x69dbbc);log_missing(0x1b8,0x69dc04);}
   if(!src)log_missing(0x1b9,0x69dbe0);
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
 }
 PCREG(50f850,transform_link);

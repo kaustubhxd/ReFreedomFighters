@@ -45,7 +45,7 @@ static u32 STDCALL fn48de00(u8 *a) {
   vcall<void>(a, 0x74, (u32)M, (u32)L);
   vcall<void>(a, 0x108, 0x68d918u, 0xffffffffu);
   *(u32 *)(a + 0x4c) = 0x40000000;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return (u32)a;
 }
 PCREG(48de00, fn48de00);
@@ -57,7 +57,7 @@ static bool THISCALL fn4effa0(u8 *self, u32 a, u8 *b) {
   vcall<void>(self, 0x80, (u32)A, (u32)B);
   vcall<void>(b, 0x94, (u32)A, (u32)B);
   vcall<void>(self, 0x224, a, (u32)b, (u32)A, (u32)B, (u32)self[0x8f]);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return false;
 }
 PCREG(4effa0, fn4effa0);

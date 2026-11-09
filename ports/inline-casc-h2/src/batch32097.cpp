@@ -87,6 +87,6 @@ PCREG(466420, fn466420);
 static void THISCALL fn4f11f0(u8 *self, float a, float b, float c) {
   float v[3] = {a, b, c};
   vcall<void>(self, 0x70, (u32)v);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4f11f0, fn4f11f0);

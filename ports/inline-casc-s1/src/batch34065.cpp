@@ -78,6 +78,6 @@ static void THISCALL fn533110(u8 *self) {
   wr32u(o + 0xa269, b);
   o = (u8 *)rd32u(self + 0x548a);
   vcall<void>(o, 0x68, 0u, (u32)buf);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(533110, fn533110);

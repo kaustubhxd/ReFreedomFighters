@@ -50,6 +50,6 @@ static void THISCALL fn56b030(u8 *self) {
   wf(self + 0x59, G(float, 0x6a6ad8) / (float)w);
   h = (s32)rd32(sysobj() + 0x73);
   wf(self + 0x5d, k4 / (float)h);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(56b030, fn56b030);

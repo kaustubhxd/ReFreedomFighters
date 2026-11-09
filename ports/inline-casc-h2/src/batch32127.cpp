@@ -24,7 +24,7 @@ static u32 THISCALL fn5c8750(u8 *self, float *p) {
   ext_43e920(u, v, w);
   u32 r = ext_5c88c0(self, u, 1);
   u32 res = ((u8)r) == 0;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return res;
 }
 PCREG(5c8750, fn5c8750);

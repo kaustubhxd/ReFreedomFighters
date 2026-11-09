@@ -1,5 +1,5 @@
 #include "ff.h"
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static void THISCALL update_color(u8* me){
  void* table=*(void**)(G(u8*,0x70039c)+0x9b);
  void* obj=vcall<void*>(table,0x58,*(u32*)(me+0x48));
@@ -14,6 +14,6 @@ static void THISCALL update_color(u8* me){
   float low=(float)((double)(packed&0xff)+G(double,0x680aa0))*G(float,0x682eb8);
   vcall<void>(cfg,0x58,0x6954f8,low,3);
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4c91c0,update_color);

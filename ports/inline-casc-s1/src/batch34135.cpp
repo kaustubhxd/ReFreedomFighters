@@ -13,7 +13,7 @@ static u32 THISCALL fn4d5ba0(u8 *self, u32 a, u32 b) {
   u32 res = 0;
   if ((u8)ext_4d6520(self, a, r1, 0) && (u8)ext_4d6520(self, b, r2, 0) && rd32(r1 + 0xe) == rd32(r2 + 0xe))
     res = rd32(r1 + 0xa) == rd32(r2 + 0xa);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return res;
 }
 PCREG(4d5ba0, fn4d5ba0);

@@ -105,6 +105,6 @@ static void THISCALL fn5d8740(u8 *self) {
   *(float *)(self + 0x4c) = a;
   ext_4db7c0(*(u8 **)(*(u8 **)(self + 0x44) + 8), &b);
   *(float *)(self + 0x50) = b;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5d8740, fn5d8740);

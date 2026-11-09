@@ -50,6 +50,6 @@ static void THISCALL fn5ff960(u8 *self, u8 *a) {
     if (!h) __asm__ volatile("int3");
     h();
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5ff960, fn5ff960);

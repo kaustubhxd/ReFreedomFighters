@@ -69,6 +69,6 @@ static void THISCALL fn60cea0(u8 *self) {
     q = (u8 *)rd32(self + 0x141a);
     ((com1)COM(q, 8))(q);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(60cea0, fn60cea0);

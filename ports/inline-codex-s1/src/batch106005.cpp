@@ -3,7 +3,7 @@ extern "C" void FASTCALL ext_43e920(float*,const float*,const float*);
 extern "C" void THISCALL ext_4e0d00(float*,float);
 extern "C" void THISCALL ext_521600(void*,float*);
 extern "C" float THISCALL ext_44c840(float*);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 extern "C" double VECTORCALL ext_634d7c(double);
 static void THISCALL update_motion(u8* me) {
  float* out=(float*)(me+0x2d8);void* ctl=me+0x2695;
@@ -29,6 +29,6 @@ static void THISCALL update_motion(u8* me) {
   long double len=fsqrt_x87((x*x+y*y)+z*z),inv=1.0L/len;
   out[0]=(float)(x*inv);out[1]=(float)(y*inv);out[2]=(float)(z*inv);
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
 }
 PCREG(521bd0,update_motion);

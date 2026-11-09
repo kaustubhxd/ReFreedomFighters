@@ -1,5 +1,5 @@
 #include "ff.h"
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static u32 THISCALL choose_minimum(u8* me){
  u32 selected=0xffffffff;
  s32 n=*(s32*)(me+0x44);u32 off=*(u32*)(me+0x48);
@@ -15,6 +15,6 @@ static u32 THISCALL choose_minimum(u8* me){
   s32 idx=_mm_cvttss_si32(_mm_set_ss(product));if(idx==count && idx)idx--;
   u8* ptr=tied[idx];ptr[*(u32*)(me+0x48)]++;selected=(u32)ptr;
  }
- ext_633654(0);return selected;
+ ext_633654(G(u32, 0x6f5630));return selected;
 }
 PCREG(5c2cb0,choose_minimum);

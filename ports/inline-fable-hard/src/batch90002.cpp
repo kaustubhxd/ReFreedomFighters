@@ -107,6 +107,6 @@ static void THISCALL fn43bc80(u8 *E, const char *name) {
     default:
       break;
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(43bc80, fn43bc80);

@@ -29,7 +29,7 @@ static void THISCALL fn5b9050(u8 *self, u8 *arg) {
       } while (it[0] != 0);
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5b9050, fn5b9050);
 
@@ -61,7 +61,7 @@ static u32 THISCALL fn6106e0(u8 *self, float l, float r, float b, float t, float
     m[8] = suml / rl;
   }
   u32 res = ext_6107e0(self, m);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return res;
 }
 PCREG(6106e0, fn6106e0);

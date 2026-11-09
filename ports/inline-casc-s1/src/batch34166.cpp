@@ -65,6 +65,6 @@ static void THISCALL fn518190(u8 *self, u8 *a0, u8 *a1, float *v, float *out) {
     ext_446ee0(w, v, t);
     if (_mm_comigt_ss(_mm_set_ss(w[1]), _mm_setzero_ps())) *(u32 *)out = *(u32 *)out ^ G(u32, 0x67af40);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(518190, fn518190);

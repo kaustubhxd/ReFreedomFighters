@@ -18,7 +18,7 @@ static void THISCALL fn5fa270(u8 *self, u32 *p) {
     if (cell[4] <= 1) {  // @5fa270_d
       *(u32 *)cell = edi;  // @5fa270_e
       cell[4] = 1;
-      ext_633654(0);
+      ext_633654(G(u32, 0x6f5630));
       return;
     }
     u8 *g = (u8 *)vcall<u32, u32, u32>(G(u8 *, 0x700390), 0x20, 0x69c8e0, 0xc4);  // @5fa270_f
@@ -26,7 +26,7 @@ static void THISCALL fn5fa270(u8 *self, u32 *p) {
     H h = G(H, 0x7003b0);
     if (!h) __asm__ volatile("int3");
     h();
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return;
   }
   u8 *o = G(u8 *, 0x724270);
@@ -36,6 +36,6 @@ static void THISCALL fn5fa270(u8 *self, u32 *p) {
   H h = G(H, 0x7003b0);
   if (!h) __asm__ volatile("int3");
   h();
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(5fa270, fn5fa270);

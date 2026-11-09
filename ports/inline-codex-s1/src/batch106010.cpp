@@ -1,6 +1,6 @@
 #include "ff.h"
 extern "C" void* THISCALL ext_5003d0(void*,u32);
-extern "C" void ext_633654(u32);
+extern "C" void FASTCALL ext_633654(u32 cookie);
 static void* slot4c(void* obj) {
  void* result;void* fn=*(void**)(*(u8**)obj+0x4c);
  asm volatile("push $0\n\tcall *%2\n\tadd $4,%%esp":"=a"(result),"+c"(obj):"r"(fn):"edx","memory","cc");
@@ -18,7 +18,7 @@ static void* STDCALL translate(void* obj,u32 key,u32 id) {
   void* cell=ext_5003d0(list,0);
   vcall<void>(*(void**)cell,0x30,text);
  }
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
  return result;
 }
 PCREG(5007e0,translate);

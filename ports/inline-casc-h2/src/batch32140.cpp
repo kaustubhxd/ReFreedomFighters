@@ -19,7 +19,7 @@ static u32 THISCALL fn5c87f0(u8 *self, u32 *pp) {
     void *g = G(void *, 0x700390);
     u8 *o = vcall<u8 *>(g, 0x20, 0x6b49b8u, 0x1b1u);
     (*(cd2_t *)(*(u8 **)o + 0x2c))((u32)o, 0x6b4a90);
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return 0;
   }
   u8 *eng = G(u8 *, 0x70039c);
@@ -33,7 +33,7 @@ static u32 THISCALL fn5c87f0(u8 *self, u32 *pp) {
   v[1] = fbits(f);
   u32 r = ext_5c8750(self, v);
   if ((u8)r == 0) pp[0] = 0;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(5c87f0, fn5c87f0);

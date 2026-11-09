@@ -18,6 +18,6 @@ static void THISCALL update4c95a0(u8* self) {
  ext_4de7e0(mat,vec);
  vcall<void>(self,0x84,mat);
  vcall<void>(*(void**)(self+0x44),0x6c,mat);
- ext_633654(0);
+ ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4c95a0,update4c95a0);

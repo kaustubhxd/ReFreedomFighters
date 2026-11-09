@@ -48,6 +48,6 @@ static void THISCALL fn520c50(u8 *self, float f, u32 a) {
   d = d + e2;
   if (d > z) vcall<void>(self, 0x360, f, a);
   else vcall<void>(self, 0x364, f, a);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(520c50, fn520c50);

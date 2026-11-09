@@ -23,7 +23,7 @@ static void THISCALL fn60efb0(u8 *self, u32 a) {
   dm[0x24] = 0x9c; dm[0x25] = 0; dm[0x26] = 0; dm[0x27] = 0;   // dmSize (u16 at 0x24, with the following word as left on the stack)
   G(enum_disp_t, 0x6761d8)(0, -1, dm);
   *(u32 *)(self + 0x1a) = *(u32 *)(dm + 0x78);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(60efb0, fn60efb0);
 

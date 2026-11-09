@@ -22,7 +22,7 @@ static u8 *FASTCALL fn58a9b0(u8 *self, u8 *out) {
     for (int k = 0; k < 0x15; k++) d[k] = loc[4 + k];
     wr32(out, rd32(out) + 1);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return self;
 }
 PCREG(58a9b0, fn58a9b0);

@@ -42,7 +42,7 @@ static void THISCALL fn4486f0(u8 *self) {
     ext_4dce50((u8 *)rd32(self + 8), r);
     ext_4dd060((u8 *)rd32(self + 8), c);
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4486f0, fn4486f0);
 
@@ -69,6 +69,6 @@ static void THISCALL fn4557c0(u8 *self) {
   u8 *tbl = (u8 *)rd32(G(u8 *, 0x70039c) + 0x9b);
   u32 e = vcall<u32>(tbl, 0x4c, (u32)self);
   *(u32 *)((u8 *)rd32(G(u8 *, 0x70039c) + 0x9b) + 0x18) = e;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4557c0, fn4557c0);

@@ -16,6 +16,6 @@ static void THISCALL fn4e9200(u8 *self, u32 a, u32 b, u32 c) {
   ext_441a60(o2, self + 0x18);
   ext_459fc0(o3, c, self + 0x18);
   ext_4e9280(self, o1, o2, o3);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4e9200, fn4e9200);

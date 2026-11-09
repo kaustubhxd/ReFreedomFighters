@@ -35,7 +35,7 @@ static void THISCALL fn4d2680(u8 *self, u8 *a, u32 b, u32 c, u32 d, u8 *e) {
   *(u32 *)(msg + 8) = d;
   *(u32 *)msg = b;
   ext_4d2820(self, msg);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4d2680, fn4d2680);
 

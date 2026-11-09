@@ -42,7 +42,7 @@ static void THISCALL fn4ef0e0(u8 *self) {
   for (int i = 0; i < 4; i++) buf[4 + i] = G(u32, 0x698570 + 4 * i);
   buf[8] = 0;
   vcall<void>(self, 0x6c, (u32)buf);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(4ef0e0, fn4ef0e0);
 

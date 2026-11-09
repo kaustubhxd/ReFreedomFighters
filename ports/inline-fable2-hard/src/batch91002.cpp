@@ -47,7 +47,7 @@ static void THISCALL fn46c1e0(u8 *B) {
     ((log3_t)vslot(lo, 0x2c))(lo, 0x688c60u, (u32)cs);   // "Weapon %s does not a have an valid itemtemplate - removing weapon"
     ext_4cbec0(s);
     VC(v1_t, B, 0x210)(B, 1);
-    ext_633654(0);
+    ext_633654(G(u32, 0x6f5630));
     return;
   }
   VC(v0u_t, B, 0x2fc)(B);
@@ -158,6 +158,6 @@ static void THISCALL fn46c1e0(u8 *B) {
     ext_4cbec0(s);
   }
   ext_46f240(B);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(46c1e0, fn46c1e0);

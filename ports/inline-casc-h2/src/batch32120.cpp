@@ -40,7 +40,7 @@ static void THISCALL fn59a8f0(u8 *self) {
     v = (float)(s32)rd32(eng + 0x73);
   }
   u32 vb; __builtin_memcpy(&vb, &v, 4); wr32(self + 0x1d27, vb);
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
 }
 PCREG(59a8f0, fn59a8f0);
 

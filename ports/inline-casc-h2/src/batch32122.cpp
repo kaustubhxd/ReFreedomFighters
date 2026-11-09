@@ -21,7 +21,7 @@ static double THISCALL fn45ecd0(u8 *self, u8 *p) {
   float d = ext_4e0870(l1, l2);
   double sum = (double)fb + (double)fa;
   double r = (double)d - sum;
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return r;
 }
 PCREG(45ecd0, fn45ecd0);

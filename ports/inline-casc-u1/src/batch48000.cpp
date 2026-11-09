@@ -62,7 +62,7 @@ static u8 FASTCALL fn4ed840(u8 *base, u8 *e) {
       }
     }
   }
-  ext_633654(0);
+  ext_633654(G(u32, 0x6f5630));
   return res;
 }
 PCREG(4ed840, fn4ed840);
