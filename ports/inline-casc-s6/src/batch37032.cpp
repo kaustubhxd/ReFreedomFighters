@@ -2,7 +2,7 @@
 #include "ff.h"
 
 extern "C" u8 *ext_41e290(u32 n);                 // alloc, cdecl
-extern "C" void STDCALL ext_4e3f60(u32 *req);       // ret 4
+extern "C" void THISCALL ext_4e3f60(void *tree, u32 *req);  // thiscall ret 4: ecx = [this] (original 4e41a3 mov ecx,[edi]), arg = request block
 
 #define W16(p, o) (*(u16 *)((u8 *)(p) + (o)))
 #define D32(p, o) (*(u32 *)((u8 *)(p) + (o)))
@@ -57,7 +57,7 @@ static u8 *THISCALL fn4e4050(u8 *self, u32 x0, u32 y0, u32 z0, u32 x1, u32 y1, u
   req[4] = (u32)cx;
   req[5] = (u32)cy;
   req[6] = (u32)cz;
-  ext_4e3f60(req);
+  ext_4e3f60(*(void **)self, req);
   D32(self, 0x19)++;
   return node;
 }

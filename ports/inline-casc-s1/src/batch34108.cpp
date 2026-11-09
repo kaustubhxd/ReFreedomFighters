@@ -7,7 +7,7 @@ extern "C" u32 THISCALL ext_467710(void *self);                    // thiscall, 
 extern "C" u32 THISCALL ext_466220(void *self);                    // thiscall, plain ret
 extern "C" u32 THISCALL ext_5af040(void *self, u32 a);             // thiscall ret 4
 extern "C" u32 *ext_42acaf(u32 a, u32 b, u32 c, u32 d, u32 e);     // cdecl
-extern "C" s32 ext_634d94(u32 a, u32 b);                           // cdecl import thunk
+extern "C" s32 ext_634d94(u32 x, u32 y, u32 a, u32 b, u32 c, u32 d, u32 e);   // cdecl import thunk, 7 words (add esp 0x1c)
 extern "C" u32 THISCALL ext_4654b0(void *self, u32 a, u32 b, u32 c);   // thiscall ret 0xc
 
 static u32 rd32(u8 *p) { return p[0] | p[1] << 8 | p[2] << 16 | (u32)p[3] << 24; }
@@ -73,7 +73,7 @@ PCREG(5aee20, fn5aee20);
 // 0x42abbd, cdecl(a, b, c, d, e): p = ext_42acaf(a, b, c, d, e); r = ext_634d94(p[0] | 1, p[1]); returns -1 when r is negative, else r.
 static s32 fn42abbd(u32 a, u32 b, u32 c, u32 d, u32 e) {
   u32 *p = ext_42acaf(a, b, c, d, e);
-  s32 r = ext_634d94(p[0] | 1, p[1]);
+  s32 r = ext_634d94(p[0] | 1, p[1], a, b, c, d, e);   // the original leaves the 5 pushed words on the stack for this call
   if (r < 0) r = -1;
   return r;
 }
