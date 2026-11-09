@@ -1,0 +1,63 @@
+# addr	folder	origin	note  (ports as they were DEFECTIVE; see selftest.py, point FF_PORTS at a checkout from before the fixes)
+0x420ea0	inline-casc-s1	issue1-51	GUESS build path of error.log next to the executable
+0x42abbd	inline-casc-s1	issue1-51	GUESS call and clamp error
+0x42ac56	inline-unclaimed-41	issue1-51	wrap42ac56 (GUESS) cdecl
+0x438910	inline-casc-s6	issue1-51	GUESS drain_iterator_unlink
+0x438c10	inline-unclaimed-41	issue1-51	forwardVt10 (unknown) thiscall
+0x438cc0	inline-unclaimed-25	issue1-51	ZInputActions::GetActionMap(const char*)
+0x43bc80	inline-fable-hard	issue1-51	GUESS action-map parser end element
+0x43f2b0	inline-casc-w3i	issue1-51	object_bounds_43f2b0
+0x445c50	inline-casc-h1	issue1-51	cond_read_global_chain
+0x4557c0	inline-casc-t2	issue1-51	GUESS copy bounds from sibling
+0x45b900	inline-casc-w3a	issue1-51	thunk_45c180
+0x4627d0	inline-casc-w3f-d	issue1-51	GUESS lifted 0x4627d0
+0x464400	inline-casc-h2	issue1-51	GUESS scale by frame count and dispatch
+0x4a5820	inline-unclaimed-35	issue1-51	ZMatPosAnim::ExpandBounds(float*, float*, float*, ZBaseGeom*
+0x4af780	inline-casc-w2s10	issue1-51	GUESS lifted 0x4af780
+0x4b4040	inline-casc-s6	issue1-51	GUESS release_keys
+0x4c3d30	inline-casc-w2s15	issue1-51	GUESS lifted 0x4c3d30
+0x4ca820	inline-casc-s4	issue1-51	ZSetZDefine::Init thiscall
+0x4cd180	inline-casc-h2	issue1-51	GUESS write vtable and call
+0x4cdf70	inline-unclaimed-63	issue1-51	unnamed C-set 0x4cdf70 thiscall
+0x4d25f0	inline-unclaimed-63	issue1-51	unnamed C-set 0x4d25f0 thiscall
+0x4d5120	inline-unclaimed-11	issue1-51	IOFSMemoryAccess_t::nativeEof (high) thiscall
+0x4d6520	inline-casc-w4d	issue1-51	GUESS FUN_4d6520
+0x4d9f90	inline-casc-w3b	issue1-51	pick_list_build
+0x4dc110	inline-unclaimed-22	issue1-51	name or empty string
+0x4dc1e0	inline-casc-s4	issue1-51	unnamed A+D+E 0x4dc1e0 thiscall
+0x4dd3d0	inline-casc-w2s80	issue1-51	GUESS lifted 0x4dd3d0
+0x4e3e40	inline-casc-w3a	issue1-51	build_range_call_4e3dc0
+0x4e4050	inline-casc-s6	issue1-51	GUESS create octree box node
+0x4e6ce0	inline-casc-w3f	issue1-51	GUESS hand 0x4e6ce0
+0x4f0270	inline-codex-u3	issue1-51	GUESS update closer bounding plane hit
+0x4f9350	inline-casc-s8	issue1-51	GUESS sort and group keyed records
+0x4f9c00	inline-casc-h3	issue1-51	GUESS lookup then vcall 310 with junk args
+0x504880	inline-casc-w3a	issue1-51	vslot_thunk_4c
+0x563620	inline-unclaimed-62	issue1-51	unnamed 0x563620
+0x564700	inline-casc-w2s62	issue1-51	GUESS lifted 0x564700
+0x565a30	inline-casc-h1	issue1-51	frame_jump_57f350
+0x5819a0	inline-unclaimed-27	issue1-51	FUN_5819a0 (GUESS) thiscall
+0x581a10	inline-unclaimed-27	issue1-51	FUN_581a10 (GUESS) thiscall
+0x581a80	inline-unclaimed-27	issue1-51	FUN_581a80 (GUESS) thiscall
+0x598e40	inline-unclaimed-27	issue1-51	FUN_598e40 (GUESS) thiscall
+0x59ade0	inline-unclaimed-27	issue1-51	FUN_59ade0 (GUESS) thiscall
+0x5a86c0	inline-casc-w3i	issue1-51	GUESS lifted 0x5a86c0
+0x5aba60	inline-casc-w3f	issue1-51	GUESS hand 0x5aba60
+0x5d57c0	inline-casc-h2	issue1-51	GUESS reset_object_and_release_resources_by_flags
+0x5d6af0	inline-codex-s1	issue1-51	bind conditional configuration set
+0x602a60	inline-casc-w3c	issue1-51	GUESS lifted 0x602a60
+0x621230	inline-codex-x3a	issue1-51	GUESS lifted 0x621230
+0x631850	inline-casc-w2s54	issue1-51	GUESS lifted 0x631850
+0x6345bc	inline-casc-w4a	issue1-51	GUESS call encoded pointer or release
+0x63d4a0	inline-casc-w4d	issue1-51	GUESS FUN_63d4a0
+0x46f2d0	inline-vehicles	own	strict review: wrong this (z+8 for [z+8])
+0x5a1c50	inline-casc-w4c	own	strict review: missing push 1 before slot call
+0x47b290	inline-casc-w3i	own	strict-stubs: leftover cvttss2si result in ECX (19th call)
+0x4d7610	inline-casc-w2s59	own	ext_62f980 called without its ECX word
+0x61bfe0	inline-casc-w4d	own	0x626a80 called with 0 args (original passes 3)
+0x56a080	inline-casc-s1	own	LoadInit call arity
+0x645490	inline-unclaimed-41	own	strict review: leftover-argument native callee
+0x584a20	inline-unclaimed-15	own	call-site review: short stack-argument call to 0x43ec00
+0x56a140	inline-casc-w3i-b	own	historical LoadInit callback arities (a source-level property; no pilot detector expected)
+0x461970	inline-casc-h1	synthetic-contract	EAX-observing synthetic tail target; real target ABI unknown
+0x4f90b0	inline-casc-h1	synthetic-contract	EAX-observing synthetic tail target; real target ABI unknown

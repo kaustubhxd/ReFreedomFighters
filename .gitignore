@@ -29,3 +29,7 @@ __pycache__/
 *.o
 build/
 *.syms
+
+# strict checker: built work copies and result output
+tooling/strict/work/
+tooling/strict/out/
