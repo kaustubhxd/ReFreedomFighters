@@ -21,11 +21,10 @@ static void THISCALL c05aFrameUpdate(u8 *ct) {
     return;
   if (*(s32 *)(sysi() + 0x40) <= *(s32 *)(ct + 0x5f))
     return;
-  // This call site pushes FIVE words (name, 0, file, line, 0): the register slot 0x114 is called with the extra
-  // trailing zero here, unlike the four-word calls elsewhere. Mirrored as pushed.
-  u16 id = vcall<u16, const char *, u32, const char *, u32, u32>(mgr(), 0x114, (const char *)0x692d94, 0,
-                                                                 (const char *)CARETAKER_C05A_CPP, 0x5d, 0);   // MSG_SOUNDSEGMENTSTART
-  vcall<void, u32, u32>(*(u8 **)(ct + 0x44), 0x12c, U32(0x6f), (u32)id);
+  // The slot 0x114 takes FOUR words (name, 0, file, line); the `push 0` before them is the pending third argument of slot 0x12c below.
+  u16 id = vcall<u16, const char *, u32, const char *, u32>(mgr(), 0x114, (const char *)0x692d94, 0,
+                                                             (const char *)CARETAKER_C05A_CPP, 0x5d);   // MSG_SOUNDSEGMENTSTART
+  vcall<void, u32, u32, u32>(*(u8 **)(ct + 0x44), 0x12c, U32(0x6f), (u32)id, 0);
   u8 res[0x200];
   u8 *rc = *(u8 **)(mgr() + 0xae4);
   const char *title = (const char *)0x6852b8;   // "N/A"

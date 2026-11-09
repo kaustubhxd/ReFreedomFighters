@@ -38,8 +38,8 @@ def g5da280(c):
 
 def g5f0d30(c):
     clear_hooks(c)
-    s = obj(c, 0x40, {0x130: pystub(c, 3, ret=_r(c), this=True)}, nslots=0x50)
-    _eng(c, obj(c, 0x40, {0x58: pystub(c, 0, ret=s, this=True), 0x114: pystub(c, 5, ret=_r(c), this=True)}, nslots=0x60))
+    s = obj(c, 0x40, {0x130: pystub(c, 4, ret=_r(c), this=True)}, nslots=0x50)
+    _eng(c, obj(c, 0x40, {0x58: pystub(c, 0, ret=s, this=True), 0x114: pystub(c, 4, ret=_r(c), this=True)}, nslots=0x60))
     return [rnd(c, 0x20)]
 
 

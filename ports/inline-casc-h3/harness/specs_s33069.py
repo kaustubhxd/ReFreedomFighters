@@ -84,10 +84,10 @@ def _g4f9c00(c):
     clear_hooks(c)
     r = c.rng
     e = c.emu
-    s2dc = pystub(c, 1, this=True)
+    s2dc = pystub(c, 4, this=True)       # 0x2dc takes four stack arguments (1, ret of 0x310, 0, ret of 0x58)
     p = obj(c, 0x300, {0x2dc: s2dc})
     s2c4 = pystub(c, 0, this=True, ret=lambda em, k: p)
-    s310 = pystub(c, 3, this=True, ret=lambda em, k: _w(c))
+    s310 = pystub(c, 0, this=True, ret=lambda em, k: _w(c))       # 0x310 takes no stack arguments (the two pushed ecx are temporaries)
     me = _zeroed(c, 0x320, 0x100)
     vt = e.alloc(0x400, 4)
     e.w32(vt + 0x2c4, s2c4)

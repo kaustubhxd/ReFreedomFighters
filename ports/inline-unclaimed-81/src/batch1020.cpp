@@ -1,6 +1,6 @@
 // batch1020.cpp - area 81, batch 1020: CImpactResponse::Command(cmd, arg), 0x5dc230, thiscall, two stack arguments, ret 8. Returns 0 on every path (the
 // exe clears eax). No SEH frame or cookie check. Stand-ins (GUESS): 0x41e290 (cdecl allocator, one argument; returns a fixed buffer), the function
-// pointer at Q+8 (thiscall, no arguments), and the render manager's slot 0x114 (five arguments, returns a word in ax).
+// pointer at Q+8 (thiscall, no arguments), and the render manager's slot 0x114 (four arguments, returns a word in ax).
 #include "ff.h"
 
 #define D(p, o) (*(u32 *)((u8 *)(p) + (o)))
@@ -63,8 +63,8 @@ static u32 THISCALL impactResponseCommand(u8 *self, u32 cmdArg, u32 arg) {
   u32 R = vcall<u32>(W, 0x5c, (u32)&l0c);
   while (l0c != 0) {
     u8 *rm = (u8 *)D(*(u8 **)0x70039c, 0x9b);
-    u16 ax = (u16)vcall<u32>(rm, 0x114, 0x694c6cu, 0u, 0x6b6b3cu, 0x5du, (u32)&l1c);
-    vcall<void>((void *)P, 0x12c, R, (u32)ax);
+    u16 ax = (u16)vcall<u32>(rm, 0x114, 0x694c6cu, 0u, 0x6b6b3cu, 0x5du);   // slot 0x114 pops four; the pushed &l1c is the third argument of slot 0x12c
+    vcall<void>((void *)P, 0x12c, R, (u32)ax, (u32)&l1c);
     R = vcall<u32>(W, 0x5c, (u32)&l0c);
   }
   return 0;

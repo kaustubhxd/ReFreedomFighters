@@ -102,9 +102,11 @@ def g59cb50(c):
 S(0x59cb50, 'thunk_add_5ae930', 'thiscall', None, ret='eax', gen=g59cb50, note='batch210001')
 
 def g504880(c):
+    # a pure forwarder: whatever the slot pops is what the thunk pops; slots with 0, 1 and 2 stack arguments (the game's objects take 0)
     clear_hooks(c)
-    o = obj(c, 0x80, {0x4c: pystub(c, 1, ret=c.rng.getrandbits(32), this=True)}, nslots=0x17)
-    return [o, c.rng.getrandbits(32)]
+    n = c.rng.choice([0, 0, 1, 2])
+    o = obj(c, 0x80, {0x4c: pystub(c, n, ret=c.rng.getrandbits(32), this=True)}, nslots=0x17)
+    return [o, c.rng.getrandbits(32), c.rng.getrandbits(32)]
 
 S(0x504880, 'vslot_thunk_4c', 'thiscall', None, ret='eax', gen=g504880, note='batch210001')
 

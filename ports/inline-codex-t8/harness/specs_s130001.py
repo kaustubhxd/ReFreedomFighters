@@ -64,11 +64,12 @@ def match(c):
  clear_hooks(c);e=c.emu;r=c.rng;imports(c)
  base=rnd(c,0x20);other=rnd(c,0x20);names={base:string(c,b'alpha'),other:string(c,r.choice([b'alpha',b'ALPHA',b'beta']))}
  hook_rec(c,0x4dc110,0,this=True,ret=lambda e,k:names[e.reg('ecx')])
- elems=[r.getrandbits(32) for _ in range(r.randrange(6))];tab=reftab(c,elems);owner=rnd(c,0x30);e.w32(owner+0x18,r.choice([0,tab]));s=rnd(c,0x140);e.w32(s+0x12a,r.choice([0,owner]));e.w32(s+0x44,obj(c,0x20,{0x130:pystub(c,2,this=True)}));key=r.getrandbits(32)
+ elems=[r.getrandbits(32) for _ in range(r.randrange(6))];tab=reftab(c,elems);owner=rnd(c,0x30);e.w32(owner+0x18,r.choice([0,tab]));s=rnd(c,0x140);e.w32(s+0x12a,r.choice([0,owner]));key=r.getrandbits(32)
  def lookup(e,k):return base if k==0 else other if e.arg32(0)&1 else 0
  out=r.choice([key,0,r.getrandbits(32)])
- def change(e,k):e.w32(e.arg32(4),out)
- sysobj(c,table_slots={0x54:pystub(c,1,this=True,ret=lookup),0x114:pystub(c,5,this=True,ret=r.getrandbits(32),nullflag=(4,),side=change)})
+ def change(e,k):e.w32(e.arg32(2),out)   # slot 0x130(owner, id, &out): &out is the pending push of the 0x114 call
+ e.w32(s+0x44,obj(c,0x20,{0x130:pystub(c,3,this=True,deref={2:1},side=change)}))
+ sysobj(c,table_slots={0x54:pystub(c,1,this=True,ret=lookup),0x114:pystub(c,4,this=True,ret=r.getrandbits(32))})
  return [s,key]
 S(0x4279c0,'GUESS cache module by basename','thiscall',None,ret='eax',gen=module,note='batch130001')
 S(0x4438a0,'GUESS toggle owner membership','thiscall',None,ret=None,gen=toggle,note='batch130001')

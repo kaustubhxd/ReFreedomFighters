@@ -59,8 +59,8 @@ static void THISCALL fn54dff0(u8 *self, u8 *p) {
 }
 PCREG(54dff0, fn54dff0);
 
-// 0x5f0380, thiscall plain: t = [[0x70039c]+0x9b]; x = t->slot0x138(); x->slot0x88(0x6a5c48, &l4) (l4 pre-set to 0); w = t->slot0x114(0x6add1c, 0, 0x6b8240, 0x1b, &l8) (l8 pre-set to 0);
-// [this+4]->slot0x12c(l4, (u16) w) using the vtable read before the second call; when l8 is non-zero ext_5f0e10(l8, [[this+4]+0x684]).
+// 0x5f0380, thiscall plain: t = [[0x70039c]+0x9b]; x = t->slot0x138(); x->slot0x88(0x6a5c48, &l4) (l4 pre-set to 0); w = t->slot0x114(0x6add1c, 0, 0x6b8240, 0x1b) (four args; l8 pre-set to 0, its address stays pending on the stack);
+// [this+4]->slot0x12c(l4, (u16) w, &l8) using the vtable read before the second call; when l8 is non-zero ext_5f0e10(l8, [[this+4]+0x684]).
 static void THISCALL fn5f0380(u8 *self) {
   u32 l4 = 0, l8 = 0;
   u8 *t = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
@@ -70,9 +70,9 @@ static void THISCALL fn5f0380(u8 *self) {
   u8 *vt = **(u8 ***)(self + 4);
   u32 v4 = *(volatile u32 *)&l4;
   t = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-  u32 w = (u16)vcall<u32>(t, 0x114, 0x6add1c, 0u, 0x6b8240u, 0x1bu, (u32)&l8);
-  typedef void (THISCALL *f2)(void *, u32, u32);
-  (*(f2 *)(vt + 0x12c))(*(u8 **)(self + 4), v4, w);
+  u32 w = (u16)vcall<u32>(t, 0x114, 0x6add1c, 0u, 0x6b8240u, 0x1bu);
+  typedef void (THISCALL *f2)(void *, u32, u32, u32);
+  (*(f2 *)(vt + 0x12c))(*(u8 **)(self + 4), v4, w, (u32)&l8);
   u32 h = *(volatile u32 *)&l8;
   if (h) ext_5f0e10((void *)h, *(u32 *)(*(u8 **)(self + 4) + 0x684));
 }

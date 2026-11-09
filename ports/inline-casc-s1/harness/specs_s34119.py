@@ -10,8 +10,8 @@ def _g50f9f0(c):
     cells = [rnd(c, 0x10) for _ in range(3)]
     hook_rec(c, 0x5003d0, 1, this=True, ret=lambda em, k: cells[[0, 2, 1][k] if k < 3 else 0])
     hook_rec(c, 0x506040, 0, this=True, pop=0, ret=r.getrandbits(32))
-    o = 0 if r.random() < 0.25 else obj(c, 0x20, {0x138: pystub(c, 1, ret=r.getrandbits(32), this=True)}, nslots=0x13c // 4)
-    tbl = obj(c, 0x20, {0x58: pystub(c, 1, ret=o, this=True), 0x114: pystub(c, 6, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xffff0000 | r.getrandbits(16)]), this=True)}, nslots=0x118 // 4)
+    o = 0 if r.random() < 0.25 else obj(c, 0x20, {0x138: pystub(c, 3, ret=r.getrandbits(32), this=True)}, nslots=0x13c // 4)
+    tbl = obj(c, 0x20, {0x58: pystub(c, 1, ret=o, this=True), 0x114: pystub(c, 4, ret=lambda em, k: r.choice([0, 1, 0x12345, 0xffff0000 | r.getrandbits(16)]), this=True)}, nslots=0x118 // 4)
     so = rnd(c, 0xa0)
     c.emu.w32(so + 0x9b, tbl)
     c.emu.w32(0x70039c, so)

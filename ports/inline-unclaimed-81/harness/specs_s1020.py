@@ -3,7 +3,7 @@ and the objects returned by the global controller Q (0x70038c) get a header dwor
 returns R1, R1's slot 0x350 returns R2 (or null); Q+8 is a thiscall counting stub (or null), Q+0xc and Q+0x10 bracket P or R2 (usually in range), slot 0xac
 counts. The name at this+0x4c is a random string (up to 100 characters) and the allocator 0x41e290 returns a fixed 256-byte buffer. The walked object W
 (this+0x48) has slot 0x4c (one argument; writes a random flag into it), slot 0x5c (writes the next flag, ones then zeros, and returns a pointer). The
-render manager's slot 0x114 (five arguments, returns a word; the fifth is a stack address and is skipped) and P's slot 0x12c (two arguments) are counting stubs."""
+render manager's slot 0x114 (four arguments, returns a word) and P's slot 0x12c (three arguments; the third is a stack address and is skipped) are counting stubs."""
 import os, sys, struct
 for _d in ('..', '../..'):
     _p = os.path.join(os.path.dirname(os.path.abspath(__file__)), _d, 'shared-harness')
@@ -56,7 +56,7 @@ def g(c):
     c.emu.wbytes(0x714388, struct.pack('<H', rnd.randint(0, 0xffff)))
     sysobj = c.emu.alloc(0x2000, 4)
     c.emu.w32(0x70039c, sysobj)
-    rm = obj(c, 0x40, {0x114: _stub(c, 5, skip=(4,), ret=r32(c))})
+    rm = obj(c, 0x40, {0x114: _stub(c, 4, ret=r32(c))})
     c.emu.w32(sysobj + 0x9b, rm)
     R2 = hobj(c, 0x40) if rnd.random() < 0.8 else 0
     R1 = obj(c, 0x40, {0x350: _stub(c, 0, ret=R2)})
@@ -68,7 +68,7 @@ def g(c):
     c.emu.w32(Q + 0xc, 0 if rnd.random() < 0.9 else rnd.randint(0, 0xffffffff))
     c.emu.w32(Q + 0x10, 0xffffffff if rnd.random() < 0.9 else rnd.randint(0, 0x1000))
     c.emu.w32(0x70038c, Q)
-    P = hobj(c, 0x40, {0x12c: _stub(c, 2)})
+    P = hobj(c, 0x40, {0x12c: _stub(c, 3, skip=(2,), copy=(2, [(0, 'd')]))})     # the third argument is &l1c: record the dword it points to
     ff = c.emu.alloc(4, 4)
     c.emu.w32(ff, rnd.randint(0, 1))
     tbl = c.emu.alloc(4 * 32, 4)

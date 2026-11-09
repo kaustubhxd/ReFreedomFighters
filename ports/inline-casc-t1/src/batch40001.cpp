@@ -22,14 +22,14 @@ static s32 THISCALL fn5ab970(u8 *self) {
 PCREG(5ab970, fn5ab970);
 
 // 0x5a0da0, thiscall(): n = unaligned [this+0x7ce]; n == 0 -> nothing; vt = [this]; p = this + 0x7c2 + n*16;
-// ax = (u16) engine table slot 0x114 (0x6a54b0, 0, 0x6ae6a0, 0xb62, p); vt->slot 0x130 (this, ax); ext_5a01e0(this + 0x7ce); copies 16 bytes p -> this + 0x8d2.
+// ax = (u16) engine table slot 0x114 (0x6a54b0, 0, 0x6ae6a0, 0xb62) (four args; the push of p before it stays pending); vt->slot 0x130 (this, ax, p); ext_5a01e0(this + 0x7ce); copies 16 bytes p -> this + 0x8d2.
 static void THISCALL fn5a0da0(u8 *self) {
   u32 n = rd32(self + 0x7ce);
   if (!n) return;
   u8 *vt = *(u8 **)self;
   u8 *p = self + 0x7c2 + (n << 4);
-  u32 ax = (u16)vcall<u32>(engTable(), 0x114, (u32)0x6a54b0, (u32)0, (u32)0x6ae6a0, (u32)0xb62, (u32)p);
-  ((void(THISCALL *)(u8 *, u8 *, u32))rd32(vt + 0x130))(self, self, ax);
+  u32 ax = (u16)vcall<u32>(engTable(), 0x114, (u32)0x6a54b0, (u32)0, (u32)0x6ae6a0, (u32)0xb62);
+  ((void(THISCALL *)(u8 *, u8 *, u32, u8 *))rd32(vt + 0x130))(self, self, ax, p);
   ext_5a01e0(self + 0x7ce);
   u8 t[16];
   for (int i = 0; i < 16; i++) t[i] = p[i];

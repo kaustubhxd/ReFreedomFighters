@@ -1,7 +1,8 @@
 // batch313.cpp - own slice (residue 15): 0x5c53f0, CTargetObtained::Command(unsigned short, void*) (thiscall, ret 8; GUESS).
 // Vtable offsets are bytes. The data argument is never read. The exe's stack cookie check (0x633654) is not reproduced.
 // Block 1: when cmd == word [this+0x148] and 0x5c5620(this) == 0: dat = eng.[0x9b]; o = dat.vtbl[0x138](); o.vtbl[0x88](0x6a5c48, &t);
-//          e = dat.vtbl[0x58](t); if e != 0: w = dat.vtbl[0x114](0x6a5c58, 0, 0x6b4204, 0x94, this+0x48, 0); e.vtbl[0x128](w).
+//          e = dat.vtbl[0x58](t); if e != 0: w = dat.vtbl[0x114](0x6a5c58, 0, 0x6b4204, 0x94) (4 args); e.vtbl[0x128](w, this+0x48, 0) (the two pushes made
+//          before the 0x114 call stay on the stack as the last two args of slot 0x128).
 //          s = (dat.[0xae4]).vtbl[0](this+0xc8, 0x677b5a); if stricmp(s, 0x677b5a) == 0 then s = this+0xc8;
 //          x = 0x589c20 (ECX = [0x7003b8]) (0); 0x59a580(x, s, -1, 0); 0x5c5810(this).
 //          If byte [this+0x152] != 0: o = dat.vtbl[0x138](); o.vtbl[0x88](0x681320, &t); e = dat.vtbl[0x58](t);
@@ -28,8 +29,8 @@ static void THISCALL command_5c53f0(u8 *self, u16 cmd, u32 data) {
         vcall<void>((void *)o, 0x88u, 0x6a5c48u, (u32)&t);
         u32 e = vcall<u32>((void *)dat, 0x58u, t);
         if (e != 0u) {
-            u16 w = (u16)vcall<u32>((void *)dat, 0x114u, 0x6a5c58u, 0u, 0x6b4204u, 0x94u, (u32)(self + 0x48u), 0u);
-            vcall<void>((void *)e, 0x128u, (u32)w);
+            u16 w = (u16)vcall<u32>((void *)dat, 0x114u, 0x6a5c58u, 0u, 0x6b4204u, 0x94u);
+            vcall<void>((void *)e, 0x128u, (u32)w, (u32)(self + 0x48u), 0u);
         }
     }
     u32 dat2 = *(u32 *)(G(u32, 0x70039cu) + 0x9bu);

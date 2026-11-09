@@ -99,8 +99,8 @@ def _g4ca820(c):
     r = c.rng
     e = c.emu
     hook_rec(c, 0x634273, 2, pop=0)
-    o = obj(c, 0x20, {0x60: pystub(c, 2, this=True)})
-    sysobj(c, table_slots={0x138: pystub(c, 0, this=True, ret=o), 0x4c: pystub(c, 2, this=True, ret=lambda em, k: 0x1000 + k)})
+    o = obj(c, 0x20, {0x60: pystub(c, 3, this=True)})        # (name, x, 2): the `push 2` before the 0x4c call is its third argument
+    sysobj(c, table_slots={0x138: pystub(c, 0, this=True, ret=o), 0x4c: pystub(c, 1, this=True, ret=lambda em, k: 0x1000 + k)})
     t2 = rnd(c, 0x20)
     T = obj(c, 0x20, {0x20: pystub(c, 0, this=True, ret=t2)})
     e.w32(T + 4, r.getrandbits(32))

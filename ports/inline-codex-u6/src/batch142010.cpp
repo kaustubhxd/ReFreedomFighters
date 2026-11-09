@@ -15,8 +15,8 @@ static void THISCALL frame(u8* me){
     if(repeat>threshold){
      *(u32*)(me+0x7f)=*(u32*)(me+0x93);
      void* tab=*(void**)(G(u8*,0x70039c)+0x9b);
-     u16 effect=vcall<u32>(tab,0x114,0x69eaacu,0u,0x6b695cu,0x83u,me+0x57,0u);
-     vcall<void>(ob,0x128,(u32)effect);*(u32*)(me+0x9b)=0;*(u32*)(me+0x8f)=0;
+     u16 effect=vcall<u32>(tab,0x114,0x69eaacu,0u,0x6b695cu,0x83u);   // slot 0x114 pops four; the pushes of me+0x57 and 0 are slot 0x128's last arguments
+     vcall<void>(ob,0x128,(u32)effect,(u32)(me+0x57),0u);*(u32*)(me+0x9b)=0;*(u32*)(me+0x8f)=0;
     }
    }
   }else{

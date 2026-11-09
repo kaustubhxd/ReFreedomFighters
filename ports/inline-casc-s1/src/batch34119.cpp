@@ -11,7 +11,7 @@ static u32 rd32(u8 *p) { return p[0] | p[1] << 8 | p[2] << 16 | (u32)p[3] << 24;
 static void wr32(u8 *p, u32 v) { p[0] = v; p[1] = v >> 8; p[2] = v >> 16; p[3] = v >> 24; }
 
 // 0x50f9f0, stdcall(a) ret 4: handle = *ext_5003d0([a+4], 0); o = [[0x70039c]+0x9b]->slot0x58(handle); 0 when o is null. Else with x = *ext_5003d0([a+4], 2), y = ext_506040(ext_5003d0([a+4], 1)):
-// w = (u16) [[0x70039c]+0x9b]->slot0x114(y, 0, 0x69db34, 0x289, x, 0); returns o->slot0x138(w).
+// w = (u16) [[0x70039c]+0x9b]->slot0x114(y, 0, 0x69db34, 0x289) (pops FOUR arguments; x and 0 were pushed before it and stay); returns o->slot0x138(w, x, 0).
 static u32 STDCALL fn50f9f0(u8 *a) {
   u32 handle = *ext_5003d0(*(u8 **)(a + 4), 0);
   u8 *tbl = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
@@ -21,8 +21,8 @@ static u32 STDCALL fn50f9f0(u8 *a) {
   tbl = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
   u32 y = ext_506040(ext_5003d0(*(u8 **)(a + 4), 1));
   tbl = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-  u32 w = (u16)vcall<u32>(tbl, 0x114, y, 0u, 0x69db34u, 0x289u, x, 0u);
-  return vcall<u32>(o, 0x138, w);
+  u32 w = (u16)vcall<u32>(tbl, 0x114, y, 0u, 0x69db34u, 0x289u);
+  return vcall<u32>(o, 0x138, w, x, 0u);
 }
 PCREG(50f9f0, fn50f9f0);
 

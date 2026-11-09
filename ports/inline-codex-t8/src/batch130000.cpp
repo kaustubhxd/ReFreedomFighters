@@ -21,7 +21,7 @@ PCREG(4cf940,fn4cf940);
 static u32 decode(u8* e){if(e[4]==3)return G(u32,e);if(e[4]==4)return vcall<u32>(G(void*,e),0x34);
  void* l=vcall<void*>(G(void*,0x700390),0x20,0x69c8e0u,0x111u);typedef void(*log_t)(void*,u32,u32);(*(log_t*)(*(u8**)l+0x2c))(l,0x69c6b0,0x69c9b0);typedef void(*assert_t)();G(assert_t,0x7003b0)();return 0;}
 static u32 THISCALL fn5030f0(u8*s,u8*p){void*t=G(void*,p+4);u32 key=G(u32,ext_5003d0(t,0));u32 id=decode(ext_5003d0(t,1));u32 vals[4];for(u32 i=0;i<4;i++)vals[i]=G(u32,ext_5003d0(t,i+2));
- void*tab=G(void*,G(u8*,0x70039c)+0x9b);u32 h=vcall<u32>(tab,0x114,id,0u,0x69ca10u,0xf4u,vals);return vcall<u32>(G(void*,s+0xc),0x12c,key,h&0xffff);}
+ void*tab=G(void*,G(u8*,0x70039c)+0x9b);u32 h=vcall<u32>(tab,0x114,id,0u,0x69ca10u,0xf4u);return vcall<u32>(G(void*,s+0xc),0x12c,key,h&0xffff,(u32)vals);}   // slot 0x114 pops four; the pushed &vals is the third argument of slot 0x12c
 PCREG(5030f0,fn5030f0);
 static u32 THISCALL fn5028e0(u8*s,u8*p){void*t=G(void*,p+4);u32 id=decode(ext_5003d0(t,1));void*tab=G(void*,G(u8*,0x70039c)+0x9b);u32 h=vcall<u32>(tab,0x114,id,0u,0x69ca10u,0x2a6u);u32 other=decode(ext_5003d0(t,2));u32 key=G(u32,ext_5003d0(t,0));return vcall<u32>(G(void*,s+0xc),0x12c,key,h&0xffff,other);}
 PCREG(5028e0,fn5028e0);

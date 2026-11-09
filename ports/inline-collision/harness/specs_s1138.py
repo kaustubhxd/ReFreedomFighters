@@ -44,17 +44,16 @@ def _tree(c):
     # this+0x1c: slot 0x134 (thiscall, two arguments) records them
     def slot134(em, rr):
         em.calllog.append(('134', em.reg('ecx') & 0xffffffff, em.arg32(0), em.arg32(1)))
-        em.ret(argbytes=8)
+        em.wbytes(em.arg32(2), struct.pack('<I', ret114))     # the third argument is &V (the original's pending push)
+        em.ret(argbytes=12)
     Ovt = e.fake_vtable('O_55c5b0', 0x60, {0x134: slot134})
     O = e.alloc(0x40, 4)
     e.w32(O, Ovt)
 
     # render manager: slot 0x114 (five words); writes the dword behind the fifth argument, returns a per-case word
     def slot114(em, rr):
-        ptr = em.arg32(4)
         em.calllog.append(('114', em.arg32(0), em.arg32(1), em.arg32(2), em.arg32(3)))
-        em.wbytes(ptr, struct.pack('<I', ret114))
-        em.ret(eax=ret114, argbytes=0x14)
+        em.ret(eax=ret114, argbytes=0x10)
     rvt = e.fake_vtable('rm_55c5b0', 0x60, {0x114: slot114})
     rm = e.alloc(0x40, 4)
     e.w32(rm, rvt)

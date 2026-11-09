@@ -17,8 +17,8 @@ def script(n):
    if kind==4:value=obj(c,0x20,{0x34:pystub(c,0,this=True,ret=r.getrandbits(32))})
    e.w32(a,value);e.w8(a+4,kind);entries.append(a)
   hook_rec(c,0x5003d0,1,this=True,ret=lambda em,k:entries[em.arg32(0)])
-  sysobj(c,table_slots={0x114:pystub(c,5 if n==2 else 4,ret=r.getrandbits(32),this=True,deref={4:4} if n==2 else {})})
-  child=obj(c,0x20,{0x12c:pystub(c,n,this=True,ret=r.getrandbits(32))})
+  sysobj(c,table_slots={0x114:pystub(c,4,ret=r.getrandbits(32),this=True)})
+  child=obj(c,0x20,{0x12c:pystub(c,3,this=True,ret=r.getrandbits(32),deref={2:4} if n==2 else {})})
   s=rnd(c,0x20);p=rnd(c,0x10);e.w32(s+0xc,child);e.w32(p+4,rnd(c,0x20))
   return [s,p]
  return gen

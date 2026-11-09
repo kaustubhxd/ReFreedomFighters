@@ -94,8 +94,12 @@ def _gen(c):
     sub = c.emu.alloc(0x40, 4)
     e.w32(sub, e.fake_vtable('cmd_sub', 0x30, {0x4c: _h('cmd_sub', 0x4c, 1, 0, ptr=0, wv=wsub),
                                               0x5c: _h('cmd_sub', 0x5c, 1, rsub, ptr=0, wv=0)}))
+    w_ret = rng.getrandbits(16)
+    # 0x5c5620 returns the dword the slot 0x128 of object A writes through its second argument: zero lets the port go on past the check (60% of cases)
+    kval = 0 if rng.random() < 0.6 else rng.getrandbits(32)
     eoA = c.emu.alloc(0x1000, 4)
-    e.w32(eoA, e.fake_vtable('cmd_eA', 0x80, {0x128: _h('cmd_e', 0x128, 1, 0),
+    # slot 0x128 takes THREE args (id, &out, 0): the pushes made before the 0x114 call are its last two (the exe's 0x5c5620 and this port)
+    e.w32(eoA, e.fake_vtable('cmd_eA', 0x80, {0x128: _h('cmd_e', 0x128, 3, 0, ptr=1, wv=kval),
                                              0x1e0: _h('cmd_e', 0x1e0, 1, al_a)}))
     eoB = c.emu.alloc(0x1000, 4)
     e.w32(eoB, e.fake_vtable('cmd_eB', 0x80, {0x128: _h('cmd_e', 0x128, 3, 0),
@@ -105,9 +109,6 @@ def _gen(c):
         e.w32(x + 0x18, sub if rng.random() < 0.6 else 0)
 
     zero58 = rng.random() < 0.1
-    w_ret = rng.getrandbits(16)
-    # 0x5c5620 returns the dword this stub writes: zero lets the port go on past the check (60% of cases)
-    kval = 0 if rng.random() < 0.6 else rng.getrandbits(32)
 
     def h58(em, r):
         a0 = em.arg32(0)
@@ -118,7 +119,7 @@ def _gen(c):
     dat = c.emu.alloc(0xb00, 4)
     e.w32(dat, e.fake_vtable('cmd_dat', 0x80, {
         0x58: h58,
-        0x114: _h('cmd_dat', 0x114, 6, w_ret, ptr=4, wv=kval, mask=5),
+        0x114: _h('cmd_dat', 0x114, 4, w_ret),
         0x138: _h('cmd_dat', 0x138, 0, o),
         0x60: _h('cmd_dat', 0x60, 1, ob)}))
     e.w32(dat + 0xae4, strobj)

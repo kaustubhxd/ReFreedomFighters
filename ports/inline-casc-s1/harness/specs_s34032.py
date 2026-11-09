@@ -11,9 +11,9 @@ def _g5c92a0(c):
     clear_hooks(c)
     r = c.rng
     hook_rec(c, 0x5c9330, 1, this=True)
-    y = obj(c, 0x20, {0x128: pystub(c, 1, this=True)}, nslots=0x140 // 4)
+    y = obj(c, 0x20, {0x128: pystub(c, 3, this=True)}, nslots=0x140 // 4)
     s = obj(c, 0x20, {0x2f4: pystub(c, 0, ret=y, this=True)}, nslots=0x300 // 4)
-    sysobj(c, table_slots={0x58: pystub(c, 1, ret=s, this=True), 0x114: pystub(c, 6, ret=lambda em, k: r.getrandbits(32), this=True)}, table_size=0x120)
+    sysobj(c, table_slots={0x58: pystub(c, 1, ret=s, this=True), 0x114: pystub(c, 4, ret=lambda em, k: r.getrandbits(32), this=True)}, table_size=0x120)
     p = obj(c, 0x20, {0x288: pystub(c, 3, this=True)}, nslots=0x290 // 4)
     me = rnd(c, 0x90)
     c.emu.w32(me + 0x44, p)

@@ -24,9 +24,9 @@ static u32 FASTCALL fn5f0cd0(u8 *entry_ecx, u32 edx) {
   u32 local = edx;
   u8 *s = (u8 *)vcall<u32, u8 *>(mgr(), 0x58, entry_ecx);  // @5f0cd0_a
   u8 *vt = *(u8 **)s;
-  u32 ax = vcall<u32, u32, u32, u32, u32, u32 *>(mgr(), 0x114, 0x6a6684, 0, 0x6b82f4, 0x1a, &local) & 0xffff;  // @5f0cd0_b
-  typedef u32 (THISCALL *F)(u8 *, u8 *, u32);
-  return (*(F *)(vt + 0x130))(s, s, ax);  // @5f0cd0_c
+  u32 ax = vcall<u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6a6684, 0, 0x6b82f4, 0x1a) & 0xffff;  // @5f0cd0_b: 4 args; the pushed &local is the 3rd arg of 0x130
+  typedef u32 (THISCALL *F)(u8 *, u8 *, u32, u32 *);
+  return (*(F *)(vt + 0x130))(s, s, ax, &local);  // @5f0cd0_c
 }
 PCREG(5f0cd0, fn5f0cd0);
 

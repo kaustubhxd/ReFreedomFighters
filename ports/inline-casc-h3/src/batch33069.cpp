@@ -62,14 +62,16 @@ static void THISCALL fn4d60e0(u8 *self) {
 }
 PCREG(4d60e0, fn4d60e0);
 
-// 0x4f9c00: thiscall: if [this+0x70] != 0x20: p=slot 0x2c4(); x=table->slot 0x58([this+0x60]); slot 0x310(table, 0, x) (two pushed-ecx junk dwords: the table pointer and the zeroed slot); p->slot 0x2dc(1)
+// 0x4f9c00: thiscall: if [this+0x70] != 0x20: p=slot 0x2c4(); x=table->slot 0x58([this+0x60]); y=this->slot 0x310() (NO stack arguments: the two
+// `push ecx` are temporaries, the result is stored into the top one); p->slot 0x2dc(1, y, 0, x) (four arguments: the original pushes x, a temp
+// that becomes 0, a temp that receives y, then 1; the frameless epilogue needs 0x58 to pop 1, 0x310 none, 0x2dc four)
 static void THISCALL fn4f9c00(u8 *self) {
   if (*(u32 *)(self + 0x70) == 0x20) return;
   u8 *p = vcall<u8 *>(self, 0x2c4);
   u8 *tab = SYS_TABLE;
   u32 x = vcall<u32>(tab, 0x58, *(u32 *)(self + 0x60));
-  vcall<u32>(self, 0x310, (u32)tab, 0u, x);
-  vcall<u32>(p, 0x2dc, 1u);
+  u32 y = vcall<u32>(self, 0x310);
+  vcall<u32>(p, 0x2dc, 1u, y, 0u, x);
 }
 PCREG(4f9c00, fn4f9c00);
 

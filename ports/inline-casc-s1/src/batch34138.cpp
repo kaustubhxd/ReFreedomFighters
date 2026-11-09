@@ -58,8 +58,8 @@ static void THISCALL fn569f80(u8 *self) {
 }
 PCREG(569f80, fn569f80);
 
-// 0x574bc0, thiscall plain: ext_59a5b0(ext_589c20([0x7003b8], 0), 0, 0x679e6c, 0); x = [[0x70039c]+0x9b]->slot0x138(); x->slot0x88(0x68c070, &l) (l = 0 first); w = table->slot0x114(0x6a4ea0, 0, 0x6a9104, 0x22a, 0);
-// [this+0x44]->slot0x12c(l, (u16)w) through the vtable read before the call.
+// 0x574bc0, thiscall plain: ext_59a5b0(ext_589c20([0x7003b8], 0), 0, 0x679e6c, 0); x = [[0x70039c]+0x9b]->slot0x138(); x->slot0x88(0x68c070, &l) (l = 0 first); w = table->slot0x114(0x6a4ea0, 0, 0x6a9104, 0x22a) (four args; the `push 0` before it stays pending);
+// [this+0x44]->slot0x12c(l, (u16)w, 0) through the vtable read before the call.
 static void THISCALL fn574bc0(u8 *self) {
   u32 l = 0;
   u32 e = ext_589c20(G(u8 *, 0x7003b8), 0);
@@ -72,8 +72,8 @@ static void THISCALL fn574bc0(u8 *self) {
   u8 *vt = *(u8 **)tgt;
   u32 v = *(volatile u32 *)&l;
   t = *(u8 **)(G(u8 *, 0x70039c) + 0x9b);
-  u32 w = (u16)vcall<u32>(t, 0x114, 0x6a4ea0u, 0u, 0x6a9104u, 0x22au, 0u);
-  typedef void (THISCALL *f2)(void *, u32, u32);
-  (*(f2 *)(vt + 0x12c))(tgt, v, w);
+  u32 w = (u16)vcall<u32>(t, 0x114, 0x6a4ea0u, 0u, 0x6a9104u, 0x22au);
+  typedef void (THISCALL *f2)(void *, u32, u32, u32);
+  (*(f2 *)(vt + 0x12c))(tgt, v, w, 0u);
 }
 PCREG(574bc0, fn574bc0);

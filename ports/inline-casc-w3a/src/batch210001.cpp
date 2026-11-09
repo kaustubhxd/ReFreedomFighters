@@ -71,8 +71,10 @@ static u32 THISCALL fn59cb50(u8 *self, u32 a0, u32 a1) {
 }
 PCREG(59cb50, fn59cb50);
 
-static u32 THISCALL fn504880(u8 *self, u32 a0) {
-  return vcall<u32, u32>(self, 0x4c, a0);  // @504880
+// 0x504880: mov eax,[ecx]; jmp [eax+0x4c]: a pure forwarder (the real slot takes 0 stack arguments for the objects seen in game, other classes may take more),
+// so the port jumps too and leaves the stack alone
+extern "C" __attribute__((naked)) void fn504880() {
+  asm volatile("mov (%ecx), %eax\n\tjmp *0x4c(%eax)");
 }
 PCREG(504880, fn504880);
 
