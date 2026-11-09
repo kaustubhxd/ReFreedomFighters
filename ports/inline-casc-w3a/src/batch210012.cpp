@@ -39,10 +39,10 @@ static u32 THISCALL fn5da280(u8 *self, u8 *a) {
 PCREG(5da280, fn5da280);
 
 static u32 THISCALL fn5f0d30(u8 *entry_ecx) {
-  u8 *s = (u8 *)vcall<u32>(mgr(), 0x58);  // @5f0d30_a
+  u8 *s = (u8 *)vcall<u32, u32>(mgr(), 0x58, (u32)entry_ecx);  // @5f0d30_a: slot 0x58 (ret 4) takes the entry ecx
   u8 *vt = *(u8 **)s;
   u32 ax = vcall<u32, u32, u32, u32, u32>(mgr(), 0x114, 0x6a6698, 0, 0x6b82f4, 0x13) & 0xffff;  // @5f0d30_b: 4 args; the push 0 before it is the 3rd arg of 0x130
-  typedef u32 (THISCALL *F)(u8 *, u8 *, u32, u32, u8 *);
-  return (*(F *)(vt + 0x130))(s, s, ax, 0, entry_ecx);   // 4 stack args (ret 0x10): s, ax, the pending 0, the pushed entry ecx  // @5f0d30_d  // @5f0d30_c
+  typedef u32 (THISCALL *F)(u8 *, u8 *, u32, u32);
+  return (*(F *)(vt + 0x130))(s, s, ax, 0);   // this + 3 stack words (ret 0xc): s, ax, the pending 0  // @5f0d30_d  // @5f0d30_c
 }
 PCREG(5f0d30, fn5f0d30);
