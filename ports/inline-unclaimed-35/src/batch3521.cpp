@@ -19,7 +19,7 @@ void THISCALL matPosAnimExpandBounds(u8 *self, u32 a0, u32 a1, u32 a2, u32 a3) {
   u8 *A = *(u8 **)(self + 0x44);
   u32 esi = ((Slot1)*(u32 *)(*(u32 *)A + 0x4c))(A, 0x4b455953);
   float f = *(float *)(self + 0xc7);
-  u32 local = 0;
+  u8 local[16] = {};
   u32 mgr = *(u32 *)0x70039c;
   ext_4e7880((u8 *)&local, esi, *(u32 *)(mgr + 0x40), *(u8 *)(self + 0xc4), f);
   u8 *S = *(u8 **)(A + 8);

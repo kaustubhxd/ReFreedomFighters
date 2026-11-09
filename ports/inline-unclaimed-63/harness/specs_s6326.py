@@ -57,7 +57,12 @@ def _gen(c, ret_flag):
         c.emu.w32(tab + 4 * i, vals[i] if i < len(vals) else 0)
     c44 = _cell(c)
     # slot +0x4c: plain ret 4; slot +0x44: records ECX, ret 4
-    c.emu.w32(vt + 0x4c, _stub(c, b'\xc2\x04\x00'))
+    if ret_flag:   # 0x4cdf70 only: the iterator state is 12 bytes ([ebp-0xc..)); slot 0x4c plants two marker dwords at +4/+8, slot 0x5c accumulates what it finds there into heap cells
+        m1, m2 = c.rng.getrandbits(32), c.rng.getrandbits(32)
+        r1, r2 = _cell(c), _cell(c)
+        c.emu.w32(vt + 0x4c, _stub(c, b'\x8b\x4c\x24\x04' + b'\xc7\x41\x04' + _le(m1) + b'\xc7\x41\x08' + _le(m2) + b'\xc2\x04\x00'))
+    else:
+        c.emu.w32(vt + 0x4c, _stub(c, b'\xc2\x04\x00'))
     c.emu.w32(vt + 0x44, _stub(c, b'\x89\x0d' + _le(c44) + b'\xc2\x04\x00'))
     # slot +0x64: ring of records (ECX at ring index), returns tab[cnt]; slot +0x5c: writes flag via its arg, returns tab[cnt]
     # the flag is 1 while the ring has values and 0 at its end (the terminator), so the loop stops where the ring does
@@ -68,6 +73,10 @@ def _gen(c, ret_flag):
     c.emu.w32(vt + 0x64, _stub(c, body64))
     body5c = (b'\x8b\x15' + _le(cnt) + b'\x8b\x04\x95' + _le(ftab) + b'\x8b\x4c\x24\x04\x89\x01' +
               b'\x8b\x04\x95' + _le(tab) + b'\xff\x05' + _le(cnt) + b'\xc2\x04\x00')
+    if ret_flag:   # + the 12-byte state: r1 += [state+4]; r2 += [state+8]; inc [state+4]
+        body5c = (b'\x8b\x15' + _le(cnt) + b'\x8b\x04\x95' + _le(ftab) + b'\x8b\x4c\x24\x04\x89\x01' +
+                  b'\x8b\x51\x04' + b'\x01\x15' + _le(r1) + b'\x8b\x51\x08' + b'\x01\x15' + _le(r2) + b'\xff\x41\x04' +
+                  b'\x8b\x15' + _le(cnt) + b'\x8b\x04\x95' + _le(tab) + b'\xff\x05' + _le(cnt) + b'\xc2\x04\x00')
     c.emu.w32(vt + 0x5c, _stub(c, body5c))
     c.emu.w32(self_, vt)
     _flush(c)

@@ -40,7 +40,11 @@ def _getmap(c):
         return (0, None)
 
     def s4c(e, args):
+        # Adversarial iterator fixture: original reserves 12 bytes at [ebp-0xc].
+        # The actual virtual target is not established by this fixture.
         e.w32(args[0], 0)
+        e.w32(args[0] + 4, 0x13579bdf)
+        e.w32(args[0] + 8, 0x2468ace0)
         return (0, None)
 
     vt = c.emu.logging_vtable('Coll', 0x140, impl={0x4c: s4c, 0x5c: s5c}, argwords={0x4c: 1, 0x5c: 1})

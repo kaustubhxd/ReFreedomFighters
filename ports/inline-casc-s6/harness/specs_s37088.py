@@ -61,7 +61,15 @@ def _g438910(c):
     def side(em, k):
         key, fl = script[min(k, len(script) - 1)]
         em.w32(em.arg32(0), fl)
-    it = obj(c, 0x20, {0x0: pystub(c, 1, this=True), 0x4c: pystub(c, 1, this=True, nullflag=(0,)),
+    # Exercise the 12-byte iterator storage reserved by the original at
+    # [ebp-0x10..-5]. This is a deliberately adversarial stub fixture;
+    # actual vtable implementations may not write all three words.
+    def init_iter(em, k):
+        p = em.arg32(0)
+        em.w32(p, 0)
+        em.w32(p + 4, 0x13579bdf)
+        em.w32(p + 8, 0x2468ace0)
+    it = obj(c, 0x20, {0x0: pystub(c, 1, this=True), 0x4c: pystub(c, 1, this=True, nullflag=(0,), side=init_iter),
                        0x5c: pystub(c, 1, this=True, nullflag=(0,), side=side, ret=ret)})
     if r.random() < 0.9:
         _w(c, t + 0x15, it)

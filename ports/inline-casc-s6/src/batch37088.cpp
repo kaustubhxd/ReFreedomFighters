@@ -23,7 +23,8 @@ static u8 *ownerOf(u8 *edi) {
 static void THISCALL fn438910(u8 *self) {
   u8 *it = *(u8 **)(self + 0x15);
   if (it) {
-    u32 flag = 0;
+    u32 flag_storage[3] = {0, 0, 0};
+    u32 &flag = flag_storage[0];
     vcall<void>(it, 0x4c, (u32)&flag);
     u32 key = vcall<u32>(*(void **)(self + 0x15), 0x5c, (u32)&flag);
     if (flag) {

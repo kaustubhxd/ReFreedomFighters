@@ -20,11 +20,20 @@ def _g4b4040(c):
     def s5c(em, k):
         i = st['i']
         st['i'] += 1
-        em.calllog.append(('it5c', i))
-        em.w32(em.arg32(0), 1 if i < n else 0)
+        a0 = em.arg32(0)   # the iterator state is 12 bytes (orig: [ebp-0x10..-4)): log the two extra dwords slot 0x4c planted, then advance them
+        em.calllog.append(('it5c', i, em.r32(a0 + 4), em.r32(a0 + 8)))
+        em.w32(a0, 1 if i < n else 0)
+        em.w32(a0 + 4, (em.r32(a0 + 4) + 1) & 0xffffffff)
+        em.w32(a0 + 8, em.r32(a0 + 8) ^ 0x5a5a5a5a)
         return keys[i] if i < n else 0
     itvt = e.alloc(0x80, 4)
-    e.w32(itvt + 0x4c, pystub(c, 1, this=True, stackmark=(0,)))
+    mk1, mk2 = r.getrandbits(32), r.getrandbits(32)
+
+    def i4c(em, k):
+        a0 = em.arg32(0)
+        em.w32(a0 + 4, mk1)
+        em.w32(a0 + 8, mk2)
+    e.w32(itvt + 0x4c, pystub(c, 1, this=True, stackmark=(0,), side=i4c))
     e.w32(itvt + 0x5c, pystub(c, 1, this=True, stackmark=(0,), side=lambda em, k: s5c(em, k) and None, ret=lambda em, k: keys[k] if k < n else 0))
     itobj = rnd(c, 0x20)
     _w(c, itobj, itvt)
@@ -49,12 +58,22 @@ def _g4b4040(c):
     def m1_2c(em, k):
         return ent.get(em.arg32(0), 0)
 
+    mm1, mm2 = r.getrandbits(32), r.getrandbits(32)
+
     def m2_4c(em, k):
         pos['i'] = 0
+        a0 = em.arg32(0)   # 12-byte iterator state of the second walk (orig [ebp-0x1c..-0x10))
+        em.w32(a0, 0)
+        em.w32(a0 + 4, mm1)
+        em.w32(a0 + 8, mm2)
 
     def m2_64(em, k):
         i = pos['i']
         pos['i'] += 1
+        a0 = em.arg32(0)
+        em.calllog.append(('m2n', i, em.r32(a0 + 4), em.r32(a0 + 8)))
+        em.w32(a0 + 4, (em.r32(a0 + 4) + 1) & 0xffffffff)
+        em.w32(a0 + 8, em.r32(a0 + 8) ^ 0xa5a5a5a5)
         return nodes[i] if i < len(nodes) else 0
     vt1 = e.alloc(0x80, 4)
     e.w32(vt1 + 0x2c, pystub(c, 1, this=True, ret=m1_2c))

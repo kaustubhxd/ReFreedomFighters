@@ -30,6 +30,10 @@ def _thiscall_args_log(c, nargs):
     code = b''
     for i in range(nargs):
         code += b'\x8b\x44\x24' + bytes([4 + 4 * i]) + b'\xa3' + ss.P(cells + 4 * i)   # mov eax,[esp+4+4i]; mov [cells+4i],eax
+    if nargs == 4:
+        # Original 4e7880: [ecx+9]=arg0; [ecx]=arg1; [ecx+8]=low8(arg2);
+        # [ecx+4]=arg3. It also calls helpers, omitted by this isolated stub.
+        code += bytes.fromhex('8b4424048941098b44240889018b44240c8841088b442410894104')
     code += b'\xb8' + ss.P(0) + b'\xc2' + struct.pack('<H', 4 * nargs)                  # mov eax, 0; ret 4*nargs
     return ss.code(c, code)
 

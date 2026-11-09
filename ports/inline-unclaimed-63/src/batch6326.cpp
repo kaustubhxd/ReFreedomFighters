@@ -35,15 +35,16 @@ PCREG(4cde20, unnamed4cde20);
 static u32 THISCALL unnamed4cdf70(u8 *self, u32 target) {
   if (self == 0)
     return 0;
-  u32 local = 0;
-  ((call1v_fn)(*(u32 *)(*(u32 *)self + 0x4c)))((void *)self, &local);
-  u32 v = ((call1_fn)(*(u32 *)(*(u32 *)self + 0x5c)))((void *)self, &local);
+  u32 state[3] = {0, 0, 0};   // 12-byte iterator state at [ebp-0xc] in the original
+  u32 &local = state[0];
+  ((call1v_fn)(*(u32 *)(*(u32 *)self + 0x4c)))((void *)self, state);
+  u32 v = ((call1_fn)(*(u32 *)(*(u32 *)self + 0x5c)))((void *)self, state);
   if (local == 0)
     return 0;
   for (;;) {
     if (v == target)
       return 1;
-    v = ((call1_fn)(*(u32 *)(*(u32 *)self + 0x5c)))((void *)self, &local);
+    v = ((call1_fn)(*(u32 *)(*(u32 *)self + 0x5c)))((void *)self, state);
     if (local == 0)
       return 0;
   }

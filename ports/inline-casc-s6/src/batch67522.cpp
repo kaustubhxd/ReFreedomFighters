@@ -13,9 +13,10 @@ extern "C" void THISCALL ext_4b6e00(u8 *self, u32 handle, u32 flag);   // ret 8
 static void THISCALL fn4b4040(u8 *self, u8 *list, u32 flag) {
   u8 *it = *(u8 **)(list + 0x18);
   if (!it) return;
-  u32 cnt;
-  vcall<void>(it, 0x4c, (u32)&cnt);
-  u32 key = vcall<u32>(it, 0x5c, (u32)&cnt);
+  u32 st[3];   // 12-byte iterator state at [ebp-0x10] in the original (slots 0x4c / 0x5c get its address)
+  u32 &cnt = st[0];
+  vcall<void>(it, 0x4c, (u32)st);
+  u32 key = vcall<u32>(it, 0x5c, (u32)st);
   if (cnt == 0) return;
   do {
     u8 *m1 = self + 0x10e;
@@ -31,9 +32,9 @@ static void THISCALL fn4b4040(u8 *self, u8 *list, u32 flag) {
     }
     if (!done) {
       u8 *m2 = self + 0xf2;
-      u32 cnt2;
-      vcall<void>(m2, 0x4c, (u32)&cnt2);
-      u8 *node = (u8 *)vcall<u32>(m2, 0x64, (u32)&cnt2);
+      u32 cnt2[3];   // 12-byte iterator state at [ebp-0x1c]
+      vcall<void>(m2, 0x4c, (u32)cnt2);
+      u8 *node = (u8 *)vcall<u32>(m2, 0x64, (u32)cnt2);
       while (node) {
         if (D32(node, 0xc) == key) {
           D32(node, 8)--;
@@ -44,10 +45,10 @@ static void THISCALL fn4b4040(u8 *self, u8 *list, u32 flag) {
           }
           break;
         }
-        node = (u8 *)vcall<u32>(m2, 0x64, (u32)&cnt2);
+        node = (u8 *)vcall<u32>(m2, 0x64, (u32)cnt2);
       }
     }
-    key = vcall<u32>(it, 0x5c, (u32)&cnt);
+    key = vcall<u32>(it, 0x5c, (u32)st);
   } while (cnt);
 }
 PCREG(4b4040, fn4b4040);
