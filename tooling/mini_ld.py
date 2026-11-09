@@ -123,6 +123,8 @@ def main():
 
     def resolve(o, k):
         nm, val, size, bind, typ, shndx = o.syms[k]
+        if k == 0:        # STN_UNDEF: absolute target (LLVM emits call <abs addr> as PC32 against symbol 0)
+            return 0
         if typ == 3:      # section symbol
             return o.addr[shndx]
         if shndx not in (SHN_UNDEF, SHN_COMMON) and bind == 0:
